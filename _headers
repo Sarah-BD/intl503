@@ -1,0 +1,10 @@
+# Netlify HTTP Basic Auth — one shared password for the whole site.
+# Works on Netlify's FREE plan. Protects every page AND every PDF.
+# Change the username/password below before deploying, then give the
+# class the credentials. Format is  username:password  (plain text).
+#
+# This file must end up in the published folder (_site/). The line in
+# _quarto.yml `resources: _headers` copies it there on every render.
+
+/*
+  Basic-Auth: intl503:CHANGE-ME-summer2026
