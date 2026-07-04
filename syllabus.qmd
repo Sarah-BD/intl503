@@ -1,0 +1,176 @@
+---
+title: "Course Syllabus"
+subtitle: "INTL 503 - Summer 2026"
+---
+
+# Course Information
+
+**Meeting Times:** Monday, Tuesday, Thursday, Friday, 8:10–10:20 AM Eastern
+
+**Dates:** July 6 – July 31, 2026
+
+**Location:** Online (synchronous)
+
+**Instructor:** Professor Sarah Bauerle Danzman
+
+**Email:** <sbauerle@iu.edu>
+
+**Office Hours:** Wednesdays on Teams by appointment via [Microsoft Bookings](https://bookings.cloud.microsoft/book/ProfBDsOfficeHours@bookings.iu.edu/?ismsaljsauthenabled=true)
+
+## Course Format
+
+This is an intensive four-week summer course. We meet **Monday, Tuesday, Thursday, and Friday**. **Wednesdays are non-meeting reading days** for catching up, working on quizzes, and office hours. The course is open to both advanced undergraduates and graduate students.
+
+# Course Description
+
+This intensive four-week course provides a comprehensive introduction to international political economy (IPE). You'll explore how states, firms, and international organizations shape global trade, investment, and monetary relations. We'll examine major theoretical approaches and apply them to contemporary challenges including:
+
+- Trade conflicts, economic coercion, and protectionism
+- Development strategies and their political underpinnings
+- Multinational corporations and foreign direct investment
+- International financial crises and monetary cooperation
+- The future of global capitalism amid increased economic nationalism
+
+# Learning Objectives
+
+By the end of this course, you'll be able to analyze complex international economic issues through both society-centered and state-centered lenses, understand the politics behind economic policies, and engage critically with debates about globalization and its consequences. Specifically, you will be able to:
+
+1. Analyze international economic issues through both society-centered and state-centered theoretical lenses
+2. Identify the political determinants of international economic policies and outcomes
+3. Evaluate the evolution and effectiveness of international economic institutions
+4. Apply IPE theories to contemporary policy debates about trade, development, and finance
+5. Engage critically with debates about globalization, economic integration, and their consequences
+6. Read and evaluate emerging scholarship grappling with major changes in the global political economy
+
+# Required Text
+
+Oatley, Thomas. *International Political Economy*. 7th edition. Routledge, 2023.
+ISBN: 9781032232669
+
+The textbook is available through the IU Library, campus bookstore, and online retailers. The Oatley chapter is **Reading 1** for each class session; we cover one chapter per session, with Chapters 6 and 7 paired into a single combined session.
+
+All scholarly articles assigned as second readings will be posted to Canvas as PDFs (or linked through the IU Library) by the start of the term.
+
+# Course Structure and Expectations
+
+## Reading Load
+
+Each class meeting has **two assigned readings**:
+
+1. **A chapter from Oatley** (the course textbook) — roughly 25–30 pages, providing the conceptual and theoretical foundation for the day.
+2. **A scholarly article** — typically a peer-reviewed journal article or book chapter that applies, complicates, or extends the chapter's argument with contemporary evidence or a current policy case.
+
+Plan for roughly **40–55 pages of reading per class day**. You should complete *both* readings **before** the class session in which they are discussed. Wednesdays are non-meeting reading days that provide time to catch up if you fall behind.
+
+Each student will sign up on Day 1 to present and lead discussion on **one** of the scholarly articles (see Article Presentation below). Note that Day 1 (July 6) has no second reading — that session is reserved for course logistics and a discussion of how to read political-economy scholarship. I will model the article presentation on Day 2 so you have a clear example before signing up for your own slot.
+
+## Class Sessions (2 hours, 10 minutes)
+
+Each session typically includes:
+
+- An **in-class writing activity** at some point during class on Monday, Tuesday, and Thursday (about 10 minutes — timing varies by day)
+- A **student-led article discussion** (about 20 minutes; not on every day)
+- **Lecture and concept review** on the day's chapter (45–60 minutes)
+- **Discussion, applied examples, and Q&A** (30–45 minutes)
+- A **quiz** at the end of class on Fridays of weeks 1, 2, and 3 (about 30 minutes)
+
+Active participation is essential in this format. Come prepared to discuss the assigned readings and engage with case examples.
+
+# Course Schedule
+
+The full week-by-week schedule, including daily topics, Oatley chapter assignments, and scholarly article citations, lives on the dedicated [**Schedule**](schedule.qmd) page. Refer to that page throughout the term — it is the authoritative source for what is due when. Quiz and final exam dates are summarized under *Assignments and Grading* below.
+
+# Assignments and Grading
+
+## Grade Distribution
+
+| Component | Weight |
+|-----------|--------|
+| Quizzes (3) | 30% |
+| Final Exam | 25% |
+| Participation & Engagement | 20% |
+| In-Class Writing Prompts | 15% |
+| Article Presentation & Discussion | 10% |
+| **Total** | **100%** |
+
+## Assignment Details
+
+### Quizzes (30% — 10% each)
+
+Three quizzes given at the end of class on the Fridays of weeks 1, 2, and 3 — **July 10, July 17, and July 24**. Each quiz covers material from that week (chapters and articles). Quizzes consist of multiple-choice and short-answer questions and serve as comprehension checks that build toward the final exam.
+
+### Final Exam (25%)
+
+**Date: Friday, July 31, in class.** The final is cumulative. It includes multiple-choice questions, short-answer questions on concept application, and an applied question grounded in a contemporary policy scenario.
+
+### Participation & Engagement (20% — 5% per week)
+
+Active engagement is essential in an intensive online format. Participation is evaluated weekly and includes:
+
+- Attending class sessions prepared to discuss the assigned readings
+- Contributing thoughtful comments and questions during lecture and discussion
+- Engaging substantively with peers' article presentations
+- Participating in small-group exercises and chat-based activities
+
+Given the compressed format, missing even one class represents significant lost participation.
+
+### In-Class Writing Activities (15%)
+
+Each Monday, Tuesday, and Thursday includes a short (~10-minute) in-class writing activity tied to the day's material. Timing varies — sometimes the activity opens class to focus the reading, sometimes it comes toward the end of class as a synthesis check on a core concept from that day's lecture. Prompts may ask you to summarize a key argument, apply a concept to a contemporary case, or stake out a position on a debate from the chapter.
+
+Activities are graded **credit / no-credit** on a √, √+, √– scale:
+
+- **√+** — Engages substantively with the material and presents a clear, supported response
+- **√** — Completes the activity with evidence of having done the reading
+- **√–** — Submitted but missing key elements or showing limited engagement
+
+Activities are not accepted late and cannot be made up except in cases of documented absence cleared in advance.
+
+### Article Presentation & Discussion (10%)
+
+Most class days include one scholarly article (Reading 2) on a contemporary issue. Day 1 (July 6) is the exception — that session is reserved for course logistics and orientation. Each student will sign up on Day 1 to present **one** article and lead a 15–20 minute discussion of it. I will model the first presentation on **Day 2 (July 7)** so you have a clear example before your slot comes up.
+
+Your presentation should:
+
+- Briefly summarize the article's argument, evidence, and conclusion (5 minutes)
+- Connect the article to the day's textbook chapter and broader course themes
+- Pose 2–3 discussion questions to the class
+- Facilitate the resulting discussion
+
+Evaluation considers preparation, clarity, depth of engagement with the reading, and quality of discussion facilitation.
+
+# Course Policies
+
+## Attendance
+
+Given the compressed format, missing one class session represents a full week of a regular semester course. More than one unexcused absence will negatively impact your grade. If you must miss class due to illness or emergency, contact me as soon as possible.
+
+## Late Work
+
+In-class writing prompts cannot be made up. Quizzes and the final exam can only be rescheduled with advance notice and a documented, legitimate reason.
+
+## Academic Integrity
+
+All work must be your own. Plagiarism or cheating will result in failure of the assignment and possible course failure. Consult IU's [academic integrity policies](https://studentcode.iu.edu/) if you have questions about proper citation or collaboration.
+
+## Generative AI Policy
+
+Generative AI tools may not be used during in-class writing prompts, quizzes, or the final exam. You may use AI tools to help you understand assigned readings outside of class — but you are responsible for verifying everything an AI tells you against the actual readings, and you remain responsible for your own learning.
+
+## Accessibility
+
+If you need accommodations due to a disability, please contact me and [Disability Services for Students](https://studentaffairs.indiana.edu/disability-services/) as early as possible. I am committed to making this course accessible to all students.
+
+## Wellness
+
+This is an intensive course during summer. Take care of your mental and physical health. If you're struggling, please reach out — I'm happy to work with you to find solutions.
+
+# Contact and Communication
+
+- **Email:** <sbauerle@iu.edu> — expect responses within 24 hours on weekdays
+- **Canvas:** Course site for assignments and announcements; check daily
+- **Office Hours:** Wednesdays on Teams by appointment via [Microsoft Bookings](https://bookings.cloud.microsoft/book/ProfBDsOfficeHours@bookings.iu.edu/?ismsaljsauthenabled=true)
+
+---
+
+*This syllabus is subject to change with advance notice. Any changes will be announced in class and posted on Canvas.*

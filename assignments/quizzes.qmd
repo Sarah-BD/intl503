@@ -1,0 +1,44 @@
+---
+title: "Quizzes"
+subtitle: "Three weekly comprehension checks"
+toc: true
+---
+
+## Overview
+
+You will take three quizzes during the term, given at the end of class on the Fridays of weeks 1, 2, and 3. Each quiz covers material from that week — both the textbook chapters and any assigned articles or class discussions. Together the quizzes count for **30%** of your final grade (10% each).
+
+The quizzes serve two purposes: (1) they give you regular, low-stakes opportunities to check your comprehension of core IPE concepts, and (2) they build cumulatively toward the final exam.
+
+## Schedule
+
+| Quiz | Date | Coverage |
+|------|------|----------|
+| Quiz 1 | Friday, July 10 | Chapters 1–4 (Introduction; trade system; cooperation; society-centered trade) |
+| Quiz 2 | Friday, July 17 | Chapters 5–9 (State-centered trade; ISI & neoliberalism combined; MNCs in the global economy; politics of MNCs) |
+| Quiz 3 | Friday, July 24 | Chapters 10–13 (International monetary system; cooperation/conflict in the contemporary IMS; monetary politics — society-centered & state-centered) |
+
+## Format
+
+Each quiz is approximately **30 minutes**, taken at the end of class. Quizzes consist of:
+
+- **Multiple-choice questions** testing recognition of key terms, concepts, and arguments from the readings
+- **Short-answer questions** asking you to apply or compare frameworks from the chapters
+
+You should expect questions on:
+
+- Definitions and characteristics of major theoretical approaches
+- Logic of key arguments in the chapters
+- Evidence and examples used to support those arguments
+- Application of frameworks to short scenarios
+
+## Preparation
+
+The most reliable way to prepare is to (1) complete each chapter carefully *before* class, (2) participate actively during the week's lectures and discussions, and (3) take the in-class writing prompts seriously — they are designed to deepen your understanding of core concepts and help you connect those concepts to current policy questions.
+
+
+## Policies
+
+- Quizzes are taken in class. They cannot be made up except in cases of documented absence cleared with the instructor in advance.
+- Generative AI tools may not be used during quizzes.
+- If accommodations are needed, please contact me and Disability Services for Students at the start of the term.

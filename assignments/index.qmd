@@ -1,0 +1,103 @@
+---
+title: "Assignments & Assessment"
+subtitle: "What you'll do and how you'll be evaluated"
+toc: false
+---
+
+This course is structured around five complementary forms of assessment. Quizzes and the final exam check your mastery of the textbook material. In-class writing prompts ensure you stay engaged with each day's reading. The article presentation gives you a chance to lead discussion on contemporary scholarship. And participation rewards consistent, prepared engagement throughout the four-week intensive.
+
+---
+
+## Grade Distribution
+
+| Component | Weight | Detail |
+|-----------|--------|--------|
+| Quizzes (3) | **30%** | 10% each &middot; Fridays of weeks 1, 2, 3 |
+| Final Exam | **25%** | Cumulative &middot; Friday, July 31 |
+| Participation & Engagement | **20%** | 5% per week |
+| In-Class Writing Activities | **15%** | 3 per week (M / T / Th) &middot; credit / no-credit |
+| Article Presentation & Discussion | **10%** | Once per student &middot; sign up Day 1 |
+| **Total** | **100%** | |
+
+---
+
+::: {.assignment-card}
+### {{< fa clipboard-check >}} Quizzes (30%)
+
+Three quizzes given at the **end of class** on Fridays of weeks 1, 2, and 3.
+
+::: {.assignment-meta}
+**Format:** Multiple choice and short answer &middot; ~30 minutes &middot; in class
+**Coverage:** That week's chapters and assigned articles
+:::
+
+[Quiz details and study guide](quizzes.qmd)
+:::
+
+---
+
+::: {.assignment-card}
+### {{< fa scroll >}} Final Exam (25%)
+
+A cumulative exam covering all chapters, articles, and major class discussions.
+
+::: {.assignment-meta}
+**Date:** Friday, July 31, in class
+**Format:** Multiple choice, short answer, applied policy question
+:::
+
+[Final exam details and study guide](final-exam.qmd)
+:::
+
+---
+
+::: {.assignment-card}
+### {{< fa pen-to-square >}} In-Class Writing Activities (15%)
+
+A short in-class writing activity on **Monday, Tuesday, and Thursday**. Timing within the class session varies.
+
+::: {.assignment-meta}
+**Format:** ~10 minutes during class &middot; tied to that day's material
+**Grading:** Credit / no-credit (√+, √, √–) &middot; cannot be made up
+:::
+
+[Writing activity details](writing-prompts.qmd)
+:::
+
+---
+
+::: {.assignment-card}
+### {{< fa person-chalkboard >}} Article Presentation & Discussion (10%)
+
+Each student signs up on Day 1 to present and lead discussion on **one** scholarly article over the course of the term.
+
+::: {.assignment-meta}
+**Format:** 15–20 minutes total &middot; summary + discussion facilitation
+**Sign-up:** Day 1 (Monday, July 6)
+:::
+
+[Article presentation guide](article-presentation.qmd)
+:::
+
+---
+
+::: {.assignment-card}
+### {{< fa comments >}} Participation & Engagement (20%)
+
+Active engagement is essential in an intensive online format. Participation is evaluated weekly based on:
+
+- Attending class sessions prepared to discuss the assigned readings
+- Contributing thoughtful comments and questions during lecture and discussion
+- Engaging substantively with peers' article presentations
+- Participating in small-group exercises and chat-based activities
+
+Given the compressed format, missing even one class represents significant lost participation. More than one unexcused absence will negatively impact your participation grade.
+:::
+
+---
+
+::: {.info-box}
+### {{< fa circle-info >}} What about take-home papers?
+
+This course does **not** use reflection papers, policy memos, or other take-home writing assignments. All graded writing happens in class. The pace of a four-week intensive — combined with the practical realities of generative AI — makes in-class assessment a better fit for this course's goals.
+:::

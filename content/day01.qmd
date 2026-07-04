@@ -1,0 +1,25 @@
+---
+title: "Day 1: Introduction to IPE & Course Logistics"
+subtitle: "Monday, July 6, 2026"
+toc: false
+---
+
+**Required materials:**
+
+1. Oatley, Chapter 1 — *International Political Economy*
+2. {{< fa headphones >}} [*Trade Talks* ep. 215: "How China's Trade Is Holding Back Developing Countries"](https://tradetalkspodcast.com/podcast/215-how-chinas-trade-is-holding-back-developing-countries/)
+
+::: {.callout-tip}
+## In class today
+- What is international political economy, and how do we study it?
+- Course logistics: structure, assessments, and expectations
+- The analytical traditions and the plan for the term
+- **Article presentation sign-up**
+- Opening writing prompt
+:::
+
+## Slides
+
+[{{< fa expand >}} Open slides in a new tab](../slides/day01-chapter01.html){target="_blank"}
+
+<iframe src="../slides/day01-chapter01.html" width="100%" height="600" style="border:1px solid #ccc;"></iframe>

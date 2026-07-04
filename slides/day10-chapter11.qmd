@@ -1,0 +1,862 @@
+---
+title: "Cooperation, Conflict, and Crisis"
+subtitle: "INTL 503 | Chapter 11"
+author: "Professor Sarah Bauerle Danzman"
+date: "2026-07-21"
+date-format: long
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: true
+    preview-links: auto
+    footer: "INTL 503 | Cooperation, Conflict, and Crisis in the International Monetary System"
+    transition: fade
+    width: 1600
+    height: 900
+    margin: 0.15
+    fig-align: center
+    fig-dpi: 300
+    auto-stretch: false
+    logo: iu-trident.png
+    title-slide-attributes:
+      data-background-image: iu-trident.png
+      data-background-size: 15%
+      data-background-position: 2% 2%
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(knitr)
+library(kableExtra)
+
+# IU color palette
+iu_crimson <- "#990000"
+iu_cream <- "#EDEBEB"
+iu_gray <- "#535054"
+iu_light_gray <- "#7E7E7E"
+iu_dark_text <- "#2C3E50"
+iu_green <- "#1B5E3F"
+iu_navy <- "#1F3A5F"
+iu_gold <- "#B8860B"
+
+theme_ipe <- function(base_size = 20) {
+  theme_minimal(base_size = base_size) +
+    theme(
+      plot.title = element_text(color = iu_crimson, face = "bold", size = rel(1.2),
+                                margin = margin(t = 5, b = 5)),
+      plot.subtitle = element_text(color = iu_gray, size = rel(0.9),
+                                   margin = margin(b = 10)),
+      plot.caption = element_text(color = iu_light_gray, size = rel(0.7),
+                                  hjust = 0, margin = margin(t = 10)),
+      axis.title = element_text(color = iu_dark_text, size = rel(0.9)),
+      axis.title.x = element_text(margin = margin(t = 8)),
+      axis.title.y = element_text(margin = margin(r = 8)),
+      axis.text = element_text(color = iu_gray, size = rel(0.8)),
+      panel.grid.minor = element_blank(),
+      panel.grid.major = element_line(color = "#E5E5E5", linewidth = 0.4),
+      legend.position = "bottom",
+      legend.title = element_text(size = rel(0.85)),
+      legend.text = element_text(size = rel(0.8)),
+      plot.margin = margin(t = 8, r = 12, b = 20, l = 12)
+    )
+}
+```
+
+## Today's Plan
+
+::: {.callout-important appearance="minimal" icon=false}
+## Today's Big Question
+[**A stable monetary system benefits everyone — so why is international monetary cooperation so fragile, and why does it so often break down?**]{style="font-size: 1.4em; line-height: 1.4;"}
+:::
+
+```{r}
+#| label: tbl-plan
+
+plan <- data.frame(
+  Section = c("1 · The Adjustment Problem",
+              "2 · Why Cooperation Is Hard",
+              "3 · The Plaza and the Louvre",
+              "4 · Europe: Union and Crisis",
+              "5 · Creditors, Debtors, and Power",
+              "6 · Cooperation, Conflict, and Crisis"),
+  Cover = c("Imbalances must close — but who is forced to change policy?",
+            "A jointly beneficial system that each government is tempted to defect from",
+            "The G5 coordinate the dollar down (1985), then steady it (1987)",
+            "The EMS and the euro, then who pays for Greece's debt",
+            "China as creditor, the net investment position, and the G7-to-G20 shift",
+            "Distributive conflict over adjustment is recurrent")
+)
+
+kable(plan, col.names = c("Section", "What we'll cover"),
+      align = c("l", "l")) %>%
+  kable_styling(font_size = 24, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "40%") %>%
+  column_spec(2, width = "60%")
+```
+
+::: {.notes}
+A quick orientation. Yesterday, Chapter 10, was the mechanics — the plumbing of the international monetary system. We built the toolkit: the exchange rate as a price, the menu of exchange-rate systems, the balance-of-payments identity that savings minus investment equals exports minus imports, the trilemma, and the adjustment problem. And we ended on a deliberate cliffhanger. The global-imbalances chart showed that one country's deficit is mechanically another's surplus, and the Bretton Woods story ended with the line "no one would adjust, so the system broke." But I told you we were stopping at mechanics — that the political question of *who* should bear the cost of closing those imbalances was today's chapter. So today we pick up exactly there. The whole chapter is one argument, which is Oatley's: distributive conflict over who bears the cost of adjustment is endemic to international monetary systems — it is not a quirk of bad governments or a failure of particular leaders. It recurs because the underlying problem recurs. The arc has six moves. We open by paying off yesterday's flag: the adjustment problem as a recurring distributive fight between deficit and surplus countries. Then we ask why cooperation is hard even though a stable system helps everyone — it has the structure of a coordination problem that holds in good times and frays in bad ones. Third, the clearest case of cooperation that worked, at least partly: the Plaza and Louvre Accords of the 1980s, and the failed target-zone idea. Fourth, the most ambitious cooperation of all, the European Monetary System and the euro, read through the trilemma, and then the Greek crisis as a raw distributive conflict over who pays. Fifth, the contemporary system, where China has become a major creditor and coordination has shifted from the G7 to the G20. And finally the conclusion, which is just Oatley's thesis stated plainly. Hold the Big Question throughout: a stable system is a shared good, yet cooperation to sustain it is informal, partial, and fragile — and the reason is always the same, that someone has to bear the cost of adjustment and no one wants to.
+:::
+
+
+## Before We Start: A Ten-Minute Write
+
+::: {.callout-important appearance="minimal" icon=false}
+**Writing prompt.** Yesterday we saw that one country's current-account **deficit** is mechanically another country's **surplus** — the books *must* balance. But the identity does not say *who* has to change policy to close the gap.
+
+Suppose the United States runs a large deficit and Germany a large surplus. **Who should adjust — and why?** Should the deficit country cut spending and accept slower growth, or should the surplus country spend more and accept higher inflation? How should the two countries resolve this matter?
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Write for about **ten minutes** from yesterday's mechanics. There is no neutral solution — every choice puts the cost on someone. 
+:::
+
+::: {.notes}
+Before any lecturing, take out a sheet and write for about ten minutes. This prompt is the hinge between yesterday and today. Yesterday's accounting identity is airtight: if the United States runs a current-account deficit, some surplus country — say Germany — is the mirror image, and the two sum to zero. That is not in dispute; it is true by construction. But notice what the identity is *silent* on. It tells you the imbalance must eventually close. It does not tell you *who* has to move first, or who has to bear the pain of moving. That silence is exactly where the politics lives. So I want you to make a real argument. If the gap between the U.S. and Germany has to close, who should do the adjusting? One answer: the deficit country, the United States, should tighten — save more, spend less, accept slower growth and perhaps higher unemployment — because it is the one living beyond its means. The other answer: the surplus country, Germany, should loosen — spend more, invest more, accept somewhat higher inflation — because it is the one suppressing demand and exporting its unemployment to everyone else. Both have a serious case. Pick the side you find stronger, argue it as well as you can using yesterday's tools, and then — this is the part that matters — state the strongest objection the other side would raise. Don't resolve it cleanly. The point of the exercise is to feel, from the inside, why this fight never goes away: because adjustment is never free, and whoever proposes that the *other* country should adjust is also proposing that the other country's citizens should pay. We'll come back to your answers, because that is the entire chapter in miniature.
+:::
+
+
+# The Adjustment Problem {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 1]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## Where We Left Off: Persistent Global Imbalances
+
+```{r}
+#| label: fig-imbalances
+#| fig-width: 13
+#| fig-height: 4.6
+#| out-width: "95%"
+#| fig-alt: "A line chart of current-account balances as a percent of GDP from 1990 to 2023 for the United States, China, Germany, and Japan. The United States runs persistent deficits below zero; China, Germany, and Japan run surpluses above zero. The mirror-image pattern peaks around 2006 to 2008, when the U.S. deficit reaches nearly 6 percent of GDP and China's surplus reaches about 9 to 10 percent."
+
+yrs <- c(1990, 1995, 2000, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2023)
+imb <- data.frame(
+  year = rep(yrs, 4),
+  country = factor(rep(c("United States", "China", "Germany", "Japan"), each = length(yrs)),
+                   levels = c("United States", "China", "Germany", "Japan")),
+  ca = c(
+    -1.3, -1.5, -4.0, -5.0, -5.9, -4.6, -2.9, -2.6, -2.1, -2.1, -2.1, -2.9, -3.9, -3.0,  # US
+     3.0,  0.2,  1.7,  3.5,  8.4,  9.2,  3.9,  2.5,  2.2,  1.7,  0.2,  1.7,  2.5,  1.4,   # China
+     2.9, -1.2, -1.8,  4.5,  6.3,  5.6,  5.7,  7.0,  7.5,  8.5,  8.0,  7.1,  4.4,  5.9,   # Germany
+     1.5,  2.1,  2.6,  3.7,  4.0,  2.9,  3.9,  1.0,  0.8,  3.9,  3.5,  3.0,  2.1,  3.6)   # Japan
+)
+
+ggplot(imb, aes(year, ca, color = country)) +
+  annotate("rect", xmin = 2006, xmax = 2008, ymin = -Inf, ymax = Inf, fill = "#7B1E1E", alpha = 0.07) +
+  geom_hline(yintercept = 0, color = iu_gray, linewidth = 0.7) +
+  geom_line(linewidth = 1.4) +
+  geom_point(size = 1.7) +
+  annotate("text", x = 2007, y = 10.4, label = "2006–08:\npeak imbalances", color = "#7B1E1E",
+           fontface = "bold", size = 3.5, lineheight = 0.9) +
+  annotate("text", x = 1991.5, y = -5.3, label = "U.S. deficits", color = iu_crimson,
+           fontface = "bold", size = 3.8, hjust = 0) +
+  annotate("text", x = 1991.5, y = 8.2, label = "China / Germany / Japan surpluses", color = iu_navy,
+           fontface = "bold", size = 3.8, hjust = 0) +
+  scale_color_manual(values = c("United States" = iu_crimson, "China" = iu_navy,
+                                "Germany" = iu_gold, "Japan" = iu_gray), name = NULL) +
+  scale_x_continuous(breaks = seq(1990, 2020, 5), limits = c(1990, 2024)) +
+  scale_y_continuous(limits = c(-7, 11.5), breaks = seq(-5, 10, 5), labels = function(x) paste0(x, "%")) +
+  labs(title = "One country's deficit is another's surplus",
+       subtitle = "Current-account balance, % of GDP, 1990–2023",
+       x = NULL, y = NULL,
+       caption = "Source: IMF World Economic Outlook (current-account balance, % of GDP). Values approximate.") +
+  theme_ipe(base_size = 15)
+```
+
+::: {.callout-important appearance="minimal" icon=false}
+Yesterday this chart was a **mechanical** illustration of the national income identity. Today we are addressing the **political** problem: the imbalance exists because excess imports must be paid for by excess financial imports, but **closing the imbalance requires someone to change policy, proactively or under duress of a crisis** — and countries want to push those costs off on others.
+:::
+
+::: {.notes}
+This is the same chart we ended on yesterday, and I'm bringing it back deliberately because it is the bridge into the whole chapter. The vertical axis is each country's current-account balance as a share of GDP, 1990 to 2023, zero in the middle. The crimson line, the United States, sits below zero the entire period — three decades of persistent deficits. Above the line are the mirror-image surpluses: China spiking toward ten percent in the mid-2000s, Germany large and persistent, Japan steadily positive. Yesterday I asked you to read this picture in only one way — as the accounting identity made visible. The U.S. deficit and the foreign surpluses are the same fact seen from two sides, and they sum toward zero. That reading is correct and I stand by it. But today I want you to read the *same picture* a second way, and this is the move the whole chapter turns on. The identity tells you the imbalance exists. It does not tell you who has to do anything about it. And these imbalances cannot persist forever — eventually they have to narrow, either gradually or through a crisis. So the question the identity leaves open is the political question: when the gap closes, who changes their policy to close it? The deficit country can tighten — save more, import less, grow more slowly. The surplus country can loosen — spend more, import more, accept more inflation. Either one closes the gap. But they distribute the pain very differently, and so each side insists the *other* should be the one to move. That is the adjustment problem, and notice it is exactly the problem that killed Bretton Woods: neither the deficit U.S. nor surplus Germany would adjust, and the system tore itself apart. Oatley's point, which we'll develop all hour, is that this is not a one-off. The same fight recurs in the 1980s, in the 2000s, in the eurozone, and between the U.S. and China today. Same chart, same conflict.
+:::
+
+
+## The Adjustment Problem
+
+The balance of payments **must** balance. So an imbalance must eventually close. But the burden of closing it can fall **either** on surplus or deficit countries — and the two sides face **opposite** costs.
+
+```{r}
+#| label: tbl-adjust
+
+adj <- data.frame(
+  who = c("Deficit country adjusts", "Surplus country adjusts"),
+  how = c("Tighten policy: spend less, save more, raise interest rates, cut imports",
+          "Loosen policy: spend more, invest more, let demand and imports rise"),
+  cost = c("Slower growth, higher unemployment, austerity at home",
+           "Higher inflation, giving up a cheap-currency export advantage")
+)
+
+kable(adj, col.names = c("Path", "What it requires", "Who bears the cost"),
+      align = c("l", "l", "l")) %>%
+  kable_styling(font_size = 28, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:2, extra_css = "padding-top: 14px; padding-bottom: 14px; line-height: 1.3;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "26%") %>%
+  column_spec(2, width = "42%") %>%
+  column_spec(3, width = "32%")
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+A deficit country that runs out of reserves is *forced* by markets to adjust; a surplus country is under no such pressure — it can simply keep accumulating. **The cost of adjustment falls hardest on whoever has the least power to refuse it.**
+:::
+
+::: {.notes}
+Let me state the adjustment problem as cleanly as I can, because everything today is an instance of it. Start from yesterday's identity: the balance of payments must balance, which means an imbalance — a deficit on one side, a surplus on the other — cannot grow without limit. At some point it has to close. The table lays out the two ways it can close, and the crucial fact is that they impose opposite costs on opposite countries. The deficit country can adjust by tightening: spending less, saving more, raising interest rates, pulling in its imports. That closes the gap, but the cost is slower growth, higher unemployment, austerity — pain borne at home, by that country's own citizens. Or the surplus country can adjust by loosening: spending more, investing more, letting its own demand and imports rise so it stops draining demand from everyone else. That also closes the gap, but its cost is higher inflation and the loss of a cheap-currency export advantage. So you have two paths to the same destination, and each one hurts a different country's voters. That is why this is distributive conflict, not a technical puzzle: there is no answer that is costless for everyone. Now the deepest point, in the callout, and please carry it through the whole hour: the two sides are not symmetric in *power*. A deficit country that exhausts its reserves and can no longer borrow is *forced* to adjust — the market and its creditors compel it, often brutally and on someone else's terms. A surplus country faces no equivalent gun to the head; it can simply keep piling up reserves and claims on foreigners indefinitely. So in practice the burden of adjustment does not fall on whoever "should" bear it in some fair sense — it falls on whoever has the least power to refuse it. Hold that asymmetry. It explains why Greece adjusted and Germany did not, and it is lurking behind the U.S.–China relationship at the end of today.
+:::
+
+
+# Why Cooperation Is Hard {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 2]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## A Shared Good That Each Government Is Tempted to Undermine
+
+A stable monetary system is **jointly beneficial** — everyone gains from predictable exchange rates and orderly adjustment. Yet each government is tempted to push the cost of adjustment **onto others.**
+
+::: {.columns}
+::: {.column width="52%"}
+
+### The cooperative outcome
+If every government adjusts its fair share, the system stays stable and **all** are better off than under disorder. This is the logic of an **assurance game** (a stag hunt): the best outcome requires everyone to hold to it.
+
+:::
+::: {.column width="48%"}
+
+### The temptation to defect
+Any single government can do better *for itself* by forcing others to adjust — devaluing to grab exports, or simply refusing to move. This is **beggar-thy-neighbor:** gains for one country at the direct expense of others.
+
+:::
+:::
+
+::: {.callout-important appearance="minimal" icon=false}
+Because adjustment is costly and the temptation to offload it is always present, cooperation is **not self-enforcing.** It holds when the shared gains are obvious and frays when costs increase.
+:::
+
+::: {.notes}
+Why is cooperation hard if a stable system helps everyone? This is the analytical core of the section, and it has the structure of a classic collective-action problem. Begin with the shared good. A stable international monetary system — predictable exchange rates, orderly adjustment of imbalances, no competitive devaluations — is genuinely good for almost everyone. Trade and investment flourish under predictability; disorder is costly for all. So if every government adjusted its fair share of any imbalance, the system would stay stable and every country would end up better off than it would be under disorder. That is the cooperative outcome, and it has the shape of what game theorists call an assurance game, or a stag hunt: the jointly best result is available, but it only holds if everyone keeps to it. No one wants to be the lone cooperator while others defect. Now the temptation, on the right. Any single government can often do better *for itself*, at least in the short run, by not adjusting — by forcing the cost onto others. It can devalue its currency to grab a bigger share of world exports; or, if it's in surplus, it can simply refuse to spend more and let the deficit countries do all the painful adjusting. Both are versions of what we call beggar-thy-neighbor: improving your own position directly at your neighbors' expense. The deep problem, in the callout, is that cooperation here is not self-enforcing. There is no world government to compel a surplus country to spend or to stop a country from devaluing. So cooperation depends on governments choosing to hold to it — and that choice gets much harder precisely when adjustment becomes costly. Which gives us the chapter's recurring rhythm, and it's worth saying out loud: cooperation holds in good times, when growth is strong and the shared gains are obvious and the costs of adjusting are small. It frays in bad times, when economies are strained and the costs of adjustment are high and each government is under intense domestic pressure to protect its own. Watch for that rhythm in every case today.
+:::
+
+
+## The Adjustment Game
+
+When adjustment is costly, two governments facing an imbalance confront a coordination problem: the best outcome is mutual adjustment, but each is tempted to make the *other* adjust alone.
+
+```{r}
+#| label: tbl-game
+#| fig-alt: "A two-by-two payoff matrix. Rows are Country A choosing to Adjust or Refuse; columns are Country B choosing to Adjust or Refuse. Mutual adjustment yields a good shared outcome for both. If one adjusts while the other refuses, the refuser does best and the adjuster bears the full cost. Mutual refusal yields disorder and crisis, the worst joint outcome."
+
+gm <- data.frame(
+  rowlab = c("Country A: Adjust", "Country A: Refuse"),
+  badjust = c("Both share the cost —\nstable system, all gain (✓ best joint)",
+              "A free-rides; B bears\nthe full cost alone"),
+  brefuse = c("B free-rides; A bears\nthe full cost alone",
+              "Neither adjusts —\ndisorder & crisis (✗ worst joint)")
+)
+
+kable(gm, col.names = c("", "Country B: Adjust", "Country B: Refuse"),
+      align = c("l", "c", "c")) %>%
+  kable_styling(font_size = 26, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:2, extra_css = "padding-top: 16px; padding-bottom: 16px; line-height: 1.3;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, background = iu_cream, width = "26%") %>%
+  column_spec(2:3, width = "37%")
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+Mutual adjustment is best for the system, but **each side prefers the other to adjust alone** — and mutual refusal, the worst outcome, brought down Bretton Woods. Need to find ways to incentivize adjustment.
+:::
+
+::: {.notes}
+Let me make the previous slide concrete with a simple payoff matrix — and a caution first: this is a teaching device, a way to see the strategic structure, not a precise model. Two countries, A and B, face an imbalance between them that has to close. Each has two choices: adjust — bear a share of the cost — or refuse, and try to make the other one do it. Read the four cells. Top left, both adjust: they share the cost, the system stays stable, and both are better off than under disorder. That is the jointly best outcome, the cooperative one — the stag hunt's stag. Bottom right, both refuse: neither will move, the imbalance festers, and you get disorder, financial turbulence, and eventually crisis. That is the jointly worst outcome. And then the two off-diagonal cells, which are where the trouble lives. If A adjusts and B refuses, B free-rides — B gets a stable-enough system without paying for it, while A bears the entire cost alone. And symmetrically if B adjusts and A refuses. Here is the strategic problem in one sentence: each country's most *preferred* cell is the one where the *other* adjusts alone. Each would like to be the free-rider. And because each is tempted by that, each fears being the sucker who adjusts while the other refuses — so both are pulled toward refusing, toward the bottom-right disaster, even though both would prefer the top-left. That gap, between the outcome they'd jointly choose and the outcome their individual incentives push them toward, is precisely the cooperation problem. And notice — this is exactly the Bretton Woods endgame from yesterday, now in a box: the deficit United States refused to adjust, surplus Germany refused to adjust, both sat in the bottom-right cell, and the system collapsed. So the practical question for the rest of the hour is: how do governments ever get themselves into the top-left cell? The answer, as we'll see, is not a world government or a binding treaty. It is informal, fragile, episodic cooperation — and the clearest example of it working is where we go next.
+:::
+
+
+# The Plaza and the Louvre {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 3 · Cooperation that worked, partly]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## The 1980s: A Soaring Dollar and a Familiar Conflict
+
+::: {.columns}
+::: {.column width="56%"}
+
+After 1980 the United States ran the largest **deficits** in the world economy; **Japan and Germany** ran the offsetting surpluses. The cause was **divergent macroeconomic policy:**
+
+- The U.S. (Reagan): tax cuts + military spending → big budget deficits, strong demand, **rising imports**
+- Germany and Japan: **fiscal consolidation** and tight money → restraint, large **surpluses**
+- High U.S. interest rates pulled in capital → the **dollar appreciated ~50% (1980–85)**, widening the deficit further
+
+:::
+::: {.column width="44%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+The same adjustment fight as Bretton Woods: the U.S. wanted surplus countries to **expand**; Germany and Japan wanted the U.S. to **cut its budget deficit.** Each pointed at the other.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+The soaring dollar fed a wave of **protectionism** in Congress — a Senate bill linking Japanese auto access passed **92–0.** Trade pressure is what finally pushed the U.S. toward an *international* solution.
+:::
+
+::: {style="text-align: center; margin-top: 0.8em;"}
+[Sound familiar?]{style="display: inline-block; background: #990000; color: white; font-weight: 700; font-size: 1.8em; padding: 0.25em 0.7em; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.25);"}
+:::
+
+:::
+:::
+
+::: {.notes}
+We turn to the clearest case of cooperation that actually worked — but first the conflict that made it necessary, because it is the adjustment problem all over again. In the early 1980s the United States developed the largest current-account deficit in the world economy, and Japan and Germany ran the offsetting surpluses. Why? Divergent macroeconomic policy, which is Oatley's recurring explanation. The Reagan administration came in cutting taxes and sharply raising military spending, which blew up the federal budget deficit and pumped up domestic demand — and strong demand pulls in imports. Meanwhile Germany and Japan went the other way: Germany's new conservative government embarked on fiscal consolidation in 1981 and the Bundesbank tightened to fight inflation; Japan also moved toward budget restraint and tight money. Restrictive policy in those two suppressed their domestic demand and generated large surpluses. And there's a currency twist that made it worse: to finance its twin deficits the U.S. had to offer high real interest rates, which pulled in capital from Japan and Germany, which drove the dollar *up* — by 1985 it had appreciated roughly fifty percent from its 1979 low. A stronger dollar makes U.S. exports dearer and imports cheaper, so it widened the very deficit it sprang from. Now notice the politics, in the top callout: this is the Bretton Woods fight again. The U.S. position was that the surplus countries should expand — spend more, import more. Germany and Japan's position was that the U.S. should fix its own budget deficit. Each pointed at the other; no one wanted to adjust. What broke the stalemate, in the bottom callout, was domestic political pressure of a specific kind — protectionism. The soaring dollar was hammering American manufacturers and exporters, and Congress responded with a wave of Japan-bashing and threats of tariffs; one Senate bill tying Japanese automakers' U.S. access to opening Japan's market passed ninety-two to nothing. The Reagan administration, facing a Congress about to do something drastic on trade, went looking for an international currency solution instead. That search produced the Plaza Accord.
+:::
+
+
+## The Plaza Accord (September 1985)
+
+::: {.callout-important appearance="minimal" icon=false}
+**Plaza Accord.** A September 1985 agreement among the **G5** finance ministers — the **United States, Japan, West Germany, the United Kingdom, and France** — to coordinate intervention in foreign-exchange markets to **bring the overvalued dollar down** against the yen and the mark.
+:::
+
+::: {.columns}
+::: {.column width="52%"}
+
+- Named for the **Plaza Hotel**, New York, where the G5 met on **September 22, 1985**
+- Goal: drive the dollar **down 10–12%** against the yen and mark in an *orderly*, coordinated way
+- $18 billion in intervention pledged: the **U.S., Germany, and Japan each 25%**, Britain and France the rest
+- The dollar **fell sharply** — about **40% from its peak** over the next 15 months
+
+:::
+::: {.column width="48%"}
+
+```{r}
+#| label: fig-dollar
+#| fig-width: 7.6
+#| fig-height: 5.0
+#| out-width: "99%"
+#| fig-alt: "A line chart of the yen per US dollar exchange rate from 1980 to 1990. The dollar climbs to about 250 yen in early 1985, then falls sharply after the Plaza Accord in September 1985, reaching about 150 yen by 1987 when the Louvre Accord is signed, and continuing down to about 130 yen by 1990. Two vertical markers indicate the Plaza Accord (September 1985) and the Louvre Accord (February 1987)."
+
+dol <- data.frame(
+  year = c(1980, 1981, 1982, 1983, 1984, 1985.0, 1985.7, 1986, 1987.1, 1988, 1989, 1990),
+  yen  = c(227,  221,  249,  238,  238,  250,    216,    168,  145,    128,  138,  145)
+)
+
+ggplot(dol, aes(year, yen)) +
+  annotate("rect", xmin = 1985.7, xmax = 1987.1, ymin = -Inf, ymax = Inf,
+           fill = iu_navy, alpha = 0.06) +
+  geom_vline(xintercept = 1985.7, color = iu_crimson, linewidth = 0.8, linetype = "longdash") +
+  geom_vline(xintercept = 1987.1, color = iu_navy, linewidth = 0.8, linetype = "longdash") +
+  geom_line(color = iu_dark_text, linewidth = 1.5) +
+  geom_point(color = iu_dark_text, size = 1.6) +
+  annotate("text", x = 1985.6, y = 258, label = "Plaza\n(Sep 1985)", color = iu_crimson,
+           fontface = "bold", size = 3.5, hjust = 1, lineheight = 0.9) +
+  annotate("text", x = 1987.2, y = 200, label = "Louvre\n(Feb 1987)", color = iu_navy,
+           fontface = "bold", size = 3.5, hjust = 0, lineheight = 0.9) +
+  scale_x_continuous(breaks = seq(1980, 1990, 2)) +
+  scale_y_continuous(limits = c(110, 270), breaks = seq(120, 260, 40),
+                     labels = function(x) paste0("¥", x)) +
+  labs(title = "The dollar comes down — by design",
+       subtitle = "Yen per US dollar, 1980–1990",
+       x = NULL, y = NULL,
+       caption = "Source: Federal Reserve / FRED, yen–dollar exchange rate. Annual values approximate.") +
+  theme_ipe(base_size = 13)
+```
+
+:::
+:::
+
+::: {.notes}
+The Plaza Accord is the textbook case of international monetary cooperation, so let's be precise — it's a key term. In September 1985, Treasury Secretary James Baker convened the finance ministers of the Group of Five — the United States, Japan, West Germany, the United Kingdom, and France — at the Plaza Hotel in New York. In a compact known as the Plaza Accord, signed September 22nd, the five governments agreed to coordinate their intervention in foreign-exchange markets to bring the overvalued dollar *down* against the yen and the mark, by an initial target of ten to twelve percent. They pledged eighteen billion dollars of intervention, with the U.S., Germany, and Japan each bearing twenty-five percent of the cost and Britain and France splitting the rest. Notice the cooperative structure: this is governments deliberately getting themselves into the top-left cell of the matrix, jointly bearing a shared cost to fix a shared problem. And it worked, dramatically — look at the chart, which shows yen per dollar. The dollar was riding high in early 1985, around two hundred fifty yen. After Plaza it fell sharply, and over the next fifteen months it dropped about forty percent from its peak, down toward a hundred fifty yen and then lower. The coordinated signal, backed by actual intervention, moved the largest financial market on earth. So one lesson is genuinely positive: when the gains are clear and a few large governments are willing to share the cost, informal cooperation can work and can move enormous markets. But hold a question for the next slide — having pushed the dollar down, how do you stop it at the right level? Because a currency that's falling because five governments are pushing it can easily overshoot, and now you have the opposite problem. That question is what the Louvre Accord was meant to answer.
+:::
+
+
+## The Louvre Accord and the Target-Zone Idea (1987)
+
+::: {.columns}
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**Louvre Accord.** A February 1987 agreement in **Paris** in which the **G6** — the Plaza Five plus **Canada** (Italy was invited but declined) — judged the dollar had **fallen far enough** and agreed to act to **stabilize** exchange rates around then-current values.
+:::
+
+By early 1987 the dollar had fallen ~40% from its peak. Plaza had **succeeded** — perhaps too well. The Louvre tried to **halt** the slide and hold rates steady.
+
+:::
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**Target Zone.** A proposed system in which each currency would have a **central value** surrounded by **wide margins** (e.g., ±10%); governments would intervene only when a rate threatened to move **outside the band.**
+:::
+
+The target-zone idea would have made cooperation **permanent and institutional.** It required continuous policy coordination — and **failed to attract support.**
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Cooperation that worked **episodically** (Plaza, Louvre) could not be made **permanent.** Why? The Louvre commitments unraveled within months — the U.S. wanted Germany to cut interest rates, the Bundesbank *raised* them, and the public spat helped trigger the **October 1987 market crash.** 
+:::
+
+
+::: {.notes}
+Plaza pushed the dollar down; the Louvre was the attempt to catch it. By early 1987 the dollar had fallen almost forty percent from its peak — Plaza had succeeded, arguably too well, and now governments worried about an uncontrolled collapse. So in February 1987 those governments — now joined by Canada, making it the Group of Six; Italy was invited but declined — met at the French finance ministry in Paris and produced the Louvre Accord, another key term, in which they judged the dollar had fallen far enough and agreed to cooperate to *stabilize* exchange rates around their current values. So Plaza and Louvre are a matched pair: one to move the dollar, one to steady it. Now the more ambitious idea on the right, and it's a key term: the target zone. Coming out of the Louvre, some policymakers and economists — Williamson prominently — proposed institutionalizing this kind of cooperation permanently. Under a target zone, each major currency would have an agreed central value surrounded by wide margins, say plus or minus ten percent, and governments would be obligated to intervene, or adjust their interest rates, only when a rate threatened to push outside the band. It was a fixed-but-adjustable design for the floating world — a way to make the ad hoc coordination of Plaza and Louvre into a standing system. And here is the crucial outcome, the lesson of the section, in the bottom callout: it failed. The target-zone proposal could not attract sufficient support, and exchange-rate cooperation fell off the global agenda. Why? Because a permanent target zone would require continuous, binding policy coordination — and the moment the costs of that coordination bit, the old adjustment fight reasserted itself. You can watch it happen in real time: under the Louvre, the U.S. wanted Germany to cut interest rates to support American products and let the U.S. reduce its deficit; instead, only weeks after agreeing to hold rates steady, the Bundesbank *raised* German rates. Baker criticized the Germans publicly, the dispute spilled into the markets, and that very public breakdown of cooperation is widely thought to have helped trigger the October 1987 stock-market crash — the largest single-day loss in U.S. history at the time. So the section's takeaway is double-edged. Cooperation is real: Plaza and Louvre genuinely worked, episodically. But it could not be made permanent, because the underlying conflict over who adjusts never went away — the moment it cost Germany something concrete, Germany defected. Episodic cooperation, yes; durable institutions among these large states, no. Which raises the natural question: is there anywhere that deep, permanent monetary cooperation *has* been built? The answer is Europe — and that's where we go.
+:::
+
+
+## Thinking Through Cooperation
+
+::: {.columns}
+::: {.column width="49%"}
+
+### Assurance game (Stag Hunt)
+
+<table style="width:100%; border-collapse:collapse; font-size:0.74em; text-align:center; margin-top:0.2em;">
+<thead>
+<tr>
+<th style="border:none; background:transparent;"></th>
+<th style="background:#990000; color:white; padding:6px;">Other: cooperate</th>
+<th style="background:#990000; color:white; padding:6px;">Other: go it alone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th style="background:#990000; color:white; padding:6px; text-align:right; white-space:nowrap;">You: cooperate</th>
+<td style="border:1px solid #bbb; padding:9px; background:#f0dede;"><strong>4 , 4</strong><br><span style="font-size:0.82em; color:#990000;">best — an equilibrium</span></td>
+<td style="border:1px solid #bbb; padding:9px;">1 , 3</td>
+</tr>
+<tr>
+<th style="background:#990000; color:white; padding:6px; text-align:right; white-space:nowrap;">You: go it alone</th>
+<td style="border:1px solid #bbb; padding:9px;">3 , 1</td>
+<td style="border:1px solid #bbb; padding:9px; background:#e8e8e8;"><strong>2 , 2</strong><br><span style="font-size:0.82em; color:#535054;">safe — also an equilibrium</span></td>
+</tr>
+</tbody>
+</table>
+
+Mutual cooperation is best — **but only if each side trusts the other to cooperate too.**
+
+:::
+::: {.column width="49%"}
+
+### Defection game (Prisoner's Dilemma)
+
+<table style="width:100%; border-collapse:collapse; font-size:0.74em; text-align:center; margin-top:0.2em;">
+<thead>
+<tr>
+<th style="border:none; background:transparent;"></th>
+<th style="background:#990000; color:white; padding:6px;">Other: cooperate</th>
+<th style="background:#990000; color:white; padding:6px;">Other: defect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th style="background:#990000; color:white; padding:6px; text-align:right; white-space:nowrap;">You: cooperate</th>
+<td style="border:1px solid #bbb; padding:9px;">3 , 3<br><span style="font-size:0.82em; color:#535054;">efficient, but unstable</span></td>
+<td style="border:1px solid #bbb; padding:9px;">0 , 4</td>
+</tr>
+<tr>
+<th style="background:#990000; color:white; padding:6px; text-align:right; white-space:nowrap;">You: defect</th>
+<td style="border:1px solid #bbb; padding:9px;">4 , 0</td>
+<td style="border:1px solid #bbb; padding:9px; background:#f0dede;"><strong>1 , 1</strong><br><span style="font-size:0.82em; color:#990000;">Nash equilibrium</span></td>
+</tr>
+</tbody>
+</table>
+
+Defecting pays **no matter what the other does** — so cooperation breaks down.
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+[Let's use simple cooperative-dilemma games to assess why the Plaza and Louvre Accords temporarily worked — and why a more permanent solution was not viable.]{style="font-size:1.3em; color:#535054;"}
+:::
+
+::: {.notes}
+Before we leave the accords, let's put the cooperation problem in its simplest analytical form, using two canonical games. They are not the same game, and the difference is the whole point. On the left is the assurance game, often called the stag hunt. Here mutual cooperation gives the best outcome for both — four and four — and crucially that outcome is itself a stable equilibrium: if I'm sure you will cooperate, I want to cooperate too. But there is a *second* equilibrium in the bottom-right: if each of us fears the other will hold back, we both play safe and settle for the worse but secure outcome. So in an assurance game, cooperation is entirely achievable; what it requires is confidence that the others will actually follow through. That is a good description of Plaza and Louvre. A small number of large governments faced an obvious, shared problem — an overvalued dollar that was destabilizing trade politics — and each could see the others putting real money on the table. With the gains clear and only five or six players watching one another closely, the cooperative equilibrium was reachable, and they reached it. On the right is the harder game, the prisoner's dilemma. Here defection is a dominant strategy: whatever the other does, you do better by defecting, so both defect and land in the inefficient bottom-right, one and one, even though both would prefer mutual cooperation at three and three. This is the permanence problem. A standing target-zone regime would have required continuous coordination, and the moment holding to the agreement cost a government something concrete — the Bundesbank raising interest rates only weeks after agreeing to hold them steady — the dominant incentive to defect reasserted itself and the cooperation unraveled. So the contrast is the lesson: an occasional, high-stakes accord among a few governments resembles an assurance game with a clearly preferred outcome, while permanent institutional coordination resembles a repeated prisoner's dilemma in which the temptation to defect never goes away. One last note: the payoff numbers here are ordinal rankings to show the structure of incentives, not empirical estimates.
+:::
+
+
+# Europe: Union and Crisis {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 4 · The most ambitious cooperation]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## From the EMS to Monetary Union
+
+::: {.columns}
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+[**European Monetary System (EMS).** A **fixed-but-adjustable** exchange-rate system begun in **1979:** EU currencies held a central parity against a common basket, kept within **±2.25%** of their bilateral rates.]{style="font-size:1.3em; color:#535054;"}
+:::
+
+- In practice the EMS **revolved around German monetary policy** — others pegged to the mark and imported Bundesbank low inflation
+- The burden of maintaining the pegs fell on the **high-inflation** countries, not on Germany
+
+:::
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+[**Monetary Union.** Members **abolish their national currencies** and adopt a **single currency** (the euro, 1999) governed by one central bank (the **ECB**).]{style="font-size:1.3em; color:#535054;"}
+:::
+
+- Driven by dissatisfaction with German *dominance* of the EMS and the push to complete the single market
+- Cemented politically by **German reunification** (1989–90): France conditioned support on monetary union
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+[Recall the **trilemma:** by fixing rates (EMS) and then sharing one currency (union), members **surrendered national monetary autonomy.** Greece and Germany now share *one* monetary policy that neither controls alone.]{style="font-size:1.3em; color:#535054;"}
+:::
+
+::: {.notes}
+Within the EU, unlike among the G5, cooperation has been more the rule than the exception — and it went far deeper. Two key terms here, and the move from one to the other is the story. First, the European Monetary System, the EMS, begun in 1979. It was a fixed-but-adjustable system — yesterday's category — in which EU currencies established a central parity against a common basket, the ECU, and were required to keep their bilateral rates within a narrow band, plus or minus two and a quarter percent. Why did Europeans want this when the G5 couldn't sustain a target zone? Because EU economies are small and extremely open, and they trade overwhelmingly with each other, so exchange-rate instability among them is far more disruptive than it is for the U.S. — they had more to gain from stability and were more willing to sacrifice domestic autonomy to get it. But notice how the EMS actually worked, because it's the seed of later conflict: in practice it revolved around German monetary policy. Germany had the lowest inflation and the most credible central bank, so everyone else effectively pegged to the mark and imported Bundesbank discipline. That meant the burden of holding the pegs fell on the *high-inflation* countries, which had to mimic German policy — there's the adjustment asymmetry again, the weaker parties bearing the cost. Now the deeper step, on the right: monetary union. Dissatisfaction with German dominance of the EMS — why should the Bundesbank set everyone's monetary policy with no say from the others? — combined with the drive to complete the single market, generated pressure for a single currency. And the decisive political catalyst was German reunification: as the Berlin Wall fell, France conditioned its support for German reunification on Germany's agreement to give up the mark and join a monetary union. So in 1999 members began abolishing their national currencies for the euro, governed by a single European Central Bank. Now read the whole arc through the trilemma, in the callout, because this is the conceptual payoff: by fixing exchange rates under the EMS and then going all the way to a shared currency, EU members surrendered the monetary-autonomy corner entirely. Greece and Germany now share one monetary policy, set by the ECB, that neither of them controls on its own. That surrender bought enormous stability — but it also loaded a gun, because when a shock hit one member and not another, that member could no longer devalue or cut its own interest rates. It had given those tools away. And that is exactly the trap that caught Greece.
+:::
+
+
+## The Greek Debt Crisis: Who Bears the Cost?
+
+::: {.columns}
+::: {.column width="56%"}
+
+In a monetary union, a member in trouble **cannot devalue** its own currency. When Greece could no longer service its debt, the only question left was **distributive: who pays?**
+
+- **Greek citizens**, through austerity — spending cuts and tax rises to service the debt?
+- **Northern creditors** (German, French banks; later taxpayers), through default or write-downs?
+- The **troika — ECB, European Commission, IMF** — made loans **conditional on austerity**
+- Germany **bargained hard:** easy terms for Greece would signal Italy, Spain, Portugal to expect the same
+
+:::
+::: {.column width="44%"}
+
+```{r}
+#| label: fig-greece
+#| fig-width: 7.4
+#| fig-height: 3.7
+#| out-width: "96%"
+#| fig-alt: "A line chart of Greek general government debt as a percent of GDP from 2008 to 2015. Debt rises from about 109 percent in 2008 to about 126 percent in 2009, then climbs through the bailout years to roughly 182 percent by 2014, staying near 180 percent. A marker notes the July 2015 referendum in which 61 percent voted No."
+
+gr <- data.frame(
+  year = c(2008,  2009,  2010,  2011,  2012,  2013,  2014,  2015),
+  debt = c(109.4, 126.7, 147.5, 175.2, 162.1, 178.8, 181.8, 179.1)
+)
+
+ggplot(gr, aes(year, debt)) +
+  geom_hline(yintercept = 100, color = iu_gray, linewidth = 0.5, linetype = "dotted") +
+  geom_area(fill = iu_crimson, alpha = 0.10) +
+  geom_line(color = iu_crimson, linewidth = 1.6) +
+  geom_point(color = iu_crimson, size = 1.8) +
+  annotate("text", x = 2008.1, y = 99, label = "≈109%\n(2008)", color = iu_dark_text,
+           fontface = "bold", size = 3.4, hjust = 0, lineheight = 0.9) +
+  annotate("text", x = 2013.7, y = 190, label = "≈182%\n(2014)", color = iu_crimson,
+           fontface = "bold", size = 3.6, hjust = 0.5, lineheight = 0.9) +
+  annotate("text", x = 2015, y = 150, label = "July 2015\nreferendum:\n61% \"No\"", color = iu_navy,
+           fontface = "bold", size = 3.2, hjust = 0.5, lineheight = 0.9) +
+  scale_x_continuous(breaks = seq(2008, 2015, 1), limits = c(2007.5, 2016.4)) +
+  scale_y_continuous(limits = c(90, 195), labels = function(x) paste0(x, "%")) +
+  labs(title = "Austerity could not outrun the collapse",
+       subtitle = "Greek government debt, % of GDP, 2008–2015",
+       x = NULL, y = NULL,
+       caption = "Source: Eurostat, general government gross (Maastricht) debt, % of GDP.") +
+  theme_ipe(base_size = 13)
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+Greek GDP **fell ~45% (2008–2011)** and unemployment peaked near **27% (2013).** Debt **rose** as a share of a shrinking economy (because denominator plummeted.
+:::
+
+:::
+:::
+
+::: {.notes}
+The Greek crisis is the chapter's sharpest illustration that monetary cooperation, even at its deepest, does not abolish distributive conflict — it concentrates it. Here is the setup. Greece had borrowed heavily through the 2000s to fund budget and current-account deficits — by 2008 its external debt was around a hundred fifteen percent of GDP. Then the 2008 crisis hit, Greece fell into recession, revenues collapsed, the deficit ballooned, and markets began to doubt Greece could service its debt; interest rates on Greek bonds spiked far above German ones. Now here is the trilemma trap made real. A normal country in this position could devalue its currency to regain competitiveness and grow its way out, or cut its own interest rates. Greece could do neither — it had given up the drachma for the euro, surrendered its monetary autonomy to the ECB. So devaluation and independent monetary policy were off the table, and the crisis collapsed down to one raw question, the distributive one in the left column: who bears the cost of Greece's excess debt? Three possibilities. The Greek public could bear it, through austerity — savage spending cuts and tax increases to keep servicing the debt. Or the creditors could bear it — the German and French banks that held Greek bonds, and behind them eventually northern European taxpayers, through default or write-downs. Or other EU governments could lend Greece enough to keep paying, which just shifts the risk onto *their* taxpayers. Every option puts the cost on someone, and along national lines: Greek citizens versus northern creditors. What actually happened: the troika — the ECB, the European Commission, and the IMF — extended emergency loans, but made them conditional on austerity, our key tool from yesterday, conditionality, now at the heart of Europe. And Germany bargained hard, demanding stiff austerity as the price of assistance. Why so hard? Because of the signal, on the left: if Germany went easy on Greece, it would tell Italy, Spain, and Portugal — all with debt problems — that they too could expect easy terms, which could unravel the whole union. So Germany's hard line was about much more than Greece. Now the tragedy, in the chart and the callout. The austerity was supposed to bring the debt down. Instead, look at the line — Greek debt rose from about a hundred nine percent of GDP in 2008 to roughly a hundred eighty percent by 2013–14. How can austerity *raise* the debt ratio? Because it crushed the economy: Greek GDP fell by roughly forty-five percent between 2008 and 2011, and unemployment peaked near twenty-seven percent in 2013. Debt is a ratio — debt over GDP — and austerity shrank the denominator, the economy, even faster than it shrank the numerator. So the cure deepened the disease, and it destabilized Greek democracy: the collapse brought the leftist party Syriza to power in 2015 on a promise to renegotiate. That sets up the referendum, which we take next.
+:::
+
+
+## July 2015: The Referendum and the Limits of "No"
+
+::: {.columns}
+::: {.column width="58%"}
+
+In July 2015 the Syriza government put the troika's new austerity package to a **national referendum.** About **61% voted "No."**
+
+- Prime Minister **Tsipras** hoped a resounding "No" would **strengthen his hand** with the troika
+- But Greece had already **defaulted** to the IMF; banks were **closed**; capital controls were imposed
+- With conditions worsening, Tsipras ultimately **accepted terms even harsher** than the ones voters had rejected
+
+:::
+::: {.column width="42%"}
+
+
+
+::: {.callout-tip appearance="minimal" icon=false}
+[The deeper political question: is monetary union **viable** if a member cannot devalue and the costs of stability fall so unevenly?]{style="font-size:1.3em; color:#535054;"}
+:::
+
+::: {style="text-align:center; margin-top:0.6em;"}
+![](images/ch11-greece-oxi.jpg){style="height:300px; width:auto; border:1px solid #ccc;"}
+
+["Óxi" ("No") rally, July 2015 — "Austerity: Game Over"]{style="font-size:0.5em; color:#535054;"}
+:::
+
+:::
+:::
+
+::: {.notes}
+The July 2015 referendum is one of the most striking moments in the modern politics of money, and it makes the adjustment asymmetry vivid. By mid-2015, negotiations between the new Syriza government and the troika had deadlocked. Greece defaulted on a scheduled payment to the IMF, the government closed the banks and imposed capital controls to stop money fleeing the country, and Prime Minister Tsipras called a national referendum on whether to accept the troika's latest austerity package. About sixty-one percent of Greeks voted "No" — a resounding rejection. Tsipras's bet was that such a clear democratic mandate would strengthen his hand at the bargaining table, that the troika could not steamroll an explicit popular vote. Watch what happened instead, because it is the whole lesson. The "No" changed nothing about the underlying balance of power. Greece was the deficit country. It was out of reserves. It could not devalue, because it had no currency of its own. Its banks were shut and its economy was strangling. The troika held the financing Greece needed to keep functioning, and they did not soften. Within days, facing an accelerating collapse and the prospect that leaving the euro would be even more catastrophic than austerity, Tsipras accepted a package with terms *harsher* than the one his own voters had just rejected. So the callout states the hard truth: a democratic "No," however emphatic, could not override the distribution of power inside the monetary union. The party that gets forced to adjust is the one with the least power to refuse — the deficit country that has run out of options — and no vote changes that arithmetic. This is the adjustment asymmetry from Section 1, now with sixty-one percent of an electorate on the losing side of it. And it reopened the deepest question about the whole project, in the bottom callout: is a monetary union even viable when a member cannot devalue and the costs of holding it together fall so unevenly — on Greek workers and pensioners far more than on German creditors? Oatley's point is not that the euro was a mistake; it's that even Europe's extraordinary, deep, permanent cooperation did not eliminate the distributive conflict over adjustment. It just relocated it, from between floating currencies to inside a shared one.
+:::
+
+
+# Creditors, Debtors, and Power {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 5 · The contemporary system]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## China as Creditor: The International Investment Position
+
+::: {.callout-important appearance="minimal" icon=false}
+**International Investment Position (IIP).** A country's **total external assets minus its total external liabilities** — its net financial claims on (or debts to) the rest of the world. A *creditor* country owns more abroad than foreigners own of it; a *debtor* country, the reverse.
+:::
+
+::: {.columns}
+::: {.column width="52%"}
+
+```{r}
+#| label: fig-china-iip
+#| fig-width: 7.0
+#| fig-height: 4.5
+#| out-width: "99%"
+#| fig-alt: "A line chart of China's net international investment position, year-end, in trillions of US dollars. It rises from about 0.3 trillion in 2004 to about 1.7 trillion in 2010, plateaus near 1.7 trillion through 2015 as foreign investment into China grew, then climbs to about 2.9 trillion by 2023, reaching roughly 3.8 trillion by mid-2025."
+
+iip <- data.frame(
+  year = c(2004, 2010, 2015, 2019, 2023),
+  niip = c(0.28, 1.69, 1.67, 2.30, 2.91)
+)
+
+ggplot(iip, aes(year, niip)) +
+  geom_area(fill = iu_crimson, alpha = 0.10) +
+  geom_line(color = iu_crimson, linewidth = 1.6) +
+  geom_point(color = iu_crimson, size = 2.6) +
+  geom_text(aes(label = paste0("$", formatC(niip, format = "f", digits = 1), "T")),
+            vjust = -1.15, color = iu_dark_text, fontface = "bold", size = 3.9) +
+  annotate("text", x = 2012.3, y = 0.8, label = "plateau — foreign investment\ninto China was rising too",
+           color = iu_gray, fontface = "italic", size = 3.1, lineheight = 0.9) +
+  scale_x_continuous(breaks = c(2004, 2010, 2015, 2019, 2023), limits = c(2003, 2024.3)) +
+  scale_y_continuous(limits = c(0, 3.6), labels = function(x) paste0("$", x, "T")) +
+  labs(title = "Two decades of surpluses, accumulated",
+       subtitle = "China net international investment position, year-end",
+       x = NULL, y = NULL,
+       caption = "Source: SAFE (year-end net IIP; selected years). ≈$3.8T by mid-2025.") +
+  theme_ipe(base_size = 13)
+```
+
+:::
+::: {.column width="48%"}
+
+**China's foreign assets composition (end-2023)**
+
+```{r}
+#| label: tbl-china-assets
+
+ca <- data.frame(
+  type = c("Reserve assets (FX, gold)", "Direct investment abroad",
+           "Other (loans, deposits, trade credit)", "Portfolio investment"),
+  amt = c("$3.45T", "$2.93T", "$2.09T", "$1.10T"),
+  sh  = c("36%", "31%", "22%", "11%")
+)
+
+kable(ca, col.names = c("Asset type", "Stock", "Share"), align = c("l", "r", "r")) %>%
+  kable_styling(font_size = 18, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  column_spec(1, width = "58%") %>%
+  column_spec(2:3, width = "21%")
+```
+
+Total external assets **\$9.58T**; net position **+\$2.91T**. More than a **third** sits in low-yield **official reserves** — largely U.S. Treasuries — not higher-return investments abroad.
+
+:::
+:::
+
+::: {.notes}
+Now to the contemporary system, and our last key term: the international investment position, the IIP. Yesterday we worked almost entirely with *flows* — the current account, which measures borrowing and lending in a given year. The IIP is the *stock* that those flows accumulate into. Formally, a country's IIP is its total external assets minus its total external liabilities — everything its residents own abroad minus everything foreigners own of it. If that net figure is positive, the country is a net creditor: it owns more of the world than the world owns of it. If it's negative, it's a net debtor. And here is the connection that ties this whole unit together: the IIP is just yesterday's current-account chart, integrated over time. Run a current-account surplus year after year and you are lending abroad year after year, and those loans pile up into a large positive net IIP. Run deficits year after year and you accumulate liabilities, a negative position. So the annual flows we plotted yesterday, summed over decades, literally *are* today's creditor-debtor map. Concretely, in the left figure: China has run surpluses for two decades, and those have accumulated into a net IIP of about two point nine trillion dollars at the end of 2023, rising to roughly three point eight trillion by mid-2025 — the largest positive net position in the world. Notice the plateau in the early 2010s: the net position stalled near one point seven trillion for several years even as China kept running surpluses, because foreign investment *into* China was growing at the same time, adding to the liability side. The United States went the other way; as Oatley notes, persistent deficits flipped the U.S. from net creditor to net debtor in the mid-1980s — around 1984, 1985 — and its net position is deeply negative today, about negative twenty-six trillion dollars by mid-2025. And the headline fact for the U.S.–China relationship: China became the single largest foreign creditor of the United States, holding well over a trillion dollars in U.S. Treasury securities — peaking above one and a quarter trillion around 2013, though it has come down since. Now look at the table on the right, which answers a question the net figure hides: *where* are China's foreign assets held? At the end of 2023 China's total external assets were about nine and a half trillion dollars, and more than a third of that — about three and a half trillion — sat in official reserve assets, overwhelmingly low-yield U.S. Treasuries, rather than in higher-return direct or portfolio investment abroad. That composition connects straight back to yesterday's reserves chart: China's reserve mountain and its positive IIP are the same fact from two angles. When China intervenes to hold its currency down, it buys foreign assets — largely U.S. Treasuries — and those purchases are simultaneously its reserves and its net claims on the rest of the world. Surpluses become claims on foreigners — and in China's case, claims held disproportionately in the safest, lowest-yielding form. So the question this raises, which Sarah's own framing pushes, is about power: does being the great creditor make China powerful, or does being able to borrow endlessly in its own currency make the United States powerful? We take that up next.
+:::
+
+
+## Does Lending Confer Power — or Does Borrowing?
+
+The contemporary system puts the **adjustment problem** between a great creditor (China) and a great debtor (the United States). It is not obvious which position is the stronger one.
+
+```{r}
+#| label: tbl-power
+
+pw <- data.frame(
+  view = c("Creditor power (China)", "Debtor / reserve power (US)"),
+  claim = c("Owning the claims, holding the reserves, financing the deficits — leverage over the borrower",
+            "Borrowing in your own currency that everyone must hold; the dollar's reserve status lets the U.S. delay adjustment"),
+  catch = c("A creditor that needs the debtor's market to keep buying — and to keep paying — is also exposed",
+            "\"Exorbitant privilege\" is real, but persistent deficits build a deep negative position and provoke conflict")
+)
+
+kable(pw, col.names = c("Position", "The case for power", "The counterargument"),
+      align = c("l", "l", "l")) %>%
+  kable_styling(font_size = 25, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:2, extra_css = "padding-top: 13px; padding-bottom: 13px; line-height: 1.28;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "22%") %>%
+  column_spec(2, width = "40%") %>%
+  column_spec(3, width = "38%")
+```
+
+::: {.callout-important appearance="minimal" icon=false}
+Whoever is **forced** to adjust is the weaker party. The dollar's reserve-currency status lets the U.S. **postpone** adjustment in a way Greece never could — because demand for USD remains high.
+:::
+
+::: {.notes}
+This slide is the analytical heart of the contemporary section, and I'm drawing it from the questions I used to pose in my own lectures on global imbalances. The contemporary system sets up the adjustment problem between the world's great creditor, China, and its great debtor, the United States — and the genuinely interesting question is which of those is the more powerful position. It is not obvious. The case for creditor power, on the left: China owns the claims, holds the reserves, and finances the American deficits. Surely the lender has leverage over the borrower — the classic intuition that if you owe the bank a little the bank has power over you, but if you owe the bank a lot, you have power over the bank. The case for debtor or reserve power, on the right, is subtler and ultimately, I think, stronger in this case: the United States borrows in its own currency, the dollar, which everyone else is desperate to hold as reserves. That reserve-currency status — what the French once enviously called America's "exorbitant privilege" — means the U.S. can run deficits and roll over its debt almost indefinitely, because the world keeps wanting dollars. It lets the U.S. *postpone* adjustment. But each position has a catch. The creditor's catch: China needs the American market to keep buying its exports and needs the United States to keep servicing the debt, so a creditor that's dependent on its debtor is also exposed — it can't simply dump a trillion in Treasuries without crashing the value of its own holdings. The debtor's catch: the privilege is real but not unlimited — persistent deficits build an ever-deeper negative investment position and, as we've seen all hour, provoke recurring political conflict. Now tie it back to the asymmetry from Section 1, in the callout, because this is the unifying idea. The party that is *forced* to adjust is the weaker one. Greece was forced — it ran out of reserves, couldn't devalue, and had to take whatever terms it was given. The United States, by contrast, can postpone adjustment precisely because it borrows in the money the world must hold. Same structural position — large external deficit — but a completely different power outcome, and the difference is reserve-currency status. So "who pays for adjustment" is not settled by accounting; it's settled by power, and reserve-currency status is a central source of that power.
+:::
+
+
+## Where Coordination Happens Now: From the G7 to the G20
+
+::: {.columns}
+::: {.column width="56%"}
+
+As China and other emerging economies became central to global imbalances, the **locus of coordination shifted.**
+
+- Through the 1980s–90s, the major economies coordinated in the **G7** (the Plaza/Louvre club)
+- The **G20** existed from 1999 as a finance-ministers' forum, but was secondary
+- In the **2008** crisis, leaders **elevated the G20 to the summit level** — the main arena for crisis response and macro coordination
+
+:::
+::: {.column width="44%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+The shift had **two potnetial explanations:** that emerging economies had simply become too important to leave out — **or** that the G7 wanted China *inside* the room to dilute its own obligations and share the adjustment burden.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Either way: coordination remains **informal.** There is still **no formal institution** that governs currency manipulation or compels a surplus country to adjust.
+:::
+
+:::
+:::
+
+::: {.notes}
+The final piece of the contemporary picture is institutional: where does coordination actually happen now, and how has that changed? Through the 1980s and 1990s, the serious coordination among the major economies happened in the G7 — the rich-country club, the same circle that produced the Plaza and Louvre Accords. The G20, which adds the big emerging economies including China, India, Brazil, and others, had existed since 1999, but only as a finance-ministers' forum, secondary to the G7. The turning point came in 2008. When the financial crisis hit, European and American leaders elevated the G20 to the leaders' summit level — first in Washington in November 2008, then London in 2009 — and made it the primary arena for coordinating the crisis response and, going forward, macroeconomic policy. That's a real shift in global economic governance, and Oatley flags that it has two readings, in the callout. The benign reading: emerging economies, China above all, had simply become too important to global imbalances to leave outside the room — you cannot coordinate on imbalances without the country running the world's largest surplus at the table. The more strategic reading: the G7 powers, especially the Europeans, may have wanted China *inside* the process precisely to bring pressure on it, to dilute American dominance, and to spread the adjustment burden onto the surplus countries rather than carry it themselves. Both readings are about the same thing we've discussed all hour — who bears the cost of adjustment — now playing out as a fight over which forum, and which members, get to decide. But notice the bottom callout, because it's the crucial limit and it brings us back to the chapter's thesis: even after this shift, coordination remains *informal*. The G20 is a forum, not an enforcer. There is still no formal international institution that governs currency manipulation, that can compel a surplus country to spend, or that can bind anyone to adjust. We have meetings and communiqués and peer pressure — not rules with teeth. Which is exactly why the cooperation we've studied today is real but fragile, and why the same conflict keeps recurring.
+:::
+
+
+# Cooperation, Conflict, and Crisis {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 6 · The argument, and your turn]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## Student Presentation
+
+::: {.callout-important appearance="minimal" icon=false}
+## Over to today's presenter
+**Oye (1985)** — *"The Sterling–Dollar–Franc Triangle: Monetary Diplomacy, 1929–1937"*  ·  *World Politics* 38(1)
+:::
+
+[**Presenter:** ______________________  ·  Q&A and class discussion to follow]{style="font-size:0.85em; color:#535054;"}
+
+::: {.callout-tip appearance="minimal" icon=false}
+A classic application of **cooperation theory** to money: why did Britain, the U.S., and France sometimes **coordinate** and sometimes resort to **beggar-thy-neighbor** devaluation between the wars? Oye argues the outcome turned on the **payoff structure**, the **number of players**, and the **shadow of the future** — the same logic as our two games — and produced the rare success of the **1936 Tripartite Agreement.**
+:::
+
+::: {.notes}
+Now I hand the floor to today's student presenter on the Oye article, which is a classic of the field and fits this chapter almost perfectly. Let me set it up in a few sentences. Kenneth Oye analyzes monetary diplomacy among the three great financial powers of the interwar period — Britain with sterling, the United States with the dollar, and France with the franc — from 1929 to 1937, the years the gold-exchange standard fell apart into competitive devaluation and then, eventually, a halting attempt at cooperation. What makes the piece a model is its method: Oye applies the cooperation-under-anarchy framework — the same payoff-structure reasoning behind the two games we looked at earlier — to explain when these powers cooperated and when they defected. His argument is that the outcome was not about good or bad intentions but about the *structure* of the situation: the shape of the payoffs — was it closer to an assurance game or a prisoner's dilemma? — the number of players who had to coordinate, and the shadow of the future, meaning whether governments expected to keep dealing with one another. When those structural conditions were favorable, you got cooperation, culminating in the 1936 Tripartite Agreement, a genuine if limited instance of monetary coordination among the three. When they were not, you got the beggar-thy-neighbor devaluations of the early 1930s. So this is the interwar prequel to everything we did today — the same adjustment conflict and the same fragile cooperation, decades before Plaza and the euro, analyzed with exactly the tools from our games slide. Listen for how the presenter ties Oye's three structural variables — payoffs, number of players, shadow of the future — to the historical cases, and then to the modern episodes we covered. Class discussion after.
+:::
+
+
+## Discussion: Who Should Adjust?
+
+Pull out what you wrote at the start — your case for **who should adjust.** Now that we have the chapter, let's refine it.
+
+::: {.columns}
+::: {.column width="50%"}
+
+**Questions to review:**
+
+1. Did you argue the **deficit** or the **surplus** country should adjust? Did your view change? Why?
+2. Where does your argument put the **cost** — on which country's *citizens*?
+3. The U.S. delays adjustment that Greece could not. Is that **fair**, or just a fact of **power**?
+
+:::
+::: {.column width="50%"}
+
+**(When and How) Can we get cooperation?:**
+
+::: {.callout-important appearance="minimal" icon=false}
+Distributive conflict over who bears the cost of adjustment is **endemic** to international monetary systems — a structural feature, **not** a defect of particular governments. Cooperation is **informal, partial, and fragile.**
+:::
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+There is **no settled right answer** to "who should adjust." That is precisely Oatley's point — and why this conflict recurs across the gold standard, Bretton Woods, the Plaza, the eurozone, and the U.S.–China relationship.
+:::
+
+[🎧 **This week's podcast — Trade Talks #104** (Gagnon & Obstfeld): a strong dollar and currencies held down abroad — should the U.S. answer with countervailing tariffs or counter-intervention? The modern sequel to the Plaza fight.]{style="font-size:0.7em; color:#535054;"}
+
+::: {.notes}
+Before the recap, let's bring the opening write back and use it as the discussion. At the start I asked you to argue who should adjust between a deficit United States and a surplus Germany. Pull that out. I want a few of you to share which side you took, and then let's pressure-test it with the questions on the left. First, did you argue the deficit country or the surplus country should bear the adjustment — and now that you've seen the Plaza fight, the eurozone, and the China case, would you still argue the same way? Second, and this is the one I most want you to confront: wherever you put the cost, you put it on some country's *citizens* — on American workers if the U.S. tightens, on German savers and pensioners if Germany loosens and inflates, on Greek workers if Greece does the adjusting. There is no version of your argument that doesn't land on real people. Name them. Third, the power question from this hour: the United States can postpone the very adjustment that Greece was forced to swallow, and the difference is reserve-currency status, not fairness. Is that just? Or is "who adjusts" simply settled by power, full stop? On the right is the argument I want you to test your answer against — Oatley's thesis, which is the whole chapter in three lines. Distributive conflict over who bears the cost of adjustment is *endemic* to international monetary systems. It is structural — it comes from the accounting identity plus the trilemma plus the absence of any enforcer — and so it is not the fault of particular bad governments or particular bad leaders. It recurs because the underlying problem recurs. And cooperation is real — Plaza worked, the euro is a genuine achievement — but it is informal, partial, and fragile, because nothing makes it binding. The bottom callout is the honest conclusion of the day: there is no settled right answer to "who should adjust," and that is exactly Oatley's point. The absence of a right answer is *why* the conflict never ends — why the same fight shows up under the gold standard, under Bretton Woods, in the Plaza Accord, in the eurozone, and between the U.S. and China today. And bring in this week's podcast — Trade Talks 104, with Joseph Gagnon and Maurice Obstfeld — which carries exactly this question into the present: faced with a strong dollar and currencies that other governments hold down, should the United States respond with countervailing tariffs or with counter-intervention? It is the modern sequel to the Plaza fight. Let's discuss.
+:::
+
+
+## Recap: Why Cooperation Is Fragile
+
+::: {.callout-important appearance="minimal" icon=false}
+**Today's Big Question —** A stable monetary system benefits everyone — so why is international monetary cooperation so **fragile,** and why does it so often **break down?**
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### The problem
+- An imbalance **must** close, but the burden falls on **either** side — that's the **adjustment problem**
+- A stable system is a **shared good**, yet each government is tempted to push the cost onto others (**beggar-thy-neighbor**)
+- The party with the **least power to refuse** is the one forced to adjust
+
+:::
+::: {.column width="50%"}
+
+### The cases
+- **Plaza (1985) & Louvre (1987):** cooperation worked — but **target zones failed;** it couldn't be made permanent
+- **EMS → euro:** the deepest cooperation; the **Greek crisis** showed it only relocated the conflict
+- **China & the U.S.:** creditor vs. reserve-currency debtor; coordination shifted **G7 → G20**, still informal
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+**Oatley's thesis:** distributive conflict over adjustment is **endemic** to monetary systems — not a defect of governments. Cooperation is **real, but informal, partial, and fragile.** Next: *who at home* wants a strong vs. a weak currency — the **society-centered** politics of Ch. 12.
+:::
+
+::: {.notes}
+Let's gather the hour around the Big Question: a stable monetary system benefits everyone, so why is cooperation so fragile and so prone to breaking down? The left column is the problem, and it's three linked ideas. First, the adjustment problem: an imbalance must eventually close — that's the accounting identity from yesterday — but the burden of closing it can fall on either the deficit or the surplus side, and the two face opposite costs, so it's a distributive fight with no neutral answer. Second, the collective-action structure: a stable system is a shared good that everyone benefits from, yet each individual government is tempted to push the cost of adjustment onto others — to devalue for advantage or simply refuse to move — which is beggar-thy-neighbor, and it means cooperation is never self-enforcing. Third, the asymmetry: when push comes to shove, the party forced to adjust is the one with the least power to refuse — the deficit country that's run out of reserves and can't devalue. The right column is how those ideas played out in our cases. Plaza and Louvre show cooperation genuinely working — the G5 brought the dollar down and then steadied it — but the failure of the target-zone proposal shows it couldn't be made permanent, because the moment coordination cost Germany something, Germany defected. The EMS and the euro are the deepest cooperation humans have built in this domain, and the Greek crisis showed that even that didn't abolish the distributive conflict — it just relocated it inside a shared currency, where Greece, unable to devalue, was forced to take terms its voters had rejected by sixty-one percent. And the contemporary U.S.–China relationship is the adjustment problem between a great creditor and a great reserve-currency debtor, with coordination shifted from the G7 to the G20 but still entirely informal — no enforcer, no rules with teeth. All of which lands on Oatley's thesis, the bottom callout: distributive conflict over who bears the cost of adjustment is endemic to international monetary systems. It is structural, not a defect of particular governments, which is why it recurs across a century and a half. Cooperation is real but informal, partial, and fragile. And that hands us straight to Thursday. Today we've treated countries as units — the U.S. wants this, Germany wants that. But "the U.S." is not one thing. Inside every country, some groups want a strong currency and some want a weak one, and they fight about it. That domestic, society-centered politics of who wants what — and whose preference wins — is Chapter 12.
+:::

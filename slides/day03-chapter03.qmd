@@ -1,0 +1,1552 @@
+---
+title: "The Political Economy of International Trade Cooperation"
+subtitle: "INTL 503 | Chapter 3"
+author: "Professor Sarah Bauerle Danzman"
+date: "2026-07-09"
+date-format: long
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: true
+    preview-links: auto
+    footer: "INTL 503 | The Political Economy of International Trade Cooperation"
+    transition: fade
+    width: 1600
+    height: 900
+    margin: 0.15
+    fig-align: center
+    auto-stretch: false
+    logo: iu-trident.png
+    title-slide-attributes:
+      data-background-image: iu-trident.png
+      data-background-size: 15%
+      data-background-position: 2% 2%
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(knitr)
+library(kableExtra)
+
+# IU color palette
+iu_crimson <- "#990000"
+iu_cream <- "#EDEBEB"
+iu_gray <- "#535054"
+iu_light_gray <- "#7E7E7E"
+iu_dark_text <- "#2C3E50"
+
+# Custom theme for all plots
+theme_ipe <- function(base_size = 20) {
+  theme_minimal(base_size = base_size) +
+    theme(
+      plot.title = element_text(color = iu_crimson, face = "bold", size = rel(1.2),
+                                margin = margin(t = 5, b = 5)),
+      plot.subtitle = element_text(color = iu_gray, size = rel(0.9),
+                                   margin = margin(b = 10)),
+      plot.caption = element_text(color = iu_light_gray, size = rel(0.7),
+                                  hjust = 0, margin = margin(t = 10)),
+      axis.title = element_text(color = iu_dark_text, size = rel(0.9)),
+      axis.title.x = element_text(margin = margin(t = 8)),
+      axis.title.y = element_text(margin = margin(r = 8)),
+      axis.text = element_text(color = iu_gray, size = rel(0.8)),
+      panel.grid.minor = element_blank(),
+      panel.grid.major = element_line(color = "#E5E5E5", linewidth = 0.4),
+      legend.position = "bottom",
+      legend.title = element_text(size = rel(0.85)),
+      legend.text = element_text(size = rel(0.8)),
+      plot.margin = margin(t = 8, r = 12, b = 20, l = 12)
+    )
+}
+```
+
+## Today's Plan
+
+::: {.callout-important appearance="minimal" icon=false}
+## Today's Big Question
+**Why is trade cooperation so hard even when everyone would gain — and what kind of institution does it take to make it possible?**
+:::
+
+```{r}
+#| label: tbl-plan
+
+plan <- data.frame(
+  Section = c("1 · Why Trade Cooperation Is Hard",
+              "2 · The Economic Case for Trade",
+              "3 · The Bargaining Problem",
+              "4 · The Enforcement Problem",
+              "5 · The WTO as Incentive-Compatible Enforcement",
+              "6 · The DSM in Action: U.S.–Brazil Cotton",
+              "7 · Student article presentation",
+              "8 · Writing prompt and discussion"),
+  Cover = c("The puzzle Oatley opens with — does the world still need the WTO?",
+            "Gains from trade, comparative advantage, and why protection destroys welfare",
+            "Spatial bargaining, linkage, costly signals, and outside options",
+            "The prisoner's dilemma and why anarchy traps governments in protection",
+            "How iteration and reciprocity solve the cooperation problem",
+            "Brazil v. United States — how international rules work through domestic politics",
+            "Bown & Keynes 2020 on the Appellate Body crisis",
+            "Apply today's framework to a current case")
+)
+
+kable(plan, col.names = c("Section", "What we'll cover"),
+      align = c("l", "l")) %>%
+  kable_styling(font_size = 22, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "36%") %>%
+  column_spec(2, width = "64%")
+```
+
+
+# Why Trade Cooperation Is Hard {background-color="#990000"}
+
+
+## Does the World Still Need the WTO?
+
+For seventy years, the WTO and the GATT have anchored the international trade system. The institution is now under sustained pressure.
+
+::: {.columns}
+::: {.column width="55%"}
+
+**Signs of erosion:**
+
+- The Doha Round has produced little since 2001
+- Members pursue trade goals through mega-regionals outside the WTO framework
+- Aggressive bilateralism has eroded multilateral rule-making
+
+:::
+::: {.column width="45%"}
+
+**Most analysts argue the WTO is still needed.** The argument rests on a theory of international cooperation that we develop today.
+
+:::
+:::
+
+::: {.callout-important appearance="minimal" icon=false}
+[*Cooperation is difficult even when all parties stand to gain, because anarchy makes agreements hard to enforce.*]{style="font-size: 1.5em; line-height: 1.4;"}
+:::
+
+::: {.notes}
+Open by naming the contemporary tension Oatley puts at the top of the chapter. Doha has produced almost nothing since 2001; the world's largest economies have spent a decade pursuing mega-regionals (TPP, TTIP, RCEP, CPTPP) outside the WTO framework; and the Trump era added an explicitly bilateralist approach that walked away from multilateral disciplines. Yet the textbook claim — and most analysts agree — is that governments still need the WTO. Why? Because cooperation on trade is genuinely hard, and we don't have a substitute institution. That's what we're going to develop today: the theoretical reason why an institution like the WTO has to exist if open trade is going to survive. Three steps: gains from trade, the cooperation problem, the WTO solution. Move briskly — we only have 5 minutes for this section. The point is to plant the puzzle, not solve it.
+:::
+
+
+# The Economic Case for Trade {background-color="#990000"}
+
+
+## Comparative Advantage
+
+::: {.callout-important appearance="minimal" icon=false}
+Every country gains from trade by specializing in what it produces relatively well, even if it produces everything at higher cost than its trading partner.
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### What is not required
+
+- An absolute cost advantage in any good
+- The United States gains from trading with China even if U.S. firms could produce every good more cheaply
+
+:::
+::: {.column width="50%"}
+
+### What is required
+
+- Different opportunity costs across the same goods
+- Each country specializes in the good for which it gives up less of others
+- Both countries consume beyond what autarky allowed
+
+:::
+:::
+
+::: {.notes}
+This is the Core Idea slide. State the principle plainly before any geometry. Most students have heard "comparative advantage" but very few can articulate it correctly. The distinguishing claim is that absolute advantage is not required — even a country that's worse at producing everything still gains from trade, because what matters is the *relative* costs across goods within each country. Set this up clearly here and the rest of the section follows. If students leave today with one thing about trade theory, this is it.
+:::
+
+
+## The Production Possibility Frontier
+
+The **PPF** shows everything a country *could* produce, given its labor and capital.
+
+Its slope is the **opportunity cost**: how much of one good must be given up to make one more of the other.
+
+```{r}
+#| label: fig-us-ppf
+#| fig-width: 10
+#| fig-height: 5
+#| out-width: "75%"
+#| fig-alt: "U.S. Production Possibility Frontier: a downward-sloping line from 300 million shirts on the vertical axis to 100 million computers on the horizontal axis, showing that producing one additional computer requires giving up three shirts."
+
+ppf_us <- data.frame(
+  computers = c(0, 100),
+  shirts = c(300, 0)
+)
+
+ggplot(ppf_us, aes(x = computers, y = shirts)) +
+  geom_line(color = iu_crimson, linewidth = 1.4) +
+  geom_point(data = data.frame(x = c(0, 100), y = c(300, 0)),
+             aes(x = x, y = y), color = iu_crimson, size = 4) +
+  annotate("text", x = 8, y = 295, label = "B = 300M shirts",
+           hjust = 0, size = 5.5, color = iu_dark_text, fontface = "bold") +
+  annotate("text", x = 92, y = 12, label = "A = 100M computers",
+           hjust = 1, size = 5.5, color = iu_dark_text, fontface = "bold") +
+  annotate("segment", x = 25, xend = 35, y = 230, yend = 230,
+           color = iu_light_gray, linewidth = 0.6) +
+  annotate("segment", x = 35, xend = 35, y = 230, yend = 200,
+           color = iu_light_gray, linewidth = 0.6) +
+  annotate("text", x = 38, y = 215,
+           label = "slope = −3 shirts per computer\n(opportunity cost)",
+           hjust = 0, size = 4.5, color = iu_gray, fontface = "italic") +
+  scale_x_continuous(limits = c(0, 110), breaks = seq(0, 100, 20)) +
+  scale_y_continuous(limits = c(0, 320), breaks = seq(0, 300, 60)) +
+  labs(
+    title = "U.S. Production Possibility Frontier",
+    subtitle = "Reproduces Oatley, Figure 3.1",
+    x = "Computers (millions)",
+    y = "Shirts (millions)",
+    caption = "Source: Oatley, International Political Economy, 7th ed., Figure 3.1"
+  ) +
+  theme_ipe()
+```
+
+::: {.notes}
+Anchor the comparative advantage discussion in the PPF. Walk through the U.S. example from Oatley: if the U.S. throws everything at computers, it can make 100 million. If it throws everything at shirts, it can make 300 million. The line connecting those points is the PPF — every combination on the line is achievable. The slope is the opportunity cost: to make one more computer, the U.S. has to give up 3 shirts. We're using constant opportunity costs (a straight line) to keep things simple; Oatley notes most contemporary models use diminishing returns (a curve), but the political-economy logic is the same either way. Don't dwell on the geometry — students will see it again with China and then with both countries together. Just make sure they grasp that the line shows a *trade-off*, not a list of choices.
+:::
+
+
+## China Has a Different Frontier
+
+Same logic, different opportunity costs — because China has different factor endowments (more labor, less capital).
+
+```{r}
+#| label: fig-china-ppf
+#| fig-width: 10
+#| fig-height: 5
+#| out-width: "75%"
+#| fig-alt: "China's Production Possibility Frontier: a steeply sloped line from 400 million shirts on the vertical axis to 20 million computers on the horizontal axis. China gives up 20 shirts for every additional computer."
+
+ppf_china <- data.frame(
+  computers = c(0, 20),
+  shirts = c(400, 0)
+)
+
+ggplot(ppf_china, aes(x = computers, y = shirts)) +
+  geom_line(color = iu_crimson, linewidth = 1.4) +
+  geom_point(data = data.frame(x = c(0, 20), y = c(400, 0)),
+             aes(x = x, y = y), color = iu_crimson, size = 4) +
+  annotate("text", x = 1.6, y = 395, label = "400M shirts",
+           hjust = 0, size = 5.5, color = iu_dark_text, fontface = "bold") +
+  annotate("text", x = 18, y = 14, label = "20M computers",
+           hjust = 1, size = 5.5, color = iu_dark_text, fontface = "bold") +
+  annotate("text", x = 13, y = 250,
+           label = "slope = −20 shirts per computer",
+           hjust = 0, size = 4.5, color = iu_gray, fontface = "italic") +
+  scale_x_continuous(limits = c(0, 22), breaks = seq(0, 20, 4)) +
+  scale_y_continuous(limits = c(0, 420), breaks = seq(0, 400, 80)) +
+  labs(
+    title = "China's Production Possibility Frontier",
+    subtitle = "Reproduces Oatley, Figure 3.2",
+    x = "Computers (millions)",
+    y = "Shirts (millions)",
+    caption = "Source: Oatley, International Political Economy, 7th ed., Figure 3.2"
+  ) +
+  theme_ipe()
+```
+
+::: {.notes}
+China's PPF is much steeper. China can make 400 million shirts if it specializes, but only 20 million computers — a function of its factor endowments (abundant labor, less capital). The opportunity cost of a computer in China is 20 shirts, compared to 3 in the U.S. Note: I am using Oatley's numbers exactly — these are illustrative, not empirical. The pedagogical point is that the two countries have *different* opportunity costs, not the specific numbers. Different opportunity costs are what make trade beneficial. If both countries had identical PPFs, there would be no gains from trade — no specialization possible. The geometry of comparative advantage hinges on the *gap* between the two slopes (3 vs. 20). That gap is where the gains come from.
+:::
+
+
+## Trade Lets Both Consume Beyond Autarky
+
+The two countries agree on a trade price (Oatley uses **6 shirts per computer**).
+
+Each fully specializes. Both consume **on a higher indifference curve** than autarky allowed.
+
+```{r}
+#| label: fig-free-trade
+#| fig-width: 12
+#| fig-height: 5
+#| out-width: "92%"
+#| fig-alt: "Two-panel figure showing free trade equilibrium with full specialization. Left panel: United States produces 100 million computers, exports some, and consumes at a point with both more computers and more shirts than autarky. Right panel: China produces 400 million shirts, exports some, and consumes at a higher indifference curve than autarky."
+
+us_autarky_x <- 60; us_autarky_y <- 120
+us_trade_x   <- 75; us_trade_y   <- 150
+ch_autarky_x <- 13; ch_autarky_y <- 140
+ch_trade_x   <- 25; ch_trade_y   <- 250
+
+p_us <- ggplot() +
+  geom_segment(aes(x = 0, xend = 100, y = 300, yend = 0),
+               color = iu_crimson, linewidth = 1.1, linetype = "solid") +
+  geom_segment(aes(x = 0, xend = 100, y = 600, yend = 0),
+               color = iu_gray, linewidth = 0.9, linetype = "dashed") +
+  geom_point(aes(x = us_autarky_x, y = us_autarky_y),
+             color = iu_gray, size = 3.5) +
+  geom_point(aes(x = us_trade_x, y = us_trade_y),
+             color = iu_crimson, size = 4.5) +
+  annotate("text", x = us_autarky_x + 3, y = us_autarky_y - 7,
+           label = "Autarky\n(60, 120)", hjust = 0, size = 4, color = iu_gray) +
+  annotate("text", x = us_trade_x + 3, y = us_trade_y - 4,
+           label = "With trade\n(75, 150)", hjust = 0, size = 4,
+           color = iu_crimson, fontface = "bold") +
+  annotate("text", x = 60, y = 410,
+           label = "trade price line (slope −6)",
+           hjust = 0.5, size = 3.8, color = iu_gray, fontface = "italic") +
+  scale_x_continuous(limits = c(0, 110), breaks = seq(0, 100, 25)) +
+  scale_y_continuous(limits = c(0, 620), breaks = seq(0, 600, 150)) +
+  labs(title = "United States",
+       x = "Computers (millions)", y = "Shirts (millions)") +
+  theme_ipe(base_size = 14) +
+  theme(plot.title = element_text(hjust = 0.5))
+
+p_ch <- ggplot() +
+  geom_segment(aes(x = 0, xend = 20, y = 400, yend = 0),
+               color = iu_crimson, linewidth = 1.1, linetype = "solid") +
+  geom_segment(aes(x = 0, xend = 400/6, y = 400, yend = 0),
+               color = iu_gray, linewidth = 0.9, linetype = "dashed") +
+  geom_point(aes(x = ch_autarky_x, y = ch_autarky_y),
+             color = iu_gray, size = 3.5) +
+  geom_point(aes(x = ch_trade_x, y = ch_trade_y),
+             color = iu_crimson, size = 4.5) +
+  annotate("text", x = ch_autarky_x + 2, y = ch_autarky_y - 10,
+           label = "Autarky\n(13, 140)", hjust = 0, size = 4, color = iu_gray) +
+  annotate("text", x = ch_trade_x + 2, y = ch_trade_y - 8,
+           label = "With trade\n(25, 250)", hjust = 0, size = 4,
+           color = iu_crimson, fontface = "bold") +
+  annotate("text", x = 45, y = 170,
+           label = "trade price line (slope −6)",
+           hjust = 0.5, size = 3.8, color = iu_gray, fontface = "italic") +
+  scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, 25)) +
+  scale_y_continuous(limits = c(0, 620), breaks = seq(0, 600, 150)) +
+  labs(title = "China",
+       x = "Computers (millions)", y = "Shirts (millions)") +
+  theme_ipe(base_size = 14) +
+  theme(plot.title = element_text(hjust = 0.5))
+
+gridExtra::grid.arrange(p_us, p_ch, ncol = 2)
+```
+
+::: {.notes}
+Reproduces Oatley's Figure 3.3 in spirit — full specialization with trade. Walk through the numbers: U.S. specializes in computers (produces 100 million), exports most of them, gets shirts in return. China specializes in shirts (produces 400 million), exports most, gets computers in return. At the trade price of 6 shirts per computer, U.S. consumption moves from (60 computers, 120 shirts) under autarky to roughly (75, 150) with trade. China's consumption moves from (13, 140) to (25, 250). Both countries are unambiguously better off — they consume more of both goods than they could produce on their own. That's the welfare engine that makes the rest of the chapter (and the rest of the field) make sense. If trade weren't mutually beneficial, the cooperation problem wouldn't matter. Because it is, the cooperation problem becomes a puzzle worth solving — which is what the WTO does.
+:::
+
+
+## Where Does Comparative Advantage Come From?
+
+::: {.columns}
+::: {.column width="50%"}
+
+::: {.callout-note appearance="minimal"}
+## Ricardian model *(Ricardo, 1817)*
+
+Comparative advantage comes from **differences in labor productivity** — i.e., technology.
+
+Countries specialize where their technology gives them an edge.
+
+*Key insight:* technology, not endowments, drives the pattern.
+:::
+
+:::
+::: {.column width="50%"}
+
+::: {.callout-note appearance="minimal"}
+## Heckscher-Ohlin (H-O) model *(early 20th c.)*
+
+Comparative advantage comes from **factor endowments** — the relative supply of capital, labor, land.
+
+- Capital-abundant countries → capital-intensive goods (autos, aircraft)
+- Labor-abundant countries → labor-intensive goods (apparel)
+
+*Key insight:* who owns the abundant factor wins from trade.
+:::
+
+:::
+:::
+
+```{r}
+#| label: fig-ho-intuition
+#| fig-width: 12
+#| fig-height: 2.6
+#| out-width: "92%"
+#| fig-alt: "Horizontal stacked bar chart showing approximate shares of total production cost in two industries. The auto industry is roughly 28% labor and 72% capital. The apparel industry is roughly 65% labor and 35% capital. The contrast illustrates the Heckscher-Ohlin prediction that capital-abundant economies specialize in capital-intensive industries (autos) and labor-abundant economies specialize in labor-intensive industries (apparel)."
+
+ho_data <- data.frame(
+  industry = factor(rep(c("Apparel", "Autos"), each = 2),
+                    levels = c("Apparel", "Autos")),
+  factor   = factor(rep(c("Labor", "Capital"), 2),
+                    levels = c("Labor", "Capital")),
+  share    = c(65, 35, 28, 72)
+)
+
+ggplot(ho_data, aes(x = industry, y = share, fill = factor)) +
+  geom_col(width = 0.5) +
+  geom_text(aes(label = paste0(share, "%")),
+            position = position_stack(vjust = 0.5),
+            color = "white", fontface = "bold", size = 5) +
+  scale_fill_manual(values = c("Labor" = "#535054", "Capital" = "#990000"),
+                    name = NULL) +
+  coord_flip() +
+  labs(
+    title = "Cost structure of two industries",
+    subtitle = "Capital-abundant economies (U.S., Japan) specialize in autos; labor-abundant economies (China, Bangladesh) specialize in apparel",
+    x = NULL, y = NULL,
+    caption = "Approximate cost shares. Source: adapted from Dicken (1998), cited in Oatley Ch. 3"
+  ) +
+  theme_ipe(base_size = 14) +
+  theme(axis.text.x = element_blank(),
+        panel.grid.major = element_blank(),
+        legend.position = "bottom")
+```
+
+::: {.notes}
+Two workhorse models. Ricardo (early 19th c.) said comparative advantage comes from technology — Britain has better looms, so Britain makes cloth more productively than Portugal even if both have the same labor. Heckscher-Ohlin (early 20th c.) said it comes from factor endowments — Britain has more capital, so Britain specializes in capital-intensive goods, while Portugal with more labor specializes in labor-intensive goods. The bar chart below illustrates the H-O intuition with Oatley's example: in auto manufacturing, labor is only about 25–30% of costs, with capital dominating; in apparel, labor takes the lion's share. The H-O punchline is the one that matters most for political economy: the *owners of the abundant factor* gain from trade, while the owners of the scarce factor lose. In the U.S., that means capital-abundant industries (and capital owners) gain from trade; labor-abundant ones (and lower-skilled workers) lose. Hold onto that thought — it's exactly the kind of distributional asymmetry that drives the politics in Chapter 4. We don't need to do the full Stolper-Samuelson theorem today, but the intuition is: trade isn't neutral within a country, even when it's net-positive overall.
+:::
+
+
+## Trade Policy and Welfare
+
+Standard introductory microeconomics, not in Oatley. The left panel shows the welfare consequences of opening a closed economy to trade; the right panel shows how a tariff partially reverses them.
+
+```{r}
+#| label: fig-welfare
+#| fig-width: 14
+#| fig-height: 5.5
+#| out-width: "98%"
+#| fig-alt: "Two side-by-side supply-and-demand diagrams. The left panel illustrates the welfare effects of opening a closed economy to trade: as the price falls from the autarky level P to the world price P_w, the consumer-surplus area expands. Area A represents surplus transferred from producers to consumers; area B represents new welfare created by trade. The right panel shows the effects of imposing a tariff that raises the domestic price from P_w to P_t. Area A is producer surplus gained from the tariff; area C is government tariff revenue; areas B and D are deadweight loss triangles (inefficient production and forgone consumption)."
+
+# --- Shared geometry ------------------------------------------------
+slope_s <- 0.5
+slope_d <- 0.5
+p_max   <- 10
+q_eq    <- 10   # autarky quantity
+p_eq    <- 5    # autarky price
+
+p_w  <- 2;  qs_w <- 4;   qd_w <- 16
+p_t  <- 4;  qs_t <- 8;   qd_t <- 12
+
+xmax <- 20
+
+supply_line <- data.frame(q = c(0, xmax), p = c(0, slope_s * xmax))
+demand_line <- data.frame(q = c(0, p_max / slope_d), p = c(p_max, 0))
+
+theme_welfare <- function() {
+  theme_minimal(base_size = 13) +
+    theme(
+      axis.text = element_blank(),
+      axis.ticks = element_blank(),
+      panel.grid = element_blank(),
+      plot.title = element_text(color = iu_crimson, face = "bold", hjust = 0.5,
+                                size = rel(1.1)),
+      plot.subtitle = element_text(color = iu_gray, size = rel(0.85),
+                                   hjust = 0.5, margin = margin(b = 6)),
+      axis.title = element_text(color = iu_dark_text, size = rel(0.85)),
+      plot.margin = margin(t = 5, r = 12, b = 5, l = 12)
+    )
+}
+
+# --- Panel 1: Opening to trade --------------------------------------
+p_open <- ggplot() +
+  # Region A: surplus transferred from producers to consumers
+  geom_polygon(aes(x = c(0, 0, q_eq, qs_w),
+                   y = c(p_w, p_eq, p_eq, p_w)),
+               fill = "#2E7D32", alpha = 0.30) +
+  # Region B: new welfare from trade
+  # Triangle bounded by supply curve (left, Qs->Qa), demand curve (right, Qa->Qd),
+  # and the world-price line on the bottom from Qs to Qd.
+  geom_polygon(aes(x = c(qs_w, q_eq, qd_w),
+                   y = c(p_w, p_eq, p_w)),
+               fill = "#1565C0", alpha = 0.30) +
+  geom_line(data = supply_line, aes(x = q, y = p),
+            color = iu_dark_text, linewidth = 1.2) +
+  geom_line(data = demand_line, aes(x = q, y = p),
+            color = iu_dark_text, linewidth = 1.2) +
+  geom_segment(aes(x = 0, xend = q_eq, y = p_eq, yend = p_eq),
+               linetype = "dashed", color = iu_gray, linewidth = 0.6) +
+  geom_segment(aes(x = 0, xend = qd_w, y = p_w, yend = p_w),
+               linetype = "dashed", color = iu_gray, linewidth = 0.6) +
+  geom_segment(aes(x = qs_w, xend = qs_w, y = 0, yend = p_w),
+               linetype = "dotted", color = iu_light_gray) +
+  geom_segment(aes(x = q_eq, xend = q_eq, y = 0, yend = p_eq),
+               linetype = "dotted", color = iu_light_gray) +
+  geom_segment(aes(x = qd_w, xend = qd_w, y = 0, yend = p_w),
+               linetype = "dotted", color = iu_light_gray) +
+  annotate("text", x = 4.5, y = 3.4, label = "A",
+           fontface = "bold", size = 6.5, color = "#1B5E20") +
+  annotate("text", x = 10, y = 3, label = "B",
+           fontface = "bold", size = 6.5, color = "#0D47A1") +
+  annotate("text", x = -0.5, y = p_eq, label = "P",
+           hjust = 1, size = 5, fontface = "bold", color = iu_dark_text) +
+  annotate("text", x = -0.5, y = p_w, label = expression(P[w]),
+           hjust = 1, size = 5, fontface = "bold", color = iu_dark_text) +
+  annotate("text", x = qs_w, y = -0.5, label = expression(Q[s]),
+           vjust = 1, size = 4.5, color = iu_dark_text) +
+  annotate("text", x = q_eq, y = -0.5, label = expression(Q[a]),
+           vjust = 1, size = 4.5, color = iu_dark_text) +
+  annotate("text", x = qd_w, y = -0.5, label = expression(Q[d]),
+           vjust = 1, size = 4.5, color = iu_dark_text) +
+  annotate("text", x = 18.5, y = 9.4, label = "S",
+           size = 5.5, fontface = "bold", color = iu_dark_text) +
+  annotate("text", x = 18.5, y = 1, label = "D",
+           size = 5.5, fontface = "bold", color = iu_dark_text) +
+  coord_cartesian(xlim = c(-1.3, xmax + 0.5),
+                  ylim = c(-1.2, p_max + 0.5),
+                  expand = FALSE) +
+  labs(title = "Opening to trade  (closed → open)",
+       subtitle = "A: surplus transferred from producers to consumers  ·  B: new welfare from trade",
+       x = "Quantity", y = "Price") +
+  theme_welfare()
+
+# --- Panel 2: Imposing a tariff -------------------------------------
+p_tariff <- ggplot() +
+  # Region A: producer-surplus gain (trapezoid bounded by supply curve)
+  geom_polygon(aes(x = c(0, 0, qs_t, qs_w),
+                   y = c(p_w, p_t, p_t, p_w)),
+               fill = "#2E7D32", alpha = 0.30) +
+  # Region B: production deadweight loss
+  geom_polygon(aes(x = c(qs_w, qs_t, qs_t),
+                   y = c(p_w, p_t, p_w)),
+               fill = iu_crimson, alpha = 0.45) +
+  # Region C: government tariff revenue
+  geom_polygon(aes(x = c(qs_t, qs_t, qd_t, qd_t),
+                   y = c(p_w, p_t, p_t, p_w)),
+               fill = iu_gray, alpha = 0.30) +
+  # Region D: consumption deadweight loss
+  geom_polygon(aes(x = c(qd_t, qd_t, qd_w),
+                   y = c(p_w, p_t, p_w)),
+               fill = iu_crimson, alpha = 0.45) +
+  geom_line(data = supply_line, aes(x = q, y = p),
+            color = iu_dark_text, linewidth = 1.2) +
+  geom_line(data = demand_line, aes(x = q, y = p),
+            color = iu_dark_text, linewidth = 1.2) +
+  geom_segment(aes(x = 0, xend = qd_t, y = p_t, yend = p_t),
+               linetype = "dashed", color = iu_gray, linewidth = 0.6) +
+  geom_segment(aes(x = 0, xend = qd_w, y = p_w, yend = p_w),
+               linetype = "dashed", color = iu_gray, linewidth = 0.6) +
+  geom_segment(aes(x = qs_w, xend = qs_w, y = 0, yend = p_w),
+               linetype = "dotted", color = iu_light_gray) +
+  geom_segment(aes(x = qs_t, xend = qs_t, y = 0, yend = p_t),
+               linetype = "dotted", color = iu_light_gray) +
+  geom_segment(aes(x = qd_t, xend = qd_t, y = 0, yend = p_t),
+               linetype = "dotted", color = iu_light_gray) +
+  geom_segment(aes(x = qd_w, xend = qd_w, y = 0, yend = p_w),
+               linetype = "dotted", color = iu_light_gray) +
+  annotate("text", x = 2.7, y = 3, label = "A",
+           fontface = "bold", size = 6.5, color = "#1B5E20") +
+  annotate("text", x = 6.7, y = 2.7, label = "B",
+           fontface = "bold", size = 5.5, color = iu_crimson) +
+  annotate("text", x = 10, y = 3, label = "C",
+           fontface = "bold", size = 6.5, color = iu_dark_text) +
+  annotate("text", x = 13.3, y = 2.7, label = "D",
+           fontface = "bold", size = 5.5, color = iu_crimson) +
+  annotate("text", x = -0.5, y = p_t, label = expression(P[t]),
+           hjust = 1, size = 5, fontface = "bold", color = iu_dark_text) +
+  annotate("text", x = -0.5, y = p_w, label = expression(P[w]),
+           hjust = 1, size = 5, fontface = "bold", color = iu_dark_text) +
+  annotate("text", x = qs_w, y = -0.5, label = expression(Q[s]),
+           vjust = 1, size = 4, color = iu_dark_text) +
+  annotate("text", x = qs_t, y = -0.5, label = expression(Q[s]^t),
+           vjust = 1, size = 4, color = iu_dark_text) +
+  annotate("text", x = qd_t, y = -0.5, label = expression(Q[d]^t),
+           vjust = 1, size = 4, color = iu_dark_text) +
+  annotate("text", x = qd_w, y = -0.5, label = expression(Q[d]),
+           vjust = 1, size = 4, color = iu_dark_text) +
+  annotate("text", x = 18.5, y = 9.4, label = "S",
+           size = 5.5, fontface = "bold", color = iu_dark_text) +
+  annotate("text", x = 18.5, y = 1, label = "D",
+           size = 5.5, fontface = "bold", color = iu_dark_text) +
+  coord_cartesian(xlim = c(-1.3, xmax + 0.5),
+                  ylim = c(-1.2, p_max + 0.5),
+                  expand = FALSE) +
+  labs(title = "Imposing a tariff  (open → protected)",
+       subtitle = "A: PS gain  ·  C: tariff revenue  ·  B + D: deadweight loss",
+       x = "Quantity", y = "Price") +
+  theme_welfare()
+
+gridExtra::grid.arrange(p_open, p_tariff, ncol = 2)
+```
+
+::: {.callout-warning appearance="minimal" icon=false}
+Opening to trade transfers area A from producers to consumers and creates area B as new welfare. A tariff partially reverses this: area A is transferred back to producers as new producer surplus, area C is collected by the government, and areas B and D are destroyed as deadweight loss.
+:::
+
+::: {.notes}
+This slide isn't in Oatley but it's the strongest economic argument *for* trade. Set up the small open economy: world price is below domestic autarky price; the country imports the difference. A tariff raises the domestic price above the world price. Producers respond by producing more (Q1 → Q2). Consumers respond by buying less (Q4 → Q3). Imports shrink. Government collects tariff revenue on what's still imported (rectangle C). Now the welfare accounting: producers gain area A (their surplus increases because they get a higher price). Government collects area C (tariff revenue). But consumers lose A + B + C + D (their surplus falls by a much larger trapezoid). Net welfare change: gains are A + C; losses are A + B + C + D; net is −B − D. Areas B and D are pure deadweight loss — production we didn't need at this cost, and consumption that doesn't happen because the price is artificially high. This is the punchline: protection doesn't transfer welfare from consumers to producers. It transfers some welfare to producers and government, AND destroys some welfare entirely. That's why "free trade is good" isn't just an ideological claim — it's a welfare arithmetic claim. If we go back to the cooperation problem from earlier, this is what's at stake: when governments fail to cooperate, they leave B and D on the table. The cost of WTO failure isn't abstract; it's measurable in lost welfare.
+:::
+
+
+## What This Theory Assumes
+
+The standard comparative-advantage argument rests on three contested assumptions:
+
+::: {.columns}
+::: {.column width="33%"}
+
+::: {.callout-tip appearance="minimal"}
+## Market clearing
+Prices and wages adjust freely; labor markets clear; no persistent unemployment.
+
+Trade adjustment costs in practice can persist for decades and remain geographically concentrated.
+:::
+
+:::
+::: {.column width="33%"}
+
+::: {.callout-tip appearance="minimal"}
+## Constant or decreasing returns
+Markets are competitive rather than oligopolistic.
+
+Trade in aircraft, semiconductors, and software is dominated by a small number of firms operating under increasing returns to scale.
+:::
+
+:::
+::: {.column width="33%"}
+
+::: {.callout-tip appearance="minimal"}
+## Neutral terms of trade
+Relative prices do not systematically favor some producers over others.
+
+The Prebisch-Singer hypothesis argues that commodity exporters face deteriorating terms of trade against manufactured-goods exporters.
+:::
+
+:::
+:::
+
+::: {.callout-note appearance="minimal" icon=false}
+We will return to each of these assumptions when we cover development models and trade strategy.
+:::
+
+::: {.notes}
+This is a signposting slide — flagging that the theory we just walked through makes assumptions that aren't always true. Three big ones. (1) Market clearing: standard trade theory assumes prices and wages adjust to keep labor employed. In reality, the China Shock literature (Autor-Dorn-Hanson and others) shows that trade adjustment can be slow and geographically concentrated, with displaced workers not finding equivalent employment for years or decades. (2) Constant or decreasing returns to scale: the textbook story assumes competitive markets — many firms, no one with market power. Modern trade in aircraft, semiconductors, pharmaceuticals, software is dominated by a small number of firms with massive economies of scale. That's "new trade theory" (Krugman and others) — strategic interaction, market power, government intervention can shape who wins. Different politics, different policy implications. (3) Neutral terms of trade: the model assumes the relative prices of traded goods don't systematically favor some producers. Prebisch and Singer argued in the 1950s that commodity exporters (developing countries) face deteriorating terms of trade against manufactured-goods exporters — a key intellectual foundation of import-substitution strategies in Latin America and elsewhere. We don't have time to do these critiques justice today. Just flag them so students aren't shocked when they show up later. We'll revisit when we cover development.
+:::
+
+
+## Distribution Within Countries
+
+::: {.callout-important appearance="minimal" icon=false}
+Distributional conflict over trade is both interstate and intrastate. Country-level accounts of "winners" and "losers" obscure the within-country coalitions that produce national trade positions.
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### Between countries
+Some countries gain more from a given agreement than others. Bargaining power determines the distribution (Section 3).
+
+:::
+::: {.column width="50%"}
+
+### Within countries
+Industries, regions, and factor owners gain and lose unevenly.
+
+U.S. agriculture is heavily protected and subsidized despite farmers comprising roughly 1.5% of the population. The bicameral Senate gives Wyoming the same representation as California, amplifying the political power of rural producers.
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Intrastate distribution is the subject of next lecture (Chapter 4). For today: "the U.S. position" in any negotiation is the position of the domestic coalition with sufficient political voice to define it.
+:::
+
+::: {.notes}
+This slide is critical and worth slowing down for. The standard trade-theory presentation talks about country-level gains and losses, which makes it sound like the political problem is just "U.S. vs. China" or "developed vs. developing." But that's only half of it. The other half — and arguably the more important half for politics — is *within-country* distribution. Even when comparative advantage says the U.S. gains overall, those gains go to some American workers, firms, and regions while other American workers, firms, and regions lose. The political question isn't just "do we gain on net?" — it's "which Americans gain, and which lose, and which group has more political power?" Big Ag is the canonical U.S. example. Farmers are tiny — about 1.5% of the population. But agriculture is one of the most heavily protected and most heavily subsidized sectors in the U.S. economy. Why? Because the bicameral system in the U.S. Senate gives each state two senators regardless of population, and farm-state senators wield enormous power over farm-state legislation. Wyoming (population 580,000) gets the same Senate representation as California (population 39 million). That structural feature of American political institutions massively amplifies the political power of rural producer interests. We're going to spend a lot of time on this in Chapter 4 — society-centered theories of trade politics, Stolper-Samuelson, coalitions, the Ricardo-Viner / specific-factors model. For today, just plant the flag: when we say "the U.S. position" in trade negotiations, we don't mean some abstract national interest. We mean whichever domestic coalition has the political voice to define the U.S. position. That's a *much* messier story than the textbook lets on.
+:::
+
+
+# The Bargaining Problem {background-color="#990000"}
+
+
+## Why Governments Do Not Liberalize Unilaterally
+
+::: {.callout-tip appearance="minimal" icon=false}
+Trade gains exist in principle, but governments rarely cut tariffs without reciprocal concessions. The next slide develops a spatial model of why.
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### The unilateral problem
+
+- Domestic producer coalitions lose from open markets
+- Unilateral liberalization gives up domestic protection without securing foreign market access for exporters
+- The government moves away from its political ideal point
+
+:::
+::: {.column width="50%"}
+
+### The bargained alternative
+
+- Governments exchange market-access commitments
+- A spatial model (next slide) maps the trade-offs in two dimensions
+- Today we focus on bargaining power and the conditions under which impasses are resolved
+
+:::
+:::
+
+::: {.notes}
+Quick recap since we did the bargaining geometry in detail Day 2. The key intuition: if a government just unilaterally drops its tariffs, it gives up the domestic political support of protected producers without getting anything in return for its exporters. So unilateral liberalization moves the government *away* from its political ideal — which is why governments don't do it. Liberalization happens through trade agreements where both sides commit. The 1934 Reciprocal Trade Agreements Act in the U.S. is a great example of this logic at work — Congress delegated tariff-cutting authority to the President precisely because reciprocal cuts mobilized exporter constituencies that would otherwise stay silent. We don't need to do that history again today; just remember the principle. Now we move to two new pieces of analytical equipment: linkage (how impasses get broken), and the signaling vocabulary (cheap talk vs. costly signals).
+:::
+
+
+## The Bargaining Space
+
+Each axis is the level of tariff protection one side controls. Bargaining outcomes are points in this space.
+
+```{r}
+#| label: fig-bargaining
+#| fig-width: 9
+#| fig-height: 6.5
+#| out-width: "62%"
+#| fig-alt: "Two-dimensional bargaining diagram for the Doha Round. The status quo sits in the upper-right (high tariffs on U.S./EU agriculture and on G-20 manufactures). The U.S./EU ideal point is in the lower-right (high agricultural protection, low G-20 manufacturing tariffs). The G-20 ideal point is in the upper-left (low U.S./EU agricultural protection, high G-20 manufacturing tariffs). Circular indifference curves are drawn around each ideal point with radius equal to the distance from the ideal point to the status quo. The shaded intersection of the two circles is the joint-gains lens: the set of agreements both sides prefer to the status quo."
+
+sq   <- c(8, 8)
+useu <- c(8, 2)
+g20  <- c(2, 8)
+
+r_useu <- sqrt((sq[1] - useu[1])^2 + (sq[2] - useu[2])^2)
+r_g20  <- sqrt((sq[1] - g20[1])^2  + (sq[2] - g20[2])^2)
+
+theta     <- seq(0, 2*pi, length.out = 240)
+circ_useu <- data.frame(x = useu[1] + r_useu*cos(theta),
+                         y = useu[2] + r_useu*sin(theta))
+circ_g20  <- data.frame(x = g20[1]  + r_g20*cos(theta),
+                         y = g20[2]  + r_g20*sin(theta))
+
+# Lens — fine grid intersection
+grid <- expand.grid(x = seq(0, 10, 0.04), y = seq(0, 10, 0.04))
+grid$in_useu <- (grid$x - useu[1])^2 + (grid$y - useu[2])^2 <= r_useu^2
+grid$in_g20  <- (grid$x - g20[1])^2  + (grid$y - g20[2])^2  <= r_g20^2
+lens <- subset(grid, in_useu & in_g20)
+
+ggplot() +
+  geom_tile(data = lens, aes(x = x, y = y),
+            fill = iu_crimson, alpha = 0.20) +
+  geom_path(data = circ_useu, aes(x = x, y = y),
+            color = iu_dark_text, linewidth = 0.9) +
+  geom_path(data = circ_g20, aes(x = x, y = y),
+            color = iu_dark_text, linewidth = 0.9) +
+  geom_point(aes(x = sq[1], y = sq[2]), color = iu_crimson, size = 5) +
+  geom_point(aes(x = useu[1], y = useu[2]), color = iu_dark_text, size = 5) +
+  geom_point(aes(x = g20[1], y = g20[2]), color = iu_dark_text, size = 5) +
+  annotate("text", x = sq[1] + 0.35, y = sq[2] + 0.45,
+           label = "Status quo", hjust = 0,
+           fontface = "bold", size = 5.3, color = iu_crimson) +
+  annotate("text", x = useu[1] + 0.35, y = useu[2],
+           label = "U.S./EU ideal point", hjust = 0,
+           size = 5, color = iu_dark_text) +
+  annotate("text", x = g20[1] - 0.35, y = g20[2],
+           label = "G-20 ideal point", hjust = 1,
+           size = 5, color = iu_dark_text) +
+  annotate("text", x = 5, y = 5.1,
+           label = "Joint-gains\nlens",
+           fontface = "bold", color = iu_crimson, size = 5,
+           lineheight = 0.9) +
+  coord_fixed(xlim = c(0, 10), ylim = c(0, 10)) +
+  labs(x = "Tariffs on U.S./EU agriculture →",
+       y = "Tariffs on G-20 manufactures →") +
+  theme_ipe(base_size = 13) +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        plot.margin = margin(t = 5, r = 30, b = 5, l = 5))
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+Each circle is an indifference curve around one side's ideal point, drawn with radius equal to the distance from that ideal point to the status quo. Points inside the circle are preferred to the status quo by that side. Where the two circles overlap, both sides prefer the outcome to the status quo — the joint-gains lens.
+:::
+
+::: {.notes}
+Build the diagram with the students. Two-dimensional issue space: horizontal axis is the level of tariff protection on U.S./EU agriculture, vertical axis is the level of tariff protection on G-20 manufactures. Higher in either direction means more protected. The status quo at Doha was high tariffs in both, so it sits in the upper-right. Each side has an ideal point in the opposite quadrant: the U.S./EU want to keep agricultural protection (high X) while opening up G-20 manufactures (low Y), so the U.S./EU ideal sits in the lower-right. The G-20 wants the mirror: low U.S./EU agricultural protection (low X) and high protection on its own manufactures (high Y), so the G-20 ideal sits in the upper-left. Now draw a circle around each ideal point with radius equal to the distance from that ideal point to the status quo. Any point inside that circle is preferred to the status quo by that side, because it is closer to their ideal point. The intersection of the two circles — the lens — is the set of outcomes both sides prefer to the status quo. That's where bargaining can produce an agreement. Three minutes here; this is the analytical setup for what comes next. Linkage enlarges the bargaining space by adding issues, expanding the dimensions in which a lens can be found. Costly signals communicate which point in the lens each side will actually accept. Outside options change the location of acceptable deals by changing what "no deal" is worth to each side.
+:::
+
+
+## Linkage
+
+::: {.callout-important appearance="minimal" icon=false}
+Linkage bundles unrelated issues into a single negotiation. It is the principal mechanism by which large multilateral trade rounds reach agreement.
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### Why single-issue bargaining stalls
+
+- Each side has a politically protected sector on which it will not concede
+- The two-dimensional bargaining space is too narrow to contain a Pareto improvement
+- Negotiations terminate at the status quo
+
+:::
+::: {.column width="50%"}
+
+### Why bundled bargaining can succeed
+
+- Combining agriculture, manufactures, services, and intellectual property creates room for cross-issue trade-offs
+- A concession on agriculture can be offset by a gain on services
+- The Uruguay Round (1986–1994) is the canonical case and produced the WTO itself
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+The Uruguay Round, the GATS, and the TRIPS agreement exist because linkage allowed issues that could not pass standalone to be bundled with issues on which both sides preferred movement.
+:::
+
+::: {.notes}
+Linkage is one of the most important moves in international cooperation theory and it's worth slowing down on. The intuition: imagine two countries that both refuse to budge on a single issue — say agriculture. They're stuck. The bargaining space on that one dimension has no Pareto improvement that both sides will accept. But add a second issue, say services or intellectual property, and suddenly the bargaining space expands. One side might be willing to concede on agriculture if they get a big win on services. The Uruguay Round is the textbook case. The U.S. wanted developing countries to commit to intellectual property protection (TRIPS) and services market access (GATS). Developing countries wanted advanced economies to open their agriculture markets and clothing markets. Neither would happen standalone — but bundled together, they did. The WTO itself is a product of that bundling. Without linkage, none of this gets done. Two implications for thinking about contemporary trade politics. First: when negotiations stall on a single issue, you should expect the political path forward to involve bundling — adding issues to expand the space of possible deals. Second: linkage is also why trade agreements have gotten more controversial. Tying together agriculture and IP and labor standards and environmental rules creates richer deals — but also means that anyone with a grievance on any of the linked issues has a reason to oppose the whole package. The trade-policy backlash since the 2000s is partly about linkage.
+:::
+
+
+## Bargaining as a game of Signaling
+
+::: {.columns}
+::: {.column width="33%"}
+
+::: {.callout-note appearance="minimal"}
+## Incentives to misrepresent
+Each side has **private information** about its reservation price (what it would actually accept).
+
+Revealing the truth **weakens your position** (other side will only offer your reservation price), so each side has every reason to misrepresent how flexible they are.
+:::
+
+:::
+::: {.column width="33%"}
+
+::: {.callout-note appearance="minimal"}
+## Cheap talk
+Statements that cost nothing to make ("this is our **final** offer") are **not credible**.
+
+Because anyone could say them, they convey **no information** about your real position.
+:::
+
+:::
+::: {.column width="34%"}
+
+::: {.callout-note appearance="minimal"}
+## Costly signals
+Actions that **would not be taken** by a bargainer with different private information.
+
+Walking away from the table, building **outside options**, accepting short-term political pain — these are costly *because* they're real, and that's exactly what makes them credible.
+:::
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+The 2008 G-20 walkout at the Doha Round, discussed in Oatley, is the canonical illustration of a costly signal in trade bargaining.
+:::
+
+::: {.notes}
+This is the cleanest vocabulary slide of the lecture — get the three terms locked in. Start with the bargaining problem: each side has private information about its reservation price (the worst deal it would still accept). If you reveal that information, your bargaining partner just offers you the minimum. So each side has an incentive to misrepresent — to claim its reservation price is higher than it really is. The problem is that *everyone knows everyone has this incentive*. Which means simple verbal claims — "this is our final offer" — are cheap talk: they cost nothing to make, anyone could make them, and they convey no information. The way to actually transmit information about your real position is through *costly signals* — actions that you would not take if your real reservation price were lower than what you're claiming. Walking out of negotiations is the classic example. Building outside options is another. Accepting domestic political pain to demonstrate commitment is a third. The 2008 G-20 walkout at Doha is the textbook case — and Oatley walks through it in detail in the "A Closer Look" box. I don't need to re-explain it here; just mention it as the illustration. Students have read the chapter. The key conceptual point: bargaining theory predicts that *what people say* matters less than *what they're willing to do*, because actions reveal information that words can't.
+:::
+
+
+## Bargaining Power: Patience and Outside Options
+
+::: {.callout-important appearance="minimal" icon=false}
+The largest economy is not always the strongest bargainer. Bargaining power derives from the ability to credibly walk away from a deal, which depends on patience and outside options.
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### Patience
+
+- Both sides lose utility from delay, but not equally
+- A more patient government can hold out for outcomes closer to its ideal point
+- Patience comes from political stability, low domestic pressure, and longer time horizons
+
+:::
+::: {.column width="50%"}
+
+### Outside options
+
+- After 2008, the U.S. and EU pursued TPP, TTIP, and EU-Pacific agreements
+- Each RTA raises the value of WTO failure and lowers the price a country will pay for a multilateral concession
+- The 2008 G-20 walkout would have worked only if the U.S. and EU lacked alternatives; the alternatives existed, and Doha did not finish
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+A bargainer with patience or with credible outside options can credibly walk, and therefore can credibly demand more.
+:::
+
+::: {.notes}
+This is the central logical link of Section 3 — bargaining power as the ability to credibly walk away, which depends on patience and outside options. Cover both. Patience: both sides lose utility from delay, but not equally. A government with a stable mandate, long time horizon, and low domestic pressure can hold out for more. A government facing an election in six months, a domestic political crisis, or a coalition partner threatening to bolt is impatient — and impatient negotiators settle for worse outcomes. Patience is partly structural (political institutions, election cycles) and partly strategic (you can sometimes *manufacture* patience by removing yourself from the table). Outside options: the parallel mechanism. If your next-best alternative to a deal is bad, you'll accept worse terms. If your next-best alternative is good, you can hold out. In trade, the next-best alternative to a multilateral WTO deal is a regional or mega-regional — bilateral or plurilateral agreements that capture some of the gains without requiring 164-member consensus. Once the U.S. and EU started seriously pursuing mega-regionals after 2008 — TPP and TTIP were both major Obama-era initiatives — the value of a Doha deal to them dropped. Why pay big concessions to G-20 countries in Geneva when you can get most of what you want bilaterally with strategic partners? That's a major reason Doha never finished. And when India and China walked out in 2008, the walkout didn't work because the U.S./EU had alternatives. A walkout is only credible as a costly signal if the other side has no outside options. India and China misjudged the bargaining setting. The next slide adds a twist most textbooks don't cover: smaller and developing countries can also use RTAs strategically.
+:::
+
+
+## RTAs as Developing-Country Leverage
+
+::: {.callout-tip appearance="minimal" icon=false}
+Arvind Subramanian, in *Trade Talks* ep. 215 (Day 1 podcast), argues that RTAs are not only leverage for advanced economies. Developing countries can use them strategically against China.
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### The conventional view
+- Outside options favor whoever holds them
+- Advanced economies have historically held more of them
+
+:::
+::: {.column width="50%"}
+
+### Subramanian's argument
+- By signaling willingness to deepen ties with non-Chinese partners, developing economies transmit a costly signal to Beijing about market access
+- The mechanism is the same as in the previous slide; the direction of leverage is different
+
+:::
+:::
+
+::: {.callout-note appearance="minimal" icon=false}
+Bargaining power accrues to whichever side can credibly walk away, regardless of which side that is.
+:::
+
+::: {.notes}
+This is a really important addition to Oatley because the textbook tells the bargaining-power story in a one-directional way — advanced economies have outside options, developing countries don't, end of story. That's increasingly not true. Subramanian, in the Day 1 *Trade Talks* podcast episode (ep. 215, which students listened to as part of Day 1 prep), makes the case that RTAs are also a tool developing countries can use *against* recalcitrant trade partners — and specifically against China. The argument: China has been slow to liberalize market access for foreign firms in many sectors. Smaller and developing economies that want better China access have limited individual leverage. But if they collectively signal willingness to deepen trade ties with non-Chinese partners — through bilateral agreements, regional integration, supply-chain reorientation — that's a costly signal to Beijing. It tells China: continue dragging your feet and we'll route around you. Same theoretical mechanism we just talked about — outside options as bargaining leverage — but the power flow is different. This matters for thinking about contemporary trade politics. Indonesia, India, ASEAN states, even Latin American countries can use trade diversification strategically. They're not just price-takers in a system designed by advanced economies. (Paraphrase rather than quote — and the link to the podcast is in the schedule. Don't push more details than this; we don't have time and the students have heard the episode.)
+:::
+
+
+# The Enforcement Problem {background-color="#990000"}
+
+
+## Reaching an Agreement Is Not Enough
+
+::: {.callout-important appearance="minimal" icon=false}
+Once an agreement is reached, each side has a unilateral incentive to defect: to retain its own tariffs while the other side cuts theirs. The prospect of receiving the sucker payoff (liberalizing while one's partner does not) deters governments from signing in the first place.
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### The structure
+
+- Both sides have agreed to liberalize
+- Either can renege after signing
+- The international system lacks a third-party enforcer
+- What sustains compliance?
+
+:::
+::: {.column width="50%"}
+
+### The model
+
+The prisoner's dilemma formalizes the situation:
+
+- Mutual cooperation maximizes joint welfare
+- Each player prefers to defect when the other cooperates
+- Anticipating mutual defection, neither cooperates
+
+:::
+:::
+
+::: {.notes}
+This is the conceptual bridge from bargaining (Section 3) to the WTO solution (Section 5). Even if governments can find a deal both sides prefer to the status quo — and stretch the bargaining space with linkage, signal credibly with costly signals, etc. — they still face the enforcement problem. Once they sign the deal, each side has a *unilateral* incentive to cheat. To keep its own protected sectors closed while exploiting the other side's market opening. The fear of being on the receiving end of that — the "sucker payoff," where you opened up but they didn't — is enough to prevent cooperation from happening in the first place. The textbook frames this as the international cooperation problem and uses the prisoner's dilemma to formalize it. We're going to walk through that game theory carefully in the next few slides — it's worth taking the time because the cooperative escape (iterated PD with tit-for-tat) is the exact theoretical foundation of the WTO's Dispute Settlement Mechanism.
+:::
+
+
+## The Prisoner's Dilemma Applied to Trade
+
+::: {.columns}
+::: {.column width="58%"}
+
+```{r}
+#| label: fig-pd
+#| fig-width: 9
+#| fig-height: 6
+#| out-width: "98%"
+#| fig-alt: "Two-by-two prisoner's dilemma matrix for trade between the G-20 (rows) and the European Union (columns). Each player has two strategies, Liberalize or Protect. The four cells show: top-left (L, L) joint gains; top-right (L, P) G-20 worst, the sucker payoff; bottom-left (P, L) G-20 best, the temptation payoff; bottom-right (P, P) status quo. A red ellipse surrounds the bottom-right cell with an arrow labeled 'Nash equilibrium' pointing to it."
+
+cells <- data.frame(
+  xmin  = c(0, 2.4, 0,   2.4),
+  xmax  = c(2.4, 4.8, 2.4, 4.8),
+  ymin  = c(1.6, 1.6, 0,   0),
+  ymax  = c(3.2, 3.2, 1.6, 1.6),
+  cx    = c(1.2, 3.6, 1.2, 3.6),
+  cy    = c(2.4, 2.4, 0.8, 0.8),
+  label = c("(L, L)\njoint gains",
+            "(L, P)\nG-20 worst\n(sucker)",
+            "(P, L)\nG-20 best\n(temptation)",
+            "(P, P)\nstatus quo")
+)
+
+# Ellipse around (P, P) cell
+theta <- seq(0, 2*pi, length.out = 120)
+nash_ellipse <- data.frame(
+  x = 3.6 + 1.15 * cos(theta),
+  y = 0.8 + 0.78 * sin(theta)
+)
+
+ggplot() +
+  geom_rect(data = cells,
+            aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
+            fill = "white", color = iu_dark_text, linewidth = 0.9) +
+  geom_text(data = cells, aes(x = cx, y = cy, label = label),
+            size = 5, color = iu_dark_text, lineheight = 1) +
+  # Nash ellipse around (P, P)
+  geom_path(data = nash_ellipse, aes(x = x, y = y),
+            color = iu_crimson, linewidth = 1.8) +
+  annotate("text", x = 6.5, y = 0.8,
+           label = "Nash\nequilibrium",
+           fontface = "bold", color = iu_crimson, size = 5.6,
+           lineheight = 0.95, hjust = 0) +
+  annotate("segment", x = 6.4, xend = 4.85, y = 0.8, yend = 0.8,
+           color = iu_crimson, linewidth = 0.9,
+           arrow = arrow(length = unit(0.25, "cm"), type = "closed")) +
+  # Row labels (G-20)
+  annotate("text", x = -0.25, y = 2.4,
+           label = "Liberalize", hjust = 1, size = 4.7,
+           fontface = "bold", color = iu_crimson) +
+  annotate("text", x = -0.25, y = 0.8,
+           label = "Protect", hjust = 1, size = 4.7,
+           fontface = "bold", color = iu_crimson) +
+  annotate("text", x = -1.65, y = 1.6,
+           label = "G-20", angle = 90, size = 5.4,
+           fontface = "bold", color = iu_dark_text) +
+  # Column labels (EU)
+  annotate("text", x = 1.2, y = 3.5,
+           label = "Liberalize", size = 4.7,
+           fontface = "bold", color = iu_crimson) +
+  annotate("text", x = 3.6, y = 3.5,
+           label = "Protect", size = 4.7,
+           fontface = "bold", color = iu_crimson) +
+  annotate("text", x = 2.4, y = 4.1,
+           label = "European Union", size = 5.4,
+           fontface = "bold", color = iu_dark_text) +
+  coord_fixed(xlim = c(-2.2, 8.5), ylim = c(-0.3, 4.4)) +
+  theme_void() +
+  theme(plot.margin = margin(t = 5, r = 5, b = 5, l = 5))
+```
+
+*G-20 preference order: (P, L) > (L, L) > (P, P) > (L, P). EU is symmetric.*
+
+:::
+::: {.column width="42%"}
+
+### Best response logic
+
+**G-20**
+
+- If EU plays Liberalize → G-20 prefers Protect (yields P, L over L, L)
+- If EU plays Protect → G-20 prefers Protect (yields P, P over L, P)
+- Protect is therefore a dominant strategy
+
+**EU** (by symmetry)
+
+- Protect is also dominant for the EU
+- Both rational players choose Protect
+- The game terminates at (P, P)
+
+:::
+:::
+
+::: {.callout-important appearance="minimal" icon=false}
+Both sides know they would be better off at (Liberalize, Liberalize). Individual rationality nonetheless drives them to (Protect, Protect). The equilibrium is collectively suboptimal.
+:::
+
+::: {.notes}
+This is the analytical core of the section. Walk through the matrix first, then the best-response logic, ending at the Nash equilibrium label on the (P, P) cell.
+
+The matrix: G-20 is the row player, EU is the column player. Each has two strategies, Liberalize or Protect. Four cells: (L, L) mutual cooperation with joint gains; (L, P) G-20 opens its market but EU does not — G-20's worst outcome, the sucker payoff; (P, L) G-20 keeps protection while EU opens — G-20's best outcome, the temptation payoff; (P, P) mutual protection, the status quo. Preference order for G-20: (P, L) > (L, L) > (P, P) > (L, P). EU is symmetric.
+
+Best response logic — walk through it methodically. If the EU plays Liberalize, G-20 compares (L, L) and (P, L) and prefers Protect because (P, L) is its best outcome. If the EU plays Protect, G-20 compares (L, P) and (P, P) and prefers Protect because (L, P) is its worst outcome. Protect is therefore a strict dominant strategy for G-20: optimal regardless of what the EU does. By symmetry, the same logic gives Protect as a dominant strategy for the EU. Both rational players choose Protect, and the equilibrium is (P, P).
+
+Now name the equilibrium. (P, P) is a Nash equilibrium because neither player can unilaterally improve their payoff by deviating: unilateral deviation from (P, P) yields the sucker payoff for the deviator. The result is a stable but suboptimal outcome — both players prefer (L, L) but neither can move there alone. This is the formal expression of the cooperation problem and the setup for everything in Section 5: how iteration and reciprocity allow governments to escape this trap.
+:::
+
+
+## Two Properties of the (P, P) Equilibrium
+
+::: {.columns}
+::: {.column width="50%"}
+
+::: {.callout-warning appearance="minimal"}
+## Pareto suboptimal
+At least one player could be made better off without making anyone else worse off.
+
+- Both sides prefer **(L, L)** to **(P, P)**
+- (L, L) is reachable in principle
+- Yet they don't reach it
+:::
+
+:::
+::: {.column width="50%"}
+
+::: {.callout-warning appearance="minimal"}
+## Nash equilibrium
+No player can unilaterally improve their payoff by changing strategy.
+
+- G-20 deviation from (P, P) yields (L, P), its worst outcome
+- EU deviation from (P, P) yields (P, L), its worst outcome
+- Neither player has a unilateral incentive to deviate
+:::
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Together, these properties define the cooperation problem. The (Protect, Protect) outcome is stable (no unilateral incentive to deviate) yet collectively suboptimal (both sides prefer Liberalize, Liberalize). Individual rationality produces collective dysfunction.
+:::
+
+::: {.notes}
+Two formal definitions worth nailing down. Pareto suboptimal: an outcome from which at least one player could be made better off without making anyone else worse off. (P, P) is Pareto suboptimal because both players strictly prefer (L, L). There's a Pareto improvement available, but the game doesn't get there. Nash equilibrium: an outcome at which no player can unilaterally improve their payoff by changing strategy. (P, P) is a Nash equilibrium because if either player switched alone to liberalize, they'd get the sucker payoff. The deviation makes them worse off. So neither has any incentive to deviate. The kicker: these two properties together are what makes the cooperation problem hard. (P, P) is stable (Nash) AND bad (Pareto suboptimal). It's stable *because* it's bad — if it were Pareto optimal, no one would want to deviate; here, deviating unilaterally makes you worse off even though deviating jointly would make everyone better. This is the formal definition of what it means to be trapped. Conceptual point for students: when you see "X happens even though Y would be better for everyone," the underlying analytical structure is almost always something like this — individually-rational behavior producing collectively-irrational outcomes. The PD is a workhorse model not just for trade, but for climate, security, public goods provision, antitrust, you name it.
+:::
+
+
+# The WTO as Incentive-Compatible Enforcement {background-color="#990000"}
+
+
+## Iteration
+
+::: {.callout-important appearance="minimal" icon=false}
+A one-shot Prisoner's Dilemma traps countries in a suboptimal equilibrium (Protect, Protect). But states are long-lasting: they play repeatedly, and often with the same partners. In an iterated Prisoner's Dilemma, cooperation can become rational under certain conditions.
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### One-shot game
+- Defection yields the temptation payoff once
+- No future round, no future punishment
+- Cooperation is irrational
+
+:::
+::: {.column width="50%"}
+
+### Iterated game
+- Defection today invites punishment tomorrow
+- The stream of cooperation payoffs (L, L) can exceed a one-time defection gain
+- Cooperation is sustainable if players are sufficiently patient
+- This result is the Folk Theorem in game theory
+
+:::
+:::
+
+::: {.notes}
+Iteration changes everything. In a one-shot PD, defection is rational because there's no future. You take the temptation payoff and move on. But in real life, the U.S. and EU don't negotiate once — they negotiate over and over, year after year, decade after decade. Iteration introduces a future. If you defect today, your partner can punish tomorrow. That changes your payoff calculation. You're no longer comparing one defection against one cooperation — you're comparing a stream of future cooperation payoffs against a single defection payoff plus future punishment. If you discount the future at a reasonable rate and your partner uses a credible punishment strategy, cooperation becomes the rational choice. This is the analytical foundation of every cooperative institution we have. The Folk Theorem in game theory makes this formal: in an iterated PD with sufficiently patient players and credible punishment strategies, cooperation can be sustained as an equilibrium. Note: the result depends on patience (low enough discount rate) and a credible punishment strategy. We need to talk about both — and we'll see in a moment that the WTO institutionally supplies (or at least supports) both conditions.
+:::
+
+
+## Three Conditions for Cooperation *(Axelrod-Keohane-Oye)*
+
+::: {.columns}
+::: {.column width="33%"}
+
+::: {.callout-note appearance="minimal"}
+## 1. Iteration
+The same parties must play repeatedly and expect future interactions. Without iteration, no future round can discipline present behavior.
+:::
+
+:::
+::: {.column width="33%"}
+
+::: {.callout-note appearance="minimal"}
+## 2. Reciprocity
+Players need a strategy that rewards cooperation and punishes defection. The canonical example is Axelrod's tit-for-tat.
+:::
+
+:::
+::: {.column width="34%"}
+
+::: {.callout-note appearance="minimal"}
+## 3. Future-orientation
+Players must value future payoffs enough that anticipated punishment disciplines current behavior. A sufficiently low discount rate sustains cooperation; a high one collapses the game back to one-shot.
+:::
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Robert Axelrod (1984), *The Evolution of Cooperation*; Robert Keohane (1984), *After Hegemony*; Kenneth Oye (1986), *Cooperation Under Anarchy*.
+:::
+
+::: {.notes}
+Three conditions, each citing the foundational works in international cooperation theory. Iteration: the same parties have to play repeatedly. If you only deal with someone once, they have no reason to keep their word — and you have no way to punish them later. The future has to exist in some real sense for the game theory to work. Reciprocity: the cooperator needs a strategy that rewards cooperation and punishes defection in measurable ways. Tit-for-tat — play whatever your partner played last round — is the canonical example, and Axelrod's computer tournaments in the early 1980s showed it consistently outperforms more complicated strategies. The key feature: nice, retaliatory, forgiving, and clear. Future-orientation: the players have to care about future payoffs. If they fully discount the future — if a payoff tomorrow is worth zero today — the iterated game collapses back to a one-shot game and cooperation fails. Bring the citations: Axelrod's *Evolution of Cooperation* (1984) is the empirical and theoretical foundation. Keohane's *After Hegemony* (1984) is the IR application. Oye's edited volume *Cooperation Under Anarchy* (1986) brought together a generation of scholars working in this tradition. These are the texts that defined how IR thinks about cooperation for the next 40 years. The WTO is, in many ways, the institutional embodiment of this literature.
+:::
+
+
+## How the WTO Supplies These Conditions
+
+::: {.columns}
+::: {.column width="50%"}
+
+### Iteration
+
+::: {.callout-note appearance="minimal"}
+- Stable membership: 164 members and few exits in over seventy years
+- Repeated rounds: eight completed, the ninth (Doha) ongoing
+- Periodic policy reviews of every member by its peers
+:::
+
+The same governments deal with each other repeatedly, year after year.
+
+:::
+::: {.column width="50%"}
+
+### Reciprocity (information and standards)
+
+::: {.callout-note appearance="minimal"}
+- MFN and national treatment supply bright-line standards against which behavior can be evaluated
+- Transparency requirements apply to trade remedies, safeguards, and non-tariff barriers
+- The WTO publishes systematic data on every member's tariffs and NTBs
+:::
+
+Tit-for-tat requires that each side observe when its partner has defected. The WTO supplies the information.
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Future-orientation is a property of governments themselves, not something the WTO can supply. When governments stop valuing future trade cooperation, the iterative logic of the institution erodes. (More on this when the student presents Bown & Keynes 2020.)
+:::
+
+::: {.notes}
+This is the central conceptual argument of the lecture's second half. The WTO doesn't enforce trade agreements directly — it supplies the *institutional conditions* under which governments can enforce agreements *among themselves*. How? By providing iteration and information. Iteration: the WTO has had stable membership for decades. 164 countries belong; almost no one has ever left. So when the U.S. and Brazil negotiate today, they know they'll be negotiating again next year and the year after. There's a stream of future interactions to discipline current behavior. The WTO also runs regular bargaining rounds (eight completed, plus Doha ongoing) and conducts trade policy reviews for every member every few years. Every member's behavior is under continual scrutiny. Reciprocity needs information. To play tit-for-tat, you have to know when your partner has cheated. The WTO provides this through several institutional features. MFN and National Treatment are bright-line rules — you can tell when someone violates them. Trade remedies, safeguards, and NTBs all have transparency requirements — countries have to notify the WTO when they impose them. And the WTO secretariat publishes systematic data on tariffs and trade barriers. This is the information infrastructure that makes credible reciprocity possible. What the WTO can NOT supply is the third condition: future-orientation. That's a property of governments themselves. When governments stop valuing future cooperation — when they discount the future heavily, when they prioritize short-term political wins — the entire iterated game can collapse. This is foreshadowing for the student presentation: the Appellate Body crisis is, in part, a story about the U.S. government deciding it values the future of WTO cooperation less than it values the freedom to act unilaterally now.
+:::
+
+
+## The DSM as Institutionalized Tit-for-Tat
+
+::: {.callout-important appearance="minimal" icon=false}
+The Dispute Settlement Mechanism (DSM) is the WTO's formalized tit-for-tat. It legalizes retaliation, requires that retaliation be proportionate to the harm, and embeds the entire process in a predictable timeline. These features make WTO enforcement incentive-compatible: every member knows in advance the cost of defection.
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### Why incentive-compatible
+
+- The cost of defection (authorized retaliation) is known in advance
+- The punishment is proportional to the harm caused
+- The process is transparent and rule-bound
+- Governments can rationally weigh compliance against the predictable price of non-compliance
+
+:::
+::: {.column width="50%"}
+
+### Why retaliation does not escalate
+
+- Retaliation must be authorized by the DSB
+- Magnitude is bounded by demonstrated harm
+- Procedural constraints prevent the spiral that produces trade wars
+
+:::
+:::
+
+::: {.notes}
+The big conceptual claim of this section. The DSM is the WTO's most distinctive institutional innovation, and it's best understood as institutionalized tit-for-tat. The DSM doesn't punish violators directly — instead, it legalizes the *injured party's* retaliation, but constrains it to be proportionate and rule-bound. The phrase to drill into students' heads: "incentive-compatible enforcement." The point is that under DSM rules, every member knows ex ante what defection costs. There's a predictable process: complaint, panel, ruling, appeal (when the AB was functional), implementation period, and if no compliance, authorized retaliation up to the amount of harm caused. A government considering whether to violate WTO commitments can rationally compare: comply, or pay the predictable price. That's what makes it incentive-compatible — the institutional setup is designed so that rational governments will (mostly) choose compliance. The "tit-for-tat, not war" framing is also worth emphasizing. In a pure anarchic world, retaliation tends to escalate. You cheat, I retaliate, you over-retaliate, I escalate further — that's the road to a trade war (Smoot-Hawley 1930-style). The DSM prevents this by requiring proportionality. Brazil can retaliate against the U.S. only up to the amount of harm that U.S. policy caused. The institution constrains retaliation to be measured. That's how international rules turn a destructive logic into a productive one.
+:::
+
+
+## The Dispute Settlement Process
+
+```{r}
+#| label: fig-dsm
+#| fig-width: 13
+#| fig-height: 5
+#| out-width: "95%"
+#| fig-alt: "Horizontal flowchart of the WTO Dispute Settlement process showing five stages from consultations through to authorized retaliation. Time annotations show that the full process takes roughly 15 months."
+
+stages <- data.frame(
+  x = c(1, 3, 5, 7, 9),
+  label = c("Consultations",
+            "Panel\nestablished",
+            "Panel report\n+ DSB adoption",
+            "Optional\nappellate review",
+            "Implementation\n→ retaliation if no compliance"),
+  time = c("60 days", "~ 1 month", "~ 9 months", "~ 3 months", "30+ days")
+)
+
+ggplot(stages) +
+  geom_segment(aes(x = x, xend = lead(x), y = 1, yend = 1),
+               arrow = arrow(length = unit(0.25, "cm"), type = "closed"),
+               color = iu_light_gray, linewidth = 0.9) +
+  geom_label(aes(x = x, y = 1, label = label),
+             fill = iu_cream, color = iu_crimson, size = 4.5,
+             fontface = "bold",
+             label.padding = unit(0.55, "lines"), label.size = 0.6) +
+  geom_text(aes(x = x, y = 0.55, label = time),
+            size = 4, color = iu_gray, fontface = "italic") +
+  annotate("text", x = 5, y = 1.8,
+           label = "Total: ~15 months from complaint to authorized retaliation",
+           size = 5.5, color = iu_crimson, fontface = "bold") +
+  coord_cartesian(xlim = c(0.2, 10), ylim = c(0.3, 2.1), expand = FALSE) +
+  theme_void()
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+Every member knows the sequence, the timeline, and the maximum cost of defection in advance. Predictability is what allows the procedure to function as enforcement.
+:::
+
+::: {.notes}
+Simplified version of Oatley Figure 3.6. The actual process has more branches (consultations may include third parties, panel composition can take longer, the DSB has formal voting procedures, etc.), but for teaching purposes the high-level flow is what matters. Five stages. Consultations (60 days) — the parties try to resolve the dispute through direct talks. If that fails, panel is established (about a month). Panel investigates and issues a report (typically 6-9 months from establishment). The DSB adopts the report unless there's an appeal. Appellate review (the part that's now broken) used to add up to 3 months. Then implementation — the losing party has a "reasonable period of time" to bring its policy into compliance. If no compliance, the winning party can request and get authorization to retaliate. The whole process is designed to take about 15 months from start to retaliation. That timeline is the institutional engine of incentive compatibility — every member knows it, every member can plan around it. The Cotton case we'll see next followed this process closely, though it stretched over more than a decade due to compliance disputes.
+:::
+
+
+## The WTO Is Not a State
+
+::: {.callout-important appearance="minimal" icon=false}
+"The WTO is not an international equivalent of a state because the WTO does not have the authority or the capacity to punish governments that fail to comply." (Oatley, p. 70)
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### What the WTO cannot do
+
+- Levy fines or sanctions on a member
+- Compel a member to change policy
+- Override domestic law
+- Maintain anything resembling a police force
+
+:::
+::: {.column width="50%"}
+
+### What the WTO does instead
+
+- Provides rules members have agreed to
+- Provides information about compliance
+- Provides a dispute mechanism that allows members to enforce agreements against one another
+- Activates domestic political coalitions inside a non-compliant country (next slide)
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+The WTO provides infrastructure for self-enforcement among its members. This distinction matters for understanding both how the cotton case worked and why the Appellate Body crisis matters.
+:::
+
+::: {.notes}
+This is one of the most important conceptual moves in the entire chapter, and Oatley puts it in the conclusion. The WTO is not a state. It doesn't have sovereign authority. It can't fine, sanction, or compel anyone. So what does it do? It provides infrastructure. Rules that members agree to follow. Information about who's complying and who isn't. A formal dispute mechanism that helps members enforce against each other. And — this is the part Oatley underplays but we'll emphasize in the cotton case — it activates domestic political coalitions inside violating countries to push their own government to comply. So when critics say "the WTO has no teeth" — meaning it can't directly punish — they're correct in a narrow sense but wrong in a more important sense. The teeth are in the *violator's* domestic politics. WTO authorization of retaliation creates losers from non-compliance inside the violating country, who then lobby their own government for resolution. The next section makes that mechanism concrete with the Brazilian cotton case. Keep this distinction in mind for the student presentation as well — Bown & Keynes are going to talk about how the U.S. dismantled the Appellate Body, and one of their key claims is that the U.S. did so precisely because the AB had teeth (politically inconvenient ones for the U.S.).
+:::
+
+
+# The DSM in Action: U.S.–Brazil Cotton {background-color="#990000"}
+
+
+## The Case at a Glance
+
+::: {.callout-tip appearance="minimal" icon=false}
+Brazil v. United States, 2002–2014. A twelve-year DSM proceeding in which Brazil challenged U.S. cotton subsidies and ultimately forced a restructuring of U.S. farm policy.
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### Brazil's complaint
+- U.S. cotton subsidies (export support and domestic price and income supports) advantaged U.S. growers
+- U.S. policy violated WTO rules on subsidies
+- Brazilian cotton growers were harmed in global markets
+
+:::
+::: {.column width="50%"}
+
+### U.S. response
+- Cotton subsidies constitute a domestic safety net
+- They protect U.S. farmers from commodity-market volatility
+- They are not an export subsidy in disguise
+
+:::
+:::
+
+::: {.callout-note appearance="minimal" icon=false}
+Brazil, a developing country, brought the most powerful WTO member into compliance. The cotton case is the canonical illustration of how the DSM converts international rules into domestic political pressure.
+:::
+
+::: {.notes}
+Set up the case quickly. Brazil filed its complaint at the WTO in 2002. The allegation: U.S. cotton subsidies — a combination of export credit support and domestic price/income supports — gave U.S. cotton growers an unfair advantage in global markets and violated WTO rules on subsidies. Brazil argued its cotton growers were directly harmed because U.S. subsidies depressed global cotton prices. The U.S. defended the subsidies as a domestic safety net — protecting U.S. farmers from volatile commodity markets, not an export subsidy in disguise. The defense was that any global price effects were incidental. This is a politically rich case for two reasons. First, the U.S. is the largest WTO member, the most economically powerful, and the original architect of the WTO. Cotton subsidies were politically untouchable in U.S. domestic politics. Brazil — a developing country, by comparison much smaller economically — was challenging this on legal grounds in an international forum. Second, the case dragged on for 12 years through panel rulings, appeals, compliance reviews, more rulings — a full demonstration of how the DSM functions in real life. The next slide walks through the timeline. The key thing students should take away is not the legal details — they're not lawyers — but the *mechanism*: how the DSM turned a Brazilian legal complaint into U.S. political pressure that eventually changed U.S. domestic policy.
+:::
+
+
+## The Cotton Case Timeline
+
+```{r}
+#| label: fig-cotton-timeline
+#| fig-width: 14
+#| fig-height: 5.2
+#| out-width: "95%"
+#| fig-alt: "Horizontal timeline of the U.S.-Brazil cotton dispute from 2002 to 2014. Major milestones include the original complaint filed in 2002, the panel ruling against the U.S. in 2004, the Appellate Body upholding the ruling, the compliance panel in 2007 finding U.S. adjustment insufficient, the WTO authorizing $823 million per year in retaliation in 2009, the April 2010 settlement with $147 million per year capacity-building payments to Brazil, the 2014 Farm Bill restructuring cotton support, and final settlement in October 2014 with a $300 million lump-sum payment."
+
+cotton <- data.frame(
+  year = c(2002, 2004, 2005, 2007, 2009, 2010, 2014, 2014.6),
+  event = c(
+    "Brazil files\ncomplaint",
+    "Panel rules\nagainst U.S.",
+    "Appellate Body\nupholds ruling",
+    "Compliance panel:\nU.S. adjustment\ninsufficient",
+    "WTO authorizes Brazil\nto retaliate up to\n$823M/year",
+    "April: Settlement\n— $147M/yr to Brazil\nuntil reform",
+    "2014 Farm Bill:\ncotton support\nrestructured",
+    "Oct: Final settlement —\n$300M lump sum;\nBrazil drops case"
+  ),
+  pos = c(1, -1, 1, -1, 1, -1, 1, -1)
+)
+
+ggplot(cotton, aes(x = year, y = 0)) +
+  geom_segment(aes(xend = year, yend = pos),
+               color = iu_light_gray, linewidth = 0.5) +
+  geom_hline(yintercept = 0, color = iu_crimson, linewidth = 0.9) +
+  geom_point(aes(y = 0), color = iu_crimson, size = 4) +
+  geom_label(aes(y = pos, label = event),
+             fill = iu_cream, color = iu_dark_text, size = 3.6,
+             fontface = "bold", lineheight = 0.9,
+             label.padding = unit(0.45, "lines")) +
+  scale_x_continuous(breaks = c(2002, 2005, 2008, 2011, 2014),
+                     limits = c(2001, 2015.5)) +
+  scale_y_continuous(limits = c(-1.8, 1.8)) +
+  labs(title = "U.S.–Brazil Cotton Dispute Timeline",
+       subtitle = "From complaint to final settlement: 12 years",
+       x = NULL, y = NULL,
+       caption = "Source: Adapted from Oatley, International Political Economy, 7th ed., pp. 66-68") +
+  theme_ipe(base_size = 16) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank())
+```
+
+::: {.notes}
+Walk through the timeline. 2002: Brazil files the complaint. 2004: WTO panel rules against the U.S. — the cotton subsidies constitute export support and price-distorting domestic support that violate WTO rules. 2005: U.S. appeals; Appellate Body upholds the ruling. So the U.S. has been told twice — by the panel and by the Appellate Body — that its cotton subsidies violate WTO commitments. 2007: U.S. modifies some elements of its cotton support but Brazil requests a compliance panel; the compliance panel finds the adjustment insufficient. So the U.S. lost a third time. 2009: WTO formally authorizes Brazil to retaliate against the U.S. up to $823 million per year — the value of harm caused. This is the moment of maximum tension: a developing country has been given formal international authorization to impose punitive tariffs on the world's largest economy. April 2010: The U.S. and Brazil reach a settlement. The U.S. agrees to pay Brazil $147 million per year to a Brazilian agribusiness capacity-building fund, in exchange for Brazil not implementing the retaliation. The U.S. also commits to reform cotton support as part of the next Farm Bill. 2014: The Farm Bill is enacted; cotton support is restructured into an insurance program that farmers contribute to (bringing U.S. policy into WTO conformity). October 2014: Brazil and the U.S. reach a final settlement; Brazil drops the dispute and accepts a $300 million one-time payment to the Brazil Cotton Institute. The whole process took 12 years. The lesson: the DSM works, but it's slow. And it works largely because the threat of retaliation forced political movement inside the U.S., not because the WTO directly imposed anything.
+:::
+
+
+## How the DSM Created Pressure for Compliance
+
+::: {.columns}
+::: {.column width="50%"}
+
+### The international process
+
+1. Produced a legal finding of U.S. violation
+2. Measured the gap between U.S. policy and WTO obligations
+3. Authorized retaliation up to $823 million per year
+4. Conferred international legitimacy on Brazil's threat
+
+:::
+::: {.column width="50%"}
+
+### The domestic effect in the United States
+
+5. Brazil's threatened tariffs targeted specific U.S. exports
+6. Producers of those exports lobbied USG for resolution
+7. The Farm Bill negotiations became the legislative vehicle for compliance
+
+:::
+:::
+
+::: {.callout-important appearance="minimal" icon=false}
+WTO authorization converted international rules into domestic political pressure. The DSM did not punish the United States directly; it created domestic political incentives for U.S. industries to push their own government toward compliance.
+:::
+
+::: {.notes}
+This slide is the bridge to the political-economy payoff. The DSM's effect on the U.S. wasn't through direct enforcement — it was through the *threat* of authorized retaliation, which created winners from U.S. compliance inside the U.S. itself. Walk through both columns. The international side: panel ruling created a legal finding, compliance ruling measured the gap, retaliation authorization put a dollar value on the cost of continued non-compliance, and international legitimacy meant the U.S. couldn't dismiss it as Brazilian aggression. The domestic side: Brazil's authorized retaliation targeted specific U.S. export sectors. The producers in those sectors faced credible tariff threats against their products. They started lobbying the U.S. government — not Brazil, not the WTO — to resolve the case so their exports wouldn't be hit. The Farm Bill negotiations became the political vehicle for compliance. This is what we mean by "incentive-compatible enforcement": the DSM is set up so that defection (continued non-compliance) creates costs that mobilize domestic political coalitions in the violating country. The institution doesn't enforce — it activates. The next slide drills further into Brazil's strategic targeting choices, which is where the political-economy point really lands.
+:::
+
+
+## Brazil's Strategic Targeting
+
+::: {.callout-important appearance="minimal" icon=false}
+Brazil did not threaten retaliation against arbitrary U.S. exports. It targeted goods whose producers were politically organized and well-represented in Congress.
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### A non-strategic alternative
+Tariffs on politically weak, diffuse, unorganized U.S. industries.
+
+→ Modest economic harm to the United States
+→ Limited political response
+→ No domestic pressure for compliance
+
+:::
+::: {.column width="50%"}
+
+### Brazil's actual approach
+Tariffs threatened against politically organized U.S. industries with active trade associations, lobbyists, and congressional ties.
+
+→ Affected producers mobilized
+→ Their lobbyists pressed Congress
+→ Congress had political reason to compel USTR to settle
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+International enforcement operated through domestic political channels. Brazil used the DSM not only to establish a legal finding but to engineer a coalition shift inside U.S. politics.
+:::
+
+::: {.notes}
+This is the slide that ties everything together — the political-economy payoff of the entire DSM section. The point is that the DSM doesn't just have generic effects; it has *strategically targeted* effects, and that's by design. Brazil could have responded to the WTO authorization in two ways. Option one: impose tariffs on whatever U.S. goods were easiest to identify, regardless of who produced them. That would have generated modest economic harm to the U.S. but very little political response — because the affected producers might be diffuse, unorganized, lacking political voice. The U.S. government would have absorbed the harm without much pressure to change policy. Option two — what Brazil actually did: strategically pick the U.S. exports whose producers were *politically powerful*. That meant industries with strong trade associations, well-funded lobbyists, longstanding congressional relationships. When those industries faced credible tariff threats, they mobilized fast. Their lobbyists started calling members of Congress. The political calculus inside the U.S. shifted: Congress had to weigh "lose the Farm Bill cotton provisions and protect other powerful exporters" against "keep cotton provisions and let those exporters take the hit." The first option was easier to deliver politically. So Congress moved. This is what we mean by international enforcement working through domestic political channels. Brazil — a developing country with no direct power over U.S. policy — used the DSM to engineer a coalition shift inside U.S. politics. That's a much more subtle and effective form of enforcement than direct sanctions. It's also exactly what the bargaining theory we did earlier predicts: when you can credibly threaten costs on a target's politically powerful constituents, you create domestic pressure for the target government to settle.
+:::
+
+
+## Reassessing the "No Teeth" Critique
+
+::: {.columns}
+::: {.column width="50%"}
+
+### The conventional critique
+- The WTO cannot directly punish a member
+- It cannot compel a country to change policy
+- Powerful members ignore rulings they dislike
+- Therefore the WTO is toothless
+
+:::
+::: {.column width="50%"}
+
+### What the critique overlooks
+- The WTO does not need to punish directly
+- It needs to make non-compliance politically costly inside the violator
+- Authorized retaliation creates domestic losers from non-compliance
+- Those losers do the enforcement work through their own political system
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+The enforcement mechanism resides in the violator's domestic politics. The cotton case demonstrates that this mechanism works even against the most powerful WTO member, provided the institution is functioning.
+:::
+
+::: {.notes}
+The "no teeth" critique of the WTO is widespread and intuitive — and it's wrong in an important way. Yes, the WTO can't directly sanction a country. It can't seize assets, block trade, or compel policy change. In that narrow sense, the critique is correct: there's no global police force, no enforcement bureau, no WTO army. But that's the wrong test for what an international institution should do. The right test is: does it change behavior? And the cotton case shows that yes, it does — when the institution is functioning, the DSM creates conditions under which non-compliance becomes politically costly *inside* the violating country. The teeth aren't at the WTO; the teeth are in the U.S. Congress, in the affected exporters' lobbying budgets, in the political calculations of members of Congress whose districts include those exporters. That's a powerful enforcement mechanism, and it explains why the U.S. — the most powerful WTO member — actually does comply with the vast majority of WTO rulings, even ones it dislikes. Why bring this up now? Because it sets up the student presentation. The Appellate Body crisis is, in part, a story about a U.S. administration that decided this enforcement mechanism was working too well — that the political pressure created by Appellate Body rulings was constraining U.S. policy more than the U.S. was willing to accept. Bown & Keynes will walk through that story. For now: hold on to the model. International institutions enforce by activating domestic politics. That's the model. Now let's see what happens when the activator gets dismantled.
+:::
+
+
+## Where the DSM Stands Today
+
+::: {.callout-important appearance="minimal" icon=false}
+The DSM is presently non-functional. The Appellate Body has lacked a quorum since December 2019; the mechanism that made the cotton case possible is, for now, dormant.
+
+Our presenter will walk us through Bown & Keynes (2020) on how this came about and what is at stake.
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### Questions to hold while reading
+- Why would a powerful country dismantle a system designed to constrain other powerful countries?
+- What does it mean that the United States, architect of the WTO, turned against its own enforcement mechanism?
+- How does this change the incentive-compatibility argument we have developed?
+
+:::
+::: {.column width="50%"}
+
+### Article for student presentation
+Bown, C. P. & Keynes, S. (2020). "Why Trump shot the Sheriffs: The end of WTO dispute settlement 1.0." *Journal of Policy Modeling* 42(4): 799–819.
+
+:::
+:::
+
+::: {.notes}
+Quick handoff slide. Don't try to cover the Appellate Body crisis here — that's the student's job. Just frame it: the DSM that made the cotton case possible doesn't exist in functional form today. The Appellate Body has been non-functional since December 2019. The U.S. — under both Trump and Biden — has refused to approve new appointments to the body, and it can no longer hear appeals because it doesn't have the three-member quorum it needs. Pose two or three orienting questions students should hold in their heads while the presenter walks them through Bown & Keynes. Why would the U.S. — which designed the WTO, which benefits from its rules in many domains, which is the largest economy in the system — dismantle the enforcement mechanism? What does that tell us about the future of WTO-based cooperation? And how does this change the story we just built about incentive-compatible enforcement? If the U.S. has decided it values its policy autonomy more than the future of the DSM, then the "future-orientation" condition for cooperation has weakened — and the entire iterated-PD logic starts to fail. That's the world Bown and Keynes are diagnosing. Hand the floor to the presenter.
+:::

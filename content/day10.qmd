@@ -1,0 +1,30 @@
+---
+title: "Day 10: Cooperation, Conflict, and Crisis in the Contemporary IMS"
+subtitle: "Tuesday, July 21, 2026"
+toc: false
+---
+
+**Required materials:**
+
+1. Oatley, Chapter 11 — *Cooperation, Conflict, and Crisis in the Contemporary International Monetary System*
+2. Oye, Kenneth A. 1985. "[The Sterling–Dollar–Franc Triangle: Monetary Diplomacy 1929–1937](https://www.jstor.org/stable/2010355)." *World Politics* 38 (1): 173–199. *(PDF on Canvas)*
+3. {{< fa headphones >}} [*Trade Talks* #104 — How to Hit Currency Manipulators and Fight the Strong Dollar](https://tradetalkspodcast.com/podcast/104-how-to-hit-currency-manipulators-and-fight-the-strong-dollar/)
+
+::: {.callout-tip}
+## In class today
+- Opening **writing prompt**
+- The adjustment problem: global imbalances and the conflict over who must adjust
+- Why cooperation is fragile — a collective-action problem
+- Cooperation that worked, partly: the **Plaza** and **Louvre** Accords, and target zones
+- Europe's experiment: the EMS, the euro, and the Greek debt crisis
+- The contemporary system: China as creditor, and the G7 → G20 shift
+- **Student-led article presentation** and discussion
+:::
+
+## Slides
+
+[{{< fa expand >}} Open slides in a new tab](../slides/day10-chapter11.html){target="_blank"}
+
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid #ccc;">
+<iframe src="../slides/day10-chapter11.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+</div>

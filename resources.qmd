@@ -1,0 +1,139 @@
+---
+title: "Resources"
+subtitle: "Supplementary materials and helpful links"
+---
+
+## Course Materials
+
+### Textbook
+
+Oatley, Thomas. *International Political Economy*. 7th edition. Routledge, 2023.
+
+- [Publisher website](https://www.routledge.com/International-Political-Economy/Oatley/p/book/9781032232669)
+- Available through IU Library as e-book
+- Purchase from campus bookstore or online retailers
+
+### Canvas
+
+All assignments, grades, and announcements will be posted on Canvas:
+
+[{{< fa graduation-cap >}} INTL 503 Canvas site](https://canvas.iu.edu)
+
+---
+
+## Study Resources
+
+### IPE News and Analysis
+
+Stay current with global economic developments:
+
+- [Financial Times](https://www.ft.com) - Global economic news (IU library access)
+- [The Economist](https://www.economist.com) - Weekly international coverage
+- [Foreign Affairs](https://www.foreignaffairs.com) - Academic-policy analysis
+- [VoxEU/CEPR](https://cepr.org/voxeu) - Economic policy research
+- [Council on Foreign Relations](https://www.cfr.org) - Policy analysis and explainers
+
+### Research and Data
+
+Useful sources for assignments and independent research:
+
+- [World Bank Data](https://data.worldbank.org) - Development indicators
+- [IMF Data](https://www.imf.org/en/Data) - Monetary and financial data
+- [WTO Statistics](https://www.wto.org/english/res_e/statis_e/statis_e.htm) - Trade data
+- [UNCTAD](https://unctad.org) - Trade and development statistics
+- [OECD Data](https://data.oecd.org) - Economic indicators for member countries
+
+### Academic Resources
+
+- [IU Library IPE Research Guide](https://guides.libraries.iu.edu) - Subject-specific resources
+- [Google Scholar](https://scholar.google.com) - Academic literature search
+- [SSRN](https://www.ssrn.com) - Working papers in social sciences
+
+---
+
+## Writing and Citation Help
+
+### Citation Management
+
+- [Zotero](https://www.zotero.org) - Free reference manager
+- [Mendeley](https://www.mendeley.com) - Reference manager with PDF reader
+- [IU Citation Guide](https://libraries.indiana.edu/how-cite-sources) - Format examples
+
+### Writing Support
+
+- [IU Writing Tutorial Services](https://wts.indiana.edu) - Free writing consultations
+- [Purdue OWL](https://owl.purdue.edu) - Writing and citation guides
+- [Hemingway Editor](https://hemingwayapp.com) - Clarity and readability tool
+
+---
+
+## Quarto and Technical Resources
+
+This course website is built with Quarto. If you're interested in creating similar sites:
+
+- [Quarto documentation](https://quarto.org)
+- [Quarto gallery](https://quarto.org/docs/gallery/) - Examples and templates
+- [RStudio Quarto guide](https://quarto.org/docs/get-started/hello/rstudio.html)
+
+---
+
+## IU Resources
+
+### Academic Support
+
+- [Office of the Vice Provost for Undergraduate Education](https://vpue.indiana.edu)
+- [Graduate School](https://graduate.indiana.edu)
+- [Academic Support Centers](https://studentaffairs.indiana.edu/student-support/)
+
+### Accessibility
+
+- [Disability Services for Students](https://studentaffairs.indiana.edu/disability-services-students/)
+- Contact me early if you need accommodations
+
+### Wellness
+
+- [Counseling and Psychological Services (CAPS)](https://healthcenter.indiana.edu/counseling/)
+- [Health Center](https://healthcenter.indiana.edu)
+- [Student Advocacy & Support](https://studentaffairs.indiana.edu/student-support/)
+
+This is an intensive summer course—taking care of your wellbeing is important!
+
+---
+
+## IPE Scholars and Blogs
+
+Follow these scholars/blogs for contemporary IPE analysis:
+
+- [Good Authority](https://goodauthority.org) - Political science analysis and commentary
+- [Trade Talks](https://www.tradetalkspodcast.com) - Podcast on the economics and politics of trade
+- [Duck of Minerva](https://duckofminerva.com) - International relations blog
+- [International Political Economy Zone](https://www.ipemusings.com) - IPE-focused blog
+
+---
+
+## Recommended Background Reading
+
+If you want to dive deeper into IPE beyond the textbook:
+
+### Accessible Books
+
+- Frieden, Jeffry. *Global Capitalism: Its Fall and Rise in the Twentieth Century*
+- Irwin, Douglas. *Free Trade Under Fire* 
+- Rodrik, Dani. *The Globalization Paradox*
+- Slobodian, Quinn. *Globalists: The End of Empire and the Birth of Neoliberalism*
+
+### More Academic
+
+- Eichengreen, Barry. *Globalizing Capital: A History of the International Monetary System*
+- Goldstein, Judith, et al. *The Oxford Handbook of the Political Economy of International Trade*
+- Simmons, Beth. *Who Adjusts? Domestic Sources of Foreign Economic Policy*
+
+---
+
+::: {.info-box}
+### {{< fa lightbulb >}} Suggestions?
+
+If you find useful resources for studying IPE, please share them! I'm always looking to expand this list.
+
+Email me at <sbauerle@iu.edu>
+:::

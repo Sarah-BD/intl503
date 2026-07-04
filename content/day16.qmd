@@ -1,0 +1,18 @@
+---
+title: "Day 16: Final Exam"
+subtitle: "Friday, July 31, 2026"
+toc: false
+---
+
+The final exam takes place during the regular class period (8:10–10:20 AM Eastern).
+
+::: {.callout-important}
+## What to expect
+- Cumulative coverage of all chapters and assigned articles
+- Multiple choice, short answer, and applied policy question sections
+- Approximately 2 hours total
+:::
+
+A study guide will be posted on Canvas no later than **Monday, July 27**.
+
+[See the final exam page for full details](../assignments/final-exam.qmd)

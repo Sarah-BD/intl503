@@ -1,0 +1,106 @@
+---
+title: "International Political Economy"
+subtitle: "Explore the complex interplay between politics and economics in the global system"
+details: |
+  INTL 503/427 • Summer 2026<br>
+  Indiana University<br>
+  July 6 – July 31, 2026
+toc: false
+---
+
+::: {.hero-banner}
+# International Political Economy
+
+::: {.subtitle}
+Explore the complex interplay between politics and economics in the global system
+:::
+
+::: {.course-details}
+INTL 503/427 • Summer 2026  
+Indiana University  
+July 6 – July 31, 2026
+:::
+:::
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+## Instructor
+
+**Professor Sarah Bauerle Danzman**  
+{{< fa envelope >}}<sbauerle@iu.edu>  
+[{{< fa calendar >}} Schedule an appointment](https://bookings.cloud.microsoft/book/ProfBDsOfficeHours@bookings.iu.edu/?ismsaljsauthenabled=true)
+
+:::
+
+::: {.g-col-12 .g-col-md-6}
+## Course Details
+
+**When:** Monday–Friday, 8:10–10:20 AM Eastern  
+**Dates:** July 6 – July 31, 2026  
+**Format:** Online, Wednesdays are non-meeting reading days
+
+:::
+
+:::
+
+---
+
+## What You'll Learn
+
+This intensive four-week course provides a comprehensive introduction to international political economy (IPE). You'll explore how states, firms, and international organizations shape global trade, investment, and monetary relations. We'll examine major theoretical approaches and apply them to contemporary challenges including:
+
+- Trade conflicts, economic coercion, and protectionism
+- Development strategies and their political underpinnings
+- Multinational corporations and foreign direct investment
+- International financial crises and monetary cooperation
+- The future of global capitalism amid increased economic nationalism
+
+By the end of this course, you'll be able to analyze complex international economic issues through both society-centered and state-centered lenses, understand the politics behind economic policies, and engage critically with debates about globalization and its consequences.
+
+---
+
+## Course Materials
+
+### Required Textbook
+
+Oatley, Thomas. *International Political Economy*. 7th edition. Routledge, 2023.  
+ISBN: 9781032232669
+
+Available through the IU Library, campus bookstore, and online retailers. We will cover approximately one chapter plus a scholarly article per day throughout the intensive summer session.
+
+### Additional Resources
+
+All course materials including slides, assignments, and supplementary readings will be posted on this website. The syllabus and grades will be posted on [Canvas](https://canvas.iu.edu), and students will submit assignments through Canvas.
+
+---
+
+## Course Structure
+
+This intensive summer course meets daily (Monday–Friday) with **Wednesdays designated as non-meeting days** for reading, catching up, and office hours.
+
+Our 2-hour 10-minute sessions will typically include:
+
+- Lecture and concept review (45-60 minutes)
+- Discussion and application activities (45-60 minutes)
+- Q&A and preview of next session (15-20 minutes)
+
+Active participation is essential in this compressed format. Come prepared to discuss readings and engage with real-world policy examples.
+
+---
+
+## Contacting Me
+
+{{< fa envelope >}} **Email** is the best way to reach me: <sbauerle@iu.edu>
+
+I will respond to all course-related emails within 24 hours on weekdays. Remember that life can be busy for everyone, so if I don't respond immediately, don't worry!
+
+{{< fa calendar-alt >}} **Office Hours:** Wednesdays by appointment (via teams)
+
+[{{< fa calendar-check >}} Schedule a time to meet](https://bookings.cloud.microsoft/book/ProfBDsOfficeHours@bookings.iu.edu/?ismsaljsauthenabled=true)
+
+---
+
+## Acknowledgments
+
+This course draws inspiration from excellent IPE courses taught by scholars across the discipline. The website design is inspired by [Andrew Heiss](https://www.andrewheiss.com/)'s course websites.

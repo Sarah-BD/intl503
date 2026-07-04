@@ -1,0 +1,50 @@
+---
+title: "Article Presentation & Discussion"
+subtitle: "Lead the class through one scholarly article"
+toc: true
+---
+
+## Overview
+
+Each student signs up on **Day 1 (Monday, July 6)** to present and lead discussion on **one** scholarly article over the course of the term. The presentation counts for **10%** of your final grade.
+
+Most class days have one supplementary scholarly article assigned alongside the textbook chapter — typically a journal article, working paper, or book chapter that engages a contemporary issue connected to that day's reading. Day 1 (July 6) is the exception — that session is reserved for course logistics and orientation. I will model the first article presentation on **Day 2 (July 7)** with the Rickard (2024) article so you have a clear example before you present.
+
+## Sign-up
+
+A sign-up sheet will be distributed at the start of Day 1. You'll see the full list of articles for the term and pick one based on a topic that interests you. Sign-ups are first-come, first-served. Each article gets exactly one presenter.
+
+## Format (15–20 minutes total)
+
+**Brief summary (about 5 minutes).** Walk the class through the article's argument: what is the author claiming, what evidence are they bringing to bear, and what is their conclusion? Resist the temptation to summarize section-by-section — instead, identify the article's *core move* and walk us through it.
+
+**Connection to course (about 3 minutes).** How does this article relate to the day's textbook chapter? Does it extend, complicate, or challenge what Oatley says? Where does it sit in the broader theoretical landscape we've been mapping?
+
+**Discussion questions (about 2 minutes).** Pose **2–3 substantive discussion questions** to the class. Strong discussion questions are open-ended (not yes/no), tied to specific passages or claims in the article, and connected to course themes.
+
+**Discussion facilitation (about 5–8 minutes).** Lead the class through your discussion questions. You're not lecturing — you're calling on classmates, following up on their responses, drawing connections, and keeping the conversation moving.
+
+## Preparing well
+
+The best presentations come from presenters who have:
+
+- Read the article **at least twice** — once to grasp the argument, once to engage critically
+- Identified the *one or two* most important claims, rather than trying to cover everything
+- Practiced the summary out loud so it fits within five minutes
+- Prepared discussion questions that *they* find genuinely interesting and that connect to active debates in the course
+
+## Evaluation criteria
+
+| Criterion | What I'm looking for |
+|-----------|----------------------|
+| **Comprehension** | Clear, accurate grasp of the article's argument and evidence |
+| **Integration** | Thoughtful connection to the course chapter and broader themes |
+| **Discussion design** | Substantive, open-ended questions tied to the article |
+| **Facilitation** | Effective leadership of the class conversation; responsive to peers |
+| **Time management** | Stays within the 15–20 minute window |
+
+## Logistics
+
+- You need simple slides to overview the main ideas in the article. Simplicity is key: it is your job is to facilitate, not lecture.
+- Submit your discussion questions to me via email by **8:00 AM the day of your presentation** so I can include them in the day's materials.
+- Plan to attend office hours the week before your presentation if you'd like feedback on your discussion questions.

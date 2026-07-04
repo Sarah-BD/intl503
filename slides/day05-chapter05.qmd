@@ -1,0 +1,864 @@
+---
+title: "A State-Centered Approach to Trade Politics"
+subtitle: "INTL 503 | Chapter 5"
+author: "Professor Sarah Bauerle Danzman"
+date: "2026-07-13"
+date-format: long
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: true
+    preview-links: auto
+    footer: "INTL 503 | A State-Centered Approach to Trade Politics"
+    transition: fade
+    width: 1600
+    height: 900
+    margin: 0.15
+    fig-align: center
+    fig-dpi: 300
+    auto-stretch: false
+    logo: iu-trident.png
+    title-slide-attributes:
+      data-background-image: iu-trident.png
+      data-background-size: 15%
+      data-background-position: 2% 2%
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(knitr)
+library(kableExtra)
+
+# IU color palette
+iu_crimson <- "#990000"
+iu_cream <- "#EDEBEB"
+iu_gray <- "#535054"
+iu_light_gray <- "#7E7E7E"
+iu_dark_text <- "#2C3E50"
+iu_green <- "#1B5E3F"
+iu_navy <- "#1F3A5F"
+
+# Custom theme for all plots
+theme_ipe <- function(base_size = 20) {
+  theme_minimal(base_size = base_size) +
+    theme(
+      plot.title = element_text(color = iu_crimson, face = "bold", size = rel(1.2),
+                                margin = margin(t = 5, b = 5)),
+      plot.subtitle = element_text(color = iu_gray, size = rel(0.9),
+                                   margin = margin(b = 10)),
+      plot.caption = element_text(color = iu_light_gray, size = rel(0.7),
+                                  hjust = 0, margin = margin(t = 10)),
+      axis.title = element_text(color = iu_dark_text, size = rel(0.9)),
+      axis.title.x = element_text(margin = margin(t = 8)),
+      axis.title.y = element_text(margin = margin(r = 8)),
+      axis.text = element_text(color = iu_gray, size = rel(0.8)),
+      panel.grid.minor = element_blank(),
+      panel.grid.major = element_line(color = "#E5E5E5", linewidth = 0.4),
+      legend.position = "bottom",
+      legend.title = element_text(size = rel(0.85)),
+      legend.text = element_text(size = rel(0.8)),
+      plot.margin = margin(t = 8, r = 12, b = 20, l = 12)
+    )
+}
+```
+
+## Today's Plan
+
+::: {.callout-important appearance="minimal" icon=false}
+## Today's Big Question
+[**When, why, and to what effect do states have their own preferences toward trade policy**]{style="font-size: 1.5em; line-height: 1.4;"}
+:::
+
+```{r}
+#| label: tbl-plan
+
+plan <- data.frame(
+  Section = c("1 · The Limits of Society-Centered Politics",
+              "2 · Infant Industries and Industrial Policy",
+              "3 · Strategic-Trade Theory",
+              "4 · From Competitiveness to Security",
+              "5 · The Political Economy Objections",
+              "6 · Weaknesses + Handoff"),
+  Cover = c("When two export firms fight over subsidies, whose interest is the state serving?",
+            "When a tariff can *raise* welfare — and which states are equipped to do it",
+            "Rents, first-movers, and using subsidies to capture an oligopoly",
+            "Why the same tools are now justified on security, not competitiveness, grounds",
+            "Picking winners, rent-seeking, and what the new evidence shows",
+            "What this approach can't explain — and the bridge to contemporary technology wars")
+)
+
+kable(plan, col.names = c("Section", "What we'll cover"),
+      align = c("l", "l")) %>%
+  kable_styling(font_size = 22, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "40%") %>%
+  column_spec(2, width = "60%")
+```
+
+::: {.notes}
+A brief orientation. Today is a Monday, so we will run the lecture and then turn to our first student-led article presentation on the Bown and Wang piece, and we will close with the in-class writing prompt. The intellectual arc runs against the grain of the last two meetings. Chapter 4 gave us the society-centered approach: trade policy is the price politicians pay to organized interest groups, and the state functions essentially as an aggregator that registers societal pressure. Today we take seriously the possibility that the state has objectives of its own — that policymakers sometimes intervene not because a lobby demanded it, but because they are trying to build a competitive industry, or, increasingly, to keep the nation from depending on a rival for something it cannot do without. The six sections move from the classic economic case for intervention, through the high-theory of strategic trade, into the contemporary pivot from competitiveness to security, and finally to the political-economy objections that should keep all of us honest. Hold onto the Big Question the whole way through, because the distinction between a genuine security rationale and protectionism advanced in the language of national security is exactly what today's article — and our presenter — will put under pressure.
+:::
+
+
+# The Limits of Society-Centered Politics {background-color="#990000"}
+
+
+## Boeing vs. Bombardier, or U.S. vs. Canada?
+
+::: {.columns}
+::: {.column width="55%"}
+
+**2017–18: Boeing vs. Bombardier.** Boeing asks Washington to impose **~300% tariffs** on Bombardier's new C-Series jet — not because Boeing is an *import-competing* loser, but because Canada **subsidized** a rival in a market both want to dominate.
+
+- Not import-competing industry vs. foreign exporter
+- **Two export-oriented firms** fighting over **global market share**
+- Tariffs as **retaliation over a subsidy** rather than proactive protection
+
+:::
+::: {.column width="45%"}
+
+![](images/boeing-bombardier-airbus.jpg){width="100%"}
+
+[Boeing's trade complaint had the opposite of its intended effect: pressured by the dispute, Bombardier sold the C-Series to **Airbus** — exchanging a midsize competitor for a far stronger one. (The jet now flies as the Airbus A220.)]{style="font-size: 0.55em; color:#535054; line-height:1.35;"}
+
+::: {.callout-important appearance="minimal" icon=false}
+The society-centered model asks *which lobby won.* Here both firms are powerful exporters, and the contest is over **which country's firm captures the industry's rents.**
+
+[**Rents** = returns above what the same capital and labor would earn in their next-best use — the excess profits of a protected market position.]{style="font-size:0.82em;"}
+:::
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+To explain this conflict we need a theory in which the **state has goals of its own** (not just an aggregator of societal interests) — and in which protection can sometimes make a country *richer.*
+:::
+
+::: {.notes}
+Start with Oatley's opening puzzle because it does the work of motivating the whole chapter. In 2016 Delta ordered 135 of Bombardier's new C-Series jets. Boeing, which did not even make a directly competing aircraft in that size class, filed a complaint and the Commerce Department announced tariffs of roughly three hundred percent, alleging that Bombardier had dumped the jets below cost because the Canadian government had handed it about 1.6 billion dollars of development support. Now ask the society-centered question from last week: which import-competing industry organized and captured policy? The question doesn't fit. This is not a domestic import-competing industry against a foreign exporter. It is two export-oriented firms — Boeing and Bombardier — battling over global market share, and the instrument is not a protective tariff but retaliation against a foreign subsidy. The conflict is about who gets to capture the profits of a concentrated global industry. The society-centered framework, which treats the state as a register of interest-group pressure and treats protection as pure welfare loss, simply cannot narrate this. We need two new ideas: a state with objectives independent of any single lobby, and the possibility — heretical after Chapter 3 — that intervention can sometimes raise national income rather than lower it. The ITC, incidentally, ruled against Boeing in 2018 and the tariffs were never imposed — but there is a further twist, shown in the photo on the slide. Under pressure from the dispute, Bombardier had already sold its C-Series program to Airbus, which incorporated the jet into its own lineup as the A220. Boeing's attempt to disadvantage a smaller Canadian entrant ultimately transferred the aircraft to its single most capable rival — a self-inflicted strategic setback that no society-centered lobbying account would have predicted. The state-centered reading is almost immediate; the point for today is simply that last week's model cannot narrate the conflict at all.
+:::
+
+
+## The State-Centered Approach: Two Core Claims
+
+```{r}
+#| label: tbl-two-assumptions
+
+assump <- data.frame(
+  claim = c("1 · Protection can RAISE welfare",
+            "2 · The state can act ON ITS OWN"),
+  society = c("Protection always destroys welfare — it forfeits the gains from trade and traps resources in losing industries.",
+              "Policy is the outgrowth of interest-group pressure. The state has no goals of its own."),
+  state = c("Under specific conditions (scale, learning, rents), targeted intervention can move resources where the market won't, increasing country-level aggregate welfare.",
+            "Under specific conditions, insulated policymakers pursue a *national* objective that no lobby asked for.")
+)
+
+kable(assump, col.names = c("", "Society-Centered (Ch. 4)", "State-Centered (Ch. 5)"),
+      align = c("l", "l", "l")) %>%
+  kable_styling(font_size = 23, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:2, extra_css = "padding-top: 18px; padding-bottom: 18px; line-height: 1.4;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "24%") %>%
+  column_spec(2:3, width = "38%")
+```
+
+::: {.callout-important appearance="minimal" icon=false}
+::: {style="font-size: 1.25em; line-height: 1.4;"}
+**Both claims must hold jointly:**
+
+1. If protection cannot raise welfare, intervention is pointless.
+2. If the state cannot act autonomously, the account reduces to society-centered lobbying.
+:::
+:::
+
+::: {.notes}
+The state-centered approach rests on two assumptions, and each one directly contradicts a pillar of last week's model. The first is a claim about welfare. The society-centered approach inherited Chapter 3's verdict that protection is dead-weight loss — it forfeits the gains from trade and keeps resources stuck in comparatively disadvantaged industries. The state-centered approach says: not always. Under a specific and limited set of conditions — economies of scale, learning effects, oligopoly rents — there are industries the market won't move resources into even though society would gain in the long run, and a well-aimed intervention can correct that. The second assumption is about politics. The society-centered approach treats national policy as the resultant of interest-group forces. The state-centered approach says that under certain institutional conditions, policymakers are insulated enough to pursue an objective of their own — boosting a strategic industry, catching a rival, securing a supply — that no domestic lobby necessarily demanded. The crucial logical point for students: you need both assumptions together. If protection can never raise welfare, then autonomy just lets the state destroy value more efficiently. If the state can never act autonomously, then even a real welfare opportunity gets captured and distorted by whoever lobbies hardest. The rest of the lecture is essentially an examination of when — and whether — these two strong assumptions actually hold.
+:::
+
+
+## Revisiting Core Assumptions - Market Failures Everywhere
+
+Recall **Day 3 (Ch. 3)**: the gains-from-trade verdict — *do not intervene* — rested on three assumptions we flagged as **contested.** The state-centered approach is favored by those who focus on the limits of those assumptions.
+
+```{r}
+#| label: tbl-relax
+
+relax <- data.frame(
+  assume = c("Market clearing",
+             "Constant / decreasing returns",
+             "Neutral terms of trade"),
+  day3 = c("Factors are allocated to their best use; no lasting unemployment — so a tariff can only destroy value.",
+           "Markets are competitive: many firms, no market power.",
+           "Doesn't really matter what goods you specialize in."),
+  ch5 = c("Scale + learning curves strand factors below their long-run value — a social-vs-private return gap the market won't close without public guidance.",
+          "High-tech runs on increasing returns and oligopoly. A few firms earn rents, and the country that hosts them captures the income.",
+          "National wealth accrues when countries can move up the value chain. Staying stuck in primary production is bad for wealth and growth.")
+)
+
+kable(relax, col.names = c("Assumption", "What Day 3 assumed", "How Ch. 5 relaxes it →"),
+      align = c("l","l","l")) %>%
+  kable_styling(font_size = 21, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:3, extra_css = "padding-top: 14px; padding-bottom: 14px; line-height: 1.35;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "20%") %>%
+  column_spec(2, width = "33%") %>%
+  column_spec(3, width = "47%")
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+Relax **perfect competition and constant returns** and the case for *free trade* becomes more complicated and less absolute.
+:::
+
+::: {.notes}
+This is a deliberate callback, and it's worth making explicit because it shows students that Chapter 5 is not a new and unrelated topic — it is, in effect, the mirror image of the model we built in Chapter 3. Remember the "What This Theory Assumes" slide from Day 3: I flagged three assumptions sitting behind the clean gains-from-trade result, and I promised we would come back to them. Here we are. Take them in order. One, market clearing: Day 3 assumed factors glide to their highest-value use, which is precisely why a tariff could only ever block that movement and destroy value. The state-centered approach denies the premise — economies of scale and learning curves can strand resources below their long-run potential, opening a gap between social and private returns that the market won't close on its own, and that gap is the entire welfare case for intervention we're about to build. Two, constant or decreasing returns: the standard model assumed competition, many firms, nobody with market power. Drop that assumption and you land in the world of increasing returns and oligopoly, where a handful of firms earn rents and the country hosting them pockets the income. Notice this is the "new trade theory" referred to on the Day 3 slide — Krugman's world, and the engine of strategic-trade theory in Section 3. Three, neutral terms of trade: relax the idea that no producer is systematically favored and you see that rents and first-mover advantages are contestable prizes a government can try to seize with a subsidy. So the throughline to carry for the rest of the hour is this: every tool we discuss today — infant-industry protection, strategic-trade subsidies, even the security measures at the end — lives in the space opened up by relaxing one or more of these three assumptions. That gives you a diagnostic you can use on any real-world intervention, including the chip subsidies in today's article: ask which assumption the advocate is claiming fails here. If they can't name one, they're probably not doing Chapter 5 at all — they're back in Chapter 4, doing interest-group politics with a national-interest vocabulary.
+:::
+
+
+# Infant Industries and Industrial Policy {background-color="#990000"}
+
+
+## The Infant-Industry Case
+
+A new industry may be **unprofitable today but efficient tomorrow** — if it survives long enough to grow up. Two mechanisms create that gap:
+
+::: {.columns}
+::: {.column width="50%"}
+
+### Economies of scale
+Big fixed costs (an aircraft program ≈ \$3B+). Unit cost falls only at **high volume**. A new entrant can't reach that volume against incumbents who already have.
+
+:::
+::: {.column width="50%"}
+
+### Economies of experience
+Efficiency comes from **doing** — seasoned managers, skilled workers, reliable suppliers. The learning curve accrues through cumulative production; it cannot simply be purchased.
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Recall Mercantialism: **Alexander Hamilton (1791)** and **Friedrich List** both sought tariffs to develop manufacturing against a dominant Britain — and the same argument was later applied to postwar Japan.
+:::
+
+::: {.notes}
+The economic heart of the chapter is the infant-industry argument, and it is worth slowing down because every modern industrial-policy debate is a variation on it. The standard trade model rules out welfare-improving intervention by assumption: factors flow to their highest return, so a tariff only blocks that flow. To justify intervention you must identify something that stops factors from moving into an industry that would, in the long run, pay off. The classic answer is the infant industry — a firm not efficient initially but efficient eventually, if it is given time to mature. Two mechanisms generate that gap. Economies of scale: when fixed costs are enormous — Oatley's example is a commercial aircraft program costing billions — unit costs fall only at high volume, but a newcomer can't sell enough high-cost early output against established low-cost rivals to ever reach that volume. Economies of experience, or learning by doing: efficient production needs seasoned managers, skilled workers, and reliable suppliers, none of which exist in an infant industry by definition. Costs fall as you accumulate experience. The political pedigree matters for an IPE course: this is not a left-wing idea or a new idea. Alexander Hamilton made the argument in 1791 to build American manufacturing against British dominance; Friedrich List systematized it in Germany a half-century later; and many credit Japan's postwar ascent to the same logic. Free-trade Britain was the incumbent; everyone climbing behind it reached for the tariff.
+:::
+
+
+## Climbing the Learning Curve
+
+```{r}
+#| label: fig-learning
+#| fig-width: 11
+#| fig-height: 4.2
+#| out-width: "76%"
+#| fig-alt: "A steeply declining curve: person-hours to assemble an Airbus fuselage fall from 340,000 on the first unit to 85,000 by the 75th unit and 43,000 thereafter."
+
+lc <- data.frame(
+  unit = c(1, 75, 200),
+  hours = c(340, 85, 43),
+  lab = c("1st aircraft\n340,000 hrs", "75th aircraft\n85,000 hrs", "Mature\n43,000 hrs")
+)
+
+ggplot(lc, aes(x = unit, y = hours)) +
+  geom_line(color = iu_crimson, linewidth = 1.4) +
+  geom_point(color = iu_crimson, size = 4) +
+  geom_text(aes(label = lab), vjust = -0.6, hjust = c(0, 0.4, 1),
+            size = 4.8, fontface = "bold", color = iu_dark_text, lineheight = 0.9) +
+  scale_y_continuous(limits = c(0, 400), labels = function(x) paste0(x, "k")) +
+  scale_x_continuous(limits = c(-10, 230)) +
+  labs(title = "Cost falls with cumulative experience",
+       subtitle = "Person-hours to assemble an Airbus fuselage",
+       x = "Cumulative aircraft produced", y = NULL,
+       caption = "Figures from McIntyre (1992), reported in Oatley, Ch. 5.") +
+  theme_ipe(base_size = 18) +
+  theme(panel.grid.major.x = element_blank())
+```
+
+::: {.callout-important appearance="minimal" icon=false}
+The newcomer's dilemma: costs fall only with volume, but volume is unattainable while costs remain high. A **temporary tariff or subsidy** can solve this "low-level equilibrium trap" .
+:::
+
+::: {.notes}
+This figure makes the learning curve concrete and gives students something visual to remember. When Airbus assembled its very first fuselage it took roughly 340,000 person-hours. By the 75th aircraft that had fallen to about 85,000, and eventually to around 43,000. That improvement was not purchased; it was achieved through cumulative repetition — workers learning the job, managers refining the process, suppliers becoming reliable. Now see the trap. The newcomer is expensive precisely because it hasn't yet produced much, and it can't produce much because, being expensive, it can't win customers away from incumbents who are already far down their own curve. Who buys the high-cost early output? In an open market, no one — so the firm never reaches the volume that would make it competitive. This is the welfare argument for a temporary intervention: guarantee the infant the domestic market for a while, let it produce enough to slide down the curve, and once it's genuinely competitive, remove the protection. The phrase to underline is temporary. The entire welfare case depends on the tariff coming off once the industry grows up. Hold that thought, because the most serious real-world criticism of industrial policy is that the protection almost never comes off — the infant becomes a dependent adult with a powerful lobby. We'll return to it.
+:::
+
+
+## A Tariff Is Rarely the Best Tool
+
+```{r}
+#| label: fig-policy-ladder
+#| fig-width: 12
+#| fig-height: 4.0
+#| out-width: "88%"
+#| fig-alt: "A left-to-right ladder of policy responses from least to most efficient: tariff, then subsidy, then fix the underlying market failure, with the economists' default at the right end."
+
+steps <- data.frame(
+  x = c(1, 2, 3),
+  y = c(1, 1, 1),
+  fill = c("#A94545", "#B5762A", "#1B5E3F"),
+  title = c("Tariff", "Subsidy", "Fix the market failure"),
+  body = c("Helps the infant —\nbut taxes consumers\n(dead-weight loss)",
+           "Same help, no consumer\nloss. But: why can't the\nfirm just BORROW?",
+           "Training programs (skills\nspillover) · stronger capital\nmarkets (if finance constrained)")
+)
+
+ggplot(steps) +
+  geom_tile(aes(x = x, y = y, fill = fill), width = 0.92, height = 0.92) +
+  geom_text(aes(x = x, y = y + 0.27, label = title), color = "white",
+            fontface = "bold", size = 6.2) +
+  geom_text(aes(x = x, y = y - 0.12, label = body), color = "white",
+            size = 4.2, lineheight = 0.95) +
+  annotate("segment", x = 1.5, xend = 1.5, y = 1, yend = 1,
+           color = iu_gray) +
+  annotate("text", x = 2, y = 0.35, label = "more efficient  →",
+           color = iu_gray, fontface = "italic", size = 5) +
+  scale_fill_identity() +
+  scale_x_continuous(limits = c(0.4, 3.6)) +
+  scale_y_continuous(limits = c(0.3, 1.65)) +
+  theme_void()
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+The economists' rule: **target the actual distortion.**
+
+1. A profitable-but-cash-starved firm should **borrow** — and if financing is the binding constraint, the government can **subsidize the borrowing itself** (a loan or guarantee), not the output.
+2. A skills-spillover problem needs **workforce training**, not a tariff.
+3. Intervention is justified only where a **real market failure** creates a major coordination problem (government needs to make both the demand and supply side of the market).
+:::
+
+::: {.notes}
+This slide is Oatley's "A Closer Look" box, and it teaches students how an economist actually reasons about intervention — by asking what specific market failure you're correcting and choosing the narrowest tool that fixes it. Start at the left. A tariff helps the infant, but it does so by taxing domestic consumers, who now pay more — a real welfare loss. So move right: a subsidy delivers the same help to the firm without gouging consumers, which is why economists prefer it to a tariff. But now comes the sharper objection, and it applies to subsidies too. If a firm really will be profitable in the long run, it should be able to borrow against those future profits in private capital markets to cover its early losses. If it can borrow, it doesn't need the government. And if it can't borrow — if private investors, looking at the same future, decline to fund it — then the market is telling you this isn't society's best use of scarce capital, so the government shouldn't fund it either. That argument is the free-market case against industrial policy in compressed form. It fails in exactly two circumstances, and they're worth memorizing because they define the legitimate zone for intervention. One: the payoff comes from training workers who can then quit and take their skills to rivals, so no single firm can capture the return — a classic spillover, best fixed by broad training programs, not firm subsidies. Two: the capital market itself is broken and won't lend to good projects — in which case the first-best fix is to repair the capital market, not to subsidize the firm. The through-line: intervention is defensible only where you can name a real market failure that blocks the private borrowing solution. Keep that test in mind for the security debate later — "China might cut us off" is a different kind of market failure, and we'll ask whether it passes.
+:::
+
+
+## State Strength: Who Can Actually Do This?
+
+**Industrial policy** = tax breaks, subsidies and state credit, protection, and procurement, used to **steer resources** toward favored industries. 
+
+Whether a state can do so depends on **state strength** — how insulated policymakers are from interest groups.
+
+```{r}
+#| label: tbl-state-strength
+
+ss <- data.frame(
+  country = c("Japan — STRONG", "France — STRONG", "United States — WEAK"),
+  features = c("Centralized authority; MITI/METI + Ministry of Finance coordinate. \"Administrative guidance\" steered capital from heavy industry (1950s) to high-tech (1970s).",
+               "Insulated bureaucracy; \"National Champions\" strategy. Backed Renault, steel — and a national computer firm (Machines Bull) that flopped.",
+               "Federalism + divided powers + porous agencies → captured easily. Yet runs a *de facto* industrial policy through DEFENSE: R&D, procurement, the internet, early chips."),
+  insulation = c("High", "High", "Low (but the Pentagon is a loophole)")
+)
+
+kable(ss, col.names = c("State", "Institutions & track record", "Insulation"),
+      align = c("l", "l", "l")) %>%
+  kable_styling(font_size = 21, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:3, extra_css = "padding-top: 12px; padding-bottom: 12px; line-height: 1.35;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "20%") %>%
+  column_spec(2, width = "60%") %>%
+  column_spec(3, width = "20%")
+```
+
+::: {.callout-important appearance="minimal" icon=false}
+**Strength cuts both ways.** Insulation lets a state plan for the long run *and* pull protection once the infant matures — but it also removes the check that stops the state from picking badly.
+:::
+
+::: {.notes}
+Now we connect the economics to institutions, because even if intervention can work in theory, only some states are equipped to implement it. First, the definition students need for the quiz: industrial policy is the use of a broad toolkit — tax policy, subsidies including state-directed credit, traditional protection, and government procurement — to channel resources away from some industries and toward those the state wants to grow. The capacity to wield that toolkit coherently is what Oatley calls state strength: the degree to which policymakers are insulated from interest-group pressure. Strong states centralize authority, coordinate across agencies, and offer few access points to lobbyists. Japan is the textbook strong state — MITI, now METI, working with the Ministry of Finance, used "administrative guidance" to move capital from steel and shipbuilding in the early postwar years into high-technology in the 1970s, and many credit this for the Japanese miracle. France is the other strong-state case, with its insulated bureaucracy and its "National Champions" strategy — though notice Oatley's honest detail that the French national computer champion, Machines Bull, failed to become competitive, an early reminder that strength guarantees coherence, not success. The United States is the canonical weak state: federalism, separated powers, and porous agencies create so many channels for lobbying that officials struggle to act coherently in any "national interest." And yet — this is the move I want students to catch — the U.S. runs a large de facto industrial policy through the back door of national defense: Pentagon R&D and procurement underwrote computing, the internet, and, as we'll see in a moment, the early semiconductor industry. That defense loophole is the historical seed of today's "economic security" turn. Last point, and it's the double edge: insulation is exactly what lets a strong state plan long-term and, crucially, withdraw protection once an industry matures — but it's also what removes the feedback that would tell the state it has chosen badly. Strength is not the same as good judgment.
+:::
+
+
+# Strategic-Trade Theory {background-color="#990000"}
+
+
+## When Markets Have Room for Only a Few
+
+**Strategic-trade theory** (Krugman; Brander & Spencer 1985) extends the infant-industry logic to **oligopoly** — industries with room for only a handful of firms.
+
+::: {.columns}
+::: {.column width="55%"}
+
+- Big scale + steep learning ⇒ only **2–3 firms** worldwide can survive (aircraft: ~2; autos: ~8)
+- These firms earn **rents** — profits above what the same capital and labor earn elsewhere
+- Whoever hosts the firm captures the rents as **national income**
+- So there's a **zero-sum race**: only a few countries can win
+
+:::
+::: {.column width="45%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+Absent intervention, the **first mover wins** — early scale and experience let it deter every later entrant, even one that would have been just as good.
+:::
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+The core policy idea: a government can use a **subsidy to shift the rents** from a foreign firm to a domestic one — making its own country richer *at the rival's expense.*
+:::
+
+::: {.notes}
+Strategic-trade theory is the intellectual high-water mark of the case for intervention, and it's associated above all with Paul Krugman and with the 1985 Brander–Spencer model. It takes the infant-industry insight and drops it into a world of oligopoly. The setup: when economies of scale and experience are severe enough, the world market only has room for a handful of firms — two for long-haul commercial aircraft, about eight for autos. Because entry is so limited, these firms earn rents: returns above what the same labor and capital would earn in their next-best use. The nationalist implication is this: whichever country hosts the firm captures those rents as higher national income, in the form of better-paid workers and higher returns to investors. Since only a few firms can exist, only a few countries can capture the rents, which sets up a zero-sum competition among states over who gets the industry. Who wins, absent any government action? The first mover. By entering early and racing down the scale-and-experience curve, the incumbent builds a cost advantage that deters later entrants — even an entrant who, given the same head start, would have been every bit as competitive. That's a crucial and somewhat unfair feature: the winner wins because it was first, not because it was better. And that opens the radical policy door. If a government can subsidize a domestic late-entrant enough to make entry credible, it can alter which firm survives — shifting the rents, and the national income, from the foreign incumbent to the home firm. This is rent-shifting, and it follows a genuinely beggar-thy-neighbor logic: one country's gain is the other's loss. Consider it as a game.
+:::
+
+
+## The Rent-Shifting Game
+
+```{r}
+#| label: fig-payoff
+#| fig-width: 11.5
+#| fig-height: 4.8
+#| out-width: "88%"
+#| fig-dpi: 300
+#| fig-alt: "Two 2x2 payoff matrices. Without a subsidy, whoever moves first captures the market and earns 100. With a European subsidy of 25, producing becomes a dominant strategy for the European firm, which earns 125 while the US firm exits."
+
+draw_game <- function(payoffs, title, subtitle) {
+  # payoffs: list with cells PP, PN, NP, NN as c(US, EU)
+  cells <- data.frame(
+    x = c(1, 2, 1, 2),
+    y = c(2, 2, 1, 1),
+    us = c(payoffs$PP[1], payoffs$PN[1], payoffs$NP[1], payoffs$NN[1]),
+    eu = c(payoffs$PP[2], payoffs$PN[2], payoffs$NP[2], payoffs$NN[2])
+  )
+  cells$lab <- paste0("US: ", cells$us, "\nEU: ", cells$eu)
+  cells$hl <- payoffs$hl  # which cells are equilibria
+  ggplot(cells) +
+    geom_tile(aes(x = x, y = y, fill = hl), color = "white", linewidth = 2,
+              width = 0.9, height = 0.9) +
+    geom_text(aes(x = x, y = y, label = lab), size = 5.0, fontface = "bold",
+              color = ifelse(cells$hl == "eq", "white", iu_dark_text), lineheight = 0.95) +
+    scale_fill_manual(values = c(eq = iu_crimson, no = "#EDE7E7"), guide = "none") +
+    scale_x_continuous(breaks = c(1, 2), labels = c("EU: Produce", "EU: Don't"),
+                       position = "top", limits = c(0.45, 2.55), expand = c(0, 0)) +
+    scale_y_continuous(breaks = c(1, 2), labels = c("US: Don't", "US: Produce"),
+                       limits = c(0.45, 2.55), expand = c(0, 0)) +
+    labs(title = title, subtitle = subtitle) +
+    theme_ipe(base_size = 15) +
+    theme(panel.grid = element_blank(), axis.ticks = element_blank(),
+          axis.title = element_blank(),
+          plot.title = element_text(size = rel(0.95)),
+          plot.subtitle = element_text(size = rel(0.78)),
+          plot.margin = margin(t = 6, r = 18, b = 6, l = 14))
+}
+
+g1 <- draw_game(
+  list(PP = c(-5, -5), PN = c(100, 0), NP = c(0, 100), NN = c(0, 0),
+       hl = c("no", "eq", "eq", "no")),
+  "No intervention",
+  "Two equilibria: the first mover takes 100")
+
+g2 <- draw_game(
+  list(PP = c(-5, 20), PN = c(100, 0), NP = c(0, 125), NN = c(0, 0),
+       hl = c("no", "no", "eq", "no")),
+  "EU subsidizes its firm (+25)",
+  "'Produce' becomes dominant; EU takes 125")
+
+gridExtra::grid.arrange(g1, g2, ncol = 2)
+```
+
+::: {.callout-important appearance="minimal" icon=false}
+A subsidy of **25** relocates rents of **125** and induces the rival's exit. This is the formal case that intervention can *raise national income.*
+:::
+
+::: {.notes}
+This is Krugman's 1987 illustration, Oatley's Figure 5.1, and it's worth building live on the board if you have time. Two firms, one American and one European; the market supports only one producer. Each chooses "produce" or "don't." Look at the left matrix first. If only one produces, it earns 100 and the other earns 0 — those are the two equilibria, the top-right cell where the U.S. produces and Europe stays out, and the bottom-left where Europe produces and the U.S. stays out. If both produce, they split a market too small for two and both lose money, here minus 5 each. So the outcome is indeterminate in theory and settled in practice by who moves first: the incumbent produces, the entrant rationally stays out because entering only earns it a loss, and the incumbent keeps the 100. Now the right matrix. Suppose the European government commits a subsidy of 25 to its firm whenever it produces. Re-read Europe's payoffs: if the U.S. produces, Europe now earns 20 instead of losing 5 by producing; if the U.S. stays out, Europe earns 125. Producing is now better for Europe no matter what the U.S. does — it's a dominant strategy. The American firm, anticipating this, knows Europe will produce, so its best response is to exit. The single equilibrium flips: Europe captures the market and earns 125. Tally it for the European treasury: it spent 25 in subsidy to relocate 100 of rents — plus the extra 25 — onto its own soil. A small public outlay levers a large private rent away from the rival. That is the formal heart of strategic-trade theory, and one can see why it unsettled free-trade economists: here is a model in which a subsidy does not merely protect a domestic industry but displaces the foreign one. Now I want you holding two questions, because we'll spend the back half of the lecture on them. First, does this actually work outside the diagram? Second — and notice the payoff structure already hints at it — what happens when the other government subsidizes as well? The result depends on the rival government remaining passive.
+:::
+
+
+## Rent-Shifting in the Wild: Chips and Jets
+
+```{r}
+#| label: fig-cases
+#| fig-width: 12.5
+#| fig-height: 4.3
+#| out-width: "92%"
+#| fig-alt: "Two line charts. Left: US global semiconductor share falls and Japan's rises between the mid-1970s and 1986. Right: Airbus's share of large commercial aircraft rises from zero in 1975 to about half by 2007."
+
+semi <- data.frame(
+  year = rep(c(1976, 1986), 2),
+  share = c(60, 40, 8, 46),
+  who = rep(c("United States", "Japan"), each = 2)
+)
+# label placement: put the lower of each close pair below, the rest above
+semi$vj <- c(-0.8, 1.9, -0.8, -0.8)
+
+jets <- data.frame(
+  year = c(1975, 1990, 2007),
+  airbus = c(0, 30, 50)
+)
+
+p_semi <- ggplot(semi, aes(x = year, y = share, color = who, group = who)) +
+  geom_line(linewidth = 1.4) +
+  geom_point(size = 4) +
+  geom_text(aes(label = paste0(share, "%")), vjust = semi$vj, size = 4.6, fontface = "bold") +
+  scale_color_manual(values = c("United States" = iu_crimson, "Japan" = iu_navy), name = NULL) +
+  scale_x_continuous(breaks = c(1976, 1986), labels = c("mid-1970s", "1986"),
+                     limits = c(1970.5, 1991.5)) +
+  scale_y_continuous(limits = c(0, 70), labels = function(x) paste0(x, "%")) +
+  labs(title = "Semiconductors: MITI shifts the rents",
+       subtitle = "Share of global semiconductor revenue",
+       x = NULL, y = NULL,
+       caption = "Tyson (1995); Oatley, Ch. 5.") +
+  theme_ipe(base_size = 16) +
+  theme(panel.grid.major.x = element_blank())
+
+p_jets <- ggplot(jets, aes(x = year, y = airbus)) +
+  geom_line(color = iu_green, linewidth = 1.4) +
+  geom_point(color = iu_green, size = 4) +
+  geom_text(aes(label = paste0(airbus, "%")), vjust = -0.9, size = 4.6,
+            fontface = "bold", color = iu_dark_text) +
+  scale_x_continuous(breaks = c(1975, 1990, 2007), limits = c(1970.5, 2011.5)) +
+  scale_y_continuous(limits = c(0, 70), labels = function(x) paste0(x, "%")) +
+  labs(title = "Aircraft: Airbus captures share from Boeing",
+       subtitle = "Airbus share of large commercial aircraft",
+       x = NULL, y = NULL,
+       caption = "Launched 1967 by FR/DE/UK; subsidies ≈ 75% of dev cost.") +
+  theme_ipe(base_size = 16) +
+  theme(panel.grid.major.x = element_blank())
+
+gridExtra::grid.arrange(p_semi, p_jets, ncol = 2)
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+The U.S. built both industries first — through **defense procurement.** **Japan (MITI)** and **Europe (Airbus)** then used protection and subsidy to capture a share of the rents. This generates international political conflict over industrial policy. Previously, the US used the GATT/WTO largely to try to reverse other countries' industrial policies. Now, US is increasingly taking a "if you can't beat 'em, join 'em" attitude.
+:::
+
+::: {.notes}
+Strategic-trade theory isn't only a diagram; Oatley gives two cases where the rent-shifting story fits the record reasonably well. Semiconductors first. The U.S. got there first, and notice how — not through a deliberate industrial policy but through defense. Pentagon purchases absorbed up to 100 percent of early semiconductor output and still 40 percent into the late 1960s, which let American firms race down the learning curve; by the early 1970s they held something like 98 percent of their home market and most of Europe's. Then, from the 1970s, Japan's MITI targeted semiconductors with exactly the strategic-trade toolkit: tariffs and quotas to keep American chips out, restrictions on foreign investment so U.S. firms couldn't jump the barrier, procurement favoring Japanese chips, and R&D subsidies across dozens of projects. The result is the left panel — American firms held only about 20 percent of the Japanese market, and by 1986 Japan had captured roughly 46 percent of global semiconductor revenue while the U.S. share fell to about 40. The rents moved. The right panel is the aircraft mirror image. Boeing and McDonnell Douglas dominated postwar, again partly on the back of military contracts — the 707 was derived from a military tanker. Then in 1967 France, Germany, and Britain launched Airbus and poured in somewhere between 10 and 18 billion dollars, about 75 percent of development cost. Airbus went from zero to roughly 30 percent of the large-aircraft market by 1990, outsold Boeing for the first time in 1994, and reached rough parity by the mid-2000s. A large slice of the industry's rents transferred from the U.S. to Europe. Two honest caveats for students. First, these are the cases that fit; the failures — Machines Bull, Concorde, many MITI initiatives — are less often cited, and selecting on successes is exactly the trap we'll name in the objections section. Second, look at what actually founded both industries: not visionary economic planning but defense spending. The state was already in these industries for security reasons before anyone articulated a competitiveness rationale — which is precisely the issue the modern debate reopens.
+:::
+
+
+# From Competitiveness to Security {background-color="#990000"}
+
+
+## Same Tools, New Objective
+
+```{r}
+#| label: fig-arc
+#| fig-width: 12.5
+#| fig-height: 4.3
+#| out-width: "92%"
+#| fig-alt: "A horizontal timeline shading from crimson (competitiveness) on the left to dark navy (security) on the right, marking Hamilton 1791, postwar MITI/National Champions, 1980s strategic trade, and 2020s CHIPS/IRA/export controls."
+
+arc <- data.frame(
+  x = c(1, 2, 3, 4),
+  y = c(1, 1, 1, 1),
+  col = c("#A94545", "#A94545", "#7A4A57", "#1F3A5F"),
+  era = c("1791", "1950s–70s", "1980s–90s", "2020s"),
+  lab = c("Hamilton & List\nbuild manufacturing\nvs. Britain",
+          "MITI · National\nChampions · the\nJapanese miracle",
+          "Strategic trade:\nchips & Airbus,\nrents & jobs",
+          "CHIPS · IRA ·\nexport controls:\nresilience & rivalry"),
+  rationale = c("COMPETITIVENESS", "COMPETITIVENESS", "COMPETITIVENESS", "SECURITY")
+)
+
+ggplot(arc) +
+  annotate("segment", x = 0.7, xend = 4.3, y = 1, yend = 1,
+           linewidth = 2.5, color = iu_light_gray,
+           arrow = arrow(length = unit(0.3, "cm"), type = "closed")) +
+  geom_point(aes(x = x, y = y, color = col), size = 9) +
+  geom_text(aes(x = x, y = 1.42, label = era), fontface = "bold",
+            size = 5.6, color = iu_dark_text) +
+  geom_text(aes(x = x, y = 0.62, label = lab), size = 4.2,
+            color = iu_dark_text, lineheight = 0.95) +
+  geom_text(aes(x = x, y = 1.2, label = rationale, color = col),
+            fontface = "bold", size = 4.0) +
+  scale_color_identity() +
+  scale_x_continuous(limits = c(0.5, 4.5)) +
+  scale_y_continuous(limits = c(0.4, 1.6)) +
+  labs(title = "Same toolkit, new justification") +
+  theme_void(base_size = 18) +
+  theme(plot.title = element_text(color = iu_crimson, face = "bold", hjust = 0.5,
+                                  size = rel(1.05), margin = margin(t = 12, b = 20)),
+        plot.margin = margin(t = 12, r = 14, b = 10, l = 14))
+```
+
+::: {.callout-important appearance="minimal" icon=false}
+For two centuries the case for industrial policy was **economic** — growth, productivity, competitiveness, rents. Since roughly 2017 the dominant case has become **strategic** — supply-chain resilience, chokepoints, and not depending on a rival.
+:::
+
+::: {.notes}
+Here is the pivot the whole lecture has been building toward, and it's the one I most want you to leave with. The toolkit of industrial policy — subsidies, procurement, protection, state credit — has barely changed in two hundred years. What has changed, and changed sharply in the last decade, is the justification. From Hamilton through postwar Japan through 1980s strategic-trade theory, the argument was fundamentally economic: build the industry because it raises growth, productivity, competitiveness, captures rents, employs people in high-wage jobs. The yardstick was national income. Read the Sullivan and policy language of the 2020s and the yardstick has moved. The CHIPS Act, the Inflation Reduction Act's clean-energy provisions, the October 2022 export controls — these are defended primarily as security measures: keep critical supply chains resilient, deny a rival access to advanced technology, and don't let the country be dependent on an adversary for things it cannot live without. The timeline color shift on the slide is the argument in one image — crimson competitiveness on the left bleeding into navy security on the right. Two cautions so we don't caricature this. The shift is in emphasis, not kind; competitiveness arguments never vanished, and security arguments are old — recall that the U.S. semiconductor and aircraft industries were founded on defense money. And the dating is rough; you can put the inflection at the 2017 National Security Strategy, or the 2018 tariffs, or COVID's supply-chain shock, or the 2022 invasion of Ukraine. The point is not a precise date but a reframing: the same policy that an economist would judge by whether it raises national income is now judged by whether it keeps the nation safe. Those are different tests, they do not always agree, and much of today's discussion depends on distinguishing them.
+:::
+
+
+## Why Policy Makers Now See Dependence as Vulnerability
+
+Trade always created **security externalities** — but whether interdependence contributes to *peace* or *vulnerability* depends on the geopolitical environment.
+
+::: {.columns}
+::: {.column width="50%"}
+
+### Liberal Internationalism (1990s)
+Interdependence as **mutual restraint**. Gains from trade bind rivals together. Depending on others is **efficient**.
+
+### Economic Security (now)
+Networks have **chokepoints**. The state that controls a hub — the dollar, SWIFT, advanced chips — can **deny a rival access** or **surveil the flows passing through it** (Farrell & Newman 2019, *weaponized interdependence*).
+
+:::
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**Trade follows the flag.** Free trade is more likely *within* alliances than across them — because trade with an ally strengthens you, trade with a rival strengthens *them* (Gowa & Mansfield 1993; Hirschman 1945).
+:::
+
+[The *same* dependence — on foreign chips, e.g. — may be interpreted as efficient specialization among allies and as a strategic liability among rivals.]{style="color:#535054; font-size:0.95em;"}
+
+:::
+:::
+
+::: {.notes}
+If the rationale has shifted from competitiveness to security, the obvious question is: why now? Why does relying on foreign suppliers, which the gains-from-trade logic of Chapter 3 celebrates as efficient specialization, suddenly look like a threat? The IPE answer is that trade has always carried security externalities — consequences for the balance of power, not just for income — and how heavily those weigh depends on the geopolitical environment. Bring in two literatures. First, Gowa and Mansfield's 1993 work, building on Albert Hirschman back in 1945: trade isn't politically neutral, because the gains from trade are also gains in national capability. Trade with an ally strengthens a partner whose strength helps you; trade with a rival strengthens an adversary whose strength threatens you. So free trade clusters within alliances — "trade follows the flag" — and states worry about relative gains, about who is strengthened more, especially across a rivalry. Second, Farrell and Newman's 2019 concept of weaponized interdependence, which updates Hirschman for the network age. Modern economic networks — dollar clearing, the SWIFT messaging system, the chip supply chain — aren't flat; they run through a few central hubs. Whoever controls a hub gets two powers: the chokepoint, the ability to deny a rival access, and the panopticon, the ability to see everything flowing through. Put the two ideas together and you get the modern anxiety in one line, the bottom of the slide: the very same dependence reads completely differently depending on who's at the other end. Relying on Taiwanese or Dutch chips among allies looks like sensible specialization; relying on a strategic rival for the same input looks like granting them control of a chokepoint. Nothing about the economics changed — what changed is the assessment of intent and the structure of the network. That is why the security environment, not the trade theory, is the decisive factor in today's policy.
+:::
+
+
+## The New Toolkit — and the New Vocabulary
+
+```{r}
+#| label: tbl-toolkit
+
+tk <- data.frame(
+  policy = c("CHIPS & Science Act (2022)",
+             "Inflation Reduction Act (2022)",
+             "Export controls (Oct. 2022 →)",
+             "\"Small yard, high fence\""),
+  what = c("USD 52.7B for domestic semiconductors (USD 39B in subsidies, a 25% tax credit, plus R&D), with \"guardrails\" barring expansion in China.",
+           "Hundreds of billions in clean-energy subsidies with domestic-content rules — climate policy *and* competition with China rolled together.",
+           "Bars sales of advanced chips and chip-making tools to China. The goal is not to capture rents but to deny a rival a capability.",
+           "Sullivan's framing (2023): restrictions stay narrow and security-focused; a \"New Washington Consensus\" replaces reflexive liberalization.")
+)
+
+kable(tk, col.names = c("Instrument", "What it does — and why"),
+      align = c("l", "l")) %>%
+  kable_styling(font_size = 22, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:4, extra_css = "padding-top: 13px; padding-bottom: 13px; line-height: 1.35;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "30%") %>%
+  column_spec(2, width = "70%")
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+Note the shift in objective. Classic industrial policy seeks to **build domestic winners**; export controls seek to **deny rivals a capability**.
+:::
+
+::: {.notes}
+This is the concrete contemporary toolkit, and it's worth being precise because the article our presenter covers lives inside it. The CHIPS and Science Act of 2022 put 52.7 billion dollars behind domestic semiconductor manufacturing — about 39 billion in direct subsidies, a 25 percent investment tax credit, and roughly 13 billion for R&D and workforce — with "guardrails" that bar recipients from expanding advanced manufacturing in China. The Inflation Reduction Act layered on hundreds of billions in clean-energy subsidies with domestic-content requirements, which is fascinating precisely because it fuses three rationales at once — climate, jobs, and competition with China — and different advocates sell it with whichever rationale suits them. Then, two months after CHIPS, the October 2022 export controls, which are a genuinely different instrument: they do not try to build an American chip champion, but to deny China access to advanced chips and the tools to make them. Jake Sullivan's 2023 Brookings speech gave this whole posture its slogans — "small yard, high fence," meaning the restrictions are supposed to be narrow and security-focused rather than a general blockade, and a "New Washington Consensus" to replace the reflexive free-trade consensus of the 1990s. I want students to catch the shift in objective at the bottom of the slide, because it is analytically important. Classic industrial policy is constructive — it tries to build winners, and you can at least argue it against a market-failure benchmark. Export controls are destructive — they try to deny a rival a capability — and that has almost no market-failure justification at all; it's straightforwardly an exercise of power. When we get to the objections, keep asking which kind of policy we're evaluating, because the build-a-winner kind and the deny-a-rival kind fail in different ways and for different reasons.
+:::
+
+
+## Can the Line Be Drawn?
+
+```{r}
+#| label: fig-spectrum
+#| fig-width: 12.5
+#| fig-height: 4.0
+#| out-width: "92%"
+#| fig-alt: "A horizontal spectrum from pure competitiveness on the left to pure security on the right, with examples placed along it and a shaded contested middle where the security label is most easily abused."
+
+spec <- data.frame(
+  x = c(0.6, 1.7, 3.0, 4.3, 5.4),
+  lab = c("Consumer\nsolar panels", "EV batteries\n& critical minerals",
+          "Advanced\nsemiconductors", "Munitions,\nrare-earth magnets", "Nuclear /\nweapons tech"),
+  grp = c("competitiveness", "contested", "contested", "security", "security")
+)
+
+ggplot() +
+  annotate("rect", xmin = 1.1, xmax = 3.7, ymin = 0.7, ymax = 1.3,
+           fill = "#F2E2C9", alpha = 0.8) +
+  annotate("text", x = 2.4, y = 1.5, label = "the contested middle —\nwhere the \"security\" label is easiest to abuse",
+           fontface = "italic", color = "#8A6D2B", size = 4.3, lineheight = 0.9) +
+  annotate("segment", x = 0.3, xend = 5.7, y = 1, yend = 1,
+           linewidth = 2, color = iu_gray) +
+  geom_point(data = spec, aes(x = x, y = 1, color = grp), size = 7) +
+  geom_text(data = spec, aes(x = x, y = 0.55, label = lab), size = 4.0,
+            color = iu_dark_text, lineheight = 0.9) +
+  annotate("text", x = 0.5, y = 0.3, label = "mostly COMPETITIVENESS / climate",
+           color = iu_crimson, fontface = "bold", size = 4.2, hjust = 0) +
+  annotate("text", x = 5.7, y = 0.3, label = "mostly SECURITY",
+           color = iu_navy, fontface = "bold", size = 4.2, hjust = 1) +
+  scale_color_manual(values = c(competitiveness = iu_crimson,
+                                contested = "#B5762A", security = iu_navy), guide = "none") +
+  scale_x_continuous(limits = c(0.2, 5.8)) +
+  scale_y_continuous(limits = c(0.2, 1.7)) +
+  theme_void()
+```
+
+::: {.callout-important appearance="minimal" icon=false}
+**The slippery-slope risk:** once "security" considerations overriding the market, almost any industry can invoke it. A criterion that applies to everything constrains nothing — and protectionist interests have strong incentives to adopt the language of security.
+:::
+
+::: {.notes}
+This slide is the Big Question made operational, and it's the one I'd most like to spend discussion time on. Lay industries along a spectrum. At the left, things that are genuinely just economic — consumer solar panels, where the case is competitiveness or climate, not survival. At the right, things almost everyone agrees are security — munitions, the rare-earth magnets that go into guided weapons, nuclear and weapons technology — where you would not want to depend on an adversary at any price. The analytical action is all in the shaded middle: EV batteries, critical minerals, advanced semiconductors. Chips are the perfect hard case because they are simultaneously a consumer good, the foundation of economic competitiveness, and a military necessity — the same fab makes the chip in your phone and the chip in a missile. So is a chip subsidy industrial policy or defense policy? The honest answer is that you often cannot cleanly separate them, and that ambiguity is not a footnote — it's the central governance problem. Here is the slippery-slope concern, and it is why economists are wary. The market-failure discipline established earlier — name the distortion, use the narrowest tool — has real constraining force. "National security" has almost no bite as a limiting principle, because with enough imagination every industry can tell a security story: food security, energy security, even "freedom" of various supply chains. If everything can be labeled security, then security stops doing any analytical work, and the label becomes exactly what a protectionist lobby reaches for when the economic argument has failed. Recall the Chapter 4 logic: concentrated producers are superb at organizing. Provide such interests with a rationale that suspends ordinary cost-benefit scrutiny, and the risk becomes evident. And note the irony I flagged earlier: Korea's heavy-and-chemical drive, the cleanest success story in the new evidence, was itself launched for security reasons — North Korean provocations and a U.S. troop drawdown — and it happened to also build competitiveness. So security and competitiveness rationales aren't always rivals; sometimes they point the same way. The analytical skill we are building is distinguishing the case where they genuinely align from the case where "security" functions as a pretext.
+:::
+
+
+# The Political Economy Objections {background-color="#990000"}
+
+
+## Three Reasons Industrial Policy Often Fails
+
+::: {.columns}
+::: {.column width="60%"}
+
+1. **Picking winners (the knowledge problem).** Effective intervention requires identifying the right sector *and* calibrating the right subsidy. Governments are frequently poor at both, and misjudged targeting misallocates capital.
+2. **Rent-seeking & capture (Krueger; Olson).** Once subsidies are available, firms have incentives to compete for them through *lobbying* rather than *innovation*; political connections, not productivity, can determine who benefits.
+3. **The exit problem.** Protection meant to be temporary tends to persist, as protected firms become a standing constituency for its continuation.
+
+:::
+::: {.column width="40%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+The underlying difficulty: industrial policy is designed for an **idealized government** but implemented by the **actual one** — subject to capture, short time horizons, and difficulty reversing failed commitments.
+:::
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Dani Rodrik (most pro-industrial policy elite economist): the decisive question is less whether a state can **pick winners** than whether it can **let losers go.**
+:::
+
+::: {.notes}
+Now the case for the prosecution, because a good IPE student should be able to argue both sides fully. Three classic objections. First, the knowledge problem, popularly "picking winners." Even granting that intervention can work in theory, the government has to do two hard things: identify which sector actually offers the long-run gains, and calculate the right size of subsidy. Get the sector wrong or the dose wrong and scarce capital is committed to an unviable sector — and the track record includes Concorde and Machines Bull. Second, and politically deeper, rent-seeking and capture, the logic of Anne Krueger and Mancur Olson. The moment subsidies are available, you change what firms optimize for: effort shifts from making a better product to lobbying for a larger subsidy, and the firms that win are the ones best at politics, not the ones best at production. Industrial policy can quietly convert an economy's most capable firms into its most effective lobbyists. Third, the commitment problem — the "temporary" protection that never sunsets. The entire welfare case rested on removing the tariff once the infant grew up, but a protected industry becomes a concentrated, organized constituency for its own continued protection, and democratic governments rarely have the political will to withdraw it. Taken together, these yield the claim in the callout, which I regard as the single most important sentence in the objections: industrial policy is usually designed for an idealized government — far-sighted, disinterested, technically brilliant — and then implemented by the actual government we have, which is lobby-captured, electorally myopic, and structurally reluctant to acknowledge a failed commitment. Rodrik's reframing is the constructive version and worth giving students: stop asking whether the state can pick winners, which demands near-omniscience, and ask the more achievable thing — can it let losers go? A system with hard budget constraints and real exit can tolerate many poor choices; a system that cannot terminate its failures will accumulate losses regardless of how well it selects. That's also a usable evaluation rubric for the CHIPS-era programs: not "did they choose chips correctly" but "is there any mechanism to stop if it isn't working?"
+:::
+
+
+## The Theory Suggests Targeted Interventions
+
+The strategic-trade case for subsidies is not only hard to *implement* but **theoretically limited.**
+
+```{r}
+#| label: tbl-eaton
+
+eg <- data.frame(
+  setup = c("Firms compete on QUANTITY (Cournot)",
+            "Firms compete on PRICE (Bertrand)"),
+  result = c("Brander & Spencer (1985): SUBSIDIZE your firm",
+             "Eaton & Grossman (1986): TAX your firm"),
+  takeaway = c("Subsidy shifts rents home", "Subsidy is counterproductive; the opposite policy is optimal")
+)
+
+kable(eg, col.names = c("Change one assumption…", "…and the optimal policy reverses", ""),
+      align = c("l", "l", "l")) %>%
+  kable_styling(font_size = 23, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:2, extra_css = "padding-top: 18px; padding-bottom: 18px; line-height: 1.4;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "34%") %>%
+  column_spec(2, width = "38%") %>%
+  column_spec(3, width = "28%")
+```
+
+::: {.callout-important appearance="minimal" icon=false}
+If an assumption as subtle as quantity- versus price-competition **reverses** whether the optimal policy is a subsidy or a tax, a government cannot easily know which case it faces. Accounting for rival retaliation and general-equilibrium effects weakens the result further. 
+
+If you are going to "do" industrial policy, probably should only procede where market failures are biggest and where strategic benefit of internalizing capabilities highest.
+:::
+
+::: {.notes}
+The objections so far are about implementation, but there's a deeper problem: the theory that licenses the subsidy is itself brittle, and this is the critique that made even Krugman cautious about his own creation. Brander and Spencer's 1985 result — subsidize your national champion to shift rents home — depends on a specific assumption about how the firms compete, namely Cournot competition, where firms choose quantities. Eaton and Grossman showed in 1986 that if you instead assume Bertrand competition, where firms choose prices, the optimal policy reverses: now you should tax your own exporter, not subsidize it. Consider how damaging this is. The very same model, the same firms, the same rents — and flipping one assumption that is essentially invisible to a policymaker flips the recommendation from "subsidize" to "tax," from help to hurt. Brander and Spencer offered an example, not a general law. And the fragility compounds: in general equilibrium, subsidizing the strategic sector pulls resources out of other industries, taxing them implicitly; and the whole result assumes the rival government sits still, when in reality it retaliates with its own subsidy and both treasuries simply transfer money to the same oligopolists, and the rents are dissipated. So the honest verdict on strategic-trade theory is the one Oatley reaches: it does not give robust, usable support for the claim that intervention reliably raises national income. It tells you intervention could help under precise conditions you usually can't verify, with tools whose correct sign you can't determine, against a rival that does not remain passive. It functions less as a policy prescription than as a caution.
+:::
+
+
+## Does Industrial Policy Work? Recent Evidence
+
+Recent causal studies (Juhász, Lane & Rodrik 2024) reach **more favorable conclusions than the earlier, largely skeptical literature** — though their findings are strongly conditional.
+
+::: {.columns}
+::: {.column width="52%"}
+
+**Evidence it *can* work**
+
+- **South Korea's HCI drive (1973–79):** Lane shows it durably shifted comparative advantage into heavy industry — benefits spread downstream and *persisted* after the policy ended.
+- Juhász (Napoleonic blockade), Hanlon, and others find real, lasting effects in well-identified cases.
+
+:::
+::: {.column width="48%"}
+
+**…but read the fine print**
+
+- These are *successes studied carefully*, not a promise of replication.
+- Korea's HCI was security-driven (North Korea, U.S. troop drawdown) — and still cost-laden and contested.
+- Evidence of success in one case does not establish transferability; context, state capacity, and exit discipline are decisive.
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+The position emerging from this literature is conditional rather than categorical: industrial policy can succeed **under conditions that must be specified.** The debate has moved from *whether* it works to *when* and *how.*
+:::
+
+::: {.notes}
+I don't want to leave students with a caricature in either direction, because the actual research frontier is more interesting than "industrial policy good" or "industrial policy bad." For decades the empirical literature was mostly skeptical, leaning on correlational studies and cautionary tales. The recent wave — Juhász, Lane, and Rodrik survey it in their 2024 Annual Review piece, "The New Economics of Industrial Policy" — uses modern causal-inference tools and reaches a more positive, though carefully hedged, conclusion. The flagship case is Nathan Lane's study of South Korea's Heavy and Chemical Industry drive from 1973 to 1979. Using the input-output structure of the economy, Lane shows the policy genuinely shifted Korea's comparative advantage into targeted heavy industries, that the gains propagated to downstream users of those intermediates, and — the striking part — that the benefits persisted even after the program ended. Juhász's work on the Napoleonic blockade as a natural experiment in protection, and several other well-identified studies, point the same way: in specific cases, well-designed promotion left a lasting mark. But teach the fine print as carefully as the headline. First, these are successes examined closely; they do not certify that the next program will work — there is an obvious selection issue in which episodes receive careful econometric treatment. Second, look again at Korea: the HCI drive was launched for national-security reasons, after North Korean provocations and a U.S. troop drawdown, which is a notable illustration that the security and competitiveness rationales we tried to separate were fused in the very case that most strongly supports industrial policy. And it was still enormously costly and remains contested. So the mature position, the one I want you to be able to defend, is neither the free-marketeer's "never" nor the planner's "always." It's "sometimes, under conditions you have to specify" — state capacity to choose and to exit, a real market failure or security rationale, and discipline to stop. The field has moved from arguing about whether industrial policy works to arguing about when and how — which is exactly the question contemporary semiconductor policy is now testing.
+:::
+
+
+# Weaknesses + Handoff {background-color="#990000"}
+
+
+## Oatley's Verdict: A Fatal Flaw?
+
+::: {.columns}
+::: {.column width="60%"}
+
+1. **No microfoundations.** The model *asserts* states act for national welfare. But why would autonomous officials enrich society rather than themselves? (Think Versailles.) What's the reward structure?
+2. **Autonomy is overstated.** Even Japan's MITI served the LDP's big-business base. "Autonomous" states still answer to *some* coalition.
+3. **Strategic-trade theory is weak.** As shown above: sensitive to assumptions, hard to target, and reversible in sign.
+
+:::
+::: {.column width="40%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+Oatley's view: the missing microfoundations are a **fatal flaw.** The approach tells us autonomous states *will* act — but not *how* they'll act, or *why* toward welfare.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+The fix may be to **combine** approaches: states with real autonomy, but acting within limits set by the coalition that keeps them in power.
+:::
+
+:::
+:::
+
+::: {.notes}
+Before the handoff, Oatley's own balance sheet, because he is notably hard on the approach he's just taught. Three weaknesses. First and most fundamental, the lack of microfoundations. The state-centered approach asserts that autonomous states act to raise national welfare, but it never explains why they would. An autonomous ruler — picture Versailles — has at least as much incentive to enrich himself and his circle as to enrich society. So what reward structure makes individual officials choose national welfare? It can't be elections, because that collapses you back into the society-centered model. It might be security competition — states that build strong economies survive — but nobody has worked out how that systemic pressure translates into the specific resource-allocation choices of particular bureaucrats. Oatley considers this gap serious enough to call it a fatal flaw: the approach can tell us an autonomous state will act, but not how it will act or why toward welfare rather than self-dealing. Second, the autonomy assumption is overstated in the other direction. Even Japan, the strongest of strong states, had a MITI whose industrial policy conspicuously favored big business — which happened to be the LDP's political base. Was that the national interest, or the ruling coalition's interest presented as the national interest? Even insulated states answer to someone. Third, the theoretical engine, strategic-trade theory, is weak in the ways we just dissected. Oatley's constructive suggestion, and it's the right note to end the analysis on, is synthesis: don't choose between Chapters 4 and 5, combine them. Expect states to have genuine autonomy and objectives of their own, but exercised within boundaries set by the societal coalition that keeps them in power. That hybrid — autonomous within limits — is closer to how trade politics actually works than either pure model, and it's the lens I'd carry into the article.
+:::
+
+
+## Next: Semiconductors as the Test Case
+
+::: {.callout-important appearance="minimal" icon=false}
+We have developed the *theory* of state-centered trade. The presentation now applies it to the central industrial-policy case of the present moment — **semiconductors.**
+:::
+
+::: {.columns}
+::: {.column width="55%"}
+
+### Questions to hold during the presentation
+- Is CHIPS-era policy best read as **competitiveness, security, or both** — and can Bown & Wang tell them apart?
+- Where on today's **spectrum** do chips fall — and who decides?
+- Does the case look more like **Korea's HCI success** or like a **picking-winners / rent-seeking** trap?
+- What would count as this policy **working** — and is there an exit?
+
+:::
+::: {.column width="45%"}
+
+### Student-led article presentation
+Bown, C. P. & Wang, D. (2024). "Semiconductors and Modern Industrial Policy." *Journal of Economic Perspectives* 38(4): 81–110.
+
+### Then
+**In-class writing prompt**
+
+:::
+:::
+
+::: {.notes}
+This is the handoff, and it's deliberately a clean one — I've given you the scaffolding, and I've stayed off the article itself so our presenter has the floor and the case material to work with. Everything today was the theory of state-centered trade; Bown and Wang take that theory to the single most important industrial-policy episode of our moment, semiconductors, which is why I paired it here. Don't summarize the chapter back at the presenter — instead carry these four questions in, because they're the lecture's concepts turned into a worksheet for the article. One: when Bown and Wang describe the CHIPS Act and the export controls, are they best understood as competitiveness policy, security policy, or an inseparable fusion — and do the authors manage to draw the line we struggled to draw? Two: where do chips actually sit on our competitiveness-to-security spectrum, and who gets to make that call? Three: does the semiconductor push look more like Korea's HCI drive — a security-motivated bet that durably built comparative advantage — or more like the picking-winners-and-rent-seeking trap the critics warn about? And four, the Rodrik test: what would it even mean for this policy to have worked, and is there any mechanism to stop if it hasn't? After the presentation and discussion we'll close with the in-class writing prompt, where you'll stake out and defend a position of your own. Let me turn it over to our presenter.
+:::

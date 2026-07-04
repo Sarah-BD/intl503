@@ -1,0 +1,26 @@
+---
+title: "Day 4: A Society-Centered Approach to Trade Politics"
+subtitle: "Friday, July 10, 2026"
+toc: false
+---
+
+**Readings:**
+
+1. Oatley, Chapter 4 — *A Society-Centered Approach to Trade Politics*
+2. Carnegie, Allison, and Nikhar Gaikwad. 2022. "Public Opinion on Geopolitics and Trade: Theory and Evidence." *World Politics* 74(2): 167–204.
+3. {{< fa headphones >}} [*Trade Talks* ep. 198: "Inside Washington's Lobbying Industry"](https://tradetalkspodcast.com/podcast/198-inside-washingtons-lobbying-industry/)
+
+::: {.callout-tip}
+## In class today
+- Society-centered models: factor endowments, sector specificity, individual preferences
+- Who wins and who loses from trade — and what they want their government to do about it
+- How geopolitics reshapes individual trade preferences (Carnegie & Gaikwad)
+- **Student-led article presentation**
+- **Quiz 1** (Chapters 1–4)
+:::
+
+## Slides
+
+[{{< fa expand >}} Open slides in a new tab](../slides/day04-chapter04.html){target="_blank"}
+
+<iframe src="../slides/day04-chapter04.html" width="100%" height="600" style="border:1px solid #ccc;"></iframe>

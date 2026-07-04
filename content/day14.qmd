@@ -1,0 +1,29 @@
+---
+title: "Day 14: Economic Coercion and the Weaponization of Interdependence"
+subtitle: "Tuesday, July 28, 2026"
+toc: false
+---
+
+**Reading (no Oatley chapter — instructor-led session):**
+
+- Farrell, Henry, and Abraham L. Newman (2019), "[Weaponized Interdependence: How Global Economic Networks Shape State Coercion](https://doi.org/10.1162/isec_a_00351)," *International Security* 44(1): 42–79
+- Drezner, Daniel W. (2024), "[Global Economic Sanctions](https://doi.org/10.1146/annurev-polisci-041322-032240)," *Annual Review of Political Science* 27: 9–24
+- {{< fa headphones >}} [*Trade Talks* ep. 170: National Security, Semiconductors, and the US Move to Cut Off China](https://tradetalkspodcast.com/podcast/170-national-security-semiconductors-and-the-us-move-to-cut-off-china/)
+
+::: {.callout-tip}
+## In class today
+- Writing prompt (in class — no reflection or reading response due beforehand)
+- Short history of economic coercion, from ancient embargoes to the League of Nations
+- Small-group discussion putting the two readings in tension with each other
+- Whole-class debate
+:::
+
+This session steps outside the textbook to examine how states turn economic exchange into an instrument of leverage. We root the two readings in a much longer history (ancient embargoes, Napoleon's Continental System, the WWI blockade, the League of Nations' sanctions regime), separate sanctions from export controls as distinct logics, and put Farrell & Newman's theory in dialogue with its published critics rather than taking it as settled. Most of class time is discussion, not lecture — come having read both pieces, since there is no lecture summary to fall back on.
+
+## Slides
+
+[{{< fa expand >}} Open slides in a new tab](../slides/day14-economic-coercion.html){target="_blank"}
+
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid #ccc;">
+<iframe src="../slides/day14-economic-coercion.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+</div>

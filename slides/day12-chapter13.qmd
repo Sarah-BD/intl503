@@ -1,0 +1,832 @@
+---
+title: "A State-Centered Approach to Monetary Policy"
+subtitle: "INTL 503 | Chapter 13"
+author: "Professor Sarah Bauerle Danzman"
+date: "2026-07-24"
+date-format: long
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: true
+    preview-links: auto
+    footer: "INTL 503 | A State-Centered Approach to Monetary Policy"
+    transition: fade
+    width: 1600
+    height: 900
+    margin: 0.15
+    fig-align: center
+    fig-dpi: 300
+    auto-stretch: false
+    logo: iu-trident.png
+    title-slide-attributes:
+      data-background-image: iu-trident.png
+      data-background-size: 15%
+      data-background-position: 2% 2%
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(knitr)
+library(kableExtra)
+
+# IU color palette
+iu_crimson <- "#990000"
+iu_cream <- "#EDEBEB"
+iu_gray <- "#535054"
+iu_light_gray <- "#7E7E7E"
+iu_dark_text <- "#2C3E50"
+iu_green <- "#1B5E3F"
+iu_navy <- "#1F3A5F"
+iu_gold <- "#B8860B"
+
+theme_ipe <- function(base_size = 20) {
+  theme_minimal(base_size = base_size) +
+    theme(
+      plot.title = element_text(color = iu_crimson, face = "bold", size = rel(1.2),
+                                margin = margin(t = 5, b = 5)),
+      plot.subtitle = element_text(color = iu_gray, size = rel(0.9),
+                                   margin = margin(b = 10)),
+      plot.caption = element_text(color = iu_light_gray, size = rel(0.7),
+                                  hjust = 0, margin = margin(t = 10)),
+      axis.title = element_text(color = iu_dark_text, size = rel(0.9)),
+      axis.title.x = element_text(margin = margin(t = 8)),
+      axis.title.y = element_text(margin = margin(r = 8)),
+      axis.text = element_text(color = iu_gray, size = rel(0.8)),
+      panel.grid.minor = element_blank(),
+      panel.grid.major = element_line(color = "#E5E5E5", linewidth = 0.4),
+      legend.position = "bottom",
+      legend.title = element_text(size = rel(0.85)),
+      legend.text = element_text(size = rel(0.8)),
+      plot.margin = margin(t = 8, r = 12, b = 20, l = 12)
+    )
+}
+```
+
+## Today's Plan
+
+::: {.callout-important appearance="minimal" icon=false}
+## Today's Big Question
+[**Why would a democracy deliberately take monetary policy out of the hands of its elected officials?**]{style="font-size: 1.4em; line-height: 1.4;"}
+:::
+
+```{r}
+#| label: tbl-plan
+
+plan <- data.frame(
+  Section = c("1 · When Society-Centered Logic Runs Out",
+              "2 · The Economics: The Phillips Curve Breaks Down",
+              "3 · The Time-Consistency Problem",
+              "4 · Credible Commitment & Central-Bank Independence",
+              "5 · The Exchange-Rate Back Door",
+              "6 · State Interests Beyond Credibility",
+              "7 · Two Frameworks Side by Side"),
+  Cover = c("Three policies no domestic coalition wanted",
+            "Stagflation, the natural rate, and the accelerationist principle",
+            "Why a government's low-inflation promise isn't believed",
+            "Delegating to an independent bank as a commitment device",
+            "Why governments keep one hand on exchange-rate policy",
+            "Balance of payments, reserve-currency status, statecraft",
+            "Society-centered vs. state-centered — and Quiz 3 review")
+)
+
+kable(plan, col.names = c("Section", "What we'll cover"),
+      align = c("l", "l")) %>%
+  kable_styling(font_size = 22, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "40%") %>%
+  column_spec(2, width = "60%")
+```
+
+::: {.notes}
+A note on the Friday rhythm before we start. There is no opening writing prompt today — we run lecture and a short comparative workshop, and the class closes with Quiz 3, which covers Chapters 10 through 13. I will flag the quiz review explicitly when we get to the final comparison, so listen for it.
+
+Now the substance. Yesterday, in Chapter 12, we explained monetary and exchange-rate policy as the outcome of domestic distributional conflict: groups want a strong or weak currency depending on where they sit, and policy reflects whichever coalition wins. That account is powerful, and we are not abandoning it. But it has a blind spot, and today's chapter is about that blind spot. Sometimes governments adopt monetary policies that no powerful domestic coalition wanted — they tighten into a recession, they peg to a stronger currency at real domestic cost, they tolerate an overvalued currency that hurts their own manufacturers. The society-centered framework cannot explain those choices, because no winning coalition demanded them. The answer the chapter develops is that the state has interests of its own — interests in credibility, in managing its balance of payments, and in its geopolitical position — that can override domestic distributional politics. Hold the Big Question the whole way through: handing monetary policy to unelected central bankers looks profoundly undemocratic, so why do democracies keep doing it? The arc has seven moves. We open with the puzzle cases. Then the economics that makes the politics work — the Phillips curve, which the 1970s broke. Then the theoretical core, the time-consistency problem. Then the institutional answer, central-bank independence as a commitment device, with the cross-country evidence. Then the exchange-rate back door, which keeps politicians in the game. Then the two other state interests, balance of payments and geopolitics. And finally the comparison that doubles as your quiz review.
+:::
+
+
+# When Society-Centered Logic Runs Out {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 1]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## Yesterday's Framework — and Where It Stops
+
+::: {.columns}
+::: {.column width="50%"}
+
+### Chapter 12 (yesterday)
+Monetary and exchange-rate policy is the resolution of **domestic distributional conflict.**
+
+- Exporters and import-competers want a **weak** currency
+- Finance and nontradeables want a **strong** one
+- Policy reflects **whichever coalition wins**
+
+This explains a great deal — *partisan* differences, *sectoral* lobbying, the *electoral* cycle.
+
+:::
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+But some real policies fit **no** winning coalition:
+
+1. A government **tightens into high unemployment**, hurting organized labor
+2. A country **pegs to a stronger currency** at real domestic cost
+3. The U.S. **tolerates an overvalued dollar** despite manufacturing pain
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+If no domestic group wanted these, **who did?** Today's answer: **the state itself**, acting on interests of its own.
+:::
+
+:::
+:::
+
+::: {.notes}
+Start by restating yesterday cleanly, because today is defined against it. The society-centered approach says monetary and exchange-rate policy is the resolution of conflict among domestic groups. Exporters and firms competing with imports want a weak, competitive currency; banks, financial services, and producers of nontradeables want a strong one; and policy ends up reflecting whichever coalition prevails through elections, parties, or lobbying. That framework does a lot of work. It explains why left and right governments often run different monetary policies, why exporting regions lobby the way they do, and why incumbents are tempted to loosen before an election.
+
+Now the puzzle, in the right column — and I want to dwell on these three cases because they motivate the entire chapter. First: a government raises interest rates and tightens monetary policy while unemployment is already high and labor is politically organized. Society-centered logic says that should not happen — the costs fall on a powerful, mobilized group. Second: a country deliberately pegs its currency to a stronger one, accepting an overvalued exchange rate that hurts its exporters, when no exporting coalition asked for that. Third, closest to home: the United States has, at various times, tolerated a strongly overvalued dollar even as its manufacturers lost ground to foreign competition. In each case, the policy that was actually chosen is not the one any winning domestic coalition demanded. So the question that organizes today is simple and sharp: if no domestic group wanted these policies, who did? The chapter's answer is that the state has interests as a state — not as an arena where groups fight, but as an institutional actor with its own stakes in credibility, in keeping its external accounts manageable, and in its standing in the international system. One clarification I will repeat later because students conflate it every year: "state-centered" does not mean "whatever the leader personally prefers." It means the institutional interests of the state, which persist across whoever happens to hold office.
+:::
+
+
+## Three Puzzles for the Society-Centered Account
+
+```{r}
+#| label: tbl-puzzles
+
+pz <- data.frame(
+  case = c("Tightening into a recession",
+           "Pegging to a stronger currency",
+           "Tolerating an overvalued currency"),
+  what = c("A government raises rates and squeezes the economy while unemployment is high and labor is organized",
+           "A country fixes to a harder currency, accepting an overvalued rate that hurts its own exporters",
+           "The U.S. lets the dollar stay strong even as import competition hollows out manufacturing"),
+  why = c("Disinflation under Thatcher (UK) and Volcker (US), c. 1979–82",
+          "France's franc fort, 1983 onward — kept inside the EMS at heavy domestic cost",
+          "The dollar's reserve-currency role generates a state interest no exporter shares")
+)
+
+kable(pz, col.names = c("Policy puzzle", "What happens", "Where we see it"),
+      align = c("l", "l", "l")) %>%
+  kable_styling(font_size = 26, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:3, extra_css = "padding-top: 11px; padding-bottom: 11px; line-height: 1.3;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "26%") %>%
+  column_spec(2, width = "46%") %>%
+  column_spec(3, width = "28%")
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+Each row is a case the **society-centered** model struggles with. By the end of class you should be able to give the **state-centered** account of each — and say where the two frameworks diverge.
+:::
+
+::: {.notes}
+This table pins the three puzzles to concrete episodes, and I will return to all three later in the lecture, so plant them now. The first is disinflation. Around 1979 to 1982, both Margaret Thatcher in Britain and Paul Volcker at the U.S. Federal Reserve deliberately drove interest rates to punishing levels to wring inflation out of the economy, accepting deep recessions and double-digit unemployment to do it. Organized labor was hammered. No labor coalition wanted that — yet it happened, because the state had concluded that breaking entrenched inflation was worth the cost. The second is France's franc fort, the "strong franc" policy. In 1983, François Mitterrand's Socialist government — elected on an expansionary, pro-worker program — reversed course and chose to keep the franc pegged inside the European Monetary System at a strong, arguably overvalued level, imposing austerity on its own base. This is the cleanest case in the whole chapter where the two frameworks diverge on the same decision, and we will work through it carefully in the credibility section. The third is the United States tolerating an overvalued dollar. American exporters and manufacturers are hurt by a strong dollar, and they say so, but the dollar's role as the world's reserve currency gives the U.S. state an interest in dollar strength and stability that no individual exporter shares. The bottom callout is your assignment for the hour: by the end you should be able to give the state-centered explanation for each of these, and — just as important — say exactly where it parts company from the society-centered one.
+:::
+
+
+# The Economics: The Phillips Curve Breaks Down {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 2]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## Yesterday's Lever: The Short-Run Phillips Curve
+
+::: {.columns}
+::: {.column width="52%"}
+
+The **Phillips curve** describes a short-run **trade-off** between **inflation** and **unemployment**: a government can buy lower unemployment by accepting higher inflation.
+
+- This is the lever behind the **electoral** model — loosen before an election to lower unemployment
+- And the **partisan** model — the left tolerates inflation to fight unemployment
+- In the **1960s** U.S. data, the trade-off looked **stable and exploitable**
+
+:::
+::: {.column width="48%"}
+
+```{r}
+#| label: fig-phillips-1960s
+#| fig-width: 7.0
+#| fig-height: 5.0
+#| out-width: "99%"
+#| fig-alt: "A scatter plot of U.S. annual unemployment on the horizontal axis and CPI inflation on the vertical axis for the 1960s. The points trace a clean downward-sloping curve: low inflation comes with higher unemployment and higher inflation with lower unemployment, the stable short-run Phillips-curve trade-off."
+
+p60 <- data.frame(
+  year = c(1961, 1963, 1965, 1966, 1967, 1968, 1969),
+  unemp = c(6.7, 5.7, 4.5, 3.8, 3.8, 3.6, 3.5),
+  infl  = c(1.0, 1.2, 1.6, 2.9, 3.1, 4.2, 5.5)
+)
+
+ggplot(p60, aes(unemp, infl)) +
+  geom_smooth(method = "lm", se = FALSE, color = iu_gray,
+              linetype = "dashed", linewidth = 0.8) +
+  geom_point(color = iu_navy, size = 3.4) +
+  geom_text(aes(label = year), vjust = -0.9, size = 3.6, color = iu_dark_text) +
+  scale_x_continuous(limits = c(3, 7.5), labels = function(x) paste0(x, "%")) +
+  scale_y_continuous(limits = c(0, 7), labels = function(x) paste0(x, "%")) +
+  labs(title = "The 1960s: a clean, exploitable trade-off",
+       subtitle = "U.S. unemployment vs. CPI inflation, selected years 1961–1969",
+       x = "Unemployment rate", y = "CPI inflation",
+       caption = "Source: U.S. Bureau of Labor Statistics. Annual averages.") +
+  theme_ipe(base_size = 14)
+```
+
+:::
+:::
+
+::: {.callout-important appearance="minimal" icon=false}
+If this trade-off is **permanent**, a government can pick a point on it and **stay there** — buying permanently lower unemployment with a bit more inflation.
+:::
+
+::: {.notes}
+To understand why the state ends up wanting to tie its own hands, we have to get the economics right first, and that means the Phillips curve — one of your seven key terms. The Phillips curve describes a short-run trade-off between inflation and unemployment: in the short run, a government that loosens monetary policy can push unemployment down, but at the cost of higher inflation. Yesterday this curve was the lever behind two of the society-centered models. The electoral model assumes incumbents exploit it — loosen before an election to drive unemployment down and win votes. The partisan model assumes left governments sit at a different point on it than right governments, accepting more inflation to keep unemployment low. All of that takes the trade-off as a stable, exploitable menu.
+
+And in the 1960s, it really looked that way. The scatter shows U.S. data for the decade: unemployment on the horizontal axis, CPI inflation on the vertical. The points trace a clean downward-sloping curve. Early in the decade you get low inflation with higher unemployment; by the late 1960s, as policy ran the economy hot, unemployment fell toward three and a half percent and inflation climbed toward five. It looked like a reliable menu a government could order from. The important callout is the assumption baked into the whole Keynesian, society-centered picture: that this trade-off is permanent — that a government can choose a point and stay there, buying permanently lower unemployment at the price of a bit more inflation. Hold that assumption, because the next slide is the decade that demolished it.
+:::
+
+
+## The 1970s Broke the Curve: Stagflation
+
+::: {.columns}
+::: {.column width="58%"}
+
+```{r}
+#| label: fig-phillips-1970s
+#| fig-width: 8.4
+#| fig-height: 5.4
+#| out-width: "99%"
+#| fig-alt: "A scatter plot of U.S. unemployment versus CPI inflation contrasting the 1960s with the 1970s and early 1980s. The 1960s points (in blue) form a tidy downward-sloping curve in the lower-left. The 1970s and 1980s points (in crimson) sit far up and to the right, with both high inflation and high unemployment, breaking the stable trade-off and showing the curve shifting upward."
+
+p60 <- data.frame(
+  year = c(1961, 1963, 1965, 1966, 1967, 1968, 1969),
+  unemp = c(6.7, 5.7, 4.5, 3.8, 3.8, 3.6, 3.5),
+  infl  = c(1.0, 1.2, 1.6, 2.9, 3.1, 4.2, 5.5),
+  era = "1960s"
+)
+p70 <- data.frame(
+  year = c(1971, 1973, 1974, 1975, 1976, 1979, 1980, 1981),
+  unemp = c(5.9, 4.9, 5.6, 8.5, 7.7, 5.8, 7.1, 7.6),
+  infl  = c(4.3, 6.2, 11.0, 9.1, 5.8, 11.3, 13.5, 10.3),
+  era = "1970s–early 1980s"
+)
+ph <- rbind(p60, p70)
+ph$era <- factor(ph$era, levels = c("1960s", "1970s–early 1980s"))
+
+ggplot(ph, aes(unemp, infl, color = era)) +
+  geom_point(size = 3.4) +
+  geom_text(aes(label = year), vjust = -0.9, size = 3.2, color = iu_dark_text,
+            show.legend = FALSE) +
+  scale_color_manual(values = c("1960s" = iu_navy, "1970s–early 1980s" = iu_crimson),
+                     name = NULL) +
+  scale_x_continuous(limits = c(3, 9.5), labels = function(x) paste0(x, "%")) +
+  scale_y_continuous(limits = c(0, 15), labels = function(x) paste0(x, "%")) +
+  labs(title = "Stagflation: high inflation AND high unemployment",
+       subtitle = "U.S. unemployment vs. CPI inflation, 1960s vs. 1970s–early 1980s",
+       x = "Unemployment rate", y = "CPI inflation",
+       caption = "Source: U.S. Bureau of Labor Statistics. Annual averages.") +
+  theme_ipe(base_size = 14)
+```
+
+:::
+::: {.column width="42%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+The 1970s delivered **high inflation *and* high unemployment** at the same time — **stagflation.** No single downward-sloping curve can fit these points.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+The curve didn't vanish — it **shifted up.** Each attempt to ride the trade-off lifted the whole curve, leaving the same unemployment with *more* inflation.
+:::
+
+:::
+:::
+
+::: {.notes}
+Here is the decade that broke the framework. The crimson points are U.S. data from 1971 through 1981, plotted against the same 1960s scatter in navy. Look at where they land: far up and to the right. In 1974 you have eleven percent inflation with five-and-a-half percent unemployment. In 1975, nine percent inflation with eight-and-a-half percent unemployment. In 1980, thirteen-and-a-half percent inflation with seven percent unemployment. This is stagflation — high inflation and high unemployment together — and it is exactly what a stable downward-sloping Phillips curve says cannot happen. You cannot draw one tidy negatively sloped line through both clouds of points. The numbers here are annual averages from the Bureau of Labor Statistics.
+
+So what happened? The curve did not disappear; it shifted upward. And the mechanism behind that shift is the key insight of the chapter's economics. When a government rode the short-run trade-off — loosening to push unemployment below its sustainable level — workers and firms eventually noticed the higher inflation and built it into their wage demands and price-setting. Once expected inflation rose, the whole short-run curve jumped up: you ended up back at the same unemployment rate, but now with permanently higher inflation. Try it again, and the curve shifts again. The trade-off the 1960s seemed to offer was an illusion that lasted only as long as people were fooled. That observation — that the long-run trade-off is not there — is what the next slide formalizes with two more of your key terms.
+:::
+
+
+## Why the Curve Shifts: Natural Rate & Accelerationism
+
+::: {.columns}
+::: {.column width="50%"}
+
+```{r}
+#| label: fig-longrun-phillips
+#| fig-width: 7.4
+#| fig-height: 5.2
+#| out-width: "99%"
+#| fig-alt: "A schematic Phillips-curve diagram. Three parallel downward-sloping short-run curves are stacked from lower-left to upper-right. A vertical dashed line at the natural rate of unemployment marks the long-run Phillips curve. Arrows show that each attempt to push unemployment below the natural rate moves the economy up to a higher short-run curve, so unemployment returns to the natural rate but at ever-higher inflation."
+
+# three short-run curves: infl = a - b*unemp, shifted up by a
+un <- seq(3.5, 9, length.out = 50)
+sr <- do.call(rbind, lapply(c(0, 4, 8), function(a) {
+  data.frame(unemp = un, infl = pmax(a + 14 - 2.0 * un, 0), shift = a)
+}))
+nat <- 6   # natural rate
+
+ggplot() +
+  geom_line(data = sr, aes(unemp, infl, group = shift),
+            color = iu_navy, linewidth = 1.0) +
+  geom_vline(xintercept = nat, color = iu_crimson, linewidth = 1.6) +
+  annotate("segment", x = nat, y = 4.0, xend = 4.6, yend = 6.0,
+           color = iu_gray, linewidth = 0.7,
+           arrow = arrow(length = unit(0.18, "cm"))) +
+  annotate("segment", x = 4.6, y = 6.0, xend = nat, yend = 8.0,
+           color = iu_gray, linewidth = 0.7,
+           arrow = arrow(length = unit(0.18, "cm"))) +
+  annotate("text", x = nat + 0.12, y = 1.0, label = "Long-run curve\n(vertical at the\nnatural rate)",
+           hjust = 0, color = iu_crimson, fontface = "bold", size = 3.5, lineheight = 0.9) +
+  annotate("text", x = 8.6, y = 11.0, label = "short-run\ncurves shift up",
+           hjust = 1, color = iu_navy, fontface = "bold", size = 3.5, lineheight = 0.9) +
+  scale_x_continuous(limits = c(3.5, 9), labels = function(x) paste0(x, "%")) +
+  scale_y_continuous(limits = c(0, 14), labels = function(x) paste0(x, "%")) +
+  labs(title = "The long-run Phillips curve is vertical",
+       subtitle = "Pushing below the natural rate just ratchets inflation up",
+       x = "Unemployment rate", y = "Inflation",
+       caption = "Schematic, after Friedman (1968) and Phelps (1968); cf. Oatley Fig. 13.1.") +
+  theme_ipe(base_size = 13)
+```
+
+:::
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**Natural rate of unemployment** — the economy's long-run equilibrium rate, set by labor-market structure (skills, unions, regulation), **not** by monetary policy.
+:::
+
+::: {.callout-important appearance="minimal" icon=false}
+**Accelerationist principle** — to hold unemployment *below* the natural rate, a government must make inflation **continually accelerate.** The long-run Phillips curve is **vertical.**
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+**The payoff:** monetary policy buys **no permanent** drop in unemployment — only **ever-rising inflation.** So why use it for that at all?
+:::
+
+:::
+:::
+
+::: {.notes}
+This slide names the two ideas that explain the 1970s, and they are both key terms. The first is the natural rate of unemployment. Every economy has a long-run equilibrium rate of unemployment to which it returns after booms and recessions. It is never zero — there is always some churn as people change jobs and new workers enter — and it is determined by the structure of the labor market: skills, demographics, union strength, minimum-wage and hiring-and-firing rules, unemployment benefits. Crucially, the natural rate is set by these real, structural factors, not by monetary policy. Monetary policy can push the actual rate temporarily away from the natural rate, but not permanently.
+
+The second is the accelerationist principle. Read it off the diagram. The vertical crimson line is the natural rate. The stacked navy curves are short-run Phillips curves. Suppose the government wants to hold unemployment below the natural rate. It loosens, and in the short run it slides down a short-run curve — lower unemployment, higher inflation. But expectations adjust, the curve shifts up, and unemployment drifts back to the natural rate, now at higher inflation. To keep unemployment below the natural rate, the government has to surprise people again — loosen more — and inflation has to keep accelerating, faster and faster, forever. That is the accelerationist principle: you cannot buy a permanently lower unemployment rate; you can only buy permanently accelerating inflation. The long-run Phillips curve is the vertical line — at the natural rate, regardless of inflation.
+
+Now the payoff in the bottom callout, and it is the hinge of the whole chapter. If monetary policy buys no permanent reduction in unemployment, only ever-rising inflation, then using monetary policy to chase low unemployment is a mistake — it just generates inflation with no lasting employment gain. Which raises the obvious question: if that is true, why would any government do it? The answer is that even a government that understands all this still faces a temptation it cannot resist on its own — and that temptation is the time-consistency problem.
+:::
+
+
+# The Time-Consistency Problem {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 3]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## The Core Problem: Promises a Government Can't Keep
+
+::: {.columns}
+::: {.column width="55%"}
+
+The **time-consistency problem** (Kydland & Prescott 1977): the best action **at a moment** differs from the best action **in general.**
+
+A government's plan over time:
+
+1. **Promise** low inflation, so workers set **low** wage demands
+2. Once wages are set, **renege** — inflate to push unemployment down for a short-run gain
+3. Workers **know** this in advance, so they **never believe step 1**
+
+::: {.callout-tip appearance="minimal" icon=false}
+*Sarah's intuition pump:* "I'll start the diet on **Monday**." Sincere today — but when Monday comes, the cake is right there. Knowing that, no one plans their week around my promise.
+:::
+
+:::
+::: {.column width="45%"}
+
+```{r}
+#| label: fig-time-consistency
+#| fig-width: 6.8
+#| fig-height: 5.4
+#| out-width: "99%"
+#| fig-alt: "A simple two-step game tree. The government first announces a low-inflation policy and workers set wages based on whether they believe it. If workers expect low inflation, the government's best move is to renege and inflate, producing a short-run output gain at workers' expense. Anticipating this, workers instead expect high inflation, leading to the equilibrium of high inflation with no output gain."
+
+nodes <- data.frame(
+  x = c(0.5, 0.5, 0.5, 0.5),
+  y = c(3.5, 2.5, 1.5, 0.5),
+  lab = c("Government promises low inflation",
+          "Workers ask: will it keep the promise?",
+          "Govt's best move once wages set:\nINFLATE (short-run gain)",
+          "Workers anticipate this →\nexpect HIGH inflation"),
+  fill = c(iu_navy, iu_gray, iu_crimson, iu_crimson)
+)
+
+ggplot(nodes, aes(x, y)) +
+  annotate("segment", x = 0.5, y = 3.25, xend = 0.5, yend = 2.75,
+           color = iu_gray, linewidth = 0.7, arrow = arrow(length = unit(0.18, "cm"))) +
+  annotate("segment", x = 0.5, y = 2.25, xend = 0.5, yend = 1.75,
+           color = iu_gray, linewidth = 0.7, arrow = arrow(length = unit(0.18, "cm"))) +
+  annotate("segment", x = 0.5, y = 1.25, xend = 0.5, yend = 0.75,
+           color = iu_gray, linewidth = 0.7, arrow = arrow(length = unit(0.18, "cm"))) +
+  geom_label(aes(label = lab, fill = I(fill)), color = "white",
+             fontface = "bold", size = 3.6, label.size = 0, lineheight = 0.9) +
+  annotate("text", x = 0.5, y = 0.05,
+           label = "Outcome: HIGH inflation, NO output gain",
+           fontface = "bold", size = 4.0, color = iu_crimson) +
+  scale_x_continuous(limits = c(0, 1)) +
+  scale_y_continuous(limits = c(-0.15, 3.9)) +
+  theme_void()
+```
+
+:::
+:::
+
+::: {.notes}
+This is the theoretical heart of the chapter, and most students need it walked through twice, so I will go slowly. The time-consistency problem, from Kydland and Prescott's 1977 paper, is your key term. The formal definition is that the best course of action at a particular moment differs from the best course of action in general — so a plan that is optimal when you announce it is no longer optimal when the moment to carry it out arrives. Oatley's own example is the professor and the final exam: at the start of the semester the professor's best move is to announce an exam, because the threat makes students study; but once exam day arrives and everyone has already studied, the best move is to cancel the exam and save the grading. The trouble is that students know this, so if you have a reputation for canceling, the announcement no longer makes anyone study. The promise is time-inconsistent.
+
+Apply that to inflation, following the steps on the left. Step one: the government sincerely wants low inflation and announces it, hoping workers will set modest wage demands. Step two: once those wage contracts are signed at low expected inflation, the government has an incentive to renege — to inflate, because surprise inflation lowers real wages and gives a short-run boost to employment, which is electorally useful. Step three, and this is the trap: workers are not naive. They can see the incentive to renege as clearly as the government can. So they never believe the low-inflation promise in the first place; they build high inflation into their wage demands from the start. The game tree on the right shows the unraveling. The result, at the bottom: the economy ends up with high inflation and no output gain — the worst of both worlds. The government gets the inflation it did not want, and gets nothing for it, precisely because its promise was not credible.
+
+My own intuition pump for this is the diet. I will tell you, completely sincerely, that I am starting my diet on Monday. I mean it. But you know — and I know — that when Monday actually comes and the cake is sitting there, my incentive flips and I eat the cake. Because you can predict that, you do not rearrange your week around my promise. The promise is worthless not because I am lying, but because it is time-inconsistent. The government's low-inflation promise is the diet. What it needs is a way to make the promise stick even when Monday comes — and that is a commitment device.
+:::
+
+
+# Credible Commitment & Central-Bank Independence {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 4]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## The Solution: Tie Your Own Hands
+
+::: {.columns}
+::: {.column width="52%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**Credible commitment** — a promise the public has reason to believe **will be kept**, because the government has **removed its own ability to renege.**
+:::
+
+The leading commitment device:
+
+::: {.callout-important appearance="minimal" icon=false}
+**Central-bank independence** — the degree to which the central bank can set monetary policy **free of government interference**: free to choose its goal, free to choose its tools, and **insulated from reversal.**
+:::
+
+Its mandate is **price stability** — a low, steady inflation rate as the bank's overriding objective.
+
+:::
+::: {.column width="48%"}
+
+### Other commitment devices
+- **Fixed exchange rates / currency boards** — pegging to a low-inflation anchor imports its discipline
+- **Euro membership** — monetary policy handed to the ECB; no national money to inflate
+
+::: {.callout-tip appearance="minimal" icon=false}
+All work the same way: the government **gives away** the power to inflate, so its promise no longer depends on **resisting tomorrow's temptation.** The diet works if you don't keep cake in the house.
+:::
+
+:::
+:::
+
+::: {.notes}
+If the problem is that the government cannot resist tomorrow's temptation to inflate, the solution is to remove its ability to inflate at all — to tie its own hands in advance. That is the idea of a credible commitment, your next key term: a promise the public has good reason to believe will be kept, precisely because the promiser has stripped away its own option to renege. A credible commitment is not a stronger sincere promise; it is a structural change that makes reneging impossible or very costly.
+
+The leading device for monetary policy is central-bank independence, another key term, and Oatley gives it a precise three-part definition. An independent central bank is free, to varying degrees, in three respects: free to decide what economic objective to pursue, free to decide how to use its tools to pursue that objective, and insulated from having its decisions reversed by other branches of government. A fully independent bank, like the Swiss National Bank or the Bundesbank in Oatley's examples, scores high on all three. And the independent bank's mandate is price stability — also a key term — meaning a low and steady rate of inflation, usually defined as something like one to two percent a year, as the bank's overriding goal. The logic is that appointed central bankers who cannot be fired by politicians and who are not chasing the next election will not exploit the short-run Phillips curve; they will hold the line on inflation. So the bank can credibly commit to low inflation even though the elected government cannot.
+
+The right column lists the other commitment devices, because central-bank independence is not the only one. A country can fix its exchange rate to a low-inflation anchor — or run a hard currency board — and thereby import that anchor's monetary discipline; we will see France do exactly this. Or it can join the euro, handing monetary policy entirely to the European Central Bank and giving up any national currency to inflate. They all work the same way, captured in the callout: the government gives away the power to inflate, so its low-inflation promise no longer depends on resisting temptation it cannot actually resist. To finish my diet analogy — the way to keep the Monday promise is not willpower; it is to not keep cake in the house. Independence is not keeping cake in the house.
+:::
+
+
+## The Evidence: Independence and Lower Inflation
+
+::: {.columns}
+::: {.column width="60%"}
+
+```{r}
+#| label: fig-cbi-inflation
+#| fig-width: 8.6
+#| fig-height: 5.4
+#| out-width: "99%"
+#| fig-alt: "A cross-country scatter plot of central-bank independence on the horizontal axis (index from 1 to 4) against average annual inflation on the vertical axis, for about fourteen advanced democracies. A downward-sloping fitted line shows that more-independent central banks are associated with lower average inflation: Germany and Switzerland at the high-independence, low-inflation end near 3 percent; Spain, New Zealand, and Italy at the low-independence, high-inflation end near 7 to 8.5 percent."
+
+cbi <- data.frame(
+  country = c("Germany", "Switzerland", "United States", "Japan", "Canada",
+              "Netherlands", "Belgium", "France", "UK", "Italy",
+              "Spain", "New Zealand", "Australia", "Denmark"),
+  indep = c(4.0, 4.0, 3.5, 2.5, 2.5, 2.5, 2.0, 2.0, 2.0, 1.5, 1.5, 1.0, 1.0, 2.5),
+  infl  = c(3.0, 3.0, 4.1, 4.9, 4.5, 4.3, 4.5, 6.1, 6.7, 7.3, 8.5, 7.6, 6.4, 6.5)
+)
+
+ggplot(cbi, aes(indep, infl)) +
+  geom_smooth(method = "lm", se = FALSE, color = iu_crimson,
+              linetype = "dashed", linewidth = 0.9) +
+  geom_point(color = iu_navy, size = 3.0) +
+  geom_text(aes(label = country), size = 3.2, color = iu_dark_text,
+            vjust = -0.8, check_overlap = TRUE) +
+  scale_x_continuous(limits = c(0.7, 4.4),
+                     breaks = 1:4,
+                     labels = c("1\n(low)", "2", "3", "4\n(high)")) +
+  scale_y_continuous(limits = c(2, 9.5), labels = function(x) paste0(x, "%")) +
+  labs(title = "More-independent central banks → lower inflation",
+       subtitle = "Central-bank independence vs. average inflation, advanced democracies, 1955–1988",
+       x = "Central-bank independence (index)", y = "Average annual inflation",
+       caption = "Source: Alesina & Summers (1993). Values approximate; cf. Oatley Fig. 13.5.") +
+  theme_ipe(base_size = 14)
+```
+
+:::
+::: {.column width="40%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+The most-cited figure in this literature: across ~16 advanced democracies, **more independence lines up with lower average inflation** — Germany and Switzerland low, Italy and Spain high.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+**The standard caution:** this is a **correlation.** Independence may be a *proxy* for a society that is already inflation-averse — a country that hates inflation may both **build** an independent bank **and** run low inflation for the same underlying reason.
+:::
+
+:::
+:::
+
+::: {.notes}
+Does central-bank independence actually deliver lower inflation? This is the most famous figure in the literature — Alesina and Summers, 1993 — and Oatley reproduces a version of it as Figure 13.5. On the horizontal axis is an index of central-bank independence, running here from one, very dependent, to four, very independent. On the vertical axis is each country's average annual inflation over the sample period, which in the original study runs from the mid-1950s to the late 1980s. The values are approximate, drawn from the published study. Look at the pattern. Up at the high-independence end, near four, sit Germany and Switzerland, with average inflation around three percent — the two most independent banks and the lowest inflation. Down at the low-independence end sit Italy, Spain, and New Zealand, with inflation in the seven to eight-and-a-half percent range. The fitted line slopes clearly downward: more independence, less inflation. Alesina and Summers found this relationship striking enough that they described it as nearly a perfect negative correlation across their sixteen countries. This is the empirical backbone of the whole state-centered prescription — it is the evidence that tying the central bank's hands works.
+
+But I want you to hold the standard caution, in the bottom callout, because it is exactly the kind of thing that shows up on a quiz or an exam. This is a correlation, not a clean causal estimate, and there is an obvious confound: central-bank independence may be a proxy for how much a society already hates inflation. A country with deep inflation aversion — Germany after the hyperinflation of the 1920s is the textbook case — may both choose to build a fiercely independent central bank and run low inflation, with the underlying inflation aversion driving both. In that story, independence is a symptom of a low-inflation society rather than the cause of low inflation. The relationship is robust and widely replicated, but you should be able to state both the finding and its leading critique. Notice, too, that Oatley's companion figures show independent central banks are also associated with somewhat lower growth and higher unemployment — so even the benefit may carry a cost, and even that is contested once you control for other factors.
+:::
+
+
+# The Exchange-Rate Back Door {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 5]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## Two Sides of One Coin — and Who Holds Each
+
+Even where an **independent central bank** runs monetary policy, governments usually keep **exchange-rate** authority. Since the two are linked, that is a **back door** to pressure the bank.
+
+```{r}
+#| label: fig-split-authority
+#| fig-width: 13
+#| fig-height: 4.6
+#| out-width: "97%"
+#| fig-alt: "A split-authority diagram for two cases. In the United States, monetary policy sits with the Federal Reserve while exchange-rate policy for the dollar is led by the Treasury. In the European Union, monetary policy sits with the European Central Bank while exchange-rate policy is set by the Eurogroup of finance ministers. In each case a dashed arrow runs from the government side to the central-bank side, labeled the back door."
+
+box <- function(x, y, w, h, lab, fill, txtcol = "white", size = 4.3) {
+  list(
+    annotate("rect", xmin = x - w/2, xmax = x + w/2, ymin = y - h/2, ymax = y + h/2,
+             fill = fill, color = NA),
+    annotate("text", x = x, y = y, label = lab, color = txtcol,
+             fontface = "bold", size = size, lineheight = 0.9)
+  )
+}
+
+ggplot() +
+  # US row
+  annotate("text", x = 0.5, y = 2.45, label = "UNITED STATES", fontface = "bold",
+           size = 4.6, color = iu_dark_text) +
+  box(2.0, 2.0, 2.4, 0.7, "Monetary policy\nFEDERAL RESERVE\n(independent)", iu_navy) +
+  box(5.4, 2.0, 2.4, 0.7, "Exchange-rate policy\nTREASURY\n(leads on the dollar)", iu_crimson) +
+  annotate("segment", x = 4.6, y = 2.0, xend = 3.2, yend = 2.0, color = iu_gray,
+           linewidth = 0.9, linetype = "dashed", arrow = arrow(length = unit(0.2, "cm"))) +
+  annotate("text", x = 3.9, y = 2.32, label = "back door", fontface = "italic",
+           size = 3.4, color = iu_gray) +
+  # EU row
+  annotate("text", x = 0.5, y = 0.95, label = "EUROZONE", fontface = "bold",
+           size = 4.6, color = iu_dark_text) +
+  box(2.0, 0.5, 2.4, 0.7, "Monetary policy\nECB\n(independent)", iu_navy) +
+  box(5.4, 0.5, 2.4, 0.7, "Exchange-rate policy\nEUROGROUP\n(finance ministers)", iu_crimson) +
+  annotate("segment", x = 4.6, y = 0.5, xend = 3.2, yend = 0.5, color = iu_gray,
+           linewidth = 0.9, linetype = "dashed", arrow = arrow(length = unit(0.2, "cm"))) +
+  annotate("text", x = 3.9, y = 0.82, label = "back door", fontface = "italic",
+           size = 3.4, color = iu_gray) +
+  scale_x_continuous(limits = c(-0.2, 7)) +
+  scale_y_continuous(limits = c(0, 3)) +
+  theme_void()
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+A government wanting **looser** policy can push the exchange rate the bank is trying to defend — forcing the bank's hand. Independence on paper is **not** independence in practice.
+:::
+
+::: {.notes}
+There is an important qualification to the clean story of independence, and it connects straight back to Chapter 11's euro material. Monetary policy and exchange-rate policy are two sides of one coin — you cannot move one without affecting the other. So even in countries that have handed monetary policy to an independent central bank, governments have almost always kept their hands on exchange-rate policy. And because the two are linked, retaining exchange-rate authority gives the government a back door through which it can lean on the supposedly independent bank.
+
+The diagram shows the split in two cases. In the United States, monetary policy belongs to the independent Federal Reserve — but exchange-rate policy for the dollar is led by the Treasury, an executive-branch agency, not the Fed. The Treasury negotiates currency agreements and decides when to intervene in the foreign-exchange market. In the eurozone, monetary policy belongs to the European Central Bank, one of the most independent banks in the world — but authority over exchange-rate policy was assigned to the finance ministers, the Eurogroup, not to the ECB. In both cases the dashed arrow is the back door: a government that wants looser monetary policy than the bank is willing to deliver can use exchange-rate policy to push the currency in a direction that forces the bank to respond.
+
+The historical examples make it concrete. Oatley discusses claims that Helmut Schmidt, the German chancellor in the late 1970s, helped create the European Monetary System partly to use exchange-rate commitments to force the famously hawkish Bundesbank toward a looser policy than it wanted. And in 1999 and 2000, when the new euro was depreciating, the ECB wanted to raise rates to defend it while several European governments — German Chancellor Schröder among them — were perfectly happy with a weak euro because it helped their exporters, and pushed back. Later, around 2007 and 2008, newly elected French President Sarkozy led an effort to give the Eurogroup a larger role in steering ECB interest-rate policy as the euro rose and hurt exporters. So the lesson in the callout is real: independence on paper is not the same as independence in practice. As long as governments hold exchange-rate authority, they retain a lever over monetary policy — which is one reason the state-centered story is never simply "politicians stepped out of the room."
+:::
+
+
+# State Interests Beyond Credibility {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 6]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## State Interest #1: The Balance-of-Payments Constraint
+
+::: {.columns}
+::: {.column width="54%"}
+
+A state must be able to **pay its foreign bills** — for imports and external debt — regardless of what domestic groups prefer.
+
+- Persistent **current-account deficits** drain **reserves** (recall Day 9's identity, (S − I) = (X − M))
+- When reserves run low, **adjustment is forced** — devaluation, austerity, or an IMF program
+- No domestic coalition "chose" it; the **constraint** chose it
+
+:::
+::: {.column width="46%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**The UK, 1976.** A sterling crisis drained reserves and forced Britain to seek an **IMF loan** — and accept spending cuts a Labour government did not want. The balance-of-payments constraint overrode domestic preferences.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Mexico **1994** and Argentina **2001** are the same logic in sharper form — external constraints forcing adjustment no government would have chosen. (We return to these in **Week 4.**)
+:::
+
+:::
+:::
+
+::: {.notes}
+Credibility is one state interest, but it is not the only one, and the next two slides cover the other two so the framework stays balanced against yesterday's. The first is the most concrete: the balance-of-payments constraint. A state, whatever its domestic politics, has to be able to pay its foreign bills — to buy imports and service its external debt — and that requires foreign exchange. This connects directly to the accounting identity from Day Nine: savings minus investment equals exports minus imports. A country that runs persistent current-account deficits is, by that identity, drawing on foreign financing and, if it is defending a currency, running down its reserves. When the reserves get low, the state has no choice. Adjustment is forced on it — through devaluation, through austerity to compress imports, or through an IMF program with conditions attached. And the key point for today is that no domestic coalition chose that adjustment. The constraint chose it. Society-centered politics did not produce austerity; the external accounts did.
+
+The cleanest case is Britain in 1976. A sterling crisis drained the UK's reserves and forced a Labour government to go to the IMF for a loan, and to accept public-spending cuts that ran directly against its own program and its own base in the labor movement. That is the balance-of-payments constraint overriding domestic distributional preferences in plain view — a left government imposing austerity it did not want because the alternative was a currency collapse. Mexico in 1994 and Argentina in 2001 are the same logic in even sharper, more violent form, and we will return to both in Week Four when we get to sovereign debt and developing-country crises. The general lesson: the need to manage the external accounts is a state interest that can force policies no group at home would have selected.
+:::
+
+
+## State Interest #2: Geopolitics and Statecraft
+
+::: {.columns}
+::: {.column width="50%"}
+
+Currency policy is also an **instrument of national power.**
+
+- **Reserve-currency status** — the dollar's "**exorbitant privilege**": the U.S. borrows cheaply and projects financial power because the world holds dollars
+- **Currency as statecraft** — exchange-rate policy, sanctions, and access to payment systems as strategic tools
+- **The euro** — a political project, not only an economic one
+- **RMB internationalization** — China building an alternative to dollar dependence
+
+:::
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**Back to China.** The **society-centered** story (exporters want an undervalued yuan) is right *as far as it goes* — but it can't explain why managed currency policy **persists when the coalition shifts.**
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+The **state-centered** story fills the gap: a managed currency and a growing RMB role serve **strategic positioning** — reducing dependence on the dollar — an interest **the state holds as a state.**
+:::
+
+:::
+:::
+
+[🎧 **This week's podcast — *The Sanctions Age*:** "How the Strong Dollar Became the Weaponized Dollar," with Saleha Mohsin (Bloomberg; author of *Paper Soldiers*) — how the U.S. Treasury turned the dollar into an instrument of national security.]{style="font-size:0.7em; color:#535054;"}
+
+::: {.notes}
+The second additional state interest is geopolitical, and it is the most current and, frankly, the most engaging for students. Currency policy is not only about domestic distribution or even about credibility; it is an instrument of national power. Take reserve-currency status. Because the world holds and transacts in dollars, the United States enjoys what is often called the dollar's exorbitant privilege: it can borrow more cheaply than other countries, it can run deficits the rest of us could not, and it can project financial power — including through sanctions and control of dollar-based payment systems. That generates a clear U.S. state interest in defending the dollar's centrality, an interest that, recall the puzzle from the start of class, no individual American exporter shares. Exchange-rate policy more broadly is statecraft: competitive devaluation, manipulation accusations, sanctions, and access to payment infrastructure are all strategic tools. The euro, too, was always a political project as much as an economic one — a bid for European monetary autonomy and standing, not just a way to lower transaction costs. And China's gradual internationalization of the renminbi is best understood as a strategic effort to build an alternative to dependence on the dollar system.
+
+Now bring China back from yesterday, because it is the cleanest illustration of why we need both frameworks. The society-centered explanation for China's managed, historically undervalued currency is that its exporters and manufacturers benefit from a weak yuan and have the political weight to get it. That explanation is correct as far as it goes. But it runs into trouble: the policy of currency management has persisted even as China's economy rebalanced and the exporting coalition's relative weight shifted, and even through periods, like 2015 to 2016, when Beijing was actually intervening to hold the yuan up, not down. A pure coalition story struggles to explain that persistence. The state-centered account fills the gap: managed currency policy and a slowly rising RMB serve China's strategic positioning in the international system — reducing its exposure to U.S. financial power — and that is an interest the Chinese state holds as a state, independent of which sector is ascendant at home. This is the integrative move I want you to be able to make: the two frameworks are not rivals where one wins; they explain different parts of the same record. This is also where this week's podcast lands: *The Sanctions Age* episode with Saleha Mohsin, "How the Strong Dollar Became the Weaponized Dollar," traces how the U.S. Treasury turned the dollar into a tool of national security and sanctions — the exorbitant privilege as raw state power. It's the most vivid case of currency as statecraft; bring it into the discussion.
+:::
+
+
+## A Note of Caution: Prescriptive, Not Explanatory
+
+::: {.callout-important appearance="minimal" icon=false}
+The state-centered approach is strong on **what raises welfare** (independence lowers inflation) but weak on **why governments actually choose** to bind themselves.
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### The tension Oatley flags
+- The whole argument rests on the claim that elected officials **care more about short-term gains** than long-run welfare
+- Yet to explain why they create independent banks, we'd have to assume they **act for long-run welfare** after all
+- That sits **uneasily** with the premise
+
+:::
+::: {.column width="50%"}
+
+::: {.callout-tip appearance="minimal" icon=false}
+So the approach tells us independence **is** welfare-improving — a **prescription** — but is weaker as an **explanation** of the political choice to adopt it.
+
+It also says little about why central bankers themselves would prioritize **price stability.**
+:::
+
+:::
+:::
+
+::: {.notes}
+Before we synthesize, the chapter's own critique, because being able to state it is part of understanding the approach. Oatley advances two related criticisms, and they sharpen the Big Question rather than dissolving it. The core problem is that the state-centered approach is more prescriptive than explanatory. It tells us, with evidence, that an independent central bank raises social welfare by delivering lower inflation, and on that basis it recommends that governments grant independence. But it tells us very little about why governments actually do so. And there is a genuine tension here, which the slide lays out. The entire rationale for central-bank independence rests on the claim that elected officials are too tempted by short-term electoral gains to be trusted with monetary policy — that is the whole time-consistency story. But then, to explain why those same officials voluntarily create independent banks and tie their own hands, we seem to have to assume that they are acting in the long-run social interest after all. Those two assumptions sit uneasily together: politicians are too myopic to run monetary policy, yet far-sighted enough to give it away. The theory does not cleanly resolve that.
+
+The second criticism is related: the approach assumes independent central bankers will prioritize price stability, but it says little about why the particular people who run an independent bank would have that preference rather than some other. So the honest summary, in the callout, is that this is a powerful prescription and an incomplete explanation. It is genuinely strong on the question "would independence improve welfare?" and genuinely weaker on the question "why did this democracy choose it?" — which is, of course, our Big Question. Keep that humility in hand as we put the two frameworks side by side.
+:::
+
+
+# Two Frameworks Side by Side {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 7 · This is your Quiz 3 review]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## Society-Centered vs. State-Centered
+
+::: {.callout-tip appearance="minimal" icon=false}
+**Listen up — this slide is your Quiz 3 review.** Be able to reproduce this comparison and to apply it to a short scenario.
+:::
+
+```{r}
+#| label: tbl-comparison
+
+cmp <- data.frame(
+  dim = c("Unit of analysis",
+          "What drives policy",
+          "Best at explaining",
+          "Where it struggles"),
+  soc = c("Groups within the state",
+          "Distributional conflict; coalition outcomes",
+          "Variation across democracies; partisan policy",
+          "Crisis adjustments no group wanted"),
+  st = c("The state itself",
+         "Credibility, balance of payments, geopolitics",
+         "Common adjustments under crisis; commitment devices",
+         "Within-democracy variation across regimes")
+)
+
+kable(cmp, col.names = c("Dimension", "Society-centered (Ch 12)", "State-centered (Ch 13)"),
+      align = c("l", "l", "l")) %>%
+  kable_styling(font_size = 26, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:4, extra_css = "padding-top: 12px; padding-bottom: 12px; line-height: 1.3;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "22%") %>%
+  column_spec(2, width = "39%") %>%
+  column_spec(3, width = "39%")
+```
+
+::: {.callout-important appearance="minimal" icon=false}
+**The integrative question** (final-exam style): pick a contemporary monetary decision — the Fed's 2022–23 tightening, the ECB and the euro crisis, China's managed yuan — and explain it with **both** frameworks. Where do they **converge**? Where do they **diverge**?
+:::
+
+::: {.notes}
+This is the synthesis, and I am telling you plainly: this slide is your Quiz 3 review. The quiz covers Chapters 10 through 13, and the comparative move on this table is exactly the kind of thing it asks. So let me walk the four rows, and you should be able to reproduce them.
+
+First, the unit of analysis. The society-centered approach analyzes groups within the state — sectors, classes, parties. The state-centered approach analyzes the state itself as an institutional actor. Second, what drives policy. For the society-centered view, it is distributional conflict and which coalition wins. For the state-centered view, it is the state's own interests — credibility, the balance-of-payments constraint, and geopolitics. Third, what each is best at explaining. The society-centered approach shines at explaining variation across democracies and over partisan cycles — why a left government and a right government run different policies, why this country differs from that one. The state-centered approach shines at explaining common adjustments under crisis and the spread of commitment devices — why so many different democracies, with different domestic politics, all built independent central banks in the same period, and why governments in crisis converge on similar painful adjustments. Fourth, where each struggles. The society-centered approach struggles precisely with our opening puzzles — crisis adjustments no domestic group wanted, like Britain in 1976 or France's franc fort. The state-centered approach struggles with the mirror image: within-democracy variation across regimes and over time, which the society-centered groups-and-coalitions story handles better.
+
+Notice the cases line up with the rows. The 1976 IMF crisis and the franc fort pivot are state-centered cases — the constraint and the credibility motive override domestic preferences. Partisan and sectoral currency politics are society-centered. And China needs both: the coalition story for the level, the strategic story for the persistence.
+
+The bottom callout is the integrative question, and it is the move I want you to practice for the final, not just the quiz. Resist the urge to make one framework win. Take a contemporary monetary decision — the Federal Reserve's aggressive tightening in 2022 and 2023, the ECB's conduct during the euro crisis, China's managed yuan — and explain it with both frameworks. Show where they converge, where they diverge, and which fits the evidence better. That is the analytical skill this unit is building.
+:::
+
+
+## Recap & Quiz 3 Logistics
+
+::: {.callout-important appearance="minimal" icon=false}
+**Today's Big Question —** Why would a democracy deliberately take monetary policy out of the hands of its elected officials?
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### What we built
+- The **Phillips curve** broke in the 1970s — the long-run curve is **vertical** at the **natural rate** (accelerationist principle)
+- The **time-consistency problem**: a government can't credibly promise low inflation on its own
+- **Central-bank independence** is a **credible commitment** device aimed at **price stability**
+- State interests — **balance of payments** and **geopolitics** — round out the account
+
+:::
+::: {.column width="50%"}
+
+### Quiz 3 — logistics
+- **Covers Chapters 10–13** (the whole monetary unit)
+- **Ch 10:** the trilemma and terminology
+- **Ch 11:** cooperation and the IMF / regional institutions
+- **Ch 12–13:** identify which framework — **society-** or **state-centered** — fits a short scenario
+
+::: {.callout-tip appearance="minimal" icon=false}
+Short break, then the quiz. Bring the comparison table in your head.
+:::
+
+:::
+:::
+
+::: {.notes}
+Let me gather the day around the Big Question and then give you the quiz logistics. The question was: why would a democracy deliberately take monetary policy out of the hands of its elected officials? Here is the chain of the answer. The Phillips curve, which yesterday looked like a stable trade-off a government could exploit, broke down in the 1970s into stagflation — and the natural-rate and accelerationist logic showed why: the long-run Phillips curve is vertical, so monetary policy buys no permanent reduction in unemployment, only accelerating inflation. That sets up the time-consistency problem: a government cannot credibly promise low inflation on its own, because it always has an incentive to renege, and the public knows it, so the economy lands on high inflation with no gain. The answer is a credible commitment that removes the government's ability to renege — above all, an independent central bank with a price-stability mandate, supported by the cross-country evidence that independence and low inflation go together, with the caution that the evidence is correlational. And we balanced the credibility story with the other two state interests, the balance-of-payments constraint and geopolitics, and with the chapter's own critique that the approach is better as a prescription than as an explanation. So the democracy ties its own hands because the state has an interest in credibility that its own electoral incentives would otherwise destroy.
+
+Now Quiz 3. It covers the entire monetary unit, Chapters 10 through 13. Expect terminology and trilemma items from Chapter 10; items on cooperation and the IMF and regional institutions from Chapter 11; and comparative items from Chapters 12 and 13 that hand you a short scenario and ask you to identify whether the society-centered or the state-centered framework better explains it — which is exactly the comparison table we just did. We will take a short break, and then the quiz. Carry that comparison table in your head.
+:::

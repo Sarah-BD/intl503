@@ -1,0 +1,26 @@
+---
+title: "Day 2: The WTO and the World Trade System"
+subtitle: "Tuesday, July 7, 2026"
+toc: false
+---
+
+**Required materials:**
+
+1. Oatley, Chapter 2 — *The World Trade Organization and the World Trade System*
+2. Rickard, Stephanie J. 2025. "[International negotiations over the global commons](https://link.springer.com/article/10.1007/s11558-024-09566-z)." *Review of International Organizations* 20: 999–1021. *(PDF on Canvas)*
+3. {{< fa headphones >}} [*Trade Talks* ep. 34: "So You Want to Be a Trade Negotiator"](https://tradetalkspodcast.com/podcast/34-so-you-want-to-be-a-trade-negotiator/)
+
+::: {.callout-tip}
+## In class today
+- How the GATT/WTO system is structured and why it exists
+- Core principles: nondiscrimination, reciprocity, and MFN
+- Dispute settlement and the limits of enforcement
+- **Instructor models the article presentation** (Rickard 2025)
+- Opening writing prompt
+:::
+
+## Slides
+
+[{{< fa expand >}} Open slides in a new tab](../slides/day02-chapter02.html){target="_blank"}
+
+<iframe src="../slides/day02-chapter02.html" width="100%" height="600" style="border:1px solid #ccc;"></iframe>

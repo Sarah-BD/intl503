@@ -1,0 +1,51 @@
+<svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Side-profile illustration of a twin-engine commercial jet airliner">
+  <!-- FAR wing (behind fuselage) -->
+  <path d="M330,150 L250,248 L292,248 L398,150 Z" fill="#CFCDCD"/>
+  <!-- FAR engine -->
+  <ellipse cx="320" cy="206" rx="34" ry="15" fill="#BCBABA"/>
+
+  <!-- Horizontal stabilizer (tail) -->
+  <path d="M560,138 L505,112 L488,112 L545,136 Z" fill="#C4C2C2"/>
+  <!-- Vertical fin -->
+  <path d="M512,134 L575,52 L612,58 L588,138 Z" fill="#990000"/>
+  <path d="M512,134 L575,52 L582,55 L538,134 Z" fill="#7d0000"/>
+
+  <!-- Fuselage -->
+  <path d="M58,154
+           C58,140 86,130 142,130
+           L520,130
+           C575,130 612,127 638,120
+           C620,142 596,154 556,156
+           L150,176
+           C96,176 58,170 58,160 Z"
+        fill="#FFFFFF" stroke="#9A9A9A" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- Cheatline (crimson stripe) -->
+  <path d="M120,150 L556,143 C586,142 606,140 624,136 L622,128 C604,132 584,134 556,135 L120,142 Z"
+        fill="#990000"/>
+
+  <!-- Cockpit window -->
+  <path d="M70,146 C82,138 96,136 108,137 L104,148 L74,151 Z" fill="#3a4a5a"/>
+
+  <!-- Passenger windows -->
+  <g fill="#5d6b78">
+    <circle cx="150" cy="143" r="3.6"/><circle cx="174" cy="143" r="3.6"/>
+    <circle cx="198" cy="143" r="3.6"/><circle cx="222" cy="142" r="3.6"/>
+    <circle cx="246" cy="142" r="3.6"/><circle cx="270" cy="142" r="3.6"/>
+    <circle cx="294" cy="142" r="3.6"/><circle cx="318" cy="141" r="3.6"/>
+    <circle cx="342" cy="141" r="3.6"/><circle cx="366" cy="141" r="3.6"/>
+    <circle cx="390" cy="140" r="3.6"/><circle cx="414" cy="140" r="3.6"/>
+    <circle cx="438" cy="140" r="3.6"/><circle cx="462" cy="139" r="3.6"/>
+    <circle cx="486" cy="139" r="3.6"/><circle cx="510" cy="138" r="3.6"/>
+  </g>
+
+  <!-- NEAR wing (in front of fuselage) -->
+  <path d="M348,150 L300,250 L346,250 L444,150 Z" fill="#E2E0E0" stroke="#A7A5A5" stroke-width="2"/>
+  <!-- Pylon + NEAR engine -->
+  <rect x="356" y="176" width="10" height="20" fill="#B0AEAE"/>
+  <g>
+    <ellipse cx="360" cy="212" rx="40" ry="18" fill="#EDEBEB" stroke="#9A9A9A" stroke-width="2"/>
+    <ellipse cx="332" cy="212" rx="9" ry="16" fill="#990000"/>
+    <ellipse cx="332" cy="212" rx="4.5" ry="9" fill="#5a5559"/>
+  </g>
+</svg>

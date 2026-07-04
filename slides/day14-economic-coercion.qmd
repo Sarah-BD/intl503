@@ -1,0 +1,815 @@
+---
+title: "Economic Coercion and Economic Statecraft"
+subtitle: "INTL 503 | Economic Coercion"
+author: "Professor Sarah Bauerle Danzman"
+date: "2026-07-28"
+date-format: long
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: true
+    preview-links: auto
+    footer: "INTL 503 | Economic Coercion and Economic Statecraft"
+    transition: fade
+    width: 1600
+    height: 900
+    margin: 0.15
+    fig-align: center
+    fig-dpi: 300
+    auto-stretch: false
+    logo: iu-trident.png
+    title-slide-attributes:
+      data-background-image: iu-trident.png
+      data-background-size: 15%
+      data-background-position: 2% 2%
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(knitr)
+library(kableExtra)
+
+# IU color palette
+iu_crimson <- "#990000"
+iu_cream <- "#EDEBEB"
+iu_gray <- "#535054"
+iu_light_gray <- "#7E7E7E"
+iu_dark_text <- "#2C3E50"
+iu_green <- "#1B5E3F"
+iu_navy <- "#1F3A5F"
+iu_gold <- "#B8860B"
+
+theme_ipe <- function(base_size = 20) {
+  theme_minimal(base_size = base_size) +
+    theme(
+      plot.title = element_text(color = iu_crimson, face = "bold", size = rel(1.2),
+                                margin = margin(t = 5, b = 5)),
+      plot.subtitle = element_text(color = iu_gray, size = rel(0.9),
+                                   margin = margin(b = 10)),
+      plot.caption = element_text(color = iu_light_gray, size = rel(0.7),
+                                  hjust = 0, margin = margin(t = 10)),
+      axis.title = element_text(color = iu_dark_text, size = rel(0.9)),
+      axis.title.x = element_text(margin = margin(t = 8)),
+      axis.title.y = element_text(margin = margin(r = 8)),
+      axis.text = element_text(color = iu_gray, size = rel(0.8)),
+      panel.grid.minor = element_blank(),
+      panel.grid.major = element_line(color = "#E5E5E5", linewidth = 0.4),
+      legend.position = "bottom",
+      legend.title = element_text(size = rel(0.85)),
+      legend.text = element_text(size = rel(0.8)),
+      plot.margin = margin(t = 8, r = 12, b = 20, l = 12)
+    )
+}
+```
+
+## Today's Plan
+
+::: {.callout-important appearance="minimal" icon=false}
+## Today's Big Question
+[**Economic exchange has always been a source of leverage — so why does today's version feel so blatant, and so arbitrary?**]{style="font-size: 1.4em; line-height: 1.4;"}
+:::
+
+```{r}
+#| label: tbl-plan
+
+plan <- data.frame(
+  Section = c("1 · Exchange as Leverage, Then and Now",
+              "2 · Two Logics: Compel or Deny",
+              "3 · Weaponized Interdependence — and Its Critics",
+              "4 · Does Coercion Work?",
+              "5 · Denial in Practice: Export Controls",
+              "6 · Discussion: The Readings in Tension",
+              "7 · Synthesis: Coercion Across the Whole Course"),
+  Cover = c("An old tool in a new setting — from ancient embargoes to today's chokepoints",
+            "Sanctions ask for something; export controls don't — different tools, different tests",
+            "Farrell & Newman's hub theory, and where other scholars push back",
+            "Drezner's evidence on sanctions: more effective, and more costly, than assumed",
+            "COCOM, semiconductors, and investment screening as capability denial",
+            "Small groups argue the readings against each other, live, in class",
+            "Tying coercion back to the whole course's story of globalization")
+)
+
+kable(plan, col.names = c("Section", "What we'll cover"),
+      align = c("l", "l")) %>%
+  kable_styling(font_size = 22, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "40%") %>%
+  column_spec(2, width = "60%")
+```
+
+::: {.notes}
+Today is the one day in this unit with no Oatley chapter. You read two articles — Farrell and Newman's "Weaponized Interdependence" and Drezner's 2024 review of the sanctions literature — and the session is built around them rather than around a chapter. It's also built differently on purpose: more of today is discussion than lecture, and I want you arguing with these two pieces, not just absorbing them.
+
+One logistics note, since the format is different: there is no reading reflection or writing due before class today. Every bit of writing and discussion happens here, live, in the room. That's deliberate — I'd rather see your own thinking worked out in real time than a polished response you had days to prepare.
+
+The arc: we open with a much longer look at history than you might expect for a "current events" topic, because the first thing I want to correct is the idea that any of this is new. Then we separate two logics that get run together in casual talk — compelling a target versus denying it something outright. Then Farrell and Newman's theory of networks and hubs, alongside the real scholarly pushback on it, since I'm not going to teach that framework as settled fact. Then Drezner's evidence on whether sanctions actually work. Then export controls get their own section, since that's where I think the sanctions literature blurs something important. Then a discussion block that's actually structured group work, not a single question at the end. Then synthesis. Every section title here will reappear as a crimson divider — use them as your map.
+:::
+
+
+## Before We Start: A Ten-Minute Write
+
+::: {.callout-important appearance="minimal" icon=false}
+**Writing prompt.** Pick one economic relationship you already know from this course — the dollar's role in world payments, a multinational's supply chain, a government's sovereign debt. Write for ten minutes: how could a government turn that relationship into leverage over another state? And once you've described it — would you call that ordinary statecraft, or something closer to an abuse of the system? Defend your answer.
+:::
+
+::: {.notes}
+Run this cold, no assigned reading required to attempt it — the point is to get you generating the intuition yourselves before we hand you any vocabulary for it. Give them the full ten minutes. When you debrief, don't rush to supply the "correct" terms; just collect a few answers and note which ones already sound like sanctions, which sound like export controls, and which felt to the student like a foul rather than a normal move. Hold onto that last distinction — normal move versus foul — because it's exactly the intuition the "blatant and arbitrary" language in the Big Question is trying to name, and we'll come back to it explicitly in section six.
+:::
+
+
+# Exchange as Leverage, Then and Now {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 1]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## The Politics of Globalization, Weaponized
+
+::: {.columns}
+::: {.column width="52%"}
+
+This whole course has been about **who wins and loses from economic openness** — trade, money, multinationals, finance.
+
+Today adds a second question on top of the first:
+
+- Exchange doesn't just create winners and losers — it can be **turned into a lever**
+- **Economic statecraft** — using economic means to pursue strategic or political goals
+- **Economic coercion** — deliberately imposing or threatening economic costs to change a target's behavior
+
+:::
+::: {.column width="48%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**The addition, not a replacement.** Every distributive question from earlier in the course still applies. Today's material sits on top of it: exchange as leverage, not just as a source of gains and losses.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Same connections you've studied all semester — a supply chain, a currency, a debt — examined now for what they let one government do *to* another.
+:::
+
+:::
+:::
+
+::: {.notes}
+Ground this in the whole course before you go anywhere near "weaponized interdependence," because the concept only lands if students see it as an addition to what they already know, not a brand-new subject. Oatley's book, and this course following it, has been asking one question over and over: when a country opens itself to trade, capital, or multinational production, who gains and who pays the adjustment cost? That's a distributive question, and it's run through every unit so far — comparative advantage's winners and losers, the politics of exchange rates, who bears a debt crisis.
+
+Today doesn't replace that question. It adds one on top: the same flows of goods, money, and ownership that produce those distributive effects can also be picked up and used as an instrument — deliberately, by a government, against another government. Economic statecraft is the umbrella term for that: using economic means, carrots or sticks, to pursue a strategic or political goal. Economic coercion is the sticks end specifically — imposing or threatening economic costs to change what a target does. Sanctions are the most familiar form, but as you'll see today, coercion is broader than sanctions.
+
+The callouts make the framing explicit: this is additive, not a pivot away from everything else you've learned. Every supply chain, currency arrangement, and debt relationship you've studied is also, seen from this angle, a potential lever.
+:::
+
+
+## Leverage Before the Twentieth Century
+
+```{r}
+#| label: tbl-history-early
+
+hist_early <- data.frame(
+  case = c("Megarian Decree (Athens, 432 BCE)",
+           "Venice's trade ban on Ottoman lands (1462–64)",
+           "Continental System & Orders in Council (1806–12)"),
+  what = c("Pericles barred Megarian merchants from Athenian and allied harbors",
+           "Total Venetian trade embargo during Venice's war with the Ottoman Empire",
+           "Napoleon banned European trade with Britain; Britain blockaded Europe in return"),
+  note = c("One grievance among several behind Sparta's decision for war — ancient sources disagree on how much it mattered",
+           "Historians call it Venice's chief foreign-policy tool against a rival power",
+           "Enforcement collapsed under smuggling; Russia's 1810 defection helped trigger Napoleon's invasion")
+)
+
+kable(hist_early, col.names = c("Case", "What happened", "Why it's worth knowing"),
+      align = c("l", "l", "l")) %>%
+  kable_styling(font_size = 21, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:3, extra_css = "padding-top: 10px; padding-bottom: 10px; line-height: 1.3;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "26%") %>%
+  column_spec(2, width = "37%") %>%
+  column_spec(3, width = "37%")
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+Three different eras and three different targets, but the same underlying move each time: cut a rival off from goods, markets, or harbors, and make them pay a price for a policy you don't control directly.
+:::
+
+::: {.notes}
+The point of this slide is entirely negative — I want to take "this is new" off the table before we build anything else. Start with Athens. In 432 BCE Pericles barred merchants from Megara, a rival city-state, from the Athenian agora and every harbor in the Delian League. Thucydides lists it as one grievance among several behind Sparta's decision to go to war; a comic playwright, Aristophanes, mocked it decades later as a trivial pretext; and modern historians genuinely disagree about how much economic weight it carried versus how much it was really about Spartan fear of Athenian power. Present it as the earliest documented case of a trade embargo used as a tool of statecraft short of war, not as a proven cause of that war — the disagreement itself is worth a sentence, because it previews a pattern we'll see all day: people arguing about whether an economic weapon actually did the work attributed to it.
+
+Jump nearly two thousand years to Venice, which historians describe as running a total trade ban against Ottoman territory as its chief foreign-policy tool during its wars with the Ottoman Empire in the 1460s. Different setting, same logic: deny a rival access to your markets and shipping, and extract an economic cost instead of a military one.
+
+Then Napoleon's Continental System, 1806 to 1812 — probably the most ambitious embargo in history before the twentieth century. Napoleon tried to close the entire European continent to British trade by decree; Britain answered with its own blockade, the Orders in Council, trying to close off Napoleon's Europe right back. Both failed as pure economic instruments — smuggling was massive, and enforcement was uneven — but the political consequences were real: Russia's decision to defect from the system in 1810 was a direct cause of Napoleon's catastrophic 1812 invasion, and the British blockade's interference with American shipping helped trigger the War of 1812. Two great powers, each betting that economic pressure could substitute for a military victory neither could fully secure. The bottom callout states the point directly: different centuries and different tools, but the same instinct — deny the rival something they need, and make the denial itself the source of leverage.
+:::
+
+
+## The Economic Weapon, Codified
+
+::: {.columns}
+::: {.column width="54%"}
+
+World War I gave the instinct a modern, institutional form:
+
+- Britain's naval blockade of Germany (1914–19) cut off food and raw materials — the 1916–17 "Turnip Winter"
+- The blockade **continued after the November 1918 armistice**, as leverage to force acceptance of Versailles's terms, easing only in early 1919
+- Civilian death tolls from the blockade are **genuinely disputed** among historians — treat any single number with caution
+- The League of Nations wrote **automatic, collective sanctions** into Article 16 of its Covenant — a peacetime tool modeled directly on a wartime one
+
+:::
+::: {.column width="46%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**Nicholas Mulder's argument** (*The Economic Weapon*, 2022): the blockade's perceived success convinced League architects that economic pressure could substitute for war. Even Woodrow Wilson, who helped write it in, called it "a terrible remedy."
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+A tool built for total war, relabeled as a peacetime instrument of collective security — worth remembering when we ask, later, why today's version can feel arbitrary.
+:::
+
+:::
+:::
+
+::: {.notes}
+This is the hinge slide of the history section, because it's where "ancient instinct" becomes "modern institution." Britain's blockade of Germany during the First World War went far beyond stopping munitions — it cut off food and raw materials to the whole civilian economy, producing real, severe hunger, memorialized in Germany as the "Turnip Winter" of 1916–17 when potatoes failed and turnips became a staple. Here's the detail that should genuinely surprise students: the blockade did not end when the fighting did. The armistice of November 11, 1918 explicitly preserved it, and the Allies kept it in place for months afterward specifically to pressure Germany into accepting the Versailles terms; it only eased through agreements in early 1919 and was fully lifted around that summer. Winston Churchill told the House of Commons in March 1919 that Germany was "very near starvation." That is coercion outlasting the war it was supposedly fought to end.
+
+Flag honestly, in the left column, that the death toll from all this is a live historical argument, not a settled fact. Germany's own 1918 wartime claim was roughly seven hundred sixty thousand blockade deaths; a 1928 revision by the historian N. P. Howard put it closer to four hundred twenty-five to four hundred seventy-five thousand; other historians, including Sally Marks, have called the whole "starvation blockade" narrative overstated, while more recent work using data on child growth, by Mary Cox, shows real and severe malnutrition even while acknowledging wartime propaganda exaggerated the numbers. Don't give students a number to memorize; give them the dispute itself as the lesson — even a case this well documented resists a clean verdict on how much an economic weapon actually cost.
+
+Now the theoretical payoff, which is Nicholas Mulder's argument in his 2022 book "The Economic Weapon." The blockade looked, to the diplomats designing the postwar order, like proof that economic pressure alone could bring a great power to its knees without more battlefield deaths. So the League of Nations wrote it directly into Article 16 of its Covenant: any member that went to war in violation of the Covenant would automatically face collective severance of trade and financial relations from every other member. Mulder's sharpest observation, in the top callout, is that even Woodrow Wilson — who helped design this system and clearly believed in it — privately called sanctions "a terrible remedy." The League's peacetime security architecture was built on a wartime tool aimed at civilian populations, just relabeled as bloodless and modern. The bottom callout returns to this, because it's exactly the tension in today's Big Question: a tool built for total war, operating under the cover of ordinary peacetime policy, is going to feel different — more arbitrary, more contestable — than a declared blockade ever did, precisely because nobody declared anything.
+:::
+
+
+## Test Case: Abyssinia, 1935–36
+
+::: {.columns}
+::: {.column width="52%"}
+
+Italy invaded Abyssinia (Ethiopia) in October 1935. The League's Article 16 got its first real trial:
+
+- **52 states** joined a sanctions coalition within six weeks — arms embargoes, credit freezes, import bans
+- Coalition members deliberately **excluded oil, coal, and iron** — and left the Suez Canal open to Italian troop transports
+- Italian industrial output fell **~21%**, exports **~47%** — real damage, not enough to stop the war
+
+:::
+::: {.column width="48%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+Mussolini reportedly told Hitler that an oil embargo alone would have forced Italy to withdraw within a week. The League never imposed one.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Sanctions lifted July 1936; Italy completed the conquest; League credibility collapsed. Mulder's larger finding: historically, sanctions have achieved their stated goal, fully or partially, roughly a third of the time.
+:::
+
+:::
+:::
+
+::: {.notes}
+This is the case Mulder's book returns to again and again, and it earns a slide of its own because it does two jobs at once: it shows the League's brand-new tool actually being used, and it previews the effectiveness debate that Drezner picks up later in modern form. When Mussolini's Italy invaded Abyssinia in October 1935, the League moved with real speed by the standards of international diplomacy — fifty-two member states assembled a sanctions coalition within about six weeks, freezing credit, embargoing arms, and banning imports from Italy.
+
+But look at what they left out, in the left column, because the omissions are the whole story. The coalition specifically declined to embargo oil, coal, and iron — Italy's most critical war-fighting inputs — and left the Suez Canal open, so Italian troops and supplies kept flowing to East Africa the entire time. The sanctions did real economic damage: Italian industrial output fell by roughly a fifth, exports by nearly half — genuine harm, but not enough to change the outcome. In the top callout, Mulder reports that Mussolini later told Hitler that a genuine oil embargo would have forced an Italian withdrawal within a week — the League had identified the one lever that would have worked and chosen, for reasons of British and French self-interest in not alienating Italy further, not to pull it.
+
+The sanctions were lifted in July 1936, Italy kept its conquest, and the League's credibility as a guarantor of collective security never recovered — a failure that fed directly into the collapse of interwar diplomacy and the road to the Second World War. The bottom callout gives you Mulder's larger statistical finding, which should recalibrate how confidently anyone talks about sanctions in either direction: across the full historical record he studied, sanctions have achieved their stated aim, fully or partially, only about a third of the time. Remember that number — it's the direct ancestor of the effectiveness debate Drezner picks up in section four, and it should make you suspicious of anyone, in 1936 or in 2026, who's fully confident sanctions will work.
+:::
+
+
+# Two Logics: Compel or Deny {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 2]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## Sanctions Ask; Export Controls Deny
+
+::: {.columns}
+::: {.column width="50%"}
+
+**Compellence** (sanctions, in the strict sense):
+
+- Makes a demand of the target — change this policy, release this prisoner, withdraw these troops
+- Success means the target **complies**
+- The demand is what makes the pressure legible as coercion, in Schelling's sense, rather than simple denial
+
+:::
+::: {.column width="50%"}
+
+**Denial** (export controls, technology restrictions):
+
+- Removes an input or capability — no demand attached, no compliance to wait for
+- "Success" means the target simply **doesn't have it anymore**
+- The goal is a lasting capability gap, not a change of mind
+
+:::
+:::
+
+::: {.callout-important appearance="minimal" icon=false}
+Drezner's own definition of economic coercion (2003) requires a target that "acquiesces to an articulated demand." That definition fits sanctions cleanly. It does not obviously fit a rule that says a category of technology may never be sold, to anyone, regardless of behavior.
+:::
+
+::: {.notes}
+This slide gives you vocabulary that the rest of the day depends on, so take it slowly. Two different logics get called "sanctions" in casual conversation, and conflating them makes it hard to ask sharp questions about either one. The first is compellence: you make a specific, articulated demand of a target — leave this territory, release this person, stop this program — and you apply economic pressure until they comply. Success has a clear definition: the target does the thing you demanded. This is the logic Thomas Schelling described decades ago for coercive bargaining generally, and it's the logic behind classic sanctions episodes.
+
+The second is denial. Export controls on advanced semiconductors, or Cold War restrictions on machine tools to the Soviet bloc, don't make a demand that the target can satisfy and thereby end the pressure. They simply remove access to an input. There's no compliance pathway, because there's no demand — the goal is a durable capability gap, not a change of policy. A target under an export-control regime can't "give in"; there's nothing to give in to.
+
+The callout gives you the sharpest version of this distinction in the scholarly literature: Drezner's own 2003 definition of economic coercion requires that the target "acquiesce to an articulated demand." That's a clean fit for compellent sanctions. Ask yourself whether it's a clean fit for a rule that bars a whole category of chips from ever being sold to a rival, no matter what that rival does. It isn't, and that mismatch is exactly why today's session treats these as two logics rather than one.
+:::
+
+
+## Why We're Separating Them Today
+
+::: {.columns}
+::: {.column width="52%"}
+
+Drezner's 2024 review is the best available synthesis of the sanctions-effectiveness literature. It is less careful about **scope** — export-control cases sit inside the same review alongside compellent sanctions.
+
+**What that means for today:**
+
+- Section 4 keeps Drezner's evidence, scoped tightly to **compellent sanctions**
+- Section 5 gives export controls their **own** history and their own test for success
+
+:::
+::: {.column width="48%"}
+
+::: {.callout-tip appearance="minimal" icon=false}
+Drezner's findings stand — this is a scope correction, not a rejection of them. A finding about whether compellence works tells you little about whether denial works, because they're not attempting the same thing.
+:::
+
+:::
+:::
+
+::: {.notes}
+Be transparent with students about an analytical choice you're making, because it models exactly the kind of critical reading you want from them with both assigned pieces. Drezner's review is genuinely the strongest available synthesis of what decades of sanctions research have found, and section four keeps all of it. But a review essay covering "economic sanctions" broadly will naturally pull in cases — export-control episodes among them — that don't share the compellence logic the effectiveness literature is actually testing.
+
+So here is the choice, and say it plainly: this course is going to keep Drezner's evidence scoped to compellent sanctions, where "does it work" has a clean meaning — did the target comply. Export controls get their own section, with their own history and their own test of success, which is about durable capability gaps, not compliance. In the callout: this is not a takedown of Drezner. It's a scope correction, and scope corrections are one of the most useful things you can do with a strong synthesis piece — keep what it establishes, and be precise about what it wasn't built to answer.
+:::
+
+
+# Weaponized Interdependence — and Its Critics {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 3 · Farrell & Newman 2019]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## Networks Have Hubs — and Hubs Have Power
+
+::: {.columns}
+::: {.column width="52%"}
+
+Farrell & Newman's core claim: global economic networks are **not flat.**
+
+- An **asymmetric topology** — a few central hubs, many peripheral nodes — emerges because shared infrastructure is more efficient than bilateral links
+- Two things a hub-controlling state can do: the **panopticon effect** (watch what flows through) and the **chokepoint effect** (cut a target off from it)
+- **SWIFT** is the clearest example: U.S. access to SWIFT data tracked terrorist financing after 9/11 (panopticon); Iran (2012) and Russia (2022) were disconnected from it (chokepoint)
+
+:::
+::: {.column width="48%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**The key claim.** Power doesn't come from how *much* you trade. It comes from *where you sit* in the network — control of the node everyone else routes through.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+This is a structural theory: the shape of the network does the explaining, not the wealth of any one country.
+:::
+
+:::
+:::
+
+::: {.notes}
+Here is Farrell and Newman's central move, and you should be able to state it crisply. Global economic networks aren't flat meshes where everyone connects directly to everyone else. Picture a payments map: it looks like an airline route map, a small number of giant hubs that nearly everything routes through, and a large periphery that connects to the rest of the world only via those hubs. Nobody designed the hubs as weapons — they emerged because shared infrastructure is cheaper than a web of bilateral links. But once a hub exists, the state with legal jurisdiction over it inherits real leverage over everyone who depends on it.
+
+Two distinct things follow from controlling a hub. The panopticon effect is surveillance: because transactions route through your jurisdiction, you can watch them. After 9/11, U.S. access to SWIFT messaging data let intelligence agencies trace terrorist financing across borders — nobody was cut off, the U.S. was simply watching what already flowed through the hub. The chokepoint effect is denial: because the periphery depends on the hub to function, you can sever a target from it entirely. Iranian banks were disconnected from SWIFT in 2012; major Russian banks were disconnected in 2022. One hub, two distinct capabilities.
+
+The callouts carry the theoretical weight. Power here doesn't track raw economic size — it tracks position. A mid-sized economy that happens to host a critical hub can out-coerce a much larger economy sitting on the network's edge. That's a structural theory of power: the map explains the outcome, not any single country's wealth. We'll come back to whether that's entirely right in a couple of slides.
+:::
+
+
+## The Dollar as the Master Hub
+
+::: {.columns}
+::: {.column width="54%"}
+
+The dollar is the most powerful chokepoint of all:
+
+- Most cross-border trade and finance is invoiced and settled in dollars — connecting back to Chapter 10's "exorbitant privilege"
+- Dollar payments ultimately clear through U.S. banks, giving U.S. authorities **legal reach over almost any dollar transaction, anywhere**
+- A foreign bank that helps a sanctioned entity risks losing dollar access — often a corporate death sentence
+
+:::
+::: {.column width="46%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+You don't have to trade *with* the U.S. to be exposed. If your transaction touches the dollar — and almost everything does — it touches U.S. jurisdiction.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+**Secondary sanctions**: the U.S. threatens third parties who deal with the target, leveraging the whole world's need for the dollar.
+:::
+
+:::
+:::
+
+::: {.notes}
+If SWIFT is the messaging hub, the dollar is the master hub. Tie this straight back to the monetary unit — Chapter 10's exorbitant privilege — because it's the same underlying fact seen from a different angle. Most international trade is invoiced in dollars, most cross-border lending is in dollars, most reserves are held in dollars. That dominance is built on ordinary economic logic: the dollar is liquid and stable, so it keeps getting used.
+
+The coercive payoff is technical but decisive: dollar payments, even between two non-American parties, ultimately clear through the U.S. banking system via correspondent accounts. That means almost any dollar transaction on earth passes through U.S. jurisdiction at some point, whether or not the United States is a party to it. A foreign bank processing payments for a sanctioned entity can be told: continue, and lose dollar clearing access — for a major bank, close to a death sentence.
+
+That's secondary sanctions, in the bottom callout. Primary sanctions restrict Americans from dealing with the target. Secondary sanctions go further: anyone, anywhere, who deals with the target risks losing access to the dollar system. Because everyone needs the dollar, the U.S. can effectively conscript the world's banks into enforcing its sanctions. You don't have to trade with America to be exposed — you only have to touch the dollar, and almost everything does.
+:::
+
+
+## Open Questions About This Theory
+
+::: {.columns}
+::: {.column width="50%"}
+
+This is an influential framework, not a settled consensus. Three lines of pushback worth carrying into discussion:
+
+- **Private agency.** Firms, not governments, actually build and run most network infrastructure — do they behave the way a purely structural theory predicts? (Gjesvik 2023)
+- **Erosion through use.** Repeatedly weaponizing the dollar gives everyone watching a reason to build an alternative — does that make the power more fragile than the theory suggests? (McDowell 2023, *Bucking the Buck*)
+
+:::
+::: {.column width="50%"}
+
+- **An older argument, unacknowledged.** Some scholars argue "weaponized interdependence" substantially rediscovers dependency theory's claim that asymmetric interdependence is exploitable — without engaging that literature (Palestini 2026)
+
+::: {.callout-tip appearance="minimal" icon=false}
+I'm not going to resolve these for you. Hold onto all three — we'll put them to work directly in today's discussion.
+:::
+
+:::
+:::
+
+::: {.notes}
+Say this plainly to the class: Farrell and Newman's article is genuinely influential, and it gave the field useful vocabulary, but it is not the last word, and I don't want you treating it as settled the way you might treat, say, the Stolper-Samuelson result. Three critiques are worth carrying forward.
+
+First, private agency. Lars Gjesvik points out that hubs are mostly built and operated by private firms making commercial decisions, not governments — a payments company or a cloud provider has its own reasons for where it locates infrastructure, and its own incentives around compliance. A purely structural account, where jurisdiction over a hub mechanically converts into usable state power, has to explain why firms go along, and doesn't always.
+
+Second, erosion through use. Daniel McDowell's research on de-dollarization argues that every time the dollar system gets weaponized, it teaches everyone watching — not just the target — that dollar access is conditional and political, and that lesson pushes people to build alternatives. If using the chokepoint corrodes the chokepoint, the "structural power" in the theory is less stable and more self-limiting than it first appears.
+
+Third — and this is the one I most want you to spend time on — Stefano Palestini's recent argument that "weaponized interdependence" substantially rediscovers a claim dependency theorists made decades ago, that asymmetric interdependence is a source of exploitable power, without engaging that older literature at all. If you've encountered dependency theory in another course, ask yourself what's actually new here versus what's a new vocabulary for an old insight.
+
+I'm handing you these three, in the callout, without resolving them, on purpose. We're using them directly in the discussion section later today.
+:::
+
+
+# Does Coercion Work? {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 4 · Drezner 2024 · scoped to compellent sanctions]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## The Sanctions Debate Has Moved
+
+::: {.columns}
+::: {.column width="52%"}
+
+Drezner reviews where the field has gone since Baldwin's *Economic Statecraft* (1985):
+
+- **Old consensus:** "sanctions rarely work" — costly signals that mostly fail to change behavior
+- **Newer findings:** careful measurement shows coercion is **more effective than once believed**
+- Coercion succeeds more often when it is multilateral, institutionalized, and hits constituencies the target government actually depends on
+
+:::
+::: {.column width="48%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**Drezner's headline.** Sanctions work *better* than the old pessimism claimed — **but** their unintended costs and externalities are *far larger* than once understood.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Two corrections, moving in opposite directions: less pessimistic about effectiveness, more worried about side effects. Keep them separate.
+:::
+
+:::
+:::
+
+::: {.notes}
+Now the evidence, scoped as we agreed — this is about compellent sanctions specifically. Drezner's review essay takes stock of the field since David Baldwin's 1985 book set its agenda. For a long time, the dominant impression, sometimes a caricature of more careful work underneath it, was pessimistic: sanctions rarely change a target's behavior, and mostly let leaders look tough while the target absorbs the pain.
+
+Drezner's review says that picture has shifted, and be precise about how. As scholars got better at measuring outcomes — including cases where the threat of sanctions produced concessions before anything was ever imposed — the evidence turned out less pessimistic than the old consensus held. Coercion is more effective than once believed, and the literature has learned when: multilateral efforts succeed more than unilateral ones, especially when institutionalized and including the target's major trading partners, and sanctions succeed more often when they hit the specific domestic constituencies a government actually depends on.
+
+But the actual headline, in the top callout, is the second half. The same body of research that revised effectiveness upward also revised costs upward, sharply. The externalities and unintended consequences of sanctions are far larger than the field once understood. Keep both halves in view, per the bottom callout — students like to flatten this into one verdict, "sanctions work" or "sanctions are bad." Drezner is saying both things, about different dimensions, and the tension between them is the actual finding.
+:::
+
+
+## Smart Sanctions and Their Limits
+
+::: {.columns}
+::: {.column width="50%"}
+
+The policy answer to "sanctions hurt civilians" was **targeted ("smart") sanctions:**
+
+- Hit elites, regime cronies, and specific firms — not the whole population
+- Asset freezes, travel bans, blacklisting individual entities
+- The 1990s Iraq experience (mass civilian suffering, regime survival) drove the shift
+
+But the costs did not vanish — they **moved and grew:**
+
+- Financial over-compliance and de-risking strand legitimate trade
+- Humanitarian and third-country spillovers persist
+
+:::
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**The trade-off Drezner stresses.** Targeting made sanctions more usable and more frequent — and because they're now used constantly, the systemic externalities keep piling up.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Targeting improved on blunt embargoes. It also lowered the threshold to sanction, so the tool gets reached for far more often.
+:::
+
+:::
+:::
+
+::: {.notes}
+One of Drezner's most important threads is the rise of "smart" or targeted sanctions, and understanding why they emerged tells you why they didn't solve the underlying problem. Comprehensive embargoes hammer ordinary people — the defining cautionary tale is Iraq in the 1990s, where a sweeping embargo produced severe civilian suffering while Saddam Hussein remained in power. The response was to target specific individuals and entities instead: freeze the assets of regime elites, ban them from travel, blacklist particular firms — punish the decision-makers, spare the population.
+
+Targeting was real progress, and Drezner credits it. But notice the costs didn't disappear; they relocated and, in aggregate, grew. Banks facing the threat of secondary sanctions become so risk-averse that they refuse to handle whole categories of perfectly legal business — entire countries, charities, remittance corridors — because the risk of an error isn't worth it. This is over-compliance or de-risking, and it strands legitimate trade well beyond the intended target.
+
+The more important point, in the top callout, is Drezner's actual argument: by looking more precise and humane, targeting made sanctions more politically usable, which lowered the threshold for reaching for the tool at all. We now sanction constantly, across an ever-growing list of targets, and because the tool is used so much more often, the system-wide externalities keep accumulating. Smart sanctions didn't remove the cost — they lowered the apparent cost of each individual use, so the tool gets used far more often, and the aggregate cost keeps climbing.
+:::
+
+
+# Denial in Practice: Export Controls {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 5]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## COCOM: The Cold War Denial Regime
+
+::: {.columns}
+::: {.column width="52%"}
+
+The Cold War already ran a full-scale denial regime, decades before "chokepoints" entered the vocabulary:
+
+- **COCOM** (1949–94): the U.S. and allies shared lists of strategic and dual-use goods barred from sale to the Soviet bloc
+- **1982:** the Siberian pipeline dispute — Reagan sanctioned European firms building a Soviet gas pipeline; allies pushed back, and the U.S. reversed course
+- **1987:** the Toshiba-Kongsberg scandal — Toshiba sold submarine-quieting machine tools to the USSR, costing it roughly **$1B** in lost U.S. sales
+
+:::
+::: {.column width="48%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+COCOM was disbanded in 1994 and succeeded by the looser Wassenaar Arrangement in 1996 — multilateral denial regimes are hard to sustain once the common threat that built them fades.
+:::
+
+:::
+:::
+
+::: {.notes}
+Export controls have their own history, and it's worth knowing before we get to semiconductors, because it shows both how denial regimes work and how hard they are to hold together. From 1949 to 1994, the United States and its allies ran COCOM — the Coordinating Committee for Multilateral Export Controls — sharing lists of strategic and dual-use goods that member countries agreed not to sell to the Soviet bloc. No demand was being made of Moscow; the goal was simply to keep certain capabilities out of Soviet hands, indefinitely.
+
+Two episodes show the regime's real tensions. In 1982, the Reagan administration tried to block European firms from supplying a Siberian natural-gas pipeline to the USSR, extending U.S. export-control authority onto foreign subsidiaries of American companies; European governments saw this as regulatory overreach and pushed back hard enough that Washington reversed the sanctions. In 1987, Toshiba was caught having sold Soviet submarines quieting technology — milling machinery that made Soviet subs harder to detect — a scandal that cost the company roughly a billion dollars in lost American sales and access.
+
+COCOM itself didn't survive the Cold War it was built for; it was disbanded in 1994 and replaced by the much looser, non-binding Wassenaar Arrangement in 1996. The callout is the lesson to carry forward into the chip-controls discussion: multilateral denial regimes work only as long as every participant shares the sense of threat that justified giving up commercial revenue in the first place, and that consensus is fragile.
+:::
+
+
+## Chips as the Chokepoint Now
+
+::: {.columns}
+::: {.column width="55%"}
+
+October 2022: the U.S. imposed sweeping export controls on advanced semiconductors and chipmaking equipment bound for China.
+
+- The goal, per contemporaneous policy analysis, was to **degrade** China's current chipmaking capability — not merely slow its future advance
+- No demand was attached — this is denial, in section 2's sense, not compellence
+- The chokepoints: a handful of firms make the extreme-ultraviolet lithography tools advanced chips require
+
+:::
+::: {.column width="45%"}
+
+::: {.callout-tip appearance="minimal" icon=false}
+This is Farrell & Newman's chokepoint mechanism doing real work — a small number of irreplaceable nodes in a supply chain, and jurisdiction over them converted into a denial tool.
+:::
+
+:::
+:::
+
+[🎧 **Today's podcast** — *Trade Talks* ep. 170, *"National Security, Semiconductors, and the US Move to Cut Off China"* — this case, from the inside.]{style="font-size:0.85em; color:#535054;"}
+
+::: {.notes}
+Now the case everyone already half-knows. In October 2022, the U.S. announced sweeping restrictions on exporting advanced semiconductors, and the equipment used to make them, to China. Contemporaneous policy analysis described the goal precisely: degrade China's current chipmaking capability outright, well beyond merely slowing its future progress at the frontier. There's no demand attached to this — nobody is asking Beijing to change a policy in exchange for relief. It's denial in exactly the sense we defined in section two.
+
+Why does this work at all? Because the chip supply chain has genuine chokepoints — a tiny number of firms make the extreme-ultraviolet lithography machines that advanced chip fabrication requires, and controlling access to that narrow set of tools lets the U.S. and a few allies reach deep into a capability that China cannot easily replace domestically, at least not quickly. This is Farrell and Newman's mechanism operating exactly as the theory predicts: a small number of irreplaceable nodes, and jurisdiction over them converted into leverage. Point to the podcast: today's Trade Talks episode covers this case from the inside, and it's worth assigning as background before the discussion block.
+:::
+
+
+## Why Unilateral Denial Tends to Fail
+
+::: {.columns}
+::: {.column width="52%"}
+
+Denial regimes share a structural problem: **substitution.**
+
+- A target cut off from one supplier has an incentive to build its own capacity, or buy from someone who isn't participating in the controls
+- Controls imposed by one country alone create an opening for competitors who don't share the restriction
+- Bauerle Danzman & Kilcrease (*Foreign Affairs*, 2022): unilateral U.S. controls on China's technology ambitions are likely to fail without close allied coordination
+
+:::
+::: {.column width="48%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+The same logic as COCOM's 1982 pipeline dispute and its 1994 collapse: a denial regime is only as strong as the coalition willing to give up revenue to sustain it.
+:::
+
+:::
+:::
+
+::: {.notes}
+Denial regimes have a structural weakness that compellent sanctions don't share in the same way: substitution. If you're denied a chip, or a machine tool, and the denial has no expiration tied to your behavior, your incentive is to build the capability yourself or find a supplier who isn't part of the coalition enforcing the restriction. And if the restriction is unilateral, competitors who aren't bound by it have every incentive to fill the gap you just created — for their own commercial benefit, not out of any principle.
+
+I'll draw on my own work here, with Emily Kilcrease, arguing exactly this in Foreign Affairs in 2022: unilateral U.S. attempts to contain China's technology ambitions are likely to fail unless they're closely coordinated with allies who control adjacent parts of the same supply chain. Act alone, and you mostly hand the business to a rival supplier while accelerating the target's investment in indigenous capacity — which is close to the worst of both outcomes. Tie this back to COCOM, in the callout: the 1982 pipeline dispute and the regime's eventual 1994 collapse are the same lesson in an earlier setting. A denial regime holds together only as long as every participant is willing to keep giving up revenue for it, and that willingness erodes.
+:::
+
+
+## Screening at the Point of Entry
+
+::: {.columns}
+::: {.column width="52%"}
+
+Denial doesn't only run through exports — it also runs through **who is allowed to buy in.**
+
+- **Investment screening** regimes (the U.S. CFIUS, and dozens of similar bodies built worldwide over the past decade) review and can block foreign acquisitions on national-security grounds
+- The PRISM dataset (Bauerle Danzman & Meunier, *ISQ* 2023) maps these mechanisms across nearly 100 countries — screening has become a global, not just American, instrument
+
+:::
+::: {.column width="48%"}
+
+::: {.callout-tip appearance="minimal" icon=false}
+This is the **securitization of political economy**: ordinary cross-border investment — who can buy what company — increasingly treated as a national-security question, with regulatory machinery built to police it.
+:::
+
+:::
+:::
+
+::: {.notes}
+One more form of denial, and it's the one I work on most directly: denial at the point of entry, through investment screening. In the United States, that's CFIUS, which you met back in Chapter 9; over the past decade, dozens of other countries have built similar review bodies of their own. These regimes let a government block a foreign acquisition before it happens, on national-security grounds — denial applied not to an export, but to ownership itself.
+
+The PRISM dataset I built with Sophie Meunier, published in International Studies Quarterly in 2023, maps these mechanisms across nearly a hundred countries, and the pattern is unmistakable: this is now a global instrument, not an American peculiarity. In the callout, the frame I use for this in my own research is the securitization of political economy — the process by which ordinary cross-border investment decisions, who is allowed to buy what company, get redefined as national-security questions, with new regulatory machinery built specifically to police that boundary. Keep this in mind for the discussion block: screening is a quieter, more procedural form of denial than an export ban or a frozen reserve, and that quietness is itself worth interrogating — is it less coercive because it's less visible, or just less examined?
+:::
+
+
+# Discussion: The Readings in Tension {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 6]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## How Today Works
+
+::: {.columns}
+::: {.column width="50%"}
+
+No pre-class reflection, no prepared answers — everything below happens live, in breakout groups, starting now.
+
+**Round 1 (small groups, ~12 min):**
+
+- Half the groups take **Farrell & Newman**; half take **Drezner**
+- Each group answers its assigned prompts using only what's in front of you today — the reading, the slides, your own ten-minute write
+
+:::
+::: {.column width="50%"}
+
+**Round 2 (regroup, ~12 min):**
+
+- Re-mix into pairs with one person from each side
+- Each person explains their article to their partner; together, find one place the two readings **agree**, and one place they **talk past each other**
+
+::: {.callout-tip appearance="minimal" icon=false}
+Whole-class debrief follows — be ready to name your pair's tension point out loud.
+:::
+
+:::
+:::
+
+::: {.notes}
+Explain the mechanics before you start the clock, because this format is different from a normal cold-call discussion and students do better with the shape laid out up front. Nobody prepared anything for this in advance — that's by design, so what you hear is genuinely live thinking, not a rehearsed answer. First round: split into small groups, half assigned to Farrell and Newman, half to Drezner, each working the assigned prompts on the next slide using only what's already in the room — the article, today's slides, and whatever came out of the opening ten-minute write. About twelve minutes.
+
+Second round: break those groups up and re-form pairs with one person from each side. Each person has to explain their article to a partner who's spent the last twelve minutes immersed in the other one — that's the real test of whether they understood it, not just skimmed it. Together, the pair finds one point where the two readings actually agree, and one point where they're answering different questions entirely, or working from incompatible assumptions, even though they sound like they're in the same conversation. About twelve minutes again. Then a whole-class debrief where you'll cold-call pairs to report their tension point — tell them that up front so nobody coasts.
+:::
+
+
+## Discussion Prompts
+
+::: {.columns}
+::: {.column width="50%"}
+
+**Farrell & Newman groups:**
+
+- Gjesvik says private firms, not states, actually run most hubs. Where in the article does the theory depend on firms simply going along with state pressure?
+- If using a chokepoint erodes it (McDowell), is "structural power" the right name for something this unstable?
+- Mulder's Abyssinia case: the League controlled a chokepoint (oil) and chose not to use it. What does that do to a theory that treats hub control as automatically convertible into power?
+
+:::
+::: {.column width="50%"}
+
+**Drezner groups:**
+
+- Drezner's own 2003 definition of coercion requires "an articulated demand." Find a case in the 2024 review that doesn't obviously fit that definition. What is it actually doing?
+- "Smart" sanctions were supposed to lower civilian costs. Drezner says they instead lowered the *political* cost of sanctioning. Is that a success or a failure of the reform?
+- Mulder's finding — sanctions succeed, fully or partially, about a third of the time historically. Does Drezner's more optimistic modern evidence update that number, or answer a different question?
+
+:::
+:::
+
+::: {.notes}
+These are the prompts for round one — read them out, or post them, and then get out of the way. Notice each set is built to force the group back into the article rather than into generalities, and each also reaches back into today's earlier sections, so the two groups arrive at the pairing exercise already primed to find real friction rather than surface agreement. The Farrell and Newman prompts pull directly from section three's critiques and from the Abyssinia case in section one — a state (Britain, France) that controlled a real chokepoint (oil) and declined to use it is a direct challenge to any reading of the theory where hub control converts automatically into coercive power. The Drezner prompts pull from section two's compellence/denial distinction and from Mulder's historical base rate. Don't resolve any of these for the groups when you circulate — your job in round one is only to make sure nobody is stuck, not to supply the answer.
+:::
+
+
+## Debate: Name the Thing Correctly
+
+::: {.callout-important appearance="minimal" icon=false}
+**Whole-class debate prompt.** Farrell and Newman call this "weaponized interdependence" — language that implies something has changed about interdependence itself. Given everything from Megara to Abyssinia to COCOM: is that the right name, or is this just economic statecraft, running on newer infrastructure?
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Take a side. Argue it. Then argue the other side. Today's goal is to notice how much your answer depends on how much weight you put on the history, not to reach a final verdict.
+:::
+
+::: {.notes}
+Close the discussion block with this as a genuine whole-class debate, not a rhetorical question you answer yourself. Split the room, or ask for volunteers, and have one side argue that "weaponized interdependence" is the right name — something really has changed, the density and concentration of today's networks are qualitatively different from a naval blockade or a Cold War export list, and that difference deserves a new name. Have the other side argue that this is a relabeling exercise — Megara, Venice, the Continental System, the WWI blockade, COCOM: economic leverage aimed at a rival is exactly what states have always done, and giving it a new name risks making it sound more novel, and more theoretically clean, than it actually is.
+
+Don't let the class settle for a tidy middle position too quickly. The answer likely depends on how much weight you put on the historical continuity versus the structural changes in scale and concentration — and that's a judgment call, not a fact to look up. This is also the moment to be candid, if it comes up, that I don't fully sign on to the "weaponized interdependence" framing myself, for reasons close to what you've just been debating — and that's a conversation I want to have with you directly, not just embed in a slide.
+:::
+
+
+# Synthesis: Coercion Across the Whole Course {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 7]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## The Whole Course, Twice Over
+
+::: {.callout-important appearance="minimal" icon=false}
+**Today's Big Question —** Economic exchange has always been a source of leverage. Why does today's version feel so blatant, and so arbitrary?
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### What's old
+- Turning exchange into leverage goes back at least to Athens and Megara — sanctions, embargoes, and blockades are ancient tools
+- Sanctions have always had a mixed record — Mulder's rough historical base rate is one-in-three
+
+:::
+::: {.column width="50%"}
+
+### What's arguably different
+- Today's version runs through **peacetime civilian infrastructure** — payment rails, licensing regimes — not a declared blockade, which is part of why it can feel arbitrary rather than lawful
+- Every unit of this course — trade, money, MNCs, finance — turns out to have a coercive edge
+
+:::
+:::
+
+::: {.notes}
+Pull the day together against the Big Question, which asked why something this old feels this new. The "old" side is now well established: turning economic exchange into leverage is at least twenty-five hundred years old, and even the most sophisticated version of it — the League of Nations' Article 16 — had, by Mulder's count, roughly a one-in-three historical success rate. None of this is a recent invention.
+
+What's arguably different is on the right, and it's a genuine claim, not just a restatement of Farrell and Newman. A declared naval blockade in 1915 was, whatever else it was, an openly declared act, understood by everyone as a wartime measure with a wartime logic. Today's version — an entity added to a list, a bank quietly told its correspondent relationship is at risk, an export license denied — runs through the ordinary administrative processes of peacetime, has no clear declaration or endpoint, and touches parties who never agreed to anything resembling a state of war. The underlying instinct hasn't changed; the setting it now operates in no longer announces itself as exceptional, and that's a real part of why it can feel more arbitrary.
+
+The last point ties back to the entire semester: trade, money, multinational production, and international finance — every pillar of this course — turns out to have a coercive edge once you examine it through today's lens. Each of those units taught you how exchange generates prosperity and distributes its costs; today added that the same exchange can be picked up and used as a lever. Both things are true of the same material at once, and holding both is the point of today.
+:::
+
+
+## What to Keep From Today
+
+::: {.columns}
+::: {.column width="55%"}
+
+Three things worth keeping, regardless of where you landed in the debate:
+
+- **The compellence/denial distinction** — ask, of any policy called a "sanction," which logic it's actually running on
+- **A base rate for skepticism** — coercion has never worked as reliably as its advocates claim, or as unreliably as its critics claim
+- **A habit of checking the theory against the history** — Farrell & Newman's mechanism is real; so are its limits
+
+:::
+::: {.column width="45%"}
+
+::: {.callout-tip appearance="minimal" icon=false}
+Next time we meet, we return to the textbook — and to a question this unit has been quietly building toward: what happens when the countries that write these rules are not the only ones with leverage left to use?
+:::
+
+:::
+:::
+
+::: {.notes}
+Close with three durable habits rather than a summary of facts, since facts fade and habits transfer to the next case they encounter, in this course or after it. First, whenever you hear something called a "sanction" in the news, ask which logic it's actually running on — compellence, with a demand attached, or denial, with none. That single question will clarify most headlines you read from here on. Second, apply a base rate for skepticism to any claim about whether coercion "works": across a century of evidence, it works often enough to keep getting used and fails often enough that nobody should be fully confident going in. Third, keep the habit we practiced today — a theory this well-constructed, Farrell and Newman's, is still worth testing against real cases, and real cases sometimes push back.
+
+For where we're headed: we're back with Oatley next time, but keep today in mind, because a question has been building underneath this whole unit — the states that currently write the rules of this system are not guaranteed to be the only ones with real leverage left to use, and what happens as that changes is still being worked out, including by scholars like the ones you read today.
+:::

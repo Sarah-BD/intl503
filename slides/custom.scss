@@ -1,0 +1,379 @@
+/*-- scss:defaults --*/
+
+// IU Brand Colors
+$iu-crimson: #990000;
+$iu-cream: #EDEBEB;
+$iu-gray: #535054;
+$iu-light-gray: #7E7E7E;
+$iu-dark-text: #2C3E50;
+
+// Apply to Reveal.js variables
+$body-bg: #ffffff;
+$body-color: $iu-dark-text;
+$link-color: $iu-crimson;
+$selection-bg: $iu-crimson;
+$selection-color: #ffffff;
+
+// Headings
+$presentation-heading-color: $iu-crimson;
+$presentation-heading-font: 'Roboto Slab', serif;
+$presentation-font-size-root: 32px;
+
+// Body text
+$font-family-sans-serif: 'Open Sans', sans-serif;
+
+// Code
+$code-color: $iu-crimson;
+$code-bg: $iu-cream;
+
+/*-- scss:rules --*/
+
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto+Slab:wght@400;600;700&display=swap');
+
+// Global slide styling
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  padding: 0 2em;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+// ============================================================================
+// OVERFLOW PREVENTION - Global rules to keep content within slide bounds
+// ============================================================================
+
+// Ensure all slide content respects boundaries
+.reveal .slide-content {
+  max-height: 100%;
+  overflow: hidden;
+}
+
+// Constrain all images and figures with thin black outline.
+// max-height uses 100% (relative to the parent container) rather than vh,
+// because vh is relative to the browser viewport — and on browsers smaller
+// than ~1100px tall, vh rules clip images even when the 1600x900 slide canvas
+// has room. Use parent-relative units so images respect the slide layout, not
+// the browser window size.
+.reveal img,
+.reveal figure img,
+.reveal .cell-output-display img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid #000000;
+}
+
+// Constrain figure containers with thin black outline.
+// margin: 0 overrides the default browser CSS that gives <figure> elements
+// `margin: 1em 40px` — that left/right 40px shifts images past the column
+// edge, and the column's overflow: hidden then clips ~40px from the right.
+.reveal figure,
+.reveal .cell-output-display {
+  max-width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+// Ensure ggplot2/R figures have outline (they render as img)
+.reveal .cell-output-display svg {
+  border: 1px solid #000000;
+}
+
+// Ensure columns don't overflow
+.reveal .columns {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.reveal .column {
+  overflow: hidden;
+  min-width: 0; // Allows flex items to shrink below content size
+}
+
+// Prevent text overflow
+.reveal p,
+.reveal li,
+.reveal td,
+.reveal th {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+// Scale down large content automatically (parent-relative, not vh — same
+// reason as the image rule above).
+.reveal .cell-output-display {
+  max-height: 100%;
+}
+
+.reveal .cell-output-display > * {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+// Ensure tables don't overflow
+.reveal table {
+  max-width: 100%;
+  table-layout: auto;
+}
+
+// Footer safe zone - add padding at bottom of content slides
+.reveal .slides section:not([data-background-color]) {
+  padding-bottom: 2.5em;
+}
+
+// Slide titles with crimson underline
+.reveal h2 {
+  border-bottom: 3px solid $iu-crimson;
+  padding-bottom: 0.2em;
+  margin-bottom: 0.5em;
+  margin-top: 0;
+  font-size: 1.4em;
+}
+
+.reveal h3 {
+  color: $iu-crimson;
+  font-size: 1.05em;
+  margin-top: 0.4em;
+  margin-bottom: 0.2em;
+}
+
+// Section header slides (crimson background)
+.reveal section.title-slide,
+.reveal section[data-background-color="#990000"] {
+  h1, h2, h3, p, li {
+    color: #ffffff !important;
+  }
+
+  h1 {
+    border-bottom: none;
+    font-size: 2.2em;
+    text-align: center;
+  }
+
+  h2 {
+    border-bottom: none;
+  }
+}
+
+// Title slide specific
+.reveal .title-slide {
+  background-color: $iu-crimson !important;
+
+  h1.title {
+    color: #ffffff !important;
+    font-size: 2.5em;
+    border-bottom: none;
+    text-align: center;
+  }
+
+  p.subtitle, p.author, p.date {
+    color: #ffffff !important;
+    text-align: center;
+  }
+}
+
+// Fit text for emphasis slides
+.reveal .r-fit-text {
+  font-family: 'Roboto Slab', serif;
+  color: $iu-crimson;
+}
+
+section[data-background-color="#990000"] .r-fit-text {
+  color: #ffffff !important;
+}
+
+// Callout boxes - more compact
+// Default callout text size for the course (bumped up from 0.9em).
+.reveal .callout {
+  margin: 0.8em 0;
+  border-radius: 4px;
+  font-size: 1.1em;
+}
+
+.reveal .callout-header {
+  font-weight: 600;
+}
+
+.reveal .callout-note {
+  border-left: 4px solid $iu-crimson;
+  background-color: $iu-cream;
+}
+
+.reveal .callout-tip {
+  border-left: 4px solid #2E7D32;
+  background-color: #f1f8e9;
+}
+
+.reveal .callout-warning {
+  border-left: 4px solid #e67e22;
+  background-color: #fdf2e9;
+}
+
+.reveal .callout-important {
+  border-left: 4px solid $iu-crimson;
+  background-color: $iu-cream;
+}
+
+// Tables - centered and styled with thin black outline
+.reveal table {
+  margin: 0.8em auto;
+  border-collapse: collapse;
+  font-size: 1.1em;
+  width: 90%;
+  border: 1px solid #000000;
+}
+
+.reveal table th {
+  background-color: $iu-crimson;
+  color: #ffffff;
+  padding: 0.5em 0.8em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.reveal table td {
+  padding: 0.4em 0.8em;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.reveal table tr:nth-child(even) {
+  background-color: $iu-cream;
+}
+
+// Columns - tighter gap
+.reveal .columns {
+  display: flex;
+  gap: 1.5em;
+}
+
+.reveal .column {
+  flex: 1;
+}
+
+// Blockquotes
+.reveal blockquote {
+  border-left: 4px solid $iu-crimson;
+  padding: 0.5em 1em;
+  margin: 0.8em 0;
+  font-style: italic;
+  background-color: $iu-cream;
+  font-size: 0.95em;
+}
+
+// Footer styling
+.reveal .slide-number {
+  color: $iu-gray;
+  font-size: 0.5em;
+}
+
+.reveal footer {
+  color: $iu-light-gray;
+  font-size: 0.45em;
+}
+
+// Strong/bold text
+.reveal strong {
+  color: $iu-crimson;
+  font-weight: 600;
+}
+
+// List spacing - tighter
+.reveal ul, .reveal ol {
+  margin-bottom: 0.3em;
+  margin-top: 0.3em;
+}
+
+.reveal li {
+  margin-bottom: 0.25em;
+  line-height: 1.3;
+}
+
+.reveal li li {
+  font-size: 0.9em;
+}
+
+// Lists inside .columns: pad the list left so number/bullet markers
+// render INSIDE the column's content area. Without this, .reveal .column's
+// overflow: hidden rule clips ordered-list numbers and bullet markers.
+.reveal .column ol,
+.reveal .column ul {
+  padding-left: 1.6em;
+}
+
+// Incremental lists
+.reveal .incremental > ul > li,
+.reveal .incremental > ol > li {
+  opacity: 0.2;
+}
+
+.reveal .incremental > ul > li.visible,
+.reveal .incremental > ol > li.visible {
+  opacity: 1;
+}
+
+// Fragment transitions
+.reveal .fragment {
+  transition: all 0.2s ease;
+}
+
+// Figure captions
+.reveal figcaption {
+  font-size: 0.7em;
+  color: $iu-light-gray;
+  margin-top: 0.3em;
+}
+
+// Mermaid diagrams
+.reveal .mermaid {
+  background-color: transparent;
+  font-size: 0.9em;
+}
+
+// Speaker notes indicator
+.reveal .speaker-notes-indicator {
+  display: none;
+}
+
+// Ensure figures are centered
+.reveal figure {
+  text-align: center;
+}
+
+.reveal .cell-output-display {
+  display: flex;
+  justify-content: center;
+}
+
+// Kable tables override
+.reveal .table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Tighter paragraph spacing
+.reveal p {
+  margin-bottom: 0.4em;
+  margin-top: 0.4em;
+}
+
+// Notes styling (for presenter view)
+.reveal aside.notes {
+  font-size: 0.8em;
+  color: $iu-gray;
+}
+
+// Background image slides
+.reveal section[data-background-image] {
+  h2, h3 {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 0.3em 0.6em;
+    display: inline-block;
+  }
+}

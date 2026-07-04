@@ -1,0 +1,289 @@
+/*-- scss:defaults --*/
+
+// Import fonts
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&display=swap');
+
+// IU colors
+$iu-crimson: #990000;
+$iu-cream: #EDEBEB;
+$iu-gray: #535054;
+$iu-light-gray: #7E7E7E;
+
+// Main colors
+$body-bg: #ffffff;
+$body-color: #2c3e50;
+$link-color: $iu-crimson;
+$link-hover-color: darken($iu-crimson, 10%);
+
+// Fonts
+$font-family-sans-serif: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$headings-font-family: "Roboto Slab", serif;
+$headings-font-weight: 600;
+$headings-color: $iu-crimson;
+
+// Navbar
+$navbar-bg: $iu-crimson;
+$navbar-fg: #ffffff;
+
+// Code
+$code-bg: #f8f9fa;
+$code-color: $iu-crimson;
+
+/*-- scss:rules --*/
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  color: $iu-crimson;
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+h1 {
+  font-size: 2.5em;
+  border-bottom: 3px solid $iu-crimson;
+  padding-bottom: 0.3em;
+}
+
+h2 {
+  font-size: 2em;
+  border-bottom: 2px solid lighten($iu-crimson, 40%);
+  padding-bottom: 0.3em;
+}
+
+h3 {
+  font-size: 1.5em;
+  color: $iu-gray;
+}
+
+// Links
+a {
+  color: $iu-crimson;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.2s ease;
+  
+  &:hover {
+    border-bottom: 1px solid $iu-crimson;
+  }
+}
+
+// Homepage specific styling
+.hero-banner {
+  background: linear-gradient(135deg, $iu-crimson 0%, darken($iu-crimson, 15%) 100%);
+  color: white;
+  padding: 4rem 2rem;
+  margin: 1.5rem -2rem 2rem -2rem;
+  border-radius: 8px;
+  
+  h1 {
+    color: white;
+    border: none;
+    font-size: 3em;
+    margin-bottom: 0.5em;
+  }
+  
+  .subtitle {
+    font-size: 1.4em;
+    opacity: 0.95;
+    font-weight: 300;
+  }
+  
+  .course-details {
+    font-size: 1.1em;
+    margin-top: 1em;
+  }
+}
+
+// Info boxes
+.info-box {
+  background: $iu-cream;
+  border-left: 4px solid $iu-crimson;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+  
+  h3 {
+    margin-top: 0;
+    color: $iu-crimson;
+  }
+}
+
+// Schedule table styling
+.schedule-table {
+  width: 100%;
+  margin: 2rem 0;
+  
+  thead {
+    background-color: $iu-crimson;
+    color: white;
+    
+    th {
+      padding: 1rem;
+      font-weight: 600;
+      text-align: left;
+    }
+  }
+  
+  tbody {
+    tr {
+      border-bottom: 1px solid lighten($iu-gray, 50%);
+      
+      &:hover {
+        background-color: lighten($iu-cream, 5%);
+      }
+      
+      td {
+        padding: 0.75rem 1rem;
+      }
+    }
+    
+    .week-header {
+      background-color: lighten($iu-crimson, 50%);
+      font-weight: 600;
+      color: $iu-crimson;
+    }
+    
+    .no-class {
+      background-color: lighten($iu-cream, 3%);
+      font-style: italic;
+      color: $iu-light-gray;
+    }
+  }
+}
+
+// Assignment cards
+.assignment-card {
+  border: 2px solid lighten($iu-gray, 50%);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-color: $iu-crimson;
+  }
+  
+  h3 {
+    margin-top: 0;
+    color: $iu-crimson;
+  }
+  
+  .assignment-meta {
+    color: $iu-light-gray;
+    font-size: 0.95em;
+    margin-bottom: 1em;
+    
+    .due-date {
+      font-weight: 600;
+      color: $iu-crimson;
+    }
+  }
+}
+
+// Content cards for lectures
+.content-card {
+  border-left: 4px solid $iu-crimson;
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  
+  h3 {
+    margin-top: 0;
+  }
+  
+  .content-meta {
+    color: $iu-light-gray;
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+  }
+}
+
+// Buttons
+.btn-primary {
+  background-color: $iu-crimson;
+  border-color: $iu-crimson;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: darken($iu-crimson, 10%);
+    border-color: darken($iu-crimson, 10%);
+    color: white;
+  }
+}
+
+// Footer styling
+.footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid lighten($iu-gray, 50%);
+  font-size: 0.9em;
+  color: $iu-light-gray;
+}
+
+// Navbar adjustments
+.navbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+// Tables
+table {
+  margin: 1.5rem 0;
+  width: 100%;
+  border-collapse: collapse;
+  
+  thead {
+    background-color: $iu-crimson;
+    color: white;
+    
+    th {
+      padding: 0.75rem;
+      text-align: left;
+      font-weight: 600;
+    }
+  }
+  
+  tbody {
+    tr {
+      border-bottom: 1px solid lighten($iu-gray, 60%);
+      
+      &:hover {
+        background-color: lighten($iu-cream, 5%);
+      }
+      
+      td {
+        padding: 0.5rem 0.75rem;
+      }
+    }
+  }
+}
+
+// Blockquotes
+blockquote {
+  border-left: 4px solid $iu-crimson;
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: $iu-gray;
+}
+
+// Code blocks
+pre {
+  background-color: $code-bg;
+  border: 1px solid lighten($iu-gray, 60%);
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+code {
+  background-color: $code-bg;
+  color: $code-color;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}

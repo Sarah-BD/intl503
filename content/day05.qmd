@@ -1,0 +1,28 @@
+---
+title: "Day 5: A State-Centered Approach to Trade Politics"
+subtitle: "Monday, July 13, 2026"
+toc: false
+---
+
+**Required materials:**
+
+1. Oatley, Chapter 5 — *A State-Centered Approach to Trade Politics*
+2. Bown, Chad P., and Dan Wang. 2024. "[Semiconductors and Modern Industrial Policy](https://www.aeaweb.org/articles?id=10.1257/jep.38.4.81)." *Journal of Economic Perspectives* 38(4): 81–110.
+3. {{< fa headphones >}} [*Trade Talks* ep. 182: "Is China's Industrial Policy Working?"](https://tradetalkspodcast.com/podcast/182-is-chinas-industrial-policy-working/)
+
+::: {.callout-tip}
+## In class today
+- When does the state intervene in trade for its own goals, not a lobby's?
+- The infant-industry case: when a tariff or subsidy can actually raise welfare
+- Strategic-trade theory: rents, first-mover advantage, and rent-shifting
+- From economic competitiveness to national and economic security as the rationale
+- The political-economy objections: picking winners, rent-seeking, and the new evidence
+- **Student-led article presentation** (Bown & Wang 2024)
+- Writing prompt and discussion
+:::
+
+## Slides
+
+[{{< fa expand >}} Open slides in a new tab](../slides/day05-chapter05.html){target="_blank"}
+
+<iframe src="../slides/day05-chapter05.html" width="100%" height="600" style="border:1px solid #ccc;"></iframe>

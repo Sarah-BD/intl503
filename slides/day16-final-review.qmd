@@ -1,0 +1,391 @@
+---
+title: "Final Exam — Review & Logistics"
+subtitle: "INTL 503 | Cumulative Review"
+author: "Professor Sarah Bauerle Danzman"
+date: "2026-07-31"
+date-format: long
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: true
+    preview-links: auto
+    footer: "INTL 503 | Final Exam — Review & Logistics"
+    transition: fade
+    width: 1600
+    height: 900
+    margin: 0.15
+    fig-align: center
+    fig-dpi: 300
+    auto-stretch: false
+    logo: iu-trident.png
+    title-slide-attributes:
+      data-background-image: iu-trident.png
+      data-background-size: 15%
+      data-background-position: 2% 2%
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(knitr)
+library(kableExtra)
+
+# IU color palette
+iu_crimson <- "#990000"
+iu_cream <- "#EDEBEB"
+iu_gray <- "#535054"
+iu_light_gray <- "#7E7E7E"
+iu_dark_text <- "#2C3E50"
+iu_green <- "#1B5E3F"
+iu_navy <- "#1F3A5F"
+iu_gold <- "#B8860B"
+
+theme_ipe <- function(base_size = 20) {
+  theme_minimal(base_size = base_size) +
+    theme(
+      plot.title = element_text(color = iu_crimson, face = "bold", size = rel(1.2),
+                                margin = margin(t = 5, b = 5)),
+      plot.subtitle = element_text(color = iu_gray, size = rel(0.9),
+                                   margin = margin(b = 10)),
+      plot.caption = element_text(color = iu_light_gray, size = rel(0.7),
+                                  hjust = 0, margin = margin(t = 10)),
+      axis.title = element_text(color = iu_dark_text, size = rel(0.9)),
+      axis.title.x = element_text(margin = margin(t = 8)),
+      axis.title.y = element_text(margin = margin(r = 8)),
+      axis.text = element_text(color = iu_gray, size = rel(0.8)),
+      panel.grid.minor = element_blank(),
+      panel.grid.major = element_line(color = "#E5E5E5", linewidth = 0.4),
+      legend.position = "bottom",
+      legend.title = element_text(size = rel(0.85)),
+      legend.text = element_text(size = rel(0.8)),
+      plot.margin = margin(t = 8, r = 12, b = 20, l = 12)
+    )
+}
+```
+
+## Today's Plan
+
+::: {.callout-important appearance="minimal" icon=false}
+## The Exam's Integrative Theme
+[**Can you take any phenomenon in the global economy and explain it from both the society-centered and the state-centered side — and say where they converge and diverge?**]{style="font-size: 1.4em; line-height: 1.4;"}
+:::
+
+```{r}
+#| label: tbl-plan
+
+plan <- data.frame(
+  Section = c("1 · Exam Logistics",
+              "2 · The Central Analytic Move",
+              "3 · Quick-Recall Review",
+              "4 · Cracking the Policy Question",
+              "5 · Before You Begin"),
+  Cover = c("Format, timing, and how the exam works online",
+            "The one comparison every section of the exam rewards",
+            "Test yourself across all four units, then check your answers",
+            "We work the sample prompt together before seeing the rubric",
+            "Final logistics and a send-off")
+)
+
+kable(plan, col.names = c("Section", "What we'll cover"),
+      align = c("l", "l")) %>%
+  kable_styling(font_size = 22, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "42%") %>%
+  column_spec(2, width = "58%")
+```
+
+::: {.notes}
+Whether you're with me live right at the start of the exam window or reading this on your own beforehand as a study aid, treat it the same way: this is review, not new material. Nothing here is a topic we haven't already covered — it's consolidation, and it's designed to be quick. The one thing I most want you to carry into the exam is the integrative theme in the banner: the whole course has trained you to look at any economic phenomenon from two angles, the society-centered and the state-centered, and to say where they agree and where they pull apart. If you can do that move fluently, you can answer almost anything the exam asks.
+
+Today is built to be short and active rather than a long lecture through four units again. Section 3 asks you to test your own recall before you see the answer key. Section 4 has you work the sample policy prompt yourself before I show you the rubric. Use both moments for real — the retrieval effort is what makes them useful, live or solo.
+:::
+
+
+# Exam Logistics {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 1]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## Format, Timing, and How It Works
+
+::: {.columns}
+::: {.column width="54%"}
+
+```{r}
+#| label: tbl-format
+
+fmt <- data.frame(
+  sec = c("I · Multiple choice", "II · Short answer", "III · Applied policy question"),
+  weight = c("~30%", "~30%", "~40%"),
+  what = c("Key terms, frameworks, and arguments across all chapters and articles",
+           "One to two paragraphs each: define, compare, or apply a concept",
+           "About two pages: analyze a current scenario using course frameworks")
+)
+
+kable(fmt, col.names = c("Section", "Weight", "What it asks"),
+      align = c("l", "c", "l")) %>%
+  kable_styling(font_size = 21, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:3, extra_css = "padding-top: 11px; padding-bottom: 11px; line-height: 1.3;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "26%") %>%
+  column_spec(2, width = "12%") %>%
+  column_spec(3, width = "62%")
+```
+
+<div style="display:flex; width:100%; height:26px; border-radius:4px; overflow:hidden; margin-top:10px; font-size:0.6em; color:white; font-weight:bold;">
+<div style="width:30%; background:#1F3A5F; display:flex; align-items:center; justify-content:center;">I &middot; 30%</div>
+<div style="width:30%; background:#7E7E7E; display:flex; align-items:center; justify-content:center;">II &middot; 30%</div>
+<div style="width:40%; background:#990000; display:flex; align-items:center; justify-content:center;">III &middot; 40%</div>
+</div>
+
+:::
+::: {.column width="46%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**Cumulative.** Covers the entire course — every chapter and assigned article. Completed and submitted online during our regular meeting time, **8:10–10:20 AM Eastern.**
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+**Ground rules.** No generative-AI tools. No reschedules except a documented emergency cleared with me in advance. Budget your time — Section III carries the most weight.
+:::
+
+:::
+:::
+
+::: {.notes}
+Quick and concrete. The exam is cumulative — everything from Chapter 1 through the coercion day is fair game, plus the assigned articles. Three sections: multiple choice for about thirty percent, short answer for about thirty, and the applied policy question for about forty. That last one is the biggest single chunk, so I'm telling you up front: don't spend so long on the multiple choice that you shortchange the essay. You have the full window, roughly two hours, to complete and submit everything online — budget it accordingly. No AI tools of any kind. The no-reschedule policy stands unless you've cleared a documented emergency with me ahead of time. That's the whole of the logistics; the rest is review.
+:::
+
+
+# The Central Analytic Move {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 2]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## The One Comparison Every Section Rewards
+
+::: {.columns}
+::: {.column width="46%"}
+
+Almost every unit was built as a **paired contrast.** The move to practice:
+
+1. **Name the phenomenon** (a tariff, an FDI screen, a peg, a bailout)
+2. Explain it **society-centered**
+3. Explain it **state-centered**
+4. Say where the two **converge** and where they **diverge**
+
+:::
+::: {.column width="54%"}
+
+<div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-top:6px;">
+<div style="flex:1; text-align:center; font-weight:bold; color:#2C3E50; font-size:0.85em; border:1px solid #B9B4AD; border-radius:6px; padding:10px 6px;">A phenomenon<br/><span style="font-weight:normal; font-size:0.85em; color:#535054;">(tariff, peg, bailout...)</span></div>
+<div style="font-size:1.3em; color:#7E7E7E;">→</div>
+<div style="flex:1;">
+<div style="text-align:center; font-weight:bold; color:white; background:#1F3A5F; border-radius:6px; padding:8px 6px; margin-bottom:8px; font-size:0.85em;">Society-centered<br/><span style="font-weight:normal; font-size:0.8em;">who wins, who loses</span></div>
+<div style="text-align:center; font-weight:bold; color:white; background:#990000; border-radius:6px; padding:8px 6px; font-size:0.85em;">State-centered<br/><span style="font-weight:normal; font-size:0.8em;">power, security, strategy</span></div>
+</div>
+<div style="font-size:1.3em; color:#7E7E7E;">→</div>
+<div style="flex:1; text-align:center; font-weight:bold; color:#2C3E50; font-size:0.85em; border:1px solid #B9B4AD; border-radius:6px; padding:10px 6px;">Converge, or diverge?</div>
+</div>
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+**Society-centered** asks who organizes and who wins domestically. **State-centered** asks what the nation gains in power, security, or strategic position. Most exam questions reward running both.
+:::
+
+::: {.notes}
+This slide matters more than any other in the deck. The course is organized as a series of paired lenses — in trade we did a society-centered chapter and then a state-centered chapter, and money repeated the same pairing. The exam is testing whether that pairing became a reflex. So on any question, run the move: name the thing, explain it as the product of competing domestic interests — who gains, who loses, who organizes — then explain it as something a state does in pursuit of power, security, or strategic advantage that no interest-group story fully captures. Then the part students forget: say where the two lenses agree and where they part ways. Often both predict the same policy for different reasons; sometimes they flatly disagree, and the disagreement is the interesting part.
+
+Use the diagram to walk through one example live — a tariff, a currency peg, whatever's fresh — and have the class call out the society-centered story, then the state-centered one, then whether they converge.
+:::
+
+
+# Quick-Recall Review {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 3]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## Try It First: Trade & Development
+
+::: {.callout-important appearance="minimal" icon=false}
+**Before you look at the next slide** — without notes, name: the two competing society-centered models of trade politics, the state-centered alternative to both, and what changed between ISI and neoliberalism. Then check yourself.
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+**Unit 1 · Trade (Chs 1–5)**
+
+::: {style="font-size:0.68em;"}
+| Term | In short |
+|---|---|
+| Comparative advantage | mutual gains from specialization |
+| WTO / trade regime | reciprocity, MFN, dispute settlement |
+| Stolper-Samuelson | trade divides by **factor** |
+| Ricardo-Viner | trade divides by **sector** |
+| Strategic trade | state shapes advantage via policy |
+:::
+
+:::
+::: {.column width="50%"}
+
+**Unit 2 · Development & MNCs (Chs 6–9)**
+
+::: {style="font-size:0.68em;"}
+| Term | In short |
+|---|---|
+| ISI | state-led industrialization behind tariffs |
+| Neoliberalism | liberalize, privatize, deregulate |
+| FDI | sticky capital; firm controls the asset |
+| Obsolescing bargain | power shifts to host once sunk |
+| Investment screening | security review of inward FDI |
+:::
+
+:::
+:::
+
+::: {.notes}
+Give this a minute of real silence before revealing anything — the point is retrieval, not recognition. Stolper-Samuelson is the factor model, abundant factor wins and scarce factor loses; Ricardo-Viner is the sector model, export industries versus import-competing ones. Strategic trade is the state-centered answer to both: governments shaping comparative advantage on purpose. For development, the throughline is the pendulum from ISI to neoliberalism, swung by the 1980s debt crisis we covered in Chapter 14. FDI is the sticky, hard-to-pull form of capital; the obsolescing bargain explains why host-state leverage grows once a factory is built and can't move; investment screening is both a domestic-interest story and a state-security story at once.
+:::
+
+
+## Try It First: Money & Finance
+
+::: {.callout-important appearance="minimal" icon=false}
+**Before you look at the next slide** — without notes, state the trilemma, name which corner each historical regime gave up, and explain the difference between a liquidity crisis and a solvency crisis. Then check yourself.
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+**Unit 3 · Money (Chs 10–13)**
+
+::: {style="font-size:0.68em;"}
+| Term | In short |
+|---|---|
+| Trilemma | fixed rate, open capital, autonomy — pick two |
+| Gold standard | fixed + open → gave up autonomy |
+| Bretton Woods | fixed + autonomy → gave up open capital |
+| Floating era | autonomy + open → gave up the fixed rate |
+| Central-bank independence | credible commitment to low inflation |
+:::
+
+:::
+::: {.column width="50%"}
+
+**Unit 4 · Finance & Coercion (Chs 14–15)**
+
+::: {style="font-size:0.68em;"}
+| Term | In short |
+|---|---|
+| Sovereign debt | a hold-up problem — no court can force repayment |
+| Liquidity vs. solvency | reschedule vs. write down |
+| Capital-flow cycle | surge, sudden stop, crisis |
+| Weaponized interdependence | network hubs as leverage |
+| Sanctions | do they work, and who pays |
+:::
+
+:::
+:::
+
+::: {.notes}
+Same retrieval-first structure. The trilemma is the organizing constraint for the entire monetary unit: fixed exchange rate, free capital mobility, independent monetary policy — pick two, lose one. Gold standard gave up autonomy, Bretton Woods gave up open capital, floating gives up the fixed rate. Central-bank independence is the state-centered fix for the time-consistency problem.
+
+For unit four, the pattern is the same across both crisis waves: a surge of capital, a vulnerability that builds quietly, a sudden stop, a crisis, and the IMF. Liquidity versus solvency is the single most useful diagnostic — mistaking one for the other is how the 1980s dragged on. Then the turn to coercion: the same network ties that create crisis vulnerability can be deliberately used as leverage by a state that controls a hub. That's the purest state-centered material in the course — economic networks as instruments of power and security, not just efficiency.
+:::
+
+
+# Cracking the Policy Question {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 4]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## Try It Yourself, First
+
+::: {.callout-important appearance="minimal" icon=false}
+**Sample prompt.** *"A major economy imposes investment screening and export controls on a rival, citing national security. Using the frameworks of this course, analyze the politics driving this policy and assess whether it will achieve its aims."*
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Take five minutes and sketch an actual outline — not just a mental note. Which concepts apply? What's the society-centered story? The state-centered one? Where do they converge or diverge? Only then go to the next slide.
+:::
+
+::: {.notes}
+Hold the line here — don't advance until people have actually written something down, even a rough bullet list. The value of this exercise depends entirely on attempting a real answer before seeing the rubric, live or solo. If you're running this synchronously, give the full five minutes in silence, or open the chat for people to post their opening line.
+
+This prompt sits at the intersection of the MNC-screening material, industrial policy, and weaponized interdependence, so it rewards running several frameworks at once — which is exactly why it's a good model for what Section III will ask.
+:::
+
+
+## Check Your Answer Against the Rubric
+
+```{r}
+#| label: tbl-rubric
+
+rub <- data.frame(
+  step = c("1 · Define", "2 · Apply a framework", "3 · Bring evidence", "4 · Address trade-offs", "5 · Take a stance"),
+  do = c("Did you state precisely what the scenario is and which concepts apply?",
+         "Did you run both the society-centered AND state-centered lenses?",
+         "Did you anchor each claim in a specific case, article, or chapter?",
+         "Did you name what each framework gets right and what it misses?",
+         "Did you choose a defensible interpretation, rather than just listing views?")
+)
+
+kable(rub, col.names = c("Step", "Check yourself"),
+      align = c("l", "l")) %>%
+  kable_styling(font_size = 21, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:5, extra_css = "padding-top: 10px; padding-bottom: 10px; line-height: 1.25;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "24%") %>%
+  column_spec(2, width = "76%")
+```
+
+::: {.notes}
+Now compare what you sketched against this rubric, step by step, rather than me just reading it to you. Most incomplete answers stall at step two — running only one lens — or skip step five and never commit to a stance. If your five-minute sketch is missing a step, that's exactly the thing to build into your Section III habits before the exam starts. This shape repeats for every prompt in Section III, so the rubric is worth internalizing once, here, rather than re-deriving it under time pressure.
+:::
+
+
+# Before You Begin {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 5]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## Good Luck
+
+::: {.callout-important appearance="minimal" icon=false}
+[**The whole course in one sentence —** explain any economic phenomenon from both the society-centered and the state-centered side, anchor it in evidence, and say where the two converge and diverge.]{style="font-size:0.92em;"}
+:::
+
+::: {style="font-size:0.85em; margin-top:0.6em;"}
+- Read the whole exam before you start writing, and budget your time — Section III is worth the most
+- Define your terms and anchor claims in real cases
+- Three quizzes, four units, and a semester of in-class writing already put these frameworks in your head — trust them
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+[Good luck. It's been a genuine pleasure teaching you this semester.]{style="font-size:0.9em;"}
+:::
+
+::: {.notes}
+Last word before the exam window opens. Everything needed is already in your head — three quizzes' worth of recognition, four units of frameworks, a semester of in-class writing where you practiced exactly the move the essay rewards. Read the whole exam first so you can budget; protect time for Section III because it carries the most weight; define your terms and anchor your claims in real cases. Hold the one sentence in the banner — that's the entire course. It has genuinely been a pleasure. Good luck.
+:::

@@ -1,0 +1,29 @@
+---
+title: "Day 9: The International Monetary System"
+subtitle: "Monday, July 20, 2026"
+toc: false
+---
+
+**Required materials:**
+
+1. Oatley, Chapter 10 — *The International Monetary System*
+2. Huang, Ying, and Maximilian Mayer. 2022. "[Digital Currencies, Monetary Sovereignty, and U.S.–China Power Competition](https://doi.org/10.1002/poi3.302)." *Policy & Internet* 14 (2): 324–347. *(PDF on Canvas)*
+3. {{< fa headphones >}} [*Trade Talks* #95 — Is China a Currency Manipulator?](https://tradetalkspodcast.com/podcast/95-is-china-a-currency-manipulator/)
+
+::: {.callout-tip}
+## In class today
+- Opening **writing prompt**
+- The mechanics: exchange rates, the foreign-exchange market, and currency systems (fixed, floating, managed)
+- The **balance of payments** and the **policy trilemma** — fixed rate, free capital, monetary autonomy: pick two
+- Three monetary orders: the gold standard, Bretton Woods, and today's float
+- **Student-led article presentation** (Huang & Mayer 2022)
+- Podcast-based **in-class writing** (*Trade Talks* #95) and discussion
+:::
+
+## Slides
+
+[{{< fa expand >}} Open slides in a new tab](../slides/day09-chapter10.html){target="_blank"}
+
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid #ccc;">
+<iframe src="../slides/day09-chapter10.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+</div>

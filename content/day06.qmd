@@ -1,0 +1,28 @@
+---
+title: "Day 6: Trade and Development — ISI & Neoliberalism"
+subtitle: "Tuesday, July 14, 2026 · combined session (Chapters 6 & 7)"
+toc: false
+---
+
+**Required materials:**
+
+1. Oatley, Chapters 6 & 7 — *Trade and Development* (combined session)
+2. Irwin, Douglas A. 2021. "[The Rise and Fall of Import Substitution](https://www.nber.org/papers/w27919)." *World Development* 139: 105306. *(NBER Working Paper 27919; PDF on Canvas)*
+3. {{< fa headphones >}} [*Ideas of India* — V. Anantha Nageswaran on the Growth and Financialization of the Indian Economy](https://www.mercatus.org/ideasofindia/v-anantha-nageswaran-surveying-growth-and-financialization-indian-economy)
+
+::: {.callout-tip}
+## In class today
+- The structuralist case for state-led development and the Singer-Prebisch hypothesis
+- Import-substitution industrialization: the toolkit, the political coalition, and the NIEO
+- Why ISI rose and fell — twin deficits, rent-seeking, and the 1982 debt crisis
+- Export-oriented industrialization, the East Asian developmental state, and China's rise
+- The Washington Consensus, the Beijing Consensus, and "strategic resilience"
+- **Student-led article presentation** (Irwin 2021)
+- Writing prompt and discussion
+:::
+
+## Slides
+
+[{{< fa expand >}} Open slides in a new tab](../slides/day06-chapters06-07.html){target="_blank"}
+
+<iframe src="../slides/day06-chapters06-07.html" width="100%" height="600" style="border:1px solid #ccc;"></iframe>

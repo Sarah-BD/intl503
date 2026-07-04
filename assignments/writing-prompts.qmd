@@ -1,0 +1,45 @@
+---
+title: "In-Class Writing Activities"
+subtitle: "Three short writing activities each week"
+toc: true
+---
+
+## Overview
+
+Each Monday, Tuesday, and Thursday class includes a short in-class writing activity tied to the day's material. Together, these count for **15%** of your final grade. They serve two purposes: they keep you engaged with the assigned reading and lecture content, and they give you regular practice doing the kinds of analytical moves quizzes and the final exam will ask of you.
+
+There are **12 writing activities** over the term (three per week, four weeks). They are not given on Fridays (quiz days), Wednesdays (reading days), or the final exam day.
+
+## How they work
+
+- The writing activity may take place **at any point during class** — sometimes at the start to focus your reading, sometimes in the middle to break up lecture, often toward the end as a synthesis check on a core concept from that day's lecture
+- You will have approximately **10 minutes** to write a focused response, submitted via Canvas before class ends
+- Activities are short — typically a single question with one or two sub-parts
+- You should write in **clear prose**, not bullet points
+
+## What you'll be asked to do
+
+The writing activities vary across the term but generally fall into one of three patterns:
+
+**Concept application.** Apply a concept, framework, or distinction from the reading or lecture to a short scenario or current event the prompt describes.
+
+**Comparative analysis.** Compare two arguments or frameworks (often a society-centered vs. state-centered pair) on a specific dimension the prompt names.
+
+**Critical engagement.** Take a position on a debate from the chapter — and defend it briefly using the chapter's evidence.
+
+## Grading
+
+Writing activities are graded **credit / no-credit** on a √, √+, √– scale:
+
+- **√+** — Engages substantively with the day's material and presents a clear, supported response. Demonstrates understanding beyond surface-level recall.
+- **√** — Completes the activity and shows clear evidence of having done the reading. Solid baseline.
+- **√–** — Submitted but missing key elements, off-topic, or showing limited engagement with the material.
+- **No credit** — Not submitted or copied without engagement.
+
+Your final writing-activity score is the proportion of √+ and √ marks across all activities. A √– counts as half credit.
+
+## Policies
+
+- **Late submissions are not accepted.** Activities are written in class within the time window.
+- **Make-ups** are available only for documented absences cleared with the instructor in advance.
+- **Generative AI may not be used** to draft, edit, or generate writing activity responses. The activities are designed to take about 10 minutes — they are short on purpose, and the goal is *your* practice with the material.

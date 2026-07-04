@@ -1,0 +1,29 @@
+---
+title: "Day 11: Monetary & Exchange-Rate Politics — Society-Centered Approach"
+subtitle: "Thursday, July 23, 2026"
+toc: false
+---
+
+**Required materials:**
+
+1. Oatley, Chapter 12 — *A Society-Centered Approach to Monetary and Exchange-Rate Policies*
+2. Bearce, David H., and Kim-Lee Tuxhorn. 2017. "[When Are Monetary Policy Preferences Egocentric? Evidence from American Surveys and an Experiment](https://doi.org/10.1111/ajps.12235)." *American Journal of Political Science* 61 (1): 178–193. *(PDF on Canvas)*
+3. {{< fa headphones >}} [*The Indicator* (Planet Money) — The Mighty US Dollar](https://www.npr.org/2022/09/28/1125771498/the-mighty-us-dollar-encore)
+
+::: {.callout-tip}
+## In class today
+- Opening **writing prompt**
+- Who wins and loses from a strong vs. a weak currency — the preference map
+- The three society-centered models: **electoral**, **partisan**, and **sectoral**
+- The Phillips curve as the incumbent's lever; the *franc fort* puzzle
+- Case workshop: Germany vs. Greece under one ECB policy
+- **Student-led article presentation** and discussion
+:::
+
+## Slides
+
+[{{< fa expand >}} Open slides in a new tab](../slides/day11-chapter12.html){target="_blank"}
+
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid #ccc;">
+<iframe src="../slides/day11-chapter12.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+</div>

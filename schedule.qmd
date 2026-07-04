@@ -1,0 +1,278 @@
+---
+title: "Course Schedule"
+subtitle: "Daily topics and readings for Summer 2026"
+toc: false
+---
+
+This course runs from July 6–31, 2026, meeting **Monday, Tuesday, Thursday, and Friday**. **Wednesdays are non-meeting reading days** for catching up, working on readings, and office hours.
+
+::: {.info-box}
+### {{< fa book >}} Required Materials
+
+Each meeting day has **three** required materials:
+
+1. **Oatley chapter.** Oatley, Thomas. *International Political Economy*. 7th edition. Routledge, 2023. One chapter per class day; Chapters 6 and 7 are paired into a single combined session.
+2. **Scholarly article.** A peer-reviewed article or book chapter that extends or applies the day's textbook material. Article citations are listed below; PDFs are posted to Canvas.
+3. **Podcast episode.** Typically from *Trade Talks* (Soumaya Keynes & Chad Bown). A short, accessible companion to the day's material that surfaces contemporary policy debates.
+
+Each student will sign up on Day 1 to present and lead discussion on **one** scholarly article. Day 1 (July 6) is reserved for course logistics and has no second article; I will model the article presentation on **Day 2 (July 7)** so you have a clear example.
+
+Complete **all** assigned materials **before** the class session in which they are discussed.
+:::
+
+::: {.info-box}
+### {{< fa pen-to-square >}} In-Class Writing & Quizzes
+
+- **Mondays, Tuesdays, Thursdays:** Each class includes a short (~10 min) in-class writing activity tied to the day's material. Timing within the session varies. Graded credit / no-credit (√, √+, √–).
+- **Fridays of weeks 1–3:** Class ends with a quiz covering that week's material.
+- **Friday, July 31:** Cumulative final exam in class.
+:::
+
+---
+
+## Week 1: Introduction & The Global Trade System
+
+<table class="schedule-table">
+<thead>
+<tr>
+<th>Date</th>
+<th>Day</th>
+<th>Topic</th>
+<th>Reading 1 (Oatley)</th>
+<th>Article + Podcast</th>
+<th>In Class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>July 6</td>
+<td>Monday</td>
+<td>Introduction to IPE; course logistics</td>
+<td>Ch. 1</td>
+<td><small><em>No scholarly article — course logistics</em></small><br><br>{{< fa headphones >}} <a href="https://tradetalkspodcast.com/podcast/215-how-chinas-trade-is-holding-back-developing-countries/" target="_blank"><em>Trade Talks</em> ep. 215: How China's Trade Is Holding Back Developing Countries</a></td>
+<td><a href="content/day01.qmd">{{< fa laptop >}} Slides</a><br>Writing prompt</td>
+</tr>
+<tr>
+<td>July 7</td>
+<td>Tuesday</td>
+<td>The WTO and World Trade System</td>
+<td>Ch. 2</td>
+<td>Rickard (2025), "<a href="https://link.springer.com/article/10.1007/s11558-024-09566-z" target="_blank">International negotiations over the global commons</a>," <em>Review of International Organizations</em> 20: 999–1021<br><small>Instructor models presentation</small><br><br>{{< fa headphones >}} <a href="https://tradetalkspodcast.com/podcast/34-so-you-want-to-be-a-trade-negotiator/" target="_blank"><em>Trade Talks</em> ep. 34: So You Want to Be a Trade Negotiator</a></td>
+<td><a href="content/day02.qmd">{{< fa laptop >}} Slides</a><br>Writing prompt</td>
+</tr>
+<tr class="no-class">
+<td>July 8</td>
+<td>Wednesday</td>
+<td><em>No class — reading day</em></td>
+<td>—</td>
+<td>—</td>
+<td>Office hours</td>
+</tr>
+<tr>
+<td>July 9</td>
+<td>Thursday</td>
+<td>Political Economy of International Trade Cooperation</td>
+<td>Ch. 3</td>
+<td>Bown &amp; Keynes (2020), "<a href="https://www.sciencedirect.com/science/article/abs/pii/S0161893820300405" target="_blank">Why Trump shot the Sheriffs: The end of WTO dispute settlement 1.0</a>," <em>Journal of Policy Modeling</em> 42(4): 799–819<br><br>{{< fa headphones >}} <a href="https://tradetalkspodcast.com/podcast/17-wto-ministerials-now-and-then/" target="_blank"><em>Trade Talks</em> ep. 17: WTO Ministerials, Now and Then</a></td>
+<td><a href="content/day03.qmd">{{< fa laptop >}} Slides</a><br>Writing prompt</td>
+</tr>
+<tr>
+<td>July 10</td>
+<td>Friday</td>
+<td>A Society-Centered Approach to Trade Politics</td>
+<td>Ch. 4</td>
+<td>Carnegie &amp; Gaikwad (2022), "<a href="https://www.cambridge.org/core/journals/world-politics/article/abs/public-opinion-on-geopolitics-and-trade/E5068E625534BC750ABD73D3B72D39ED" target="_blank">Public Opinion on Geopolitics and Trade: Theory and Evidence</a>," <em>World Politics</em> 74(2): 167–204<br><br>{{< fa headphones >}} <a href="https://tradetalkspodcast.com/podcast/198-inside-washingtons-lobbying-industry/" target="_blank"><em>Trade Talks</em> ep. 198: Inside Washington's Lobbying Industry</a></td>
+<td><a href="content/day04.qmd">{{< fa laptop >}} Slides</a><br><strong>Quiz 1</strong></td>
+</tr>
+</tbody>
+</table>
+
+---
+
+## Week 2: Trade Politics & Development
+
+<table class="schedule-table">
+<thead>
+<tr>
+<th>Date</th>
+<th>Day</th>
+<th>Topic</th>
+<th>Reading 1 (Oatley)</th>
+<th>Article + Podcast</th>
+<th>In Class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>July 13</td>
+<td>Monday</td>
+<td>A State-Centered Approach to Trade Politics</td>
+<td>Ch. 5</td>
+<td>Bown &amp; Wang (2024), "<a href="https://www.aeaweb.org/articles?id=10.1257/jep.38.4.81" target="_blank">Semiconductors and Modern Industrial Policy</a>," <em>Journal of Economic Perspectives</em> 38(4): 81–110<br><br>{{< fa headphones >}} <a href="https://tradetalkspodcast.com/podcast/182-is-chinas-industrial-policy-working/" target="_blank"><em>Trade Talks</em> ep. 182: Is China's Industrial Policy Working?</a></td>
+<td><a href="content/day05.qmd">{{< fa laptop >}} Slides</a><br>Writing prompt</td>
+</tr>
+<tr>
+<td>July 14</td>
+<td>Tuesday</td>
+<td>Trade and Development: ISI &amp; Neoliberalism (combined session)</td>
+<td>Chs. 6 &amp; 7</td>
+<td>Irwin (2021), "<a href="https://www.nber.org/papers/w27919" target="_blank">The Rise and Fall of Import Substitution</a>," <em>World Development</em> 139: 105306<br><br>{{< fa headphones >}} <a href="https://www.mercatus.org/ideasofindia/v-anantha-nageswaran-surveying-growth-and-financialization-indian-economy" target="_blank"><em>Ideas of India</em>: V. Anantha Nageswaran on India's growth &amp; financialization</a></td>
+<td><a href="content/day06.qmd">{{< fa laptop >}} Slides</a><br>Writing prompt</td>
+</tr>
+<tr class="no-class">
+<td>July 15</td>
+<td>Wednesday</td>
+<td><em>No class — reading day</em></td>
+<td>—</td>
+<td>—</td>
+<td>Office hours</td>
+</tr>
+<tr>
+<td>July 16</td>
+<td>Thursday</td>
+<td>Multinational Corporations in the Global Economy</td>
+<td>Ch. 8</td>
+<td>Pandya (2016), "<a href="https://doi.org/10.1146/annurev-polisci-051214-101237" target="_blank">Political Economy of Foreign Direct Investment: Globalized Production in the Twenty-First Century</a>," <em>Annual Review of Political Science</em> 19: 455–475<br><br>{{< fa headphones >}} <a href="https://www.mckinsey.com/mgi/our-research/follow-the-money-how-fdi-is-redrawing-the-global-economy" target="_blank"><em>Follow the Money: How FDI Is Redrawing the Global Economy</em> (McKinsey Global Institute)</a></td>
+<td><a href="content/day07.qmd">{{< fa laptop >}} Slides</a><br>Writing prompt</td>
+</tr>
+<tr>
+<td>July 17</td>
+<td>Friday</td>
+<td>The Politics of Multinational Corporations</td>
+<td>Ch. 9</td>
+<td>Bauerle Danzman (2025), "<a href="https://doi.org/10.1177/13540661251364402" target="_blank">Securitized Political Economy, Investment Regulation and Business Influence in a Geoeconomic Era</a>," <em>European Journal of International Relations</em><br><br>{{< fa headphones >}} <a href="https://www.skadden.com/insights/podcasts/2025/03/economic-statecraft-and-foreign-investment-screening" target="_blank"><em>Foreign Correspondent</em> (Skadden): Economic Statecraft and Foreign Investment Screening</a></td>
+<td><a href="content/day08.qmd">{{< fa laptop >}} Slides</a><br><strong>Quiz 2</strong></td>
+</tr>
+</tbody>
+</table>
+
+---
+
+## Week 3: The International Monetary System
+
+<table class="schedule-table">
+<thead>
+<tr>
+<th>Date</th>
+<th>Day</th>
+<th>Topic</th>
+<th>Reading 1 (Oatley)</th>
+<th>Article + Podcast</th>
+<th>In Class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>July 20</td>
+<td>Monday</td>
+<td>The International Monetary System</td>
+<td>Ch. 10</td>
+<td>Huang &amp; Mayer (2022), "<a href="https://doi.org/10.1002/poi3.302" target="_blank">Digital Currencies, Monetary Sovereignty, and U.S.–China Power Competition</a>," <em>Policy &amp; Internet</em> 14(2): 324–347<br><br>{{< fa headphones >}} <a href="https://tradetalkspodcast.com/podcast/95-is-china-a-currency-manipulator/" target="_blank"><em>Trade Talks</em> ep. 95: Is China a Currency Manipulator?</a></td>
+<td><a href="content/day09.qmd">{{< fa laptop >}} Slides</a><br>Writing prompt</td>
+</tr>
+<tr>
+<td>July 21</td>
+<td>Tuesday</td>
+<td>Cooperation, Conflict, and Crisis in the Contemporary IMS</td>
+<td>Ch. 11</td>
+<td>Oye (1985), "<a href="https://www.jstor.org/stable/2010355" target="_blank">The Sterling–Dollar–Franc Triangle: Monetary Diplomacy 1929–1937</a>," <em>World Politics</em> 38(1): 173–199<br><br>{{< fa headphones >}} <a href="https://tradetalkspodcast.com/podcast/104-how-to-hit-currency-manipulators-and-fight-the-strong-dollar/" target="_blank"><em>Trade Talks</em> ep. 104: How to Hit Currency Manipulators and Fight the Strong Dollar</a></td>
+<td><a href="content/day10.qmd">{{< fa laptop >}} Slides</a><br>Writing prompt</td>
+</tr>
+<tr class="no-class">
+<td>July 22</td>
+<td>Wednesday</td>
+<td><em>No class — reading day</em></td>
+<td>—</td>
+<td>—</td>
+<td>Office hours</td>
+</tr>
+<tr>
+<td>July 23</td>
+<td>Thursday</td>
+<td>Monetary &amp; Exchange-Rate Politics — Society-Centered Approach</td>
+<td>Ch. 12</td>
+<td>Bearce &amp; Tuxhorn (2017), "<a href="https://doi.org/10.1111/ajps.12235" target="_blank">When Are Monetary Policy Preferences Egocentric?</a>," <em>AJPS</em> 61(1): 178–193<br><br>{{< fa headphones >}} <a href="https://www.npr.org/2022/09/28/1125771498/the-mighty-us-dollar-encore" target="_blank"><em>The Indicator</em> (Planet Money): The Mighty US Dollar</a></td>
+<td><a href="content/day11.qmd">{{< fa laptop >}} Slides</a><br>Writing prompt</td>
+</tr>
+<tr>
+<td>July 24</td>
+<td>Friday</td>
+<td>Monetary &amp; Exchange-Rate Politics — State-Centered Approach</td>
+<td>Ch. 13</td>
+<td><small><em>No article — Quiz 3 day</em></small><br><br>{{< fa headphones >}} <a href="https://www.thesanctionsage.com/p/episode-1-saleha-mohsin" target="_blank"><em>The Sanctions Age</em>: How the Strong Dollar Became the Weaponized Dollar (Saleha Mohsin)</a></td>
+<td><a href="content/day12.qmd">{{< fa laptop >}} Slides</a><br><strong>Quiz 3</strong></td>
+</tr>
+</tbody>
+</table>
+
+---
+
+## Week 4: International Finance & Synthesis
+
+<table class="schedule-table">
+<thead>
+<tr>
+<th>Date</th>
+<th>Day</th>
+<th>Topic</th>
+<th>Reading 1 (Oatley)</th>
+<th>Article + Podcast</th>
+<th>In Class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>July 27</td>
+<td>Monday</td>
+<td>Debt, Capital Flows, and Crisis in the Developing World <small>(combined session)</small></td>
+<td>Chs. 14 &amp; 15</td>
+<td>Ballard-Rosa, Mosley &amp; Wellhausen (2021), "<a href="https://doi.org/10.1017/S0007123418000455" target="_blank">Contingent Advantage? Sovereign Borrowing, Democratic Institutions and Global Capital Cycles</a>," <em>British Journal of Political Science</em> 51(1): 353–373<br><br>{{< fa headphones >}} <a href="https://www.npr.org/sections/money/2016/03/11/470137394/episode-689-a-hedge-fund-a-country-and-a-big-sailboat" target="_blank"><em>Planet Money</em> ep. 689: A Hedge Fund, A Country, and A Big Sailboat</a></td>
+<td><a href="content/day13.qmd">{{< fa laptop >}} Slides</a><br>Writing prompt</td>
+</tr>
+<tr>
+<td>July 28</td>
+<td>Tuesday</td>
+<td>Economic Coercion and Economic Statecraft</td>
+<td><small><em>No Oatley chapter — instructor-led</em></small></td>
+<td>Farrell &amp; Newman (2019), "<a href="https://doi.org/10.1162/isec_a_00351" target="_blank">Weaponized Interdependence: How Global Economic Networks Shape State Coercion</a>," <em>International Security</em> 44(1): 42–79<br><br>Drezner (2024), "<a href="https://doi.org/10.1146/annurev-polisci-041322-032240" target="_blank">Global Economic Sanctions</a>," <em>Annual Review of Political Science</em> 27: 9–24<br><br>{{< fa headphones >}} <a href="https://tradetalkspodcast.com/podcast/170-national-security-semiconductors-and-the-us-move-to-cut-off-china/" target="_blank"><em>Trade Talks</em> ep. 170: National Security, Semiconductors, and the US Move to Cut Off China</a></td>
+<td><a href="content/day14.qmd">{{< fa laptop >}} Slides</a><br>Writing prompt</td>
+</tr>
+<tr class="no-class">
+<td>July 29</td>
+<td>Wednesday</td>
+<td><em>No class — reading day</em></td>
+<td>—</td>
+<td>—</td>
+<td>Office hours</td>
+</tr>
+<tr>
+<td>July 30</td>
+<td>Thursday</td>
+<td>Achievements and Challenges of Global Capitalism</td>
+<td>Ch. 16</td>
+<td>Walter (2021), "<a href="https://doi.org/10.1146/annurev-polisci-041719-102405" target="_blank">The Backlash Against Globalization</a>," <em>Annual Review of Political Science</em> 24: 421–442<br><br>{{< fa headphones >}} <a href="https://tradetalkspodcast.com/podcast/27-what-are-trade-deals-for-dani-rodrik-does-trade-talks-part-3/" target="_blank"><em>Trade Talks</em> ep. 27: What Are Trade Deals For? (Dani Rodrik)</a></td>
+<td><a href="content/day15.qmd">{{< fa laptop >}} Slides</a><br>Writing prompt</td>
+</tr>
+<tr>
+<td>July 31</td>
+<td>Friday</td>
+<td><strong>FINAL EXAM</strong></td>
+<td>All chapters</td>
+<td>—</td>
+<td>In-class cumulative exam</td>
+</tr>
+</tbody>
+</table>
+
+---
+
+::: {.info-box}
+### {{< fa calendar-check >}} Key Dates at a Glance
+
+- **July 10** — Quiz 1 (chapters 1–4)
+- **July 17** — Quiz 2 (chapters 5–9)
+- **July 24** — Quiz 3 (chapters 10–13)
+- **July 31** — Final Exam (cumulative)
+
+**Reading days:** July 8, 15, 22, 29 (Wednesdays — no class)
+:::

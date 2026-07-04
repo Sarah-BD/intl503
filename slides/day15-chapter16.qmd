@@ -1,0 +1,745 @@
+---
+title: "Achievements and Challenges of Global Capitalism"
+subtitle: "INTL 503 | Chapter 16"
+author: "Professor Sarah Bauerle Danzman"
+date: "2026-07-30"
+date-format: long
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: true
+    preview-links: auto
+    footer: "INTL 503 | Achievements and Challenges of Global Capitalism"
+    transition: fade
+    width: 1600
+    height: 900
+    margin: 0.15
+    fig-align: center
+    fig-dpi: 300
+    auto-stretch: false
+    logo: iu-trident.png
+    title-slide-attributes:
+      data-background-image: iu-trident.png
+      data-background-size: 15%
+      data-background-position: 2% 2%
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(knitr)
+library(kableExtra)
+
+# IU color palette
+iu_crimson <- "#990000"
+iu_cream <- "#EDEBEB"
+iu_gray <- "#535054"
+iu_light_gray <- "#7E7E7E"
+iu_dark_text <- "#2C3E50"
+iu_green <- "#1B5E3F"
+iu_navy <- "#1F3A5F"
+iu_gold <- "#B8860B"
+
+theme_ipe <- function(base_size = 20) {
+  theme_minimal(base_size = base_size) +
+    theme(
+      plot.title = element_text(color = iu_crimson, face = "bold", size = rel(1.2),
+                                margin = margin(t = 5, b = 5)),
+      plot.subtitle = element_text(color = iu_gray, size = rel(0.9),
+                                   margin = margin(b = 10)),
+      plot.caption = element_text(color = iu_light_gray, size = rel(0.7),
+                                  hjust = 0, margin = margin(t = 10)),
+      axis.title = element_text(color = iu_dark_text, size = rel(0.9)),
+      axis.title.x = element_text(margin = margin(t = 8)),
+      axis.title.y = element_text(margin = margin(r = 8)),
+      axis.text = element_text(color = iu_gray, size = rel(0.8)),
+      panel.grid.minor = element_blank(),
+      panel.grid.major = element_line(color = "#E5E5E5", linewidth = 0.4),
+      legend.position = "bottom",
+      legend.title = element_text(size = rel(0.85)),
+      legend.text = element_text(size = rel(0.8)),
+      plot.margin = margin(t = 8, r = 12, b = 20, l = 12)
+    )
+}
+```
+
+## Today's Plan — Our Last Session
+
+::: {.callout-important appearance="minimal" icon=false}
+## Today's Big Question
+[**Global capitalism has delivered historic gains — can the system that produced them survive the backlash against them?**]{style="font-size: 1.4em; line-height: 1.4;"}
+:::
+
+```{r}
+#| label: tbl-plan
+
+plan <- data.frame(
+  Section = c("1 · The Achievements",
+              "2 · The Distributional Challenge",
+              "3 · The Sustainability Challenge",
+              "4 · The Political Backlash",
+              "5 · Is the Liberal Order Sustainable?",
+              "6 · Course Capstone: The Central Analytic Frame",
+              "7 · Closing & the Final Exam"),
+  Cover = c("Poverty's historic fall, emerging Asia, and global convergence",
+            "Globalization's losers, the China shock, inequality within rich states",
+            "Growth against climate limits, and the global public-goods problem",
+            "Populism, economic nationalism, and the fraying liberal order",
+            "Oatley's scenarios: reform, fragmentation, or managed globalization",
+            "Society-centered vs. state-centered, across the whole course",
+            "What we built, and how the cumulative final is structured")
+)
+
+kable(plan, col.names = c("Section", "What we'll cover"),
+      align = c("l", "l")) %>%
+  kable_styling(font_size = 22, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "42%") %>%
+  column_spec(2, width = "58%")
+```
+
+::: {.notes}
+Welcome to our last class. Today is unusual, and I want to flag the format up front, because this session does double duty. On one level it is a normal chapter day: we are reading Oatley's Chapter 16, "Achievements and Challenges of Global Capitalism," which is his concluding chapter and is built to be exactly the kind of stock-taking we want at the end of a course. But on another level this is the capstone — the day where we step back from the individual units on trade, money, multinationals, and finance and ask what the whole picture adds up to. So I have structured the day to move from the achievements of the modern global economy, through the three great challenges to it, to the political backlash those challenges have produced, and finally to a synthesis of the analytical toolkit you have spent four weeks building.
+
+Hold the Big Question the whole way through, because it is genuinely open and it is the question the chapter is wrestling with. Global capitalism — the open, integrated world economy built since 1945 and turbocharged after the Cold War — has produced gains that, measured against all of human history, are simply extraordinary. We are going to be honest and specific about those gains, because the backlash makes it easy to forget them. But the same system has produced losers, strained the planet, and generated a political reaction that is now visibly fraying the liberal order that made it possible. The question is whether the system can reform itself enough to survive that reaction, or whether we are watching the early stages of its unwinding.
+
+Logistics for the day: you have a writing prompt at the start of class, as usual on a Thursday. There is no quiz — the last quiz was Friday. The next and final assessment is the cumulative final exam, which is tomorrow, Friday, at our normal online meeting time, and I will spend the last few minutes today walking you through its structure and how to prepare. Let us begin where the honest story has to begin: with the achievements.
+:::
+
+
+# The Achievements {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 1]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## The Headline Achievement: Poverty's Historic Fall
+
+::: {.columns}
+::: {.column width="56%"}
+
+```{r}
+#| label: fig-poverty
+#| fig-width: 8.2
+#| fig-height: 5.2
+#| out-width: "99%"
+#| fig-alt: "A line chart showing the share of the world's population living in extreme poverty falling steeply from roughly 40 percent in 1980 to under 10 percent by the late 2010s, illustrating the long-run decline in global extreme poverty."
+
+pv <- data.frame(
+  year = c(1980, 1990, 1999, 2008, 2015, 2019),
+  share = c(42, 38, 29, 18, 11, 9)
+)
+
+ggplot(pv, aes(year, share)) +
+  geom_area(fill = iu_crimson, alpha = 0.12) +
+  geom_line(color = iu_crimson, linewidth = 1.3) +
+  geom_point(color = iu_crimson, size = 2.6) +
+  scale_x_continuous(breaks = c(1980, 1990, 1999, 2008, 2019)) +
+  scale_y_continuous(labels = function(x) paste0(x, "%"), limits = c(0, 45)) +
+  labs(title = "More than a billion people left extreme poverty",
+       subtitle = "Share of world population in extreme poverty, 1980–2019 (illustrative)",
+       x = NULL, y = "Share in extreme poverty",
+       caption = "Schematic, after World Bank poverty data. Values approximate, for illustration.") +
+  theme_ipe(base_size = 15)
+```
+
+:::
+::: {.column width="44%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**The single biggest fact of our era.** The share of humanity in extreme poverty fell from roughly **40%** around 1980 to under **10%** by the late 2010s — well over a billion people.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+This is not the whole story, and we will complicate it. But any honest account of global capitalism has to **start** here.
+:::
+
+:::
+:::
+
+::: {.notes}
+I want to open the achievements section with the fact that, in my view, every educated person should know and that is too easily lost in our current mood of pessimism. Over the four decades from roughly 1980 to 2019, the share of the world's population living in extreme poverty — by the World Bank's definition, surviving on less than a couple of dollars a day at constant prices — fell from something like forty percent to under ten percent. In absolute terms, even as world population grew by billions, the number of people in extreme poverty dropped by well over a billion. There is no precedent for a material improvement of that scale and speed in human history. I have drawn this chart as illustrative — the exact figures depend on the poverty line and the year, and the Bank has revised its lines over time — but the shape is not in dispute. This happened, and it happened during the era of deepening global economic integration.
+
+I am deliberately starting here, and starting emphatically, for two reasons. First, because it is true, and intellectual honesty requires us to put the central achievement on the table before we start dissecting the failures. The backlash literature, and frankly the mood of the moment, makes it easy to talk as though globalization has been an unbroken story of loss. It has not. Second, because the rest of today's argument is sharper if you hold this gain clearly. The challenges we are about to discuss — distribution, sustainability, political backlash — are not arguments that global capitalism failed. They are arguments about who captured the gains, what the gains cost, and whether the political coalition that sustained the system can hold. You cannot evaluate those arguments fairly if you have forgotten the magnitude of what the system delivered. So: start here.
+:::
+
+
+## Where the Gains Came From: Emerging Asia and Convergence
+
+::: {.columns}
+::: {.column width="50%"}
+
+Two structural shifts drove the gains:
+
+- **The rise of emerging Asia** — China above all, then India and Southeast Asia — pulled hundreds of millions into the global middle class
+- **Growth through integration** — these economies grew by joining world trade and investment flows, not by withdrawing from them
+- **Cross-country convergence** — for the first time, large poor countries grew *faster* than rich ones, narrowing the gap *between* nations
+
+:::
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**The mechanism is our whole course.** Trade access (Chs. 2–7), inward FDI (Chs. 8–9), a functioning monetary order (Chs. 10–13), and capital inflows (Chs. 14–15) were the channels of catch-up.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Falling **between**-country inequality is the flip side of the poverty story. The world's poor were concentrated in the countries that grew fastest.
+:::
+
+:::
+:::
+
+::: {.notes}
+Where did that historic poverty decline come from? It was not evenly spread across the planet — it was overwhelmingly driven by the rise of emerging Asia, and within that, above all by China, followed by India and the economies of Southeast Asia. China alone accounts for the majority of the global poverty reduction of the last forty years. And the mechanism matters enormously for a course on international political economy, because these economies did not grow by turning inward and cutting themselves off from the world. They grew by joining it — by integrating into global trade, by hosting waves of foreign direct investment, by exporting manufactured goods into open Western markets, and by operating within a functioning international monetary and financial system. The channels of their catch-up are literally the chapters of this course. That is not a coincidence I am imposing on the material; it is the substantive point.
+
+This connects to a finding that surprises students. If you ask whether global inequality has risen or fallen over this period, the answer depends on which inequality you mean. Inequality between countries — the gap in average incomes between rich nations and poor nations — has actually narrowed over the last few decades, precisely because the large poor countries, where most of the world's poor people lived, grew faster than the rich ones. That is convergence, and it is genuinely good news. Remember that point, because in the very next section we are going to look at a different inequality measure — inequality within advanced economies — that moved in the opposite direction. The headline of the achievements section is that the system delivered convergence between nations and a historic fall in poverty. The headline of the challenges section is that it did so while widening divides inside the rich democracies that built it. Both are true at once, and the tension between them is the politics of our moment.
+:::
+
+
+# The Distributional Challenge {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 2]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## The Politics of Domestic Winners and Losers
+
+::: {.columns}
+::: {.column width="54%"}
+
+We have known since **Chapter 4** that trade has **distributional** effects:
+
+- Trade raises **aggregate** welfare but **redistributes** — some groups gain, others lose
+- The losses are **concentrated** (a closed factory, a hollowed-out town); the gains are **diffuse** (slightly cheaper goods for everyone)
+- The theory never promised that everyone wins — only that winners *could* compensate losers
+- In practice, **compensation rarely happened**
+
+:::
+::: {.column width="46%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**This is not a surprise — it is Chapter 4.** The society-centered approach told us exactly who would resist trade and why. The distributional challenge is that prediction coming true.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+The political problem: **concentrated losers** organize; **diffuse winners** do not. That asymmetry drives the backlash in Section 4.
+:::
+
+```{r}
+#| label: fig-elephant
+#| fig-width: 6.4
+#| fig-height: 3.0
+#| out-width: "100%"
+#| fig-alt: "A line chart of cumulative income growth by global income percentile from 1988 to 2008, the elephant graph: strong growth in the middle of the global distribution driven by emerging Asia's middle class, a dip around the 75th to 90th percentiles corresponding to the lower-middle class of rich countries, and a sharp rise in growth at the very top of the global distribution."
+
+elephant <- data.frame(
+  percentile = c(5, 10, 15, 20, 25, 30, 35, 40, 45, 50,
+                 55, 60, 65, 70, 75, 80, 85, 90, 95, 99),
+  growth = c(60, 70, 65, 65, 70, 65, 65, 70, 75, 80,
+             70, 65, 60, 50, 40, 30, 15, 5, 15, 65)
+)
+
+ggplot(elephant, aes(percentile, growth)) +
+  geom_area(fill = iu_navy, alpha = 0.12) +
+  geom_line(color = iu_navy, linewidth = 1.1) +
+  annotate("text", x = 48, y = 90, label = "Emerging Asia's\nmiddle class",
+           size = 2.6, color = iu_navy, fontface = "bold") +
+  annotate("text", x = 87, y = 22, label = "Rich countries'\nlower-middle class",
+           size = 2.6, color = iu_crimson, fontface = "bold") +
+  annotate("text", x = 97, y = 78, label = "Global\ntop 1%",
+           size = 2.6, color = iu_gray, fontface = "bold") +
+  scale_x_continuous(breaks = c(5, 25, 50, 75, 90, 99),
+                      labels = c("5th", "25th", "50th", "75th", "90th", "99th")) +
+  scale_y_continuous(labels = function(x) paste0(x, "%"), limits = c(0, 95)) +
+  labs(title = "The \"Elephant Graph\"",
+       x = "Percentile of global income distribution", y = "Growth",
+       caption = "Schematic, after Lakner & Milanovic (2013). Values approximate, for illustration.") +
+  theme_ipe(base_size = 9)
+```
+
+:::
+:::
+
+::: {.notes}
+Now we turn to the first great challenge, and I want to frame it in a way that pulls the course together rather than treating it as a fresh topic, because it is not fresh — we have known this since the second week. Go back to Chapter 4, the society-centered approach to trade. The whole point of that chapter was that trade liberalization is not a free lunch in distributional terms. Trade raises aggregate national welfare — the pie gets bigger — but it does so by reorganizing the economy, which means it produces winners and losers within a country. Whether you used the Stolper-Samuelson factor model or the Ricardo-Viner sector model, the prediction was the same: some groups gain from openness and some lose, and they will line up politically on opposite sides accordingly. The theory of gains from trade never claimed that every individual is better off. It claimed only that the winners gain more than the losers lose, so that in principle the winners could compensate the losers and everyone could come out ahead.
+
+The phrase to underline is "in principle." In practice, across most advanced economies, that compensation largely did not happen. The aggregate gains from trade were real, but they flowed disproportionately to capital, to skilled workers, to consumers as a diffuse benefit, and to the owners of globally competitive firms — while the losses landed hard and concentrated on particular workers, particular industries, particular regions. And here is the political asymmetry that Chapter 4 set up and that drives the rest of today: the losers from trade are concentrated and visible — a closed plant, a town that loses its anchor employer — which makes them easy to organize and to mobilize politically. The winners are diffuse — all of us paying a little less for goods — which makes them politically inert. Concentrated interests beat diffuse ones in politics. So the distributional challenge is not a failure of the theory. It is the theory's central prediction coming true, and then colliding with a political system that did little to cushion the people on the losing side.
+
+The chart in the right column is the "elephant graph" from Lakner and Milanovic's work on global income distribution, 1988 to 2008. It puts a number on exactly the tension this slide describes. Read it by global income percentile, not by country: the strongest growth is in the middle of the global distribution, which is overwhelmingly the newly emerging middle classes of China, India, and the rest of Asia. Growth then dips sharply around the 75th to 90th percentiles of the global distribution — and that band is where the lower-middle and working classes of rich countries like the United States sit globally, even though they are not poor by domestic standards. Growth picks back up again only at the very top, the global 1%. So the same twenty years that produced the historic poverty decline from Section 1 also produced near-stagnant growth for a specific slice of people in rich countries — precisely the people whose politics we are about to discuss. Hold onto this chart, because it is the empirical version of the "concentrated losses, diffuse gains" story on the left.
+:::
+
+
+## The China Shock: When the Prediction Got Sharp
+
+::: {.columns}
+::: {.column width="50%"}
+
+China's entry into world trade (WTO accession, 2001) was a shock of unusual **size** and **speed:**
+
+- Research on the U.S. "China shock" finds **sharp, persistent** local losses where import competition hit
+- Affected communities saw **lower employment and wages that did not bounce back** as the textbook adjustment story predicted
+- Workers did **not** smoothly relocate to new jobs and new places
+
+:::
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**Why it mattered politically.** The losses were geographically concentrated, slow to heal, and clearly attributable to trade — the ideal fuel for an anti-globalization politics.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+The aggregate gains from China trade were still large. The point is **distribution and adjustment,** not that trade was a mistake.
+:::
+
+:::
+:::
+
+::: {.notes}
+The sharpest empirical illustration of the distributional challenge, and the one that has reshaped how economists themselves talk about trade, is what is now called the China shock. China's integration into the world economy, capped by its accession to the WTO in 2001, was not a normal incremental trade liberalization. It was the entry of an economy of unprecedented size, with an enormous low-wage labor force, into global manufacturing supply chains, and it happened fast. A body of research — the most cited associated with David Autor, David Dorn, and Gordon Hanson — examined what happened to American local labor markets that were most exposed to the surge of Chinese import competition. And the findings genuinely surprised the profession, because they did not match the reassuring textbook adjustment story.
+
+The textbook story says that when imports displace workers in one industry, those workers move — to other industries, to other regions, to new opportunities created by the cheaper imports and the expanded export sectors — and after a painful but temporary transition, the economy is better off and the workers are reabsorbed. What the China-shock research found instead was that the local losses were sharp, geographically concentrated, and persistent. Communities hit hardest by import competition saw lasting declines in manufacturing employment, depressed wages, and elevated joblessness that did not bounce back over a decade or more. Workers did not smoothly relocate; many stayed put as their local economies hollowed out. Now, I want to be careful and fair, which is the right callout: this is not evidence that trade with China was a net loss for the United States. The aggregate gains — cheaper goods, more efficient production, gains to exporters and consumers — were large and real. The finding is about distribution and adjustment: the gains and losses were distributed very unevenly, and the adjustment mechanism that was supposed to spread the gains around worked far worse than the models assumed. And politically, a loss that is concentrated, persistent, and obviously attributable to foreign trade is precisely the kind of grievance that fuels an anti-globalization movement. Keep that link in mind; it pays off in Section 4.
+:::
+
+
+## The Two Inequalities, Side by Side
+
+```{r}
+#| label: tbl-two-inequalities
+
+ineq <- data.frame(
+  dim = c("What it measures", "Direction since ~1980", "Who it helped / hurt", "Political consequence"),
+  between = c("Income gaps between countries",
+              "Narrowed — convergence",
+              "Helped the global poor in fast-growing emerging economies",
+              "Underwrites the 'globalization works' case"),
+  within = c("Income gaps inside advanced economies",
+             "Widened in many rich democracies",
+             "Hurt lower-skill workers in import-competing regions",
+             "Fuels the backlash inside the system's own core")
+)
+
+kable(ineq, col.names = c("", "Between countries", "Within rich countries"),
+      align = c("l", "l", "l")) %>%
+  kable_styling(font_size = 22, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:4, extra_css = "padding-top: 11px; padding-bottom: 11px; line-height: 1.3;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "24%") %>%
+  column_spec(2, width = "38%") %>%
+  column_spec(3, width = "38%")
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+**The paradox in one line:** the same era that made the world *more equal between nations* made many rich nations *less equal within themselves.* That tension is the politics of globalization.
+:::
+
+::: {.notes}
+This table is the conceptual hinge of the distributional section, and if you remember one slide from the first half of today, make it this one, because it resolves an apparent contradiction that confuses people in public debate. You will hear one person say globalization reduced inequality and another say it increased inequality, and they are both pointing at real data — they are just measuring different things. So we have to be precise about which inequality we mean.
+
+The left column is inequality between countries: the gap between rich nations and poor nations, measured by average incomes. That gap narrowed over the last forty years, because the big poor countries grew faster than the rich ones — the convergence and poverty story from Section 1. By this measure, the era of globalization made the world more equal, and it helped the global poor enormously. The right column is inequality within advanced economies: the gap between high earners and low earners inside a country like the United States, the United Kingdom, or many others. That gap widened in many rich democracies over the same period. Trade was not the only cause — technological change and skill-biased automation matter at least as much, and honest scholars debate the relative weights — but import competition, including the China shock, was a real contributor for the workers and regions on the losing end.
+
+Now read the two columns together, because the paradox is the whole point and it is the bottom callout. The same integrated global economy that compressed inequality between nations stretched inequality within many of the nations that built it. And that combination is politically combustible in a specific way: the people who lost out are voters and citizens inside the wealthy democracies — the very societies whose political support the liberal order needs in order to survive. The system delivered its biggest gains to people who do not vote in American or European elections, while imposing concentrated, visible losses on people who do. You can see, just from this table, why the backlash erupted where it did. The winners of globalization between nations cannot vote to defend it inside the countries where its political fate is being decided. Keep that in view — it sets up Section 4 directly.
+:::
+
+
+# The Sustainability Challenge {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 3]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## Growth Against the Planet's Limits
+
+::: {.columns}
+::: {.column width="52%"}
+
+The growth that lifted billions also carries an **ecological bill:**
+
+- Rising output and consumption drove rising **greenhouse-gas emissions** and resource use
+- Climate change is the defining case, but not the only one — biodiversity loss, water stress, pollution
+- The very industrialization that powered catch-up growth is the **largest single driver** of the emissions problem
+
+:::
+::: {.column width="48%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**The hard tension.** We cannot simply tell developing countries to stop growing — growth is how poverty fell. But the historical path of growth is environmentally unsustainable.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+This is not anti-growth doom-mongering. It is a genuine **trade-off** the next generation of policy has to manage, not wish away.
+:::
+
+:::
+:::
+
+::: {.notes}
+The second great challenge is sustainability, and I want to present it without melodrama, because the topic invites both denial and panic and neither is useful for analysis. The basic fact is straightforward. The growth that lifted more than a billion people out of poverty was, historically, fossil-fueled industrial growth. More output meant more energy use, which meant more greenhouse-gas emissions, which is the principal driver of climate change. It also meant rising resource extraction, water stress, pollution, and pressure on biodiversity. Climate is the defining case because it is global and effectively irreversible on human timescales, but it is not the only ecological cost. The uncomfortable truth is that the very engine of the achievement we celebrated in Section 1 — rapid industrialization in emerging economies — is also the single largest contributor to the environmental challenge.
+
+The tension this creates, in the top callout, is genuinely hard, and I want you to feel its difficulty rather than resolve it cheaply. You cannot simply tell developing countries to stop growing. Growth is how poverty fell; growth is how hundreds of millions of people got electricity, clean water, schooling, and longer lives. There is a deep equity problem in the rich countries, having burned fossil fuels for two centuries to get rich, turning to the countries now industrializing and telling them they may not do the same. At the same time, the historical, carbon-intensive path of growth is not indefinitely sustainable — the atmosphere is a finite sink. So this is not a problem you solve by picking growth or picking the planet. It is a trade-off that has to be managed: decoupling growth from emissions through technology and policy, financing a transition in the developing world, and doing it fast enough to matter. The reason I am putting this in a political-economy course, and not leaving it to the climate scientists, is the next slide — because the deepest obstacle to managing this trade-off is not technological. It is a problem of political economy that this course has equipped you to name.
+:::
+
+
+## Why Climate Is So Hard: A Global Public Good
+
+::: {.columns}
+::: {.column width="54%"}
+
+Climate stability is a **global public good** — and that creates a brutal collective-action problem:
+
+- **Non-excludable:** a stable climate benefits everyone, payer or not
+- **Free-riding:** every state would prefer that *others* bear the cost of cutting emissions
+- **No world government** can compel cooperation — the same anarchy problem from the trade and monetary chapters
+- Costs are paid **now and locally;** benefits are **diffuse, global, and in the future**
+
+:::
+::: {.column width="46%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**You already have this framework.** This is the same cooperation-under-anarchy problem as the WTO (Ch. 3) and monetary cooperation (Ch. 11) — now with the highest possible stakes.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+That is why climate agreements are voluntary and underpowered: there is no enforcer, only the same fragile cooperation we studied all term.
+:::
+
+:::
+:::
+
+::: {.notes}
+Here is where the sustainability challenge becomes a political-economy problem rather than an engineering one, and where your toolkit from this course does real work. A stable climate is a global public good. Recall the definition of a public good: it is non-excludable, meaning you cannot stop anyone from enjoying it once it exists, and non-rival, meaning one person's enjoyment does not diminish another's. A stable climate is the textbook example — it benefits every country on earth whether or not that country paid anything to produce it. And public goods, as you know, are chronically undersupplied, because of free-riding. Every individual state faces the same temptation: the benefits of a stable climate flow to me regardless of whether I cut my own emissions, while the costs of cutting — to my industries, my consumers, my growth — are mine alone to bear. So each state's narrowly rational move is to let everyone else do the cutting. If every state reasons that way, nobody cuts enough, and the public good is undersupplied. That is the collective-action problem at the heart of climate.
+
+And now notice that this is exactly the same analytical structure we have used all term, in the top callout. Cooperation under anarchy. The world has no government that can compel states to cooperate; international cooperation has to be self-enforcing, sustained by reciprocity and institutions rather than by a global police force. We saw this with the WTO in Chapter 3 — how do you sustain open trade when each state is tempted to cheat with protection? We saw it with monetary cooperation in Chapter 11 — how do you coordinate exchange-rate and macro policy when each state has incentives to defect? Climate is the same problem with two features that make it the hardest version: the stakes are existential, and the structure of costs and benefits is maximally unfavorable. The costs of action are paid now, locally, by identifiable groups who will resist; the benefits are diffuse, global, and arrive in a future beyond most electoral horizons. That is why our climate agreements — Kyoto, Paris — are voluntary pledges with weak enforcement rather than binding commitments with teeth. There is no enforcer. There is only the same fragile, reciprocity-based cooperation we have studied all course, now asked to carry the heaviest load it has ever faced. You did not need a new framework to understand the politics of climate. You needed the one you already have.
+:::
+
+
+# The Political Backlash {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 4]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## The Backlash Against the Open Economy
+
+::: {.columns}
+::: {.column width="50%"}
+
+Since the 2010s, a broad reaction against economic openness:
+
+- **Populism** — channeling the grievances of globalization's losers against elites and outsiders
+- **Economic nationalism** — tariffs, "buy national," reshoring, industrial policy
+- **The return of protectionism** — the U.S.–China trade war, broad tariff regimes, supply-chain "de-risking"
+- A **fraying** of the rules-based liberal order: a stalled WTO, weakened dispute settlement (Ch. 3)
+
+:::
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**The throughline of the course.** The backlash is the **political demand** generated by the distributional losses of Section 2, expressed through the institutions of Chapters 2–5.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+The order was always **political**, not natural. It was built by states and sustained by a coalition — and coalitions can come apart.
+:::
+
+[🎧 **Today's podcast** — *Trade Talks* ep. 27, Dani Rodrik on *"What Are Trade Deals For?"* — the trilemma behind the backlash, from the economist who saw it coming.]{style="font-size:0.85em; color:#535054;"}
+
+:::
+:::
+
+::: {.notes}
+The fourth section is the political backlash, and the reason it comes right after distribution and sustainability is that it is, in large part, the political consequence of them. Since roughly the mid-2010s — symbolically marked by the Brexit referendum and the 2016 U.S. election, but much broader than any two events — we have seen a sustained reaction against the open global economy across many advanced democracies. It has several faces. There is populism, which I would define here as a politics that pits a virtuous "people" against a corrupt "elite" and frequently against foreign outsiders, and which has been very effective at channeling the grievances of globalization's losers. There is economic nationalism, the impulse to privilege the national economy through tariffs, buy-national procurement, reshoring of supply chains, and active industrial policy — much of which we studied in Chapter 5 on the state-centered approach to trade. There is the straightforward return of protectionism, most visibly in the U.S.-China trade war and the broad tariff regimes that followed, and in the language of "de-risking" supply chains away from rivals. And there is the institutional fraying we tracked back in Chapter 3 — the stalled WTO negotiating function and the deliberate disabling of its dispute-settlement system, which you read about in the Bown and Keynes piece on why the Appellate Body was allowed to die.
+
+Now connect it to the throughline, in the top callout, because this is the synthetic point and not just a list of headlines. The backlash is not a mysterious eruption of irrationality. It is, in substantial part, the political demand generated by the distributional losses of Section 2, finding expression through exactly the institutions and cleavages we studied in the trade chapters. The concentrated losers of globalization — Chapter 4 told us they would be concentrated and politically potent — organized and voted, and politicians responded by supplying the protection and nationalism they demanded. And here is the deeper point, in the bottom callout, and I want it to reframe the whole course for you. The liberal economic order was never a law of nature. It was a political construction — built deliberately by powerful states after 1945, embedded in institutions, and sustained by a domestic political coalition in those states that benefited from openness. Anything built by a coalition can be unbuilt when the coalition fractures. That is what we are watching. The backlash is the order's own losers withdrawing their political consent. And that sets up the question the chapter ultimately asks. One more pointer before we move on: today's podcast is Dani Rodrik on Trade Talks asking what trade deals are actually for — whose interests they serve and how much domestic policy space they should leave — which is the same tension between deep integration and democratic self-government that runs under everything on this slide. We'll hear it again in the student presentation on Walter's backlash review in a moment.
+:::
+
+
+## Student Presentation
+
+::: {.callout-important appearance="minimal" icon=false}
+## Over to today's presenter
+**Walter (2021)** — *"The Backlash Against Globalization"*  ·  *Annual Review of Political Science* 24
+:::
+
+[**Presenter:** ______________________  ·  Q&A and class discussion to follow]{style="font-size:0.85em; color:#535054;"}
+
+::: {.callout-tip appearance="minimal" icon=false}
+The definitive review of the backlash literature — and its central claim cuts against the popular story: mass opinion has **not** swung sharply against globalization. The backlash is a **politicization**: entrepreneurs mobilizing **economic losers** *and* **cultural grievance** into backlash politics, with real consequences — **deglobalization pressure**, contested institutions, and harder international cooperation.
+:::
+
+::: {.notes}
+And now the final student presentation of the course, on Stefanie Walter's review of the globalization backlash — the scholarly companion to the section we just finished. Let me frame it. Walter organizes everything we know about the backlash around three questions: what it is, what causes it, and what it does. On the what: she defines the backlash as the political expression of opposition to globalization — Brexit, trade-war politics, anti-globalization populism — and makes the striking point that it is not driven by a large swing in public opinion against openness; aggregate support for trade has stayed surprisingly stable. What changed is politicization: political entrepreneurs made globalization electorally salient. On the causes: she maps the debate we've been living in all course — economic explanations, from import competition and the China shock to the regional decline story, versus cultural explanations centered on status threat and identity — and argues they are entangled rather than rival, because economic decline feeds cultural grievance. And on the consequences: backlash politics produces governments that contest international institutions, pressure toward deglobalization, and a harder environment for the cooperation problems — trade, money, climate — we've studied for four weeks. Listen for how the presenter relates Walter's politicization argument to our society-centered lens — preferences, institutions, and who mobilizes whom — and whether the evidence she reviews supports the economic or the cultural reading more strongly. This is the last presentation slot, so let's send it off well. Q&A and discussion after.
+:::
+
+
+## Connecting Back: Coercion and the State-Centered Turn
+
+::: {.columns}
+::: {.column width="52%"}
+
+The backlash is also a turn toward the **state-centered** logic we have built all term:
+
+- States increasingly see interdependence not as mutual gain but as **vulnerability and leverage**
+- **Yesterday's class:** the weaponization of interdependence — sanctions, chokepoints, export controls
+- Security and geopolitics now **reshape** trade, investment screening (Ch. 9), and even monetary policy (Ch. 13)
+
+:::
+::: {.column width="48%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+**From efficiency to security.** The defining shift of the moment: states subordinating the **gains from openness** to concerns about **national power and security.**
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+This is the **state-centered** half of the course (Chs. 5, 9, 13) reasserting itself over the **society-centered** logic of mutual gain.
+:::
+
+:::
+:::
+
+::: {.notes}
+I want to spend one slide explicitly bridging the backlash to what we did yesterday and to the state-centered thread that has run through the whole course, because Oatley's Chapter 16 was written before the most recent turn and you should see how current events extend his argument. The backlash is not only a domestic-distributional story; it is also a geopolitical one, and it represents a shift in how states fundamentally conceive of economic interdependence. For most of the post-Cold War period, the dominant frame was the liberal, society-centered one: interdependence is mutually beneficial, trade and investment are positive-sum, and deeper integration makes everyone richer and arguably more peaceful. What we are watching now is the reassertion of a state-centered frame in which the same interdependence looks like vulnerability and like leverage. If your supply chains run through a rival, that is not just efficient — it is a chokepoint the rival can squeeze. If your adversary depends on your financial system, that dependence is a weapon you can use.
+
+That is precisely the material from yesterday's class on the weaponization of interdependence — Farrell and Newman, and the Drezner review on sanctions. States are increasingly willing to sacrifice the efficiency gains from openness in order to reduce strategic vulnerabilities and to acquire coercive leverage over rivals. And notice how this reaches back across the course, in the callouts. It connects to Chapter 9 and my own work on investment screening, where security concerns now lead states to block foreign acquisitions they would once have welcomed. It connects to Chapter 13 and the weaponized dollar, where monetary dominance becomes an instrument of statecraft. It connects to Chapter 5's industrial policy, now justified in the language of national security rather than infant industries. The unifying shift, worth remembering above the details, is the subordination of the gains from openness to concerns about national power and security. The state-centered half of this course, which sometimes felt like the minority view against the liberal mainstream, is the half that is currently winning the argument in the world's capitals. Whether that is wise is a separate question; that it is happening is not in doubt.
+:::
+
+
+# Is the Liberal Order Sustainable? {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 5]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## Three Scenarios for the Future
+
+```{r}
+#| label: tbl-scenarios
+
+sc <- data.frame(
+  scenario = c("Reform & renewal",
+               "Managed globalization",
+               "Fragmentation"),
+  what = c("The open order survives by sharing gains better at home — real compensation for losers, stronger safety nets, retraining",
+           "A slower, more guarded openness: selective integration, friend-shoring, security carve-outs, but trade and investment continue",
+           "Bloc formation and decoupling — a world economy splitting along geopolitical lines, with rising costs and lost gains"),
+  hinge = c("Can domestic politics deliver the compensation it never delivered before?",
+            "Can states limit security carve-outs before they swallow openness whole?",
+            "Can great-power rivalry be contained before efficiency is sacrificed to security?")
+)
+
+kable(sc, col.names = c("Scenario", "What it looks like", "The open question"),
+      align = c("l", "l", "l")) %>%
+  kable_styling(font_size = 20, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:3, extra_css = "padding-top: 11px; padding-bottom: 11px; line-height: 1.25;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "22%") %>%
+  column_spec(2, width = "48%") %>%
+  column_spec(3, width = "30%")
+```
+
+::: {.callout-important appearance="minimal" icon=false}
+**Oatley's framing.** The open economy is not guaranteed. Whether it survives depends on **political choices** — above all, whether the gains can be shared widely enough to keep the supporting coalition intact.
+:::
+
+::: {.notes}
+So: is the liberal order sustainable? Oatley does not give you a prophecy, and neither will I, because honest social science here is about laying out scenarios and the conditions that select between them, not pretending to know the future. Let me give you three scenarios — they are a synthesis of the kind of futures the chapter and the broader literature sketch, and the right column gives you the hinge question for each.
+
+First, reform and renewal: the open order survives, but only by doing the thing it failed to do the first time — actually sharing the gains. That means serious compensation for the losers of globalization, robust safety nets, effective retraining and adjustment assistance, regional investment in the places that were hollowed out. The hinge question is brutal and honest: can domestic politics deliver compensation now, when it conspicuously failed to deliver it for forty years? Second, managed globalization: not a return to the hyper-globalization of the 1990s, but a slower, more guarded version — selective integration, friend-shoring among trusted partners, security carve-outs for strategic sectors, while trade and investment continue at a reduced, more deliberate pace. The hinge here is whether states can keep the security exceptions narrow, because every sector can be called strategic if you squint, and exceptions have a way of swallowing the rule. Third, fragmentation: the darkest scenario, in which the world economy splits into rival blocs along geopolitical lines, decoupling accelerates, and we forfeit large chunks of the efficiency gains that integration delivered. The hinge is whether great-power rivalry, especially between the United States and China, can be contained before security concerns simply override the logic of mutual gain.
+
+The unifying point, in the callout, is the one I most want you to carry out of this course: the open economy is not guaranteed and it is not natural. It is a political achievement that can be sustained or squandered by political choices. And the single most important of those choices is the distributional one — whether the societies that host the system can share its gains widely enough to keep the coalition that supports it intact. That is why the distributional challenge in Section 2 was not just one challenge among several; it is, arguably, the master variable that determines which of these three futures we get. Now let me pull the analytical apparatus of the whole course together, because that apparatus is what lets you reason about questions like this one.
+:::
+
+
+# Course Capstone: The Central Analytic Frame {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 6]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## The Central Frame: Society-Centered vs. State-Centered
+
+::: {.columns}
+::: {.column width="50%"}
+
+### Society-centered
+- The unit of analysis is **domestic groups** with competing economic interests
+- Policy is the outcome of **who wins the domestic fight** — firms, sectors, factors, voters
+- Explains *distribution:* who gains and loses, and who therefore lobbies and votes which way
+
+:::
+::: {.column width="50%"}
+
+### State-centered
+- The unit of analysis is the **state** pursuing national goals — power, security, autonomy, development
+- Policy serves **the national interest** as the state defines it, sometimes against domestic groups
+- Explains *strategy:* industrial policy, security carve-outs, weaponized interdependence
+
+:::
+:::
+
+::: {.callout-important appearance="minimal" icon=false}
+**This is the central analytic frame of the whole course.** Almost every chapter handed you a *society-centered* and a *state-centered* lens. The skill is knowing which one a situation calls for — and seeing how they interact.
+:::
+
+::: {.notes}
+This is the capstone slide, and it is the single most important thing to fix in your mind before tomorrow's final, because it is the organizing structure of the entire course. If someone stopped you in the hallway and asked what the analytical core of INTL 503 was, this is the answer: the recurring contrast between a society-centered approach and a state-centered approach to international political economy. We did not introduce these as two isolated theories in one week and then move on. We came back to this contrast in unit after unit, because it is the master distinction of the field.
+
+The society-centered approach takes domestic groups as the fundamental unit. It says: to explain a country's foreign economic policy, look inside the country at the competing economic interests — firms, industries, factors of production, classes, voters — figure out who gains and who loses from a given policy, and the policy you observe is the outcome of the political contest among them. Trade protection happens because import-competing groups out-organize free-trade groups; monetary policy reflects whoever wins the domestic fight between, say, exporters who want a weak currency and consumers who want a strong one. The society-centered lens is fundamentally about distribution and domestic politics. The state-centered approach takes the state itself as the fundamental unit, a purposive actor pursuing national goals — power, security, autonomy, long-run development — in a competitive international system. It says policy can serve the national interest as the state's leaders define it, sometimes overriding what any domestic group wants. Industrial policy to build strategic capabilities, investment screening to block a rival's access, sanctions and weaponized interdependence, central-bank arrangements designed for geopolitical leverage — these make sense through the state-centered lens, not the society-centered one.
+
+The skill this course was trying to build, in the callout, is not memorizing which approach is "right" — neither is, in general. It is diagnostic. Given a real situation, which lens illuminates it, and how do the two interact? The most interesting cases, and the ones the final will reward, are where they collide: where a state's strategic objective runs against a powerful domestic coalition, or where domestic distributional politics constrains what the state can do strategically. The backlash we discussed today is exactly such a collision — domestic distributional grievance, a society-centered phenomenon, driving a turn toward state-centered economic nationalism. If you can fluently switch between these two lenses and see where they meet, you have the core competency of this course. The next slide shows you how it threads through every unit.
+:::
+
+
+## The Central Frame Across Every Unit of the Course
+
+```{r}
+#| label: tbl-capstone
+
+cap <- data.frame(
+  unit = c("Trade (Chs. 2–7)",
+           "Multinationals & FDI (Chs. 8–9)",
+           "Monetary system (Chs. 10–13)",
+           "Development finance (Chs. 14–15)",
+           "Coercion & the future (Day 14, Ch. 16)"),
+  society = c("Who wins/loses from openness drives protection (Ch. 4)",
+              "Firms lobby; host-country groups bargain over FDI",
+              "Exporters vs. consumers fight over the exchange rate (Ch. 12)",
+              "Domestic coalitions shape borrowing and crisis response",
+              "Distributional losers demand protection and nationalism"),
+  state = c("Strategic trade & industrial policy for national power (Ch. 5)",
+            "Investment screening for security (Ch. 9)",
+            "Credible commitment, the trilemma, the weaponized dollar (Ch. 13)",
+            "The IMF, conditionality, and great-power influence",
+            "Weaponized interdependence; security over efficiency")
+)
+
+kable(cap, col.names = c("Unit", "Society-centered lens", "State-centered lens"),
+      align = c("l", "l", "l")) %>%
+  kable_styling(font_size = 19, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:5, extra_css = "padding-top: 10px; padding-bottom: 10px; line-height: 1.25;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "22%") %>%
+  column_spec(2, width = "39%") %>%
+  column_spec(3, width = "39%")
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+**Study move:** for any chapter, ask "what's the society-centered story, and what's the state-centered story?" If you can fill both cells, you understand the unit.
+:::
+
+::: {.notes}
+This table is your study map for the cumulative final, so let me walk it row by row, because it shows you that the frame from the previous slide is not an abstraction I am imposing after the fact — it is genuinely how each unit of the course was built. Read each row as a pair: the society-centered story and the state-centered story for the same body of material.
+
+Trade, Chapters 2 through 7: the society-centered story is Chapter 4 — who wins and loses from openness, and how that drives the demand for protection. The state-centered story is Chapter 5 — strategic trade and industrial policy, where the state intervenes to build national economic power regardless of any particular group's preferences. Multinationals and FDI, Chapters 8 and 9: the society-centered story is firms lobbying and host countries bargaining over the terms of investment; the state-centered story is Chapter 9 and investment screening, where security concerns lead states to control or block foreign capital. The monetary system, Chapters 10 through 13: the society-centered story is Chapter 12, the domestic fight between exporters who want a cheap currency and consumers and importers who want a strong one; the state-centered story is Chapter 13 — credible commitment, central-bank independence, the trilemma as a constraint on state choice, and the dollar as an instrument of power. Development finance, Chapters 14 and 15: the society-centered story is how domestic coalitions shape borrowing and crisis response; the state-centered story is the IMF, conditionality, and how great-power influence shapes who gets rescued and on what terms. And the final unit — yesterday's coercion class and today's Chapter 16: the society-centered story is the distributional losers demanding protection; the state-centered story is weaponized interdependence and the broad subordination of efficiency to security.
+
+Here is the concrete study move, in the callout, and I mean this literally for tomorrow. For any chapter on the exam, ask yourself two questions: what is the society-centered story here, and what is the state-centered story? If you can fill in both cells of the row, you understand the unit well enough for the applied section of the final. If you can only fill one, that is where to go review tonight. The applied policy question in particular will reward exactly this move — taking a contemporary scenario and analyzing it through both lenses, then staking out a defensible reading of how they interact. That is the skill. This table is the skill, laid out across the whole course. Now let me close, and tell you exactly how the final is built.
+:::
+
+
+# Closing & the Final Exam {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Section 7]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## The Final Exam: What to Expect
+
+::: {.columns}
+::: {.column width="52%"}
+
+::: {style="font-size:0.8em;"}
+
+**Logistics**
+
+- **Friday, July 31**, at our normal online meeting time: **8:10–10:20 AM Eastern**
+- **Cumulative** — the whole course, all chapters and articles
+- Worth **25%** of your final grade
+- Closed-book; **no generative AI** may be used
+
+**Three sections**
+
+1. **Multiple choice (~30%)** — key terms, frameworks, arguments
+2. **Short answer (~30%)** — define, compare, apply
+3. **Applied policy (~40%)** — analyze a contemporary scenario with course frameworks
+
+:::
+
+:::
+::: {.column width="48%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+[**The study guide is on Canvas.** Work through it on Wednesday's reading day — that is what the day is for.]{style="font-size:0.85em;"}
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+[**Prepare in this order:** (1) re-do the three quizzes; (2) re-read your in-class writing responses; (3) re-skim chapter summaries and notes, focusing on the **comparative pairs** — society- vs. state-centered, ISI vs. neoliberalism, liquidity vs. solvency.]{style="font-size:0.85em;"}
+:::
+
+:::
+:::
+
+::: {.notes}
+Let me close with the practical business of the final, because you deserve to start tomorrow knowing exactly what you are facing. Logistics first. The exam is tomorrow, Friday the thirty-first, at our normal online meeting time — that is eight-ten to ten-twenty in the morning, Eastern. It is cumulative: it covers the entire course, every chapter and every assigned article, from the introduction to IPE on day one through today's Chapter 16. It is worth twenty-five percent of your grade, which makes it the single largest assessment in the course, so it is worth preparing for properly. It is closed-book, and to be completely clear, generative AI tools may not be used during the exam — that is a firm policy.
+
+The exam has three sections, and the proportions tell you how to allocate your preparation. Section one is multiple choice, about thirty percent, testing recognition of key terms, theoretical frameworks, and the major arguments across the chapters and articles. Section two is short answer, about thirty percent — one or two short paragraphs each, asking you to define a concept, compare two frameworks, or apply an idea to a brief scenario. Section three is the applied policy question, about forty percent and the heaviest single component — roughly two pages of in-class writing analyzing a contemporary policy scenario using the frameworks of the course. That third section is where the capstone synthesis we just did pays off directly: it will reward your ability to bring multiple frameworks to bear, especially the society-centered and state-centered lenses, and to stake out and defend an interpretation rather than just summarizing.
+
+On preparation, the order matters, and it is in the bottom callout. First, re-do the three weekly quizzes — they are the best available sample of the recognition and short-answer items the final draws on. Second, re-read your own in-class writing responses; those are your personal record of how you have actually been applying these frameworks, and they are gold for the applied section. Third, re-skim the chapter summaries and your lecture notes, and when you do, pay special attention to the comparative pairs, because this course is built out of them: society-centered versus state-centered above all, but also ISI versus neoliberalism, liquidity versus solvency, push versus pull factors, the trilemma's three options. The study guide is already posted on Canvas, and tomorrow is preceded by a reading day — use that Wednesday to work through the guide systematically. That is what the reading day is for.
+:::
+
+
+## Closing the Course
+
+::: {.callout-important appearance="minimal" icon=false}
+**Today's Big Question —** Global capitalism has delivered historic gains — can the system that produced them survive the backlash against them?
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### Key Empirical Take-aways
+
+::: {style="font-size:0.82em;"}
+- The achievements of globalization are **real**: a historic fall in poverty, convergence between nations
+- But the gains were **unevenly shared**, the growth path **strains the planet**, and the **coalition** behind openness is fracturing
+- The order's future is a **political choice**, not destiny
+:::
+
+:::
+::: {.column width="50%"}
+
+### A New Analytic Lense
+
+::: {style="font-size:0.82em;"}
+- The **society- vs. state-centered** frame — a lens for any IPE question, long after this class
+- Comfort moving between **distribution** (who wins/loses) and **strategy** (power and security)
+- The habit of asking, of any policy: *whose interests, through which institutions, with what trade-offs?*
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+[Thank you for a breakneck but rewarding four weeks. See you online tomorrow at 8:10.]{style="font-size:0.85em;"}
+:::
+
+:::
+:::
+
+::: {.notes}
+Let me gather the whole course around the Big Question one last time. Global capitalism has delivered historic gains — can the system that produced them survive the backlash against them? Here is where we landed, and I want to give you the honest, two-sided answer rather than a slogan in either direction. The achievements are real and enormous, and we should never let the current pessimism erase them: more than a billion people lifted out of extreme poverty, a historic convergence in incomes between nations, the rise of emerging Asia through integration rather than withdrawal. That is the most important material improvement in human welfare in history, and it happened under the open economic order. But the same system distributed its gains unevenly, imposing concentrated and persistent losses on workers and regions inside the wealthy democracies; the growth path that produced the gains strains the planet through a climate problem that is, at bottom, a collective-action problem we are structurally bad at solving; and the political coalition that sustained the order is fracturing under the weight of that distributional grievance and a turn toward security over efficiency. So the answer to the Big Question is genuinely open. The order's survival is not a forecast we can read off the data. It is a political choice — above all, the choice of whether its gains can be shared widely enough to keep its supporting coalition intact.
+
+And here is what I hope you carry out of this course, beyond any particular fact you will need tomorrow. The deepest thing this course gave you is the central analytic frame: the society-centered versus state-centered lens, and the fluency to move between them. That is a tool you will be able to point at any question in international political economy for the rest of your life — every trade war, every currency dispute, every sanctions regime, every investment-screening fight that shows up in the news. You now know to ask, of any economic policy: whose interests does it serve, through which institutions does it operate, and what trade-offs does it impose? That habit of mind — distribution and strategy, who wins and what's at stake — is the real deliverable of these four weeks, and it outlasts the exam by a lifetime.
+
+I will say plainly, with no hedging: this has been a genuinely good four weeks, and I have enjoyed teaching this group. Go work through the study guide, re-do those quizzes, re-read your writing, and get some sleep tonight. I will see you online tomorrow morning at eight-ten for the final. Good luck — you are ready.
+:::

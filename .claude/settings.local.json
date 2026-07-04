@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(quarto --version)",
+      "Bash(quarto render tikz-test-minimal.qmd)",
+      "Bash(brew list ghostscript)",
+      "Bash(gs --version)",
+      "Bash(dvisvgm --libgs=/usr/local/lib/libgs.dylib --help)",
+      "Bash(quarto render day01-chapter01-v3.qmd)",
+      "Read(//Applications/quarto/bin/**)",
+      "Read(//opt/homebrew/bin/**)",
+      "Read(//Users/sarahbauerledanzman/Applications/quarto/bin/**)",
+      "Bash(mdfind -name quarto -onlyin /Applications)",
+      "Bash(/usr/local/bin/quarto render:*)",
+      "Read(//Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/bin/**)",
+      "Read(//Library/Frameworks/R.framework/Versions/**)",
+      "Bash(export PATH=\"/usr/local/bin:$PATH\")",
+      "Bash(quarto render:*)"
+    ]
+  }
+}

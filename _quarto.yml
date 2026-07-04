@@ -1,0 +1,62 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "content/*.qmd"
+    - "assignments/*.qmd"
+    - "slides/*.qmd"
+  resources:
+    - _headers          # Netlify shared-password file (copied into _site/)
+
+website:
+  title: "INTL 503 — International Political Economy"
+  description: "Sarah Bauerle Danzman | Indiana University | Summer 2026"
+  favicon: slides/_theme/iu-trident.png
+
+  page-navigation: true
+
+  navbar:
+    background: "#990000"
+    foreground: "#FFFFFF"
+    logo: slides/_theme/iu-trident.png
+    logo-alt: "IU trident logo"
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "Syllabus"
+        file: syllabus.qmd
+      - text: "Schedule"
+        file: schedule.qmd
+      - text: "Assignments"
+        file: assignments/index.qmd
+      - text: "Resources"
+        file: resources.qmd
+
+    tools:
+      - icon: envelope
+        href: mailto:sbauerle@iu.edu
+        text: Email
+
+  page-footer:
+    left: |
+      Content {{< fa copyright >}} 2026 Sarah Bauerle Danzman
+      Licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+    center: |
+      Made with {{< fa heart >}} and [Quarto](https://quarto.org/)
+    right: |
+      INTL 503 | Summer 2026
+
+format:
+  html:
+    theme:
+      light: [cosmo, theme.scss]
+    toc: true
+    code-copy: true
+    code-overflow: wrap
+    mainfont: "Open Sans"
+    fontsize: 1.1em
+    linkcolor: "#990000"
+
+execute:
+  freeze: auto

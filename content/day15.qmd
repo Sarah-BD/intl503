@@ -1,0 +1,26 @@
+---
+title: "Day 15: Achievements and Challenges of Global Capitalism"
+subtitle: "Thursday, July 30, 2026"
+toc: false
+---
+
+**Required materials:**
+
+1. Oatley, Chapter 16
+2. Walter, Stefanie. 2021. "[The Backlash Against Globalization](https://doi.org/10.1146/annurev-polisci-041719-102405)." *Annual Review of Political Science* 24: 421–442.
+3. {{< fa headphones >}} [*Trade Talks* ep. 27: What Are Trade Deals For? (Dani Rodrik)](https://tradetalkspodcast.com/podcast/27-what-are-trade-deals-for-dani-rodrik-does-trade-talks-part-3/)
+
+::: {.callout-tip}
+## In class today
+- Writing prompt
+- **Student-led article presentation** (Walter 2021)
+- Lecture and discussion
+:::
+
+## Slides
+
+[{{< fa expand >}} Open slides in a new tab](../slides/day15-chapter16.html){target="_blank"}
+
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid #ccc;">
+<iframe src="../slides/day15-chapter16.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+</div>

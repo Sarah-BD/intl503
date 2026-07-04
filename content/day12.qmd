@@ -1,0 +1,31 @@
+---
+title: "Day 12: Monetary & Exchange-Rate Politics — State-Centered Approach"
+subtitle: "Friday, July 24, 2026"
+toc: false
+---
+
+**Required materials:**
+
+1. Oatley, Chapter 13 — *A State-Centered Approach to Monetary and Exchange-Rate Policies*
+2. {{< fa headphones >}} [*The Sanctions Age* — How the Strong Dollar Became the Weaponized Dollar (with Saleha Mohsin)](https://www.thesanctionsage.com/p/episode-1-saleha-mohsin)
+
+*No scholarly article this session — Quiz 3 day.*
+
+::: {.callout-tip}
+## In class today
+- When society-centered explanations fall short: policies no domestic group wanted
+- The Phillips curve breaks down: the natural rate and the accelerationist principle
+- The **time-consistency problem** and the case for **central-bank independence**
+- The exchange-rate "back door": who really controls monetary policy
+- State interests: balance-of-payments constraints and geopolitics
+- Society-centered vs. state-centered — comparison and **Quiz 3** review
+- **Quiz 3** (Chapters 10–13) at the end of class
+:::
+
+## Slides
+
+[{{< fa expand >}} Open slides in a new tab](../slides/day12-chapter13.html){target="_blank"}
+
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid #ccc;">
+<iframe src="../slides/day12-chapter13.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen></iframe>
+</div>

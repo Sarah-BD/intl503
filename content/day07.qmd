@@ -1,0 +1,29 @@
+---
+title: "Day 7: Multinational Corporations in the Global Economy"
+subtitle: "Thursday, July 16, 2026"
+toc: false
+---
+
+**Required materials:**
+
+1. Oatley, Chapter 8 — *Multinational Corporations in the Global Economy*
+2. Pandya, Sonal S. 2016. "[Political Economy of Foreign Direct Investment: Globalized Production in the Twenty-First Century](https://doi.org/10.1146/annurev-polisci-051214-101237)." *Annual Review of Political Science* 19: 455–475.
+3. {{< fa headphones >}} [*Follow the Money: How FDI Is Redrawing the Global Economy*](https://www.mckinsey.com/mgi/our-research/follow-the-money-how-fdi-is-redrawing-the-global-economy) — McKinsey Global Institute
+
+::: {.callout-tip}
+## In class today
+- What a multinational is: FDI, control, and the ladder from exporting to owning a foreign plant
+- The scale and shape of global FDI — and how the map is being redrawn
+- Why firms go multinational: locational advantages, market imperfections, and the OLI framework
+- Horizontal vs. vertical FDI, global value chains, and the smile curve
+- A century of foreign investment, from colonial capital to security-driven fragmentation
+- Whether FDI helps the countries that host it — and what it depends on
+- **Student-led article presentation** (Pandya 2016)
+- Writing prompt and discussion
+:::
+
+## Slides
+
+[{{< fa expand >}} Open slides in a new tab](../slides/day07-chapter08.html){target="_blank"}
+
+<iframe src="../slides/day07-chapter08.html" width="100%" height="600" style="border:1px solid #ccc;"></iframe>

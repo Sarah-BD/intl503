@@ -1,0 +1,197 @@
+---
+title: "Class Content"
+subtitle: "Lecture slides and materials"
+toc: false
+---
+
+All lecture slides and materials organized by session. Slides are posted before each class meeting.
+
+---
+
+## Week 1: Introduction & The Global Trade System
+
+::: {.content-card}
+### Day 1 — Monday, July 6: Introduction to IPE
+
+::: {.content-meta}
+**Reading 1:** Chapter 1 &middot; **Reading 2:** None (logistics day) &middot; **Slides:** [{{< fa laptop >}} View slides](day01.qmd) &middot; **In class:** Writing prompt &middot; Article presentation sign-up
+:::
+
+Course logistics and the foundations of IPE. We define the field, introduce the Open Economy Politics framework, walk through the three classical traditions (Smith, List, Marx), and trace globalization across four eras from 1815 to today.
+:::
+
+::: {.content-card}
+### Day 2 — Tuesday, July 7: The WTO and World Trade System
+
+::: {.content-meta}
+**Reading:** Chapter 2 &middot; **Slides:** [{{< fa laptop >}} View slides](day02.qmd) &middot; **In class:** Writing prompt
+:::
+
+From GATT to WTO: the evolution of multilateral trade institutions, dispute settlement, and contemporary challenges.
+:::
+
+::: {.content-card}
+### Day 3 — Thursday, July 9: Political Economy of Trade Cooperation
+
+::: {.content-meta}
+**Reading:** Ch. 3 + Bown &amp; Keynes (2020) &middot; **Slides:** [{{< fa laptop >}} View slides](day03.qmd) &middot; **Podcast:** [Trade Talks 17](https://tradetalkspodcast.com/podcast/17-wto-ministerials-now-and-then/) &middot; **In class:** Article presentation &middot; Writing prompt
+:::
+
+Why is international trade cooperation difficult to achieve? The role of institutions in facilitating cooperation.
+:::
+
+::: {.content-card}
+### Day 4 — Friday, July 10: Society-Centered Trade Politics &middot; **Quiz 1**
+
+::: {.content-meta}
+**Reading:** Ch. 4 + Carnegie &amp; Gaikwad (2022) &middot; **Slides:** [{{< fa laptop >}} View slides](day04.qmd) &middot; **Podcast:** [Trade Talks 198](https://tradetalkspodcast.com/podcast/198-inside-washingtons-lobbying-industry/) &middot; **In class:** Article presentation &middot; Quiz 1 (chapters 1–4)
+:::
+
+Domestic interest groups, factor endowments, and sectoral preferences in trade policy-making.
+:::
+
+---
+
+## Week 2: Trade Politics & Development
+
+::: {.content-card}
+### Day 5 — Monday, July 13: State-Centered Trade Politics
+
+::: {.content-meta}
+**Reading:** Ch. 5 + Bown &amp; Wang (2024) &middot; **Slides:** [{{< fa laptop >}} View slides](day05.qmd) &middot; **Podcast:** [Trade Talks 182](https://tradetalkspodcast.com/podcast/182-is-chinas-industrial-policy-working/) &middot; **In class:** Writing prompt
+:::
+
+National interests, state autonomy, and strategic trade policy. How governments balance domestic and international pressures.
+:::
+
+::: {.content-card}
+### Day 6 — Tuesday, July 14: Trade and Development — ISI & Neoliberalism (combined)
+
+::: {.content-meta}
+**Reading:** Chs. 6 & 7 + Irwin (2021) &middot; **Slides:** [{{< fa laptop >}} View slides](day06.qmd) &middot; **Podcast:** [Ideas of India](https://www.mercatus.org/ideasofindia/v-anantha-nageswaran-surveying-growth-and-financialization-indian-economy) &middot; **In class:** Writing prompt
+:::
+
+Two paired chapters: the logic and outcomes of import substitution industrialization (Ch 6), then the shift to neoliberal reforms — Washington Consensus, structural adjustment, and contemporary debates (Ch 7).
+:::
+
+::: {.content-card}
+### Day 7 — Thursday, July 16: MNCs in the Global Economy
+
+::: {.content-meta}
+**Reading:** Chapter 8 &middot; **Slides:** [{{< fa laptop >}} View slides](day07.qmd) &middot; **Podcast:** [Follow the Money (McKinsey)](https://www.mckinsey.com/mgi/our-research/follow-the-money-how-fdi-is-redrawing-the-global-economy) &middot; **In class:** Writing prompt
+:::
+
+What makes a firm multinational, and why produce abroad rather than trade or license? FDI and the modes of going global, the scale and shifting geography of investment, the OLI framework, horizontal vs. vertical FDI and global value chains, and the debate over whether FDI helps the countries that host it.
+:::
+
+::: {.content-card}
+### Day 8 — Friday, July 17: The Politics of MNCs &middot; **Quiz 2**
+
+::: {.content-meta}
+**Reading:** Ch. 9 + Bauerle Danzman (2025) &middot; **Slides:** [{{< fa laptop >}} View slides](day08.qmd) &middot; **Podcast:** [Economic Statecraft & FDI Screening (Skadden)](https://www.skadden.com/insights/podcasts/2025/03/economic-statecraft-and-foreign-investment-screening) &middot; **In class:** Article presentation &middot; Quiz 2 (chapters 5–9)
+:::
+
+How states try to govern multinationals: performance requirements, the Calvo Doctrine and expropriation, locational incentives and export-processing zones, and the obsolescing bargain. Why investment — unlike trade — has no "World Investment Organization," only a patchwork of treaties. We close on the emerging issue of national-security investment screening and CFIUS.
+:::
+
+---
+
+## Week 3: The International Monetary System
+
+::: {.content-card}
+### Day 9 — Monday, July 20: The International Monetary System
+
+::: {.content-meta}
+**Reading:** Chapter 10 &middot; **Slides:** Coming soon &middot; **In class:** Writing prompt
+:::
+
+Evolution from gold standard to Bretton Woods to floating rates. The monetary trilemma and exchange rate regimes.
+:::
+
+::: {.content-card}
+### Day 10 — Tuesday, July 21: Cooperation, Conflict, and Crisis in the Contemporary IMS
+
+::: {.content-meta}
+**Reading:** Chapter 11 &middot; **Slides:** Coming soon &middot; **In class:** Writing prompt
+:::
+
+The IMF, regional monetary arrangements, and contemporary financial crises.
+:::
+
+::: {.content-card}
+### Day 11 — Thursday, July 23: Monetary & Exchange-Rate Politics — Society-Centered
+
+::: {.content-meta}
+**Reading:** Chapter 12 &middot; **Slides:** Coming soon &middot; **In class:** Writing prompt
+:::
+
+A society-centered explanation of monetary and exchange-rate politics: how domestic interest groups shape currency choices.
+:::
+
+::: {.content-card}
+### Day 12 — Friday, July 24: Monetary & Exchange-Rate Politics — State-Centered &middot; **Quiz 3**
+
+::: {.content-meta}
+**Reading:** Chapter 13 &middot; **Slides:** Coming soon &middot; **In class:** Quiz 3 (chapters 10–13)
+:::
+
+A state-centered explanation of monetary and exchange-rate politics. How do governments balance domestic political pressures against international monetary commitments?
+:::
+
+---
+
+## Week 4: International Finance & Synthesis
+
+::: {.content-card}
+### Day 13 — Monday, July 27: Debt, Capital Flows, and Crisis in the Developing World
+
+::: {.content-meta}
+**Reading:** Chapters 14 & 15 (combined) &middot; **Slides:** Coming soon &middot; **In class:** Writing prompt
+:::
+
+A combined session on developing-country finance: capital flows and the 1980s Latin American debt crisis (Ch. 14), then the global capital-flow cycle and the 1990s emerging-market crises (Ch. 15). The IMF as crisis lender.
+:::
+
+::: {.content-card}
+### Day 14 — Tuesday, July 28: Economic Coercion and Economic Statecraft
+
+::: {.content-meta}
+**Reading:** Farrell & Newman (2019); Drezner (2024) &middot; **Slides:** [View slides](../slides/day14-economic-coercion.html){target="_blank"} &middot; **In class:** Writing prompt, discussion, and debate
+:::
+
+An instructor-led session outside the textbook: how states turn trade, money, and financial networks into instruments of coercion — export controls, the weaponized dollar, sanctions, and network chokepoints.
+:::
+
+::: {.content-card}
+### Day 15 — Thursday, July 30: Achievements and Challenges of Global Capitalism
+
+::: {.content-meta}
+**Reading:** Chapter 16 &middot; **Slides:** [View slides](../slides/day15-chapter16.html){target="_blank"} &middot; **In class:** Writing prompt, student presentation
+:::
+
+Synthesizing the course: What has global capitalism achieved? What challenges does it face? Future trajectories.
+:::
+
+::: {.content-card}
+### Day 16 — Friday, July 31: **Final Exam**
+
+::: {.content-meta}
+**In class:** Cumulative final exam &middot; Study guide posted Monday, July 27
+:::
+
+Cumulative exam covering all course material.
+:::
+
+---
+
+::: {.info-box}
+### {{< fa download >}} Working with the Slides
+
+All slides are HTML presentations created with Quarto. You can:
+
+- View them in your browser (recommended for interactive elements)
+- Print to PDF for note-taking
+- Access them on mobile devices
+
+Slides are posted 24 hours before each class session.
+:::

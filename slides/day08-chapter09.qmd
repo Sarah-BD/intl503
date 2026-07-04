@@ -1,0 +1,659 @@
+---
+title: "The Politics of Multinational Corporations"
+subtitle: "INTL 503 | Chapter 9"
+author: "Professor Sarah Bauerle Danzman"
+date: "2026-07-17"
+date-format: long
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: true
+    preview-links: auto
+    footer: "INTL 503 | The Politics of Multinational Corporations"
+    transition: fade
+    width: 1600
+    height: 900
+    margin: 0.15
+    fig-align: center
+    fig-dpi: 300
+    auto-stretch: false
+    logo: iu-trident.png
+    title-slide-attributes:
+      data-background-image: iu-trident.png
+      data-background-size: 15%
+      data-background-position: 2% 2%
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(knitr)
+library(kableExtra)
+
+# IU color palette
+iu_crimson <- "#990000"
+iu_cream <- "#EDEBEB"
+iu_gray <- "#535054"
+iu_light_gray <- "#7E7E7E"
+iu_dark_text <- "#2C3E50"
+iu_green <- "#1B5E3F"
+iu_navy <- "#1F3A5F"
+
+theme_ipe <- function(base_size = 20) {
+  theme_minimal(base_size = base_size) +
+    theme(
+      plot.title = element_text(color = iu_crimson, face = "bold", size = rel(1.2),
+                                margin = margin(t = 5, b = 5)),
+      plot.subtitle = element_text(color = iu_gray, size = rel(0.9),
+                                   margin = margin(b = 10)),
+      plot.caption = element_text(color = iu_light_gray, size = rel(0.7),
+                                  hjust = 0, margin = margin(t = 10)),
+      axis.title = element_text(color = iu_dark_text, size = rel(0.9)),
+      axis.title.x = element_text(margin = margin(t = 8)),
+      axis.title.y = element_text(margin = margin(r = 8)),
+      axis.text = element_text(color = iu_gray, size = rel(0.8)),
+      panel.grid.minor = element_blank(),
+      panel.grid.major = element_line(color = "#E5E5E5", linewidth = 0.4),
+      legend.position = "bottom",
+      legend.title = element_text(size = rel(0.85)),
+      legend.text = element_text(size = rel(0.8)),
+      plot.margin = margin(t = 8, r = 12, b = 20, l = 12)
+    )
+}
+```
+
+## Today's Plan
+
+::: {.callout-important appearance="minimal" icon=false}
+## Today's Big Question
+[**A multinational answers to many governments but to no global authority — so who actually controls it?**]{style="font-size: 1.4em; line-height: 1.4;"}
+:::
+
+```{r}
+#| label: tbl-plan
+
+plan <- data.frame(
+  Section = c("1 · One Firm, Many Sovereigns",
+              "2 · How Host States Try to Control MNCs",
+              "3 · The Other Side: Competing for Investment",
+              "4 · The Obsolescing Bargain",
+              "5 · Why There Is No \"World Investment Organization\"",
+              "6 · The Securitization of Investment"),
+  Cover = c("Why the firm and the state answer to different masters",
+            "Performance requirements, the Calvo Doctrine, and the right to expropriate",
+            "Locational incentives and export-processing zones — the race to attract FDI",
+            "Why bargaining power shifts once the investment is sunk",
+            "Trade has the WTO; investment has 3,300 treaties and no organization",
+            "Emerging issue: national-security screening and CFIUS")
+)
+
+kable(plan, col.names = c("Section", "What we'll cover"),
+      align = c("l", "l")) %>%
+  kable_styling(font_size = 20, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "44%") %>%
+  column_spec(2, width = "56%")
+```
+
+::: {.notes}
+A brief orientation. It's a Friday, so we open with Quiz 2 on Chapters 5 through 9, then run the lecture and discussion. Yesterday, Chapter 8, was the *economics* of the multinational — what it is, why firms produce abroad, who hosts them. Today, Chapter 9, is the *politics*: now that we understand why MNCs exist, we ask who governs them, and the answer turns out to be surprisingly fractured. The arc has six moves. We start with the fundamental tension Raymond Vernon identified — a firm optimizing globally inside a world carved into sovereign states. Then the host country's toolkit for controlling MNCs: performance requirements, and the high-water mark of asserting sovereignty in the Calvo Doctrine and the UN's permanent-sovereignty resolution, including the right to expropriate. Section three turns the picture around — the same governments that wanted to control MNCs now compete fiercely to attract them, through locational incentives and export-processing zones. Section four gives us the single most useful concept in the chapter, Vernon's obsolescing bargain, which explains why the politics swings the way it does. Section five is the heart of today and the thing I most want you to leave with: why, unlike trade, investment has no World Investment Organization — no WTO equivalent — and instead a chaotic web of over three thousand bilateral treaties. And only at the very end, section six, do we turn to the emerging issue that our reading and podcast are about: the securitization of investment, national-security screening, and CFIUS. Today's reading is my own article on securitized political economy, so I'll set it up but save the heart of it for our discussion. Hold the Big Question throughout: a multinational answers to many governments but to no single global authority — so who, in the end, actually controls it?
+:::
+
+
+# One Firm, Many Sovereigns {background-color="#990000"}
+
+
+## Chile, 1971: Who Owns the Copper?
+
+::: {.columns}
+::: {.column width="55%"}
+
+Chile's economy ran on copper — and the biggest mines were owned by two U.S. multinationals, **Anaconda** and **Kennecott**.
+
+- In **1971**, President Salvador Allende **nationalized** the mines — a unanimous vote of the Chilean Congress
+- Compensation was slashed for "excess profits"; the firms fought back, lobbied Washington, froze Chilean assets abroad
+- The MNC had become a **flashpoint of sovereignty, foreign policy, and Cold War politics**
+
+:::
+::: {.column width="45%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+A foreign firm owned a strategic national resource on Chilean soil. **Whose rules apply — Chile's, the home country's, or the firm's own global calculation?**
+
+That collision is at the heart of the politics of the multinational corporation.
+:::
+
+::: {style="text-align:center; margin-top:0.6em;"}
+![](images/allende.jpg){style="height:300px; width:auto; border:1px solid #ccc;"}
+
+[Salvador Allende, President of Chile (1970–1973)]{style="font-size:0.5em; color:#535054;"}
+:::
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Chapter 8 examined why firms invest abroad. Chapter 9 turns to what happens once they do — when a profit-seeking global firm operates inside a sovereign state with goals of its own.
+:::
+
+::: {.notes}
+Let me open where the politics is rawest. For most of the twentieth century, Chile's economy was copper, and the largest copper mines were owned not by Chileans but by two American multinationals, Anaconda and Kennecott. Think about what that means: the commanding heights of a nation's economy, its single most important export, owned and run by foreign firms answering to shareholders in New York. In 1971 the socialist government of Salvador Allende nationalized those mines — the Chilean Congress voted unanimously for it — and then, invoking a doctrine of "excess profits," sharply reduced the compensation paid to the companies. The firms did not go quietly: they pursued legal claims, lobbied the U.S. government, helped freeze Chilean copper shipments and assets abroad, and the episode became entangled with U.S. covert action and the eventual coup against Allende in 1973. I open here because the case strips the chapter down to its essence. A foreign-owned firm controls a strategic asset physically located inside another country's borders. So whose rules govern it? Chile's, as the territorial sovereign? The United States', as the home country protecting its firms? Or the firm's own global profit calculation, which recognizes no single national master? That collision — between territorial sovereignty and a borderless firm — is the entire subject of today. Yesterday we asked why firms invest abroad. Today we ask what happens politically once they have, when a profit-seeking global enterprise sets up inside a sovereign state that has objectives of its own.
+:::
+
+
+## The Core Tension: State and Firm
+
+```{r}
+#| label: tbl-twologics
+
+tl <- data.frame(
+  dim = c("Frame of reference", "Objective", "Loyalty", "Time horizon"),
+  state = c("Territorial — one national jurisdiction",
+            "Maximize national welfare (jobs, revenue, security)",
+            "To citizens who can vote and demand",
+            "Bound to the nation, indefinitely"),
+  mnc = c("Global — the worldwide operation",
+          "Maximize firm/shareholder welfare across all markets",
+          "To shareholders, not to any one host",
+          "Mobile — can exit, relocate, restructure")
+)
+
+kable(tl, col.names = c("", "The State", "The Multinational"),
+      align = c("l", "l", "l")) %>%
+  kable_styling(font_size = 22, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:4, extra_css = "padding-top: 12px; padding-bottom: 12px; line-height: 1.35;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "22%") %>%
+  column_spec(2:3, width = "39%")
+```
+
+::: {.callout-important appearance="minimal" icon=false}
+Vernon's insight: *"the people in any national jurisdiction have a right to maximize their well-being… The MNC, on the other hand, is bent on maximizing the well-being of its stakeholders from global operations, without accepting responsibility for the consequences in individual jurisdictions."* (Vernon 1998)
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+**The host's dilemma:** it *needs* MNCs to capture FDI's benefits, yet *cannot trust* them to deliver those benefits on their own. Almost all the politics of MNCs is governments managing this dilemma.
+:::
+
+::: {.notes}
+Raymond Vernon, the scholar who essentially founded the modern study of multinationals, framed the tension better than anyone, and this table is his diagnosis. The state and the firm operate on two logics that simply do not line up. The state's frame of reference is territorial — one jurisdiction, bounded by borders. Its objective is to maximize the welfare of the people inside those borders: jobs, tax revenue, security, development. Its loyalty runs to citizens, who vote and organize and make demands. And it is stuck to the nation indefinitely; a government cannot relocate. The multinational's frame of reference is the entire globe — it optimizes across all its markets at once. Its objective is to maximize returns to its shareholders, wherever they sit. Its loyalty is to those shareholders, not to any particular host country. And, crucially, it is mobile: it can exit, relocate production, restructure its corporate form to route around a rule it dislikes. Vernon's own words, in the callout, are worth reading aloud: people in a national jurisdiction have a right to try to maximize their well-being within that jurisdiction, while the MNC is bent on maximizing its stakeholders' well-being from global operations without accepting responsibility for the consequences in any individual jurisdiction. Out of that mismatch comes the host country's fundamental dilemma, the bottom callout, and it's the thread for the whole lecture: the host needs the multinational, because as we saw yesterday FDI brings capital, technology, and access the country can't easily get otherwise — but it cannot simply trust the firm to deliver those benefits, because the firm is optimizing for itself, not for the host. Nearly everything governments do toward MNCs — regulating, bargaining, incentivizing, and now screening — is an attempt to manage that single dilemma.
+:::
+
+
+# How Host States Try to Control MNCs {background-color="#990000"}
+
+
+## The Host Country's Toolkit: Performance Requirements
+
+A **performance requirement** is a condition a host government attaches to FDI to make the firm's behavior serve **national** objectives — not just the firm's bottom line.
+
+```{r}
+#| label: tbl-performance
+
+pr <- data.frame(
+  type = c("Local-content rules", "Export requirements", "Technology transfer",
+           "Joint-venture / equity caps", "Employment & training"),
+  what = c("A set share of inputs must be sourced domestically — building local suppliers",
+           "The firm must export a set share of output — earning foreign exchange",
+           "The firm must license or share technology with local partners",
+           "Foreign ownership is capped; a local partner must hold equity (control stays partly home)",
+           "Mandated hiring, training, or management localization of host-country nationals")
+)
+
+kable(pr, col.names = c("Tool", "What it forces the firm to do"),
+      align = c("l", "l")) %>%
+  kable_styling(font_size = 21, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:5, extra_css = "padding-top: 11px; padding-bottom: 11px; line-height: 1.3;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "30%") %>%
+  column_spec(2, width = "70%")
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+The aim is to capture the **spillovers** (Ch. 8): rather than let the MNC simply assemble and repatriate profits, these rules require linkages to local firms, workers, and technology. Section 5 returns to this — the WTO later restricted some as **trade-distorting.**
+:::
+
+::: {.notes}
+So how does a host country try to bend the firm toward national objectives? The first and most direct instrument is the performance requirement — a condition the government attaches to letting the firm in or operate, designed to make the MNC's behavior serve national goals rather than only its own profit. The table lists the main types, and you'll recognize them as direct attempts to manufacture the spillovers we discussed yesterday. Local-content rules require that a set share of the inputs be sourced domestically, which forces the multinational to cultivate local suppliers instead of importing everything. Export requirements oblige the firm to export a given share of its output, so the operation earns foreign exchange for the host rather than just selling into the protected domestic market. Technology-transfer requirements compel the firm to license or share its technology with local partners — going straight at the internalization problem, trying to pry the knowledge out of the firm. Joint-venture mandates and equity caps limit how much of the operation the foreigner may own and require a local partner to hold a stake, keeping part of the control and the profit at home. And employment and training requirements mandate the hiring, training, and promotion of host-country nationals into skilled and managerial roles. The underlying logic is exactly the absorptive-capacity and spillover argument from Chapter 8: don't passively hope the benefits diffuse — legally compel the linkages to local firms, workers, and technology. Hold this list in your mind, because it returns with a twist in section five: several of these tools were later restricted by the WTO as trade-distorting, which is part of the story of how the international rules came to favor firms over hosts.
+:::
+
+
+## Asserting Sovereignty: The Right to Nationalize
+
+When performance requirements weren't enough, developing host countries asserted a more radical claim in the 1960s–70s: the sovereign **right to nationalize** foreign firms.
+
+::: {.columns}
+::: {.column width="50%"}
+
+### The Calvo Doctrine
+A foreign investor is entitled to **no more than national treatment**, and disputes must be settled in the **host's own courts under host law** — *not* through the investor's home government or international arbitration. Sovereignty, not special protection.
+
+:::
+::: {.column width="50%"}
+
+### Permanent Sovereignty over Natural Resources
+**UN General Assembly Resolution 1803 (1962)** affirmed every state's right to control — and **expropriate** — foreign-owned resources in the national interest, with compensation set by the host. The economic charter of the **NIEO**.
+
+:::
+:::
+
+::: {.callout-important appearance="minimal" icon=false}
+Both doctrines assert the same principle: **the territorial state is supreme over the foreign firm.** This marks the peak of host-country power — and it is what the later treaty regime was designed to undo.
+:::
+
+::: {.notes}
+When regulation through performance requirements wasn't enough — or when the political mood turned radical — developing host countries advanced a far more sweeping claim in the 1960s and 70s: the sovereign right to take the firm itself, to nationalize. Two doctrines, both key terms, codify this assertion of sovereignty, and they're mirror images of each other. The Calvo Doctrine, named for the nineteenth-century Argentine jurist Carlos Calvo, holds that a foreign investor is entitled to no more than national treatment — the same treatment as domestic firms, no special privileges — and, crucially, that any dispute must be resolved in the host country's own courts under the host country's own law. No appealing to your home government, no international arbitration, no gunboat diplomacy. The foreigner who invests accepts the host's jurisdiction, full stop. The second doctrine globalized that principle. UN General Assembly Resolution 1803 of 1962, on Permanent Sovereignty over Natural Resources, affirmed that every state has a permanent, inalienable right to control and dispose of its natural wealth — including the right to nationalize or expropriate foreign-owned resources in the national or public interest, with compensation determined by the host state's own law. This became a cornerstone of the New International Economic Order we discussed on Tuesday — the developing world's bid to rewrite the rules of the global economy in its favor. Notice what both doctrines insist on, in the callout: the territorial state is supreme over the foreign firm. The firm enters on the host's terms and stays at the host's sufferance. This is the absolute high-water mark of host-country power over the multinational — and I want you to mark it well, because the entire international treaty regime we examine in section five was constructed, deliberately, by capital-exporting states to reverse exactly this. The history of investment law over the last forty years is in large part the story of capital-exporting countries dismantling the Calvo Doctrine.
+:::
+
+
+## The Expropriation Wave — and Its Collapse
+
+```{r}
+#| label: fig-expropriation
+#| fig-width: 12.5
+#| fig-height: 4.7
+#| out-width: "90%"
+#| fig-alt: "Bar chart of the number of forced divestments (expropriation acts) of foreign firms per year, 1960 to 1985. Acts climb through the late 1960s, surge to a peak of about 83 in 1975 during the NIEO era, then collapse almost to zero by the early 1980s."
+
+exp <- read.csv("data/expropriations.csv")
+
+ggplot(exp, aes(year, acts)) +
+  annotate("rect", xmin = 1970, xmax = 1976, ymin = -Inf, ymax = Inf, fill = "#7B1E1E", alpha = 0.08) +
+  geom_col(fill = iu_crimson, width = 0.72) +
+  annotate("text", x = 1973, y = 90, label = "NIEO era", color = "#7B1E1E",
+           fontface = "bold", size = 4.4) +
+  annotate("text", x = 1975, y = 86, label = "1975 peak\n~83 acts", color = iu_dark_text,
+           fontface = "bold", size = 3.5, lineheight = 0.9, hjust = -0.08, vjust = 0.3) +
+  annotate("text", x = 1983, y = 22, label = "near zero\nby the 1980s", color = iu_gray,
+           fontface = "bold", size = 3.6, lineheight = 0.9) +
+  scale_x_continuous(breaks = seq(1960, 1985, 5), limits = c(1959, 1986)) +
+  scale_y_continuous(limits = c(0, 100)) +
+  labs(title = "Nationalization surged in the 1970s — then almost vanished",
+       subtitle = "Forced divestments of foreign firms per year, 1960–1985",
+       x = NULL, y = "Expropriation acts",
+       caption = "Source: Minor (1994), after Kobrin — forced divestments of foreign affiliates. Counts approximate.") +
+  theme_ipe(base_size = 15)
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+Why did it collapse? The 1982 debt crisis left poor countries needing capital, which expropriation deterred. The deeper reason is that **the bargaining power behind nationalization had shifted back toward the firms** — the mechanism we turn to next.
+:::
+
+::: {.notes}
+This chart shows the assertion of sovereignty in action, and then its reversal. On the vertical axis is the number of forced divestments — expropriations and nationalizations of foreign firms — per year, from 1960 to 1985, drawn from the data assembled by Kobrin and Minor. Through the 1960s the numbers climb as decolonization brings newly independent governments to power and economic nationalism spreads. The shaded band is the NIEO era of the early-to-mid 1970s, and the wave peaks in 1975 at around eighty-three separate acts in a single year — oil in the Middle East, copper in Chile and Zambia, plantations and banks across Africa and Asia. For a time it looked as if the host countries were prevailing, as if the Calvo Doctrine and permanent sovereignty were becoming the operative rules of the world economy. Then the wave recedes sharply, falling almost to zero by the early 1980s and staying there. Two things explain the collapse, and the second is the more important. The proximate cause is the debt crisis of 1982, which we studied Tuesday: developing countries suddenly, desperately needed foreign capital, and nothing frightens capital away faster than a record of seizing it, so expropriation became self-defeating. But the deeper cause is structural, and it's the concept that organizes the next section — the bargaining power that had made nationalization possible in the first place had quietly shifted back toward the firms. To understand why the expropriation wave rose and then died, you need Vernon's obsolescing bargain, and that's exactly where we go next.
+:::
+
+
+# The Other Side: Competing for Investment {background-color="#990000"}
+
+
+## From Controlling MNCs to Courting Them
+
+By the 1990s the politics reversed: instead of restricting foreign firms, governments **bid against each other to attract** them.
+
+::: {.columns}
+::: {.column width="50%"}
+
+### Locational incentives
+Inducements a host offers to **win** an investment: **tax holidays, subsidies, cash grants, cheap land, infrastructure, regulatory relief.**
+
+*Example:* the U.S. South. In 1990 the Deep South built **no cars**; today Alabama, Georgia, Mississippi, and South Carolina build **2M+/year** — lured by state incentive packages (BMW's Spartanburg plant, 1992).
+
+:::
+::: {.column width="50%"}
+
+### Export-processing zones (EPZs)
+Carved-out enclaves where firms get **duty-free imports, tax breaks, streamlined rules, and (often) lighter labor regulation** — in exchange for **export-oriented jobs.**
+
+From a handful of zones in the 1970s to **thousands worldwide**, concentrated in manufacturing for global value chains.
+
+:::
+:::
+
+::: {.callout-important appearance="minimal" icon=false}
+The host's dilemma resurfaces: competing to attract FDI can become a **"race to the bottom"** — bidding away tax revenue and lowering standards. Incentives may capture the investment while **eroding the benefits** they were meant to secure.
+:::
+
+::: {.notes}
+Now the picture reverses, and it is one of the most striking reversals in the postwar political economy. Having spent the 1960s and 70s trying to control and even seize foreign firms, by the late 1980s and 90s governments across the developing world — and the developed world too — were doing the opposite: competing fiercely against one another to attract those same firms. Two key terms capture the courtship. Locational incentives are the inducements a host offers to win an investment that could go elsewhere: tax holidays, outright cash grants and subsidies, cheap or free land, publicly built infrastructure, worker-training subsidies, regulatory relief. Oatley's vivid example is the American South, and it's worth dwelling on because it shows this is not just a developing-country phenomenon. In 1990 not a single car was manufactured in the Deep South; today Alabama, Georgia, Mississippi, and South Carolina together build more than two million vehicles a year, every one of those plants lured by a competitive package of state incentives — BMW's Spartanburg plant in South Carolina, which opened in 1992 after an incentive-driven site search, kicked it off, followed by Mercedes, Hyundai, Kia. American states bid against each other with taxpayer money exactly the way developing countries do. The second tool is the export-processing zone, a geographically carved-out enclave where firms receive duty-free importation of inputs, tax exemptions, streamlined customs and administration, and frequently lighter labor and environmental regulation — all in exchange for locating export-oriented production and the jobs that come with it. From a small handful of zones in the 1970s, EPZs multiplied into thousands worldwide, becoming the physical backbone of the global value chains we mapped yesterday. But notice, in the callout, that the host's dilemma comes right back in a new form. When every jurisdiction competes to attract the same mobile investment, the competition can become a race to the bottom: governments bid away the tax revenue and relax the labor and environmental standards that were supposed to make the investment beneficial in the first place. So the firm may get courted into town with incentives so generous, and standards so lowered, that the host captures the investment but loses much of the benefit. Attract too hard and you erode the very gains you were chasing. That tension — how hard to compete, and on what terms — is set by bargaining, which is our next and central concept.
+:::
+
+
+# The Obsolescing Bargain {background-color="#990000"}
+
+
+## Why Bargaining Power Shifts After the Investment Is Sunk
+
+```{r}
+#| label: fig-obsolescing
+#| fig-width: 12.5
+#| fig-height: 4.8
+#| out-width: "88%"
+#| fig-alt: "A line chart of relative bargaining power over the life of an investment. Before the investment, the multinational's bargaining power is high and the host's is low. At the moment capital is committed and becomes a sunk, immovable asset, the lines cross: the host's power rises and the firm's falls as the project matures."
+
+t <- seq(0, 10, length.out = 200)
+mnc <- 8.6 - 5.6 / (1 + exp(-(t - 3.2) * 1.4))
+host <- 1.6 + 5.8 / (1 + exp(-(t - 3.2) * 1.4))
+bp <- data.frame(t = rep(t, 2),
+                 power = c(mnc, host),
+                 who = rep(c("Multinational's leverage", "Host state's leverage"), each = length(t)))
+
+ggplot(bp, aes(t, power, color = who)) +
+  annotate("rect", xmin = 2.7, xmax = 3.7, ymin = -Inf, ymax = Inf, fill = "#7B1E1E", alpha = 0.07) +
+  geom_vline(xintercept = 3.2, linetype = "dashed", color = iu_gray, linewidth = 0.6) +
+  geom_line(linewidth = 1.5) +
+  annotate("text", x = 3.2, y = 9.6, label = "capital sunk\n(asset now immovable)",
+           color = iu_dark_text, fontface = "bold", size = 3.6, lineheight = 0.9) +
+  annotate("text", x = 1.15, y = 8.7, label = "COURTSHIP\nfirm holds the cards",
+           color = iu_navy, fontface = "bold", size = 3.7, lineheight = 0.9, hjust = 0) +
+  annotate("text", x = 7.2, y = 8.7, label = "AFTER THE SINK COST\nhost gains leverage",
+           color = iu_crimson, fontface = "bold", size = 3.7, lineheight = 0.9, hjust = 0) +
+  scale_color_manual(values = c("Multinational's leverage" = iu_navy,
+                                "Host state's leverage" = iu_crimson), name = NULL) +
+  scale_x_continuous(breaks = NULL,
+                     labels = NULL,
+                     limits = c(0, 10)) +
+  scale_y_continuous(limits = c(0, 10.2), breaks = NULL) +
+  labs(title = "The obsolescing bargain (Vernon)",
+       subtitle = "Relative bargaining power over the life of an investment",
+       x = "Time  →", y = "Bargaining power") +
+  theme_ipe(base_size = 15) +
+  theme(panel.grid.major = element_blank(),
+        axis.title.x = element_text(color = iu_dark_text, size = rel(0.95), hjust = 0.5))
+```
+
+::: {.callout-tip appearance="minimal" icon=false}
+**Before** investing, the firm can shop among eager hosts → it wins generous terms. **After** the capital is sunk into an immovable mine, plant, or pipeline, it **can't credibly threaten to leave** → the host can raise taxes, demand renegotiation, even expropriate. The original deal *obsolesces.*
+:::
+
+::: {.notes}
+Here is the single most useful idea in the chapter, Vernon's obsolescing bargain, and once you have it, the whole pattern of MNC politics — including the expropriation wave we just watched rise and fall — clicks into place. The chart plots relative bargaining power over the life of an investment, with time running left to right. Start on the left, before the investment is made — the courtship phase. Here the firm holds the cards. It has capital, technology, and market access that the host wants, and critically it is mobile: it can credibly say, "give us better terms or we'll build in the country next door." Hosts compete, as we just saw, and the firm extracts a generous deal — tax holidays, incentives, favorable conditions. Now follow the lines to the dashed vertical, the moment the capital is actually committed — sunk into a copper mine, an assembly plant, a pipeline, an asset that is physically fixed in the host's territory and cannot be picked up and moved. At that instant the power shifts, and the lines cross. The firm's great threat — to walk away — has evaporated, because walking away now means abandoning a billion dollars of immovable plant. The host, meanwhile, has gained enormous leverage: it can raise taxes, tighten regulations, demand the contract be renegotiated, impose new performance requirements, or in the extreme nationalize the asset outright, and the firm has little recourse because the money is already in the ground. The original bargain, struck when the firm was strong, obsolesces — it decays — as the investment matures and the firm grows weak. That is why the term is the *obsolescing* bargain. And this single mechanism explains the expropriation wave: those nationalizations clustered precisely in capital-intensive, immobile, long-lived sectors — mining, oil, plantations, utilities — exactly where the sunk-cost trap is most severe and the host's post-investment leverage is greatest. It also explains the collapse and what follows: if firms understand the obsolescing bargain, they will demand some external guarantee — some way to lock in the original deal and stop the host from exploiting them later. That demand for a credible commitment device is precisely what built the treaty regime we turn to in section five. But first, one modern twist on the bargaining relationship: what happens when the investor is not a private firm at all, but a foreign government.
+:::
+
+
+## When the Investor Is a State
+
+A **sovereign wealth fund (SWF)** is a **state-owned investment fund** that invests national savings — often oil revenue or reserves — in assets abroad.
+
+::: {.columns}
+::: {.column width="50%"}
+
+```{r}
+#| label: fig-swf
+#| fig-width: 7.6
+#| fig-height: 5.3
+#| out-width: "98%"
+#| fig-alt: "Dual-axis chart, 2002 to 2024. A crimson area shows sovereign wealth fund assets under management rising from about 1 trillion dollars in 2002 to about 13.5 trillion in 2024. A navy dashed line shows SWF assets as a share of the world's inward FDI stock, rising from about 13 percent to roughly a quarter and then holding near 25 to 27 percent."
+
+swf <- data.frame(
+  year = c(2002, 2005, 2007, 2010, 2012, 2014, 2016, 2018, 2020, 2021, 2022, 2023, 2024),
+  aum  = c(1.0, 1.9, 3.0, 4.2, 5.3, 6.7, 7.4, 8.1, 8.9, 10.5, 11.0, 12.7, 13.5),
+  pct  = c(13, 17, 19, 21, 24, 27, 27, 25, 22, 23, 25, 26, 27)
+)
+sf <- 15 / 40   # map 0–40% (right axis) onto the 0–15 trillion (left axis)
+
+ggplot(swf, aes(year)) +
+  geom_area(aes(y = aum), fill = iu_crimson, alpha = 0.12) +
+  geom_line(aes(y = aum), color = iu_crimson, linewidth = 1.6) +
+  geom_line(aes(y = pct * sf), color = iu_navy, linewidth = 1.1, linetype = "longdash") +
+  geom_point(aes(y = pct * sf), color = iu_navy, size = 1.5) +
+  annotate("text", x = 2018, y = 11.6, label = "Total assets\n(left axis)",
+           color = iu_crimson, fontface = "bold", size = 3.5, lineheight = 0.9) +
+  annotate("text", x = 2006.6, y = 9.0, label = "Share of world\nFDI stock (right)",
+           color = iu_navy, fontface = "bold", size = 3.5, lineheight = 0.9) +
+  scale_y_continuous(name = "SWF assets (US$ trillions)", limits = c(0, 15.5),
+                     breaks = seq(0, 15, 5),
+                     sec.axis = sec_axis(~ . / sf, name = "% of world inward FDI stock",
+                                         breaks = seq(0, 40, 10),
+                                         labels = function(x) paste0(x, "%"))) +
+  scale_x_continuous(breaks = seq(2005, 2025, 5), limits = c(2002, 2025)) +
+  labs(title = "Sovereign funds have more than quadrupled since 2007",
+       subtitle = "Assets under management, and SWF assets vs. global inward FDI stock",
+       x = NULL,
+       caption = "Sources: Global SWF / SWF Institute / IMF (assets); UNCTAD (inward FDI stock). Approximate.") +
+  theme_ipe(base_size = 13) +
+  theme(axis.title.y.left = element_text(color = iu_crimson),
+        axis.text.y.left = element_text(color = iu_crimson),
+        axis.title.y.right = element_text(color = iu_navy),
+        axis.text.y.right = element_text(color = iu_navy))
+```
+
+:::
+::: {.column width="50%"}
+
+- SWFs collectively manage on the order of **~$13 trillion** (2025); Norway's fund alone holds **~$1.8 trillion**
+- Big players: **Norway, China, the Gulf states, Singapore**
+- They turn the usual story around — now a **foreign government** owns a stake in the host's firms, ports, and infrastructure
+
+::: {.callout-important appearance="minimal" icon=false}
+When the investor is a *state*, hosts suspect **political, not commercial, motives.** Is this just capital — or a foreign government acquiring **leverage**? This question is the hinge into the **national-security** concerns we close on.
+:::
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+SWFs (and state-owned enterprises) blur the line between **investment and statecraft** — which is exactly why they helped trigger the screening regimes in Section 6.
+:::
+
+::: {.notes}
+Vernon's bargaining model assumed the investor is a profit-seeking private firm. But a growing share of cross-border investment comes from a different kind of actor, and it scrambles the politics — the sovereign wealth fund, our next key term. A sovereign wealth fund is a state-owned investment fund through which a government invests national savings — typically the proceeds of oil and gas exports, or accumulated foreign-exchange reserves — in assets around the world. Collectively these funds now manage something on the order of thirteen trillion dollars as of 2025; Norway's Government Pension Fund Global alone holds roughly one and three-quarter trillion, and the other major players are China, the Gulf states like Abu Dhabi, Kuwait, Qatar, and Saudi Arabia's Public Investment Fund, and Singapore's GIC and Temasek. Notice how this inverts the chapter's whole framing. Up to now the story has been a private foreign firm investing inside a sovereign host. With an SWF, the investor itself is a foreign sovereign — a foreign government taking ownership stakes in the host country's companies, banks, ports, and infrastructure. And that triggers a different anxiety, in the callout. When the investor is a private firm, the host can assume it's chasing profit, and profit is at least predictable and negotiable. When the investor is a foreign state, the host starts to suspect the motive may be political rather than commercial: is this simply capital seeking a return, or is a rival government acquiring leverage, access to sensitive technology, or a foothold in critical infrastructure? Sovereign wealth funds and state-owned enterprises blur the line between investment and statecraft — between a business decision and a geopolitical one. And that blurring is precisely the hinge into where we end today: the suspicion that some inward investment is not really commercial at all, but a national-security threat, is what gave rise to the screening regimes we close on. Hold that thought — but first, the centerpiece of the lecture, and the thing I most want you to take away: why, for all this politics, the world never built an organization to govern it.
+:::
+
+
+# Why There Is No "World Investment Organization" {background-color="#990000"}
+
+
+## Trade Has the WTO; Investment Has 3,300 Treaties
+
+```{r}
+#| label: fig-iia
+#| fig-width: 12.5
+#| fig-height: 4.6
+#| out-width: "90%"
+#| fig-alt: "Line chart of the cumulative number of international investment agreements (mostly bilateral investment treaties) from 1959 to 2024. The count is near zero until the late 1980s, explodes through the 1990s and 2000s to roughly 3,300, then plateaus and slightly declines after about 2017 as treaties are terminated."
+
+iia <- read.csv("data/iia_cumulative.csv")
+
+ggplot(iia, aes(year, iias)) +
+  geom_area(fill = iu_crimson, alpha = 0.10) +
+  geom_line(color = iu_crimson, linewidth = 1.5) +
+  geom_vline(xintercept = 1998, linetype = "dashed", color = iu_navy, linewidth = 0.6) +
+  annotate("text", x = 1998, y = 1050, label = "1998:\nMAI collapses", color = iu_navy,
+           fontface = "bold", size = 3.5, lineheight = 0.9, hjust = 1.08) +
+  annotate("text", x = 2024, y = 3323, label = "~3,300 treaties\n(2,843 BITs)", color = iu_dark_text,
+           fontface = "bold", size = 3.5, lineheight = 0.9, hjust = 1, vjust = 1.5) +
+  annotate("text", x = 1972, y = 2350, label = "No single organization —\njust thousands of\nseparate bilateral deals",
+           color = iu_gray, fontface = "bold", size = 4.1, lineheight = 0.95, hjust = 0) +
+  scale_x_continuous(breaks = seq(1960, 2020, 10), limits = c(1959, 2027)) +
+  scale_y_continuous(limits = c(0, 3650), labels = comma) +
+  labs(title = "A patchwork built one treaty at a time",
+       subtitle = "Cumulative international investment agreements (IIAs), 1959–2024",
+       x = NULL, y = NULL,
+       caption = "Source: UNCTAD IIA Navigator (BITs + treaties with investment provisions). 2024: 3,323 IIAs, of which 2,843 BITs.") +
+  theme_ipe(base_size = 15)
+```
+
+::: {.callout-important appearance="minimal" icon=false}
+A **bilateral investment treaty (BIT)** is a two-country pact protecting each other's investors — national treatment, MFN, limits on expropriation, and **investor-state dispute settlement (ISDS)**: the *firm* can sue the *state* before international arbitrators. Instead of one organization, the world built **3,300 of these.**
+:::
+
+::: {.notes}
+Now the centerpiece, and I want to frame it as a genuine puzzle. Trade has the World Trade Organization — a single, near-universal, multilateral body with comprehensive rules, a membership of over 160 states, and a dispute system. Money and macroeconomics have the IMF. But investment — which we spent yesterday establishing is the organizing force of the entire modern world economy, eighty percent of trade, a third of global output — investment has no World Investment Organization. There is no WTO for FDI. Instead, look at the chart: what the world built, one agreement at a time, is a vast patchwork of bilateral investment treaties. The count sits near zero until the late 1980s, then absolutely explodes through the 1990s and 2000s, reaching roughly thirty-three hundred international investment agreements today, of which about twenty-eight hundred are classic two-country BITs. So what is a BIT, our next key term? It's a treaty between two countries in which each promises to protect investors from the other: to grant them national treatment and most-favored-nation treatment, to restrict the host's ability to expropriate without prompt and adequate compensation, and — this is the radical, defining feature — to allow investor-state dispute settlement, or ISDS. Under ISDS, a private firm can directly sue a sovereign government before a panel of international arbitrators, outside the host's own courts, and win binding monetary awards. Notice what that does: it is the inverse of the Calvo Doctrine. Calvo said the foreign investor must use the host's courts under the host's law and may not appeal to outside authority; the BIT regime says the investor may bypass the host's courts entirely and haul the state before international arbitration. The treaty regime was, quite deliberately, the capital-exporting world's tool for reversing the host-sovereignty doctrines of the NIEO era — and it's also, if you recall the obsolescing bargain, the external commitment device that lets a host credibly promise *not* to exploit the firm after the capital is sunk, which is why signing BITs helps developing countries attract investment. But the deep point for today is structural: the world solved the investment-governance problem not with an institution but with thirty-three hundred separate, overlapping, often inconsistent bilateral deals. Why a patchwork and not an organization? That's the next two slides.
+:::
+
+
+## Building Multilateral Rules: TRIMs and the MAI
+
+Governments spent **decades** trying to build multilateral investment rules, with limited success.
+
+::: {.columns}
+::: {.column width="50%"}
+
+### TRIMs — a partial measure
+The WTO's **Trade-Related Investment Measures** agreement (1995) bans only the **trade-distorting** performance requirements — chiefly **local-content** and **trade-balancing** rules. It disciplines a few host tools but creates **no general investment regime.**
+
+:::
+::: {.column width="50%"}
+
+### MAI — the comprehensive attempt
+The **Multilateral Agreement on Investment**, negotiated at the **OECD (1995–1998)**, aimed to be a comprehensive investment treaty — strong investor protections, binding ISDS. It **collapsed in 1998** amid NGO and public opposition over sovereignty, and disagreement among the negotiating governments themselves.
+
+:::
+:::
+
+::: {.columns}
+::: {.column width="34%"}
+
+::: {style="text-align:center; margin-top:0.6em;"}
+![](images/mai-cartoon.jpg){width="58%" fig-alt="Editorial cartoon on the 1998 Multilateral Agreement on Investment negotiations."}
+:::
+
+:::
+::: {.column width="66%"}
+
+::: {.callout-tip appearance="minimal" icon=false}
+Earlier attempts also failed: the **1948 Havana Charter** (ITO) and the **1970s UN Code of Conduct on TNCs.** Across three venues — **UN, GATT/WTO, OECD** — and nearly 30 years of talks, no comprehensive framework emerged.
+:::
+
+:::
+:::
+
+
+::: {.notes}
+It is not for lack of trying that there's no World Investment Organization. Governments spent the better part of thirty years attempting to build multilateral investment rules, in three different venues, and almost every attempt failed. Take the two key terms here. TRIMs, the Agreement on Trade-Related Investment Measures, is a partial measure, and it is narrow. It came in with the founding of the WTO in 1995, and it does exactly one narrow thing: it prohibits the subset of performance requirements that distort trade in goods — principally local-content rules, which require buying domestic inputs, and trade-balancing rules. That's it. It reaches back and bans a couple of items from the host-country toolkit we built in section two, but it pointedly does not create a general framework governing investment — nothing on the entry of investment, on expropriation, on dispute settlement, on the firm's obligations. It's a trade agreement that happens to clip a few investment-related wings. The grander attempt was the MAI, the Multilateral Agreement on Investment, negotiated not at the WTO but among the rich countries at the OECD from 1995 to 1998. The MAI was meant to be the real thing: a comprehensive, high-standard investment treaty with sweeping investor protections and binding investor-state arbitration, a kind of charter for global capital. And it collapsed in 1998. It was killed by a combination of forces — a transnational coalition of NGOs and civil-society groups mobilized against it as a charter for corporate power that would gut national sovereignty and environmental and labor regulation, and, just as importantly, the negotiating governments couldn't agree among themselves, with France ultimately walking away. And these weren't the first failures: the 1948 Havana Charter, which would have created an International Trade Organization with investment provisions, never entered into force; the developing countries' push in the 1970s for a UN Code of Conduct on Transnational Corporations — a code to discipline firms rather than protect them — also died. Three venues, the UN, the GATT and WTO, and the OECD; almost three decades of negotiation; and no comprehensive multilateral investment framework to show for it. The question is why this particular domain proved so impossible, when trade got its WTO. We take up why on the next slide.
+:::
+
+
+## Why No WTO for Investment? Home vs. Host
+
+The deep reason: the two sides want a regime to do **opposite things** — and can't agree what it should even govern.
+
+```{r}
+#| label: tbl-homehost
+
+hh <- data.frame(
+  q = c("Who they are", "What they want rules to do", "Their model doctrine", "Whom rules should bind"),
+  exporters = c("Capital-EXPORTERS — advanced, home to MNCs",
+                "PROTECT investors; lock in access; restrain host interference",
+                "Strong investor rights + ISDS (anti-Calvo)",
+                "Discipline HOST STATES"),
+  importers = c("Capital-IMPORTERS — developing, host to MNCs",
+                "PRESERVE sovereignty; keep the right to regulate & screen",
+                "Calvo Doctrine + permanent sovereignty",
+                "Discipline the FIRMS")
+)
+
+kable(hh, col.names = c("", "Home countries", "Host countries"),
+      align = c("l", "l", "l")) %>%
+  kable_styling(font_size = 20, full_width = TRUE) %>%
+  row_spec(0, bold = TRUE, color = "white", background = iu_crimson) %>%
+  row_spec(1:4, extra_css = "padding-top: 12px; padding-bottom: 12px; line-height: 1.35;") %>%
+  column_spec(1, bold = TRUE, color = iu_crimson, width = "22%") %>%
+  column_spec(2:3, width = "39%")
+```
+
+::: {.callout-important appearance="minimal" icon=false}
+Rules that **protect** firms (what home countries want) are rules that **constrain** host sovereignty (what host countries refuse). With no overlap on *whom to bind,* the multilateral deal never closed — and the world defaulted to a **decentralized, investor-protective BIT patchwork** instead.
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+Contrast the **WTO** (state-to-state; only *states* have standing; one organization) with the **investment "non-regime"** (investor-to-state ISDS; *firms* sue states; thousands of treaties, no organization).
+:::
+
+::: {.notes}
+Here is the answer, and it illustrates why some cooperation problems are solvable and others are not. The reason there's no World Investment Organization is not technical and not accidental — it's that the two sides of the investment relationship want a regime to do diametrically opposite things, and they can't even agree on what the rules should govern. Read the table across. On one side are the capital-exporting countries — the advanced economies that are home to most multinationals. What do they want international rules to do? Protect their investors: guarantee access to foreign markets, lock in favorable treatment, and above all restrain host governments from interfering with, taxing, or expropriating their firms once the capital is committed — solving the obsolescing-bargain problem in the firm's favor. Their model is strong investor rights backed by binding ISDS, which is to say, the deliberate negation of Calvo. And in their vision, the rules should bind host states — discipline the governments. On the other side are the capital-importing countries — the developing economies that host MNCs. What do they want? Almost the reverse: to preserve their sovereignty, to retain the right to regulate, to impose performance requirements, to screen and channel investment toward development, and historically the right to expropriate in the national interest. Their model doctrines are Calvo and permanent sovereignty. And in their vision, international rules should bind the firms — discipline the corporations, not the states. Now look at the collision in the callout. Rules that protect firms just *are* rules that constrain host sovereignty — the same rule, read from two directions. There is no version of a strong investment treaty that both locks in investor protection and preserves the host's freedom to regulate; one is the mirror negative of the other. Because the two sides could not agree on the most basic question — whom should the rules bind, the states or the firms? — the comprehensive multilateral deal never closed, in any venue, across thirty years. And here's the consequence, and it's subtle: the absence of a multilateral organization did not produce *no* rules. It produced a decentralized, bilateral, and strongly investor-protective patchwork — the thirty-three hundred BITs — because capital-exporting states, unable to win a global treaty, simply went country by country, offering developing states a deal: sign a BIT protecting our investors, and we'll send you capital. Power asymmetry did through bilateral bargaining what it couldn't do multilaterally. Hold the final contrast, the bottom callout, because it captures the whole structure: the WTO is state-to-state, only states have standing to bring cases, and it's a single organization; the investment regime is investor-to-state, private firms sue sovereign governments, and it's thousands of separate treaties with no organization at the center at all. That difference is the answer to today's Big Question — who controls the multinational? — and it sets up the backlash we close on, because lately the host countries, including the richest ones, have started taking back control through a different door entirely.
+:::
+
+
+# The Securitization of Investment {background-color="#990000"}
+
+::: {style="text-align:center; margin-top:-0.2em;"}
+[Emerging issue]{style="font-size:0.6em; color:#EDEBEB; letter-spacing:0.15em;"}
+:::
+
+
+## From Attracting FDI to Screening It
+
+```{r}
+#| label: fig-screening
+#| fig-width: 12.5
+#| fig-height: 4.6
+#| out-width: "90%"
+#| fig-alt: "Line chart of the cumulative number of economies with national-security FDI screening mechanisms, 1995 to 2024, rising slowly to about 10 by 2010, then accelerating sharply after the 2018 US FIRRMA reform and the 2020-21 COVID period to about 40."
+
+scr <- read.csv("data/fdi_screening.csv")
+
+ggplot(scr, aes(year, economies)) +
+  geom_area(fill = iu_crimson, alpha = 0.10) +
+  geom_line(color = iu_crimson, linewidth = 1.5) +
+  geom_point(color = iu_crimson, size = 2) +
+  geom_vline(xintercept = 2018, linetype = "dashed", color = iu_navy, linewidth = 0.6) +
+  annotate("text", x = 2018, y = 12, label = "2018:\nU.S. FIRRMA\nexpands CFIUS", color = iu_navy,
+           fontface = "bold", size = 3.4, lineheight = 0.9, hjust = 1.07) +
+  annotate("text", x = 2024, y = 40, label = "~40 economies", color = iu_dark_text,
+           fontface = "bold", size = 3.6, hjust = 1, vjust = -0.8) +
+  scale_x_continuous(breaks = seq(1995, 2025, 5), limits = c(1995, 2027)) +
+  scale_y_continuous(limits = c(0, 45)) +
+  labs(title = "Investment screening: from rare to routine",
+       subtitle = "Cumulative economies with national-security FDI screening mechanisms",
+       x = NULL, y = NULL,
+       caption = "Source: UNCTAD Investment Policy Monitor (≥37 economies adopted screening since 1995). Cumulative figures approximate.") +
+  theme_ipe(base_size = 15)
+```
+
+::: {.callout-important appearance="minimal" icon=false}
+The pattern reverses. For four decades, states **competed to attract** FDI; now advanced economies **screen and sometimes block** it on **national-security** grounds. In the U.S., **CFIUS** — strengthened by **FIRRMA (2018)** — reviews foreign deals; **342 filings in 2023** alone. "Economic security is national security."
+
+[🎧 **Podcast:** Skadden, *Economic Statecraft & Foreign Investment Screening* — the screening "toolkit" in practice.]{style="font-size:0.82em; color:#535054;"}
+:::
+
+::: {.notes}
+And now the emerging issue we've been building toward, and notice it completes a full circle back to the beginning of the lecture. For roughly forty years — the whole period we just traced, from the collapse of the expropriation wave through the BIT explosion — the dominant story was liberalization and competition to attract FDI. Governments courted foreign capital, signed treaties protecting it, built export-processing zones for it. The chart shows the counter-movement that has erupted in the last decade: the spread of national-security investment screening. On the vertical axis is the cumulative number of economies that have adopted a formal mechanism to screen — and potentially block — inward foreign investment on national-security grounds. It creeps along at a low level through the 2000s, then bends sharply upward after about 2018, with UNCTAD counting at least thirty-seven economies adopting such mechanisms, most of them advanced European and Asian democracies, the very capital-exporters who spent the prior decades demanding that *hosts* keep their markets open. The inflection in the United States is the 2018 FIRRMA reform — the Foreign Investment Risk Review Modernization Act — which substantially expanded the jurisdiction and resources of CFIUS, the Committee on Foreign Investment in the United States, the interagency body that reviews foreign acquisitions for national-security risk. CFIUS is busy: there were three hundred forty-two filings in 2023 alone, and as the Nippon Steel–U.S. Steel saga showed, even investment from a close *ally* like Japan can now be blocked. The animating slogan, which you heard in the Skadden podcast, is "economic security is national security" — the collapse of the old wall between commercial policy and defense policy. Here's the conceptual payoff, the callout: the entire arc of the lecture inverts. The developing host countries of the 1970s asserted sovereignty over foreign firms through the Calvo Doctrine and expropriation; the advanced capital-exporters spent forty years dismantling that and building investor protections; and now those same advanced economies are reasserting exactly that host sovereignty — the right to regulate, screen, and block foreign investment — but rebranded from "economic nationalism," which sounds retrograde, to "national security," which sounds prudent. In effect, the Calvo impulse is returning in the world's richest countries, now justified on security grounds. The question is why, and why now — and why the firms that you'd expect to fight it have been so quiet. That's our reading.
+:::
+
+
+<!-- The article-overview slide was removed: a student presents the Bauerle Danzman (2025) SPE article; the lecture hands off after "From Attracting FDI to Screening It." -->
+
+
+## Recap: Who Governs the Multinational?
+
+::: {.callout-important appearance="minimal" icon=false}
+**Today's Big Question —** A multinational answers to many governments but to no global authority — so who actually controls it?
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+
+### The struggle, then the swing
+- **One firm, many sovereigns:** Vernon's tension — global firm vs. territorial state
+- **Hosts push back:** performance requirements, the **Calvo Doctrine**, permanent sovereignty, expropriation
+- **Then they court:** locational incentives & export-processing zones
+- **The obsolescing bargain** explains the swing — power shifts once capital is sunk
+
+:::
+::: {.column width="50%"}
+
+### Governance, or its absence
+- **No World Investment Organization:** **TRIMs** is narrow, the **MAI** collapsed — home and host want opposite rules
+- So: **3,300 BITs** + **ISDS**, not one body
+- **Now:** **SWFs**, then security — **screening & CFIUS** rebuild host control as *national security* (securitized political economy)
+
+:::
+:::
+
+::: {.callout-tip appearance="minimal" icon=false}
+The throughline: the multinational has long operated in the gap between a **global economy** and a **world of sovereign states.** No international organization filled that gap, and today the **security state** is moving into it.
+:::
+
+::: {.notes}
+Let's pull the whole day together around the Big Question. The left column is the political struggle and its great swing. We began with Vernon's core tension — one firm optimizing globally inside a world of territorial states — dramatized in Chile's copper. Host countries first pushed back hard: performance requirements to force benefits, then the assertion of outright sovereignty in the Calvo Doctrine and the UN's permanent-sovereignty resolution, cresting in the 1970s expropriation wave. Then the politics swung the other way, and the very same governments competed to court FDI with locational incentives and export-processing zones. And Vernon's obsolescing bargain is the hinge that explains the swing in both directions: bargaining power sits with the mobile firm before the capital is committed and shifts to the host once the asset is sunk, which is why nationalization clustered in immovable sectors and why firms came to demand external protection. The right column is the governance story, and it's the one to remember. Unlike trade, investment never got an organization. The multilateral road failed — TRIMs disciplines only a couple of host tools, the MAI collapsed in 1998 — because home and host countries wanted rules to do opposite things and could never agree whether to bind states or bind firms. So the world defaulted to a decentralized patchwork: thirty-three hundred bilateral treaties with investor-state arbitration, capital-exporting protection built one deal at a time. And now the newest turn: first sovereign wealth funds blurring investment and statecraft, and then the broader securitization of investment — screening regimes and CFIUS rebuilding host control over the foreign firm, but in the language of national security rather than economic nationalism, and so effectively that even the powerful firms affected couldn't stop it. The throughline, the closing callout, is the sentence I'd most like you to keep: the multinational corporation has always lived in the gap between a genuinely global economy and a world still organized into sovereign states. No international organization was ever built to fill that gap — and today it is the national-security state that is moving in to fill it. That's the politics of the multinational corporation. Now let's discuss.
+:::

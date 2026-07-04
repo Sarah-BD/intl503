@@ -1,0 +1,27 @@
+---
+title: "Day 3: Political Economy of International Trade Cooperation"
+subtitle: "Thursday, July 9, 2026"
+toc: false
+---
+
+**Required materials:**
+
+1. Oatley, Chapter 3 — *The Political Economy of International Trade Cooperation*
+2. Bown, Chad P., and Soumaya Keynes. 2020. "Why Trump shot the Sheriffs: The end of WTO dispute settlement 1.0." *Journal of Policy Modeling* 42(4): 799–819.
+3. {{< fa headphones >}} [*Trade Talks* ep. 17: "WTO Ministerials, Now and Then"](https://tradetalkspodcast.com/podcast/17-wto-ministerials-now-and-then/)
+
+::: {.callout-tip}
+## In class today
+- Why is trade cooperation hard even when both sides gain?
+- Reciprocity, retaliation, and the economic logic of trade agreements
+- How institutions stabilize cooperation — and what happens when enforcement breaks
+- The Appellate Body crisis: dispute settlement from 1995 to today
+- **Student-led article presentation** (Bown & Keynes 2020)
+- Writing and discussion
+:::
+
+## Slides
+
+[{{< fa expand >}} Open slides in a new tab](../slides/day03-chapter03.html){target="_blank"}
+
+<iframe src="../slides/day03-chapter03.html" width="100%" height="600" style="border:1px solid #ccc;"></iframe>

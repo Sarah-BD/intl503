@@ -1,0 +1,29 @@
+---
+title: "Day 8: The Politics of Multinational Corporations"
+subtitle: "Friday, July 17, 2026"
+toc: false
+---
+
+**Required materials:**
+
+1. Oatley, Chapter 9 — *The Politics of Multinational Corporations*
+2. Bauerle Danzman, Sarah. 2025. "[Securitized Political Economy, Investment Regulation and Business Influence in a Geoeconomic Era](https://doi.org/10.1177/13540661251364402)." *European Journal of International Relations* (online first). *(PDF on Canvas)*
+3. {{< fa headphones >}} [*Foreign Correspondent* (Skadden): Economic Statecraft and Foreign Investment Screening](https://www.skadden.com/insights/podcasts/2025/03/economic-statecraft-and-foreign-investment-screening)
+
+::: {.callout-tip}
+## In class today
+- **Quiz 2** (Chapters 5–9)
+- The core tension: a global firm inside a world of sovereign states (Vernon)
+- How host states control MNCs — performance requirements, the Calvo Doctrine, expropriation
+- Competing *for* investment: locational incentives and export-processing zones
+- The obsolescing bargain, and why there is no "World Investment Organization"
+- Emerging issue: the securitization of investment — screening and CFIUS
+- **Student-led article presentation** (Bauerle Danzman 2025)
+- Lecture and discussion
+:::
+
+## Slides
+
+[{{< fa expand >}} Open slides in a new tab](../slides/day08-chapter09.html){target="_blank"}
+
+<iframe src="../slides/day08-chapter09.html" width="100%" height="600" style="border:1px solid #ccc;"></iframe>

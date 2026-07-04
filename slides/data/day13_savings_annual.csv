@@ -1,0 +1,601 @@
+country,year,gds_pct_gdp
+Argentina,2019,17.4
+Argentina,2018,14.7
+Argentina,2017,15.6
+Argentina,2016,16.6
+Argentina,2015,16.0
+Argentina,2014,17.7
+Argentina,2013,17.2
+Argentina,2012,18.5
+Argentina,2011,20.1
+Argentina,2010,20.6
+Argentina,2009,21.1
+Argentina,2008,23.3
+Argentina,2007,24.5
+Argentina,2006,24.3
+Argentina,2005,24.8
+Argentina,2004,24.6
+Argentina,2003,25.4
+Argentina,2002,25.9
+Argentina,2001,16.9
+Argentina,2000,16.9
+Argentina,1999,16.1
+Argentina,1998,18.5
+Argentina,1997,18.6
+Argentina,1996,19.0
+Argentina,1995,18.1
+Argentina,1994,16.9
+Argentina,1993,17.3
+Argentina,1992,15.2
+Argentina,1991,16.2
+Argentina,1990,19.7
+Brazil,2019,14.9
+Brazil,2018,15.5
+Brazil,2017,15.3
+Brazil,2016,15.4
+Brazil,2015,16.3
+Brazil,2014,17.9
+Brazil,2013,19.4
+Brazil,2012,20.1
+Brazil,2011,21.1
+Brazil,2010,20.8
+Brazil,2009,18.4
+Brazil,2008,21.4
+Brazil,2007,21.2
+Brazil,2006,20.5
+Brazil,2005,20.6
+Brazil,2004,21.3
+Brazil,2003,19.1
+Brazil,2002,18.3
+Brazil,2001,16.5
+Brazil,2000,16.6
+Brazil,1999,15.5
+Brazil,1998,15.8
+Brazil,1997,15.2
+Brazil,1996,15.1
+Brazil,1995,15.4
+Brazil,1994,22.5
+Brazil,1993,22.3
+Brazil,1992,21.4
+Brazil,1991,20.5
+Brazil,1990,21.4
+Chile,2019,23.1
+Chile,2018,23.1
+Chile,2017,23.3
+Chile,2016,23.5
+Chile,2015,24.6
+Chile,2014,25.5
+Chile,2013,26.5
+Chile,2012,28.3
+Chile,2011,29.5
+Chile,2010,30.9
+Chile,2009,30.5
+Chile,2008,30.5
+Chile,2007,35.6
+Chile,2006,36.2
+Chile,2005,31.6
+Chile,2004,30.7
+Chile,2003,27.8
+Chile,2002,26.1
+Chile,2001,25.6
+Chile,2000,25.3
+Chile,1999,24.5
+Chile,1998,25.1
+Chile,1997,27.5
+Chile,1996,27.9
+Chile,1995,28.0
+Chile,1994,26.0
+Chile,1993,25.0
+Chile,1992,26.1
+Chile,1991,27.8
+Chile,1990,29.0
+China,2019,43.5
+China,2018,44.2
+China,2017,44.5
+China,2016,44.4
+China,2015,45.7
+China,2014,47.1
+China,2013,47.9
+China,2012,48.4
+China,2011,49.2
+China,2010,50.6
+China,2009,49.4
+China,2008,49.7
+China,2007,48.5
+China,2006,47.0
+China,2005,45.2
+China,2004,44.5
+China,2003,41.7
+China,2002,38.8
+China,2001,37.9
+China,2000,36.3
+China,1999,37.3
+China,1998,39.4
+China,1997,40.2
+China,1996,39.8
+China,1995,40.8
+China,1994,41.7
+China,1993,41.5
+China,1992,40.2
+China,1991,38.0
+China,1990,36.3
+Colombia,2019,15.6
+Colombia,2018,16.5
+Colombia,2017,16.6
+Colombia,2016,16.4
+Colombia,2015,16.7
+Colombia,2014,19.8
+Colombia,2013,20.4
+Colombia,2012,20.9
+Colombia,2011,22.1
+Colombia,2010,20.3
+Colombia,2009,19.7
+Colombia,2008,20.8
+Colombia,2007,19.2
+Colombia,2006,18.8
+Colombia,2005,18.2
+Colombia,2004,17.1
+Colombia,2003,15.3
+Colombia,2002,13.9
+Colombia,2001,12.9
+Colombia,2000,14.1
+Colombia,1999,13.4
+Colombia,1998,13.8
+Colombia,1997,15.0
+Colombia,1996,16.5
+Colombia,1995,19.4
+Colombia,1994,19.6
+Colombia,1993,19.1
+Colombia,1992,20.0
+Colombia,1991,23.8
+Colombia,1990,23.6
+Egypt,2019,12.8
+Egypt,2018,10.7
+Egypt,2017,5.9
+Egypt,2016,5.5
+Egypt,2015,5.8
+Egypt,2014,5.2
+Egypt,2013,7.9
+Egypt,2012,8.1
+Egypt,2011,13.0
+Egypt,2010,14.3
+Egypt,2009,12.6
+Egypt,2008,16.8
+Egypt,2007,16.3
+Egypt,2006,17.1
+Egypt,2005,15.7
+Egypt,2004,15.6
+Egypt,2003,14.3
+Egypt,2002,13.6
+Egypt,2001,13.4
+Egypt,2000,12.9
+Egypt,1999,13.4
+Egypt,1998,12.0
+Egypt,1997,11.5
+Egypt,1996,12.7
+Egypt,1995,15.0
+Egypt,1994,15.1
+Egypt,1993,15.6
+Egypt,1992,17.0
+Egypt,1991,15.8
+Egypt,1990,16.7
+Ghana,2019,16.7
+Ghana,2018,20.7
+Ghana,2017,16.8
+Ghana,2016,20.0
+Ghana,2015,18.9
+Ghana,2014,19.8
+Ghana,2013,14.9
+Ghana,2012,4.5
+Ghana,2011,0.4
+Ghana,2010,-0.7
+Ghana,2009,3.4
+Ghana,2008,-3.0
+Ghana,2007,-0.9
+Ghana,2006,9.4
+Ghana,2005,3.7
+Ghana,2004,7.3
+Ghana,2003,7.0
+Ghana,2002,7.4
+Ghana,2001,7.0
+Ghana,2000,5.6
+Ghana,1999,3.5
+Ghana,1998,10.3
+Ghana,1997,4.2
+Ghana,1996,13.2
+Ghana,1995,11.6
+Ghana,1994,12.5
+Ghana,1993,6.0
+Ghana,1992,1.3
+Ghana,1991,7.3
+Ghana,1990,5.5
+India,2019,28.1
+India,2018,29.9
+India,2017,30.5
+India,2016,30.4
+India,2015,30.6
+India,2014,31.4
+India,2013,32.1
+India,2012,32.9
+India,2011,32.7
+India,2010,34.3
+India,2009,32.6
+India,2008,32.8
+India,2007,34.4
+India,2006,34.1
+India,2005,32.3
+India,2004,31.2
+India,2003,27.6
+India,2002,25.7
+India,2001,24.1
+India,2000,24.3
+India,1999,23.8
+India,1998,24.3
+India,1997,25.1
+India,1996,25.1
+India,1995,25.8
+India,1994,24.7
+India,1993,23.5
+India,1992,23.3
+India,1991,21.9
+India,1990,21.6
+Indonesia,2019,33.3
+Indonesia,2018,34.0
+Indonesia,2017,33.6
+Indonesia,2016,32.6
+Indonesia,2015,32.8
+Indonesia,2014,33.4
+Indonesia,2013,33.7
+Indonesia,2012,34.4
+Indonesia,2011,35.5
+Indonesia,2010,34.8
+Indonesia,2009,31.7
+Indonesia,2008,31.0
+Indonesia,2007,28.1
+Indonesia,2006,28.7
+Indonesia,2005,27.5
+Indonesia,2004,24.9
+Indonesia,2003,23.7
+Indonesia,2002,25.1
+Indonesia,2001,30.0
+Indonesia,2000,31.8
+Indonesia,1999,19.5
+Indonesia,1998,26.5
+Indonesia,1997,31.5
+Indonesia,1996,30.1
+Indonesia,1995,30.6
+Indonesia,1994,32.2
+Indonesia,1993,32.5
+Indonesia,1992,27.6
+Indonesia,1991,26.6
+Indonesia,1990,27.0
+Kenya,2019,10.4
+Kenya,2018,10.5
+Kenya,2017,9.8
+Kenya,2016,11.0
+Kenya,2015,11.8
+Kenya,2014,12.2
+Kenya,2013,11.7
+Kenya,2012,12.5
+Kenya,2011,11.3
+Kenya,2010,14.2
+Kenya,2009,14.0
+Kenya,2008,9.0
+Kenya,2007,10.5
+Kenya,2006,9.4
+Kenya,2005,7.2
+Kenya,2004,6.6
+Kenya,2003,4.7
+Kenya,2002,4.3
+Kenya,2001,4.5
+Kenya,2000,6.7
+Kenya,1999,5.7
+Kenya,1998,6.1
+Kenya,1997,7.3
+Kenya,1996,8.7
+Kenya,1995,15.9
+Kenya,1994,22.4
+Kenya,1993,22.4
+Kenya,1992,17.0
+Kenya,1991,19.7
+Kenya,1990,19.0
+Malaysia,2019,28.6
+Malaysia,2018,30.6
+Malaysia,2017,32.4
+Malaysia,2016,32.6
+Malaysia,2015,33.0
+Malaysia,2014,34.3
+Malaysia,2013,34.5
+Malaysia,2012,36.5
+Malaysia,2011,38.8
+Malaysia,2010,39.3
+Malaysia,2009,38.1
+Malaysia,2008,43.8
+Malaysia,2007,43.3
+Malaysia,2006,44.5
+Malaysia,2005,44.3
+Malaysia,2004,43.4
+Malaysia,2003,42.5
+Malaysia,2002,42.0
+Malaysia,2001,41.8
+Malaysia,2000,46.1
+Malaysia,1999,47.4
+Malaysia,1998,48.7
+Malaysia,1997,43.9
+Malaysia,1996,42.9
+Malaysia,1995,39.7
+Malaysia,1994,39.6
+Malaysia,1993,39.1
+Malaysia,1992,36.7
+Malaysia,1991,34.1
+Malaysia,1990,34.4
+Mexico,2019,21.8
+Mexico,2018,21.4
+Mexico,2017,20.5
+Mexico,2016,19.5
+Mexico,2015,18.9
+Mexico,2014,17.4
+Mexico,2013,17.5
+Mexico,2012,19.4
+Mexico,2011,18.8
+Mexico,2010,18.2
+Mexico,2009,19.5
+Mexico,2008,19.5
+Mexico,2007,20.7
+Mexico,2006,20.8
+Mexico,2005,18.7
+Mexico,2004,20.1
+Mexico,2003,18.9
+Mexico,2002,20.5
+Mexico,2001,21.4
+Mexico,2000,22.0
+Mexico,1999,23.6
+Mexico,1998,23.9
+Mexico,1997,23.3
+Mexico,1996,23.5
+Mexico,1995,23.2
+Mexico,1994,20.8
+Mexico,1993,20.3
+Mexico,1992,18.2
+Mexico,1991,20.1
+Mexico,1990,21.6
+Pakistan,2019,5.4
+Pakistan,2018,6.6
+Pakistan,2017,7.3
+Pakistan,2016,8.7
+Pakistan,2015,9.1
+Pakistan,2014,7.8
+Pakistan,2013,8.4
+Pakistan,2012,7.6
+Pakistan,2011,9.2
+Pakistan,2010,9.2
+Pakistan,2009,9.0
+Pakistan,2008,7.4
+Pakistan,2007,10.0
+Pakistan,2006,10.3
+Pakistan,2005,10.9
+Pakistan,2004,13.7
+Pakistan,2003,15.0
+Pakistan,2002,14.4
+Pakistan,2001,13.7
+Pakistan,2000,14.1
+Pakistan,1999,14.0
+Pakistan,1998,16.7
+Pakistan,1997,13.2
+Pakistan,1996,14.5
+Pakistan,1995,15.8
+Pakistan,1994,16.7
+Pakistan,1993,14.6
+Pakistan,1992,17.0
+Pakistan,1991,17.4
+Pakistan,1990,13.5
+Peru,2019,22.0
+Peru,2018,23.1
+Peru,2017,22.6
+Peru,2016,21.8
+Peru,2015,21.7
+Peru,2014,23.0
+Peru,2013,25.4
+Peru,2012,26.9
+Peru,2011,29.2
+Peru,2010,27.7
+Peru,2009,24.8
+Peru,2008,27.2
+Peru,2007,29.4
+Peru,2006,28.9
+Peru,2005,23.6
+Peru,2004,20.7
+Peru,2003,17.9
+Peru,2002,17.3
+Peru,2001,16.3
+Peru,2000,17.6
+Peru,1999,18.2
+Peru,1998,17.7
+Peru,1997,19.3
+Peru,1996,17.6
+Peru,1995,19.0
+Peru,1994,18.9
+Peru,1993,15.2
+Peru,1992,14.8
+Peru,1991,15.1
+Peru,1990,18.1
+Philippines,2019,14.3
+Philippines,2018,15.4
+Philippines,2017,16.5
+Philippines,2016,16.2
+Philippines,2015,16.6
+Philippines,2014,18.2
+Philippines,2013,17.2
+Philippines,2012,16.7
+Philippines,2011,18.2
+Philippines,2010,20.1
+Philippines,2009,17.0
+Philippines,2008,18.0
+Philippines,2007,18.5
+Philippines,2006,17.7
+Philippines,2005,17.2
+Philippines,2004,17.3
+Philippines,2003,16.6
+Philippines,2002,16.6
+Philippines,2001,16.4
+Philippines,2000,17.2
+Philippines,1999,15.8
+Philippines,1998,15.1
+Philippines,1997,17.8
+Philippines,1996,18.3
+Philippines,1995,18.1
+Philippines,1994,18.6
+Philippines,1993,17.7
+Philippines,1992,18.4
+Philippines,1991,19.8
+Philippines,1990,22.5
+Senegal,2019,17.7
+Senegal,2018,16.8
+Senegal,2017,15.9
+Senegal,2016,14.4
+Senegal,2015,13.1
+Senegal,2014,11.0
+Senegal,2013,8.1
+Senegal,2012,7.6
+Senegal,2011,6.0
+Senegal,2010,7.6
+Senegal,2009,6.9
+Senegal,2008,5.2
+Senegal,2007,6.5
+Senegal,2006,6.8
+Senegal,2005,9.3
+Senegal,2004,8.2
+Senegal,2003,9.5
+Senegal,2002,9.2
+Senegal,2001,11.3
+Senegal,2000,9.2
+Senegal,1999,10.5
+Senegal,1998,9.4
+Senegal,1997,9.0
+Senegal,1996,6.6
+Senegal,1995,7.9
+Senegal,1994,4.7
+Senegal,1993,1.9
+Senegal,1992,3.1
+Senegal,1991,3.5
+Senegal,1990,3.2
+South Africa,2019,16.3
+South Africa,2018,16.7
+South Africa,2017,17.8
+South Africa,2016,17.4
+South Africa,2015,17.3
+South Africa,2014,17.0
+South Africa,2013,17.1
+South Africa,2012,16.9
+South Africa,2011,18.9
+South Africa,2010,19.6
+South Africa,2009,20.2
+South Africa,2008,19.9
+South Africa,2007,20.6
+South Africa,2006,20.6
+South Africa,2005,20.3
+South Africa,2004,19.3
+South Africa,2003,21.2
+South Africa,2002,20.5
+South Africa,2001,18.1
+South Africa,2000,17.8
+South Africa,1999,17.1
+South Africa,1998,17.3
+South Africa,1997,17.2
+South Africa,1996,18.0
+South Africa,1995,18.8
+South Africa,1994,17.3
+South Africa,1993,18.1
+South Africa,1992,17.0
+South Africa,1991,17.7
+South Africa,1990,18.2
+South Korea,2019,33.8
+South Korea,2018,35.4
+South Korea,2017,36.5
+South Korea,2016,36.3
+South Korea,2015,35.9
+South Korea,2014,34.4
+South Korea,2013,34.2
+South Korea,2012,33.7
+South Korea,2011,34.1
+South Korea,2010,35.3
+South Korea,2009,33.5
+South Korea,2008,33.3
+South Korea,2007,34.0
+South Korea,2006,33.6
+South Korea,2005,34.9
+South Korea,2004,36.1
+South Korea,2003,33.9
+South Korea,2002,32.4
+South Korea,2001,33.2
+South Korea,2000,34.8
+South Korea,1999,36.5
+South Korea,1998,38.4
+South Korea,1997,36.4
+South Korea,1996,36.4
+South Korea,1995,38.2
+South Korea,1994,38.2
+South Korea,1993,38.5
+South Korea,1992,38.5
+South Korea,1991,39.4
+South Korea,1990,39.3
+Thailand,2019,34.1
+Thailand,2018,34.9
+Thailand,2017,34.8
+Thailand,2016,33.1
+Thailand,2015,31.5
+Thailand,2014,30.5
+Thailand,2013,31.1
+Thailand,2012,30.4
+Thailand,2011,30.9
+Thailand,2010,32.0
+Thailand,2009,31.0
+Thailand,2008,32.0
+Thailand,2007,33.5
+Thailand,2006,32.0
+Thailand,2005,30.5
+Thailand,2004,31.0
+Thailand,2003,31.4
+Thailand,2002,31.2
+Thailand,2001,30.5
+Thailand,2000,32.3
+Thailand,1999,33.2
+Thailand,1998,35.3
+Thailand,1997,34.9
+Thailand,1996,36.7
+Thailand,1995,37.4
+Thailand,1994,36.8
+Thailand,1993,37.0
+Thailand,1992,35.3
+Thailand,1991,35.8
+Thailand,1990,34.0
+Turkey,2019,31.0
+Turkey,2018,32.0
+Turkey,2017,29.7
+Turkey,2016,28.2
+Turkey,2015,28.7
+Turkey,2014,27.5
+Turkey,2013,27.1
+Turkey,2012,26.0
+Turkey,2011,25.3
+Turkey,2010,24.7
+Turkey,2009,24.2
+Turkey,2008,26.8
+Turkey,2007,25.9
+Turkey,2006,26.6
+Turkey,2005,25.5
+Turkey,2004,23.9
+Turkey,2003,22.9
+Turkey,2002,24.0
+Turkey,2001,24.3
+Turkey,2000,21.5
+Turkey,1999,21.5
+Turkey,1998,26.2
+Turkey,1997,27.1
+Turkey,1996,28.6
+Turkey,1995,28.1
+Turkey,1994,18.4
+Turkey,1993,18.0
+Turkey,1992,17.5
+Turkey,1991,17.0
+Turkey,1990,20.5
