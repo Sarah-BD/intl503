@@ -80,10 +80,10 @@ Or use the **Build** pane in RStudio. The site outputs to `_site/`.
 
 ## TODO / future hygiene
 
-- [x] Add a `.gitignore` — exists, but see the remediation note below; run the fix script before your next push
+- [x] Add a `.gitignore` — fixed (was silently broken by inline comments; confirmed working via `git check-ignore -v`) and history was reset to purge previously-exposed private material from the public GitHub repo
 - [x] Decide on hosting for the live Quarto site — GitHub Pages
+- [x] Delete stray local-only clutter: `PUBLISH-GITHUB.html` + `PUBLISH-GITHUB_files/`, `testfile_delete_me.txt`, `slides/day01-chapter01_cache/` all removed. (`slides/day01-chapter01_files/` was kept — it holds hand-placed images the Day 1 deck actually uses, not just render cache.)
 - [ ] Migrate article PDFs to Zotero; remove `readings/articles/` once empty
-- [ ] Delete stray local-only clutter that shouldn't be tracked or synced: `PUBLISH-GITHUB.html` + `PUBLISH-GITHUB_files/` (redundant rendered copy of `PUBLISH-GITHUB.md`), `slides/day01-chapter01_cache/` + `slides/day01-chapter01_files/` (leftover render artifacts — every other day deck doesn't have these), `.DS_Store` files, `testfile_delete_me.txt` at root (a stray test file from a cleanup session)
 - [ ] Confirm all 16 day decks are rendering cleanly end to end before the term opens
 
 ---
